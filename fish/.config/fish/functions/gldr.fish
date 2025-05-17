@@ -1,0 +1,4 @@
+function gldr --wraps='gallery-dl  --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0" --limit-rate 1m --sleep 1.1 --sleep-request 1.1 --sleep-extractor 1.1' --wraps='gallery-dl  --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0" --limit-rate 1m --sleep 1.1 --sleep-request 1.1 --sleep-extractor 1.1 --proxy 10.10.10.55:8888' --description 'alias gldr=gallery-dl  --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0" --limit-rate 1m --sleep 1.1 --sleep-request 1.1 --sleep-extractor 1.1 --proxy 10.10.10.55:8888'
+  gallery-dl  --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:101.0) Gecko/20100101 Firefox/101.0" --limit-rate 1m --sleep 1.1 --sleep-request 1.1 --sleep-extractor 1.1 --proxy 10.10.10.55:8888 $argv
+        
+end

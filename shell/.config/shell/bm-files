@@ -1,0 +1,17 @@
+bf	$HOME/.config/shell/bm-files
+bd	$HOME/.config/shell/bm-dirs
+cfv	$HOME/.config/nvim/init.lua
+cfz	$HOME/.config/zsh/.zshrc
+cfh $HOME/.config/hypr/hyprland.conf
+cfk $HOME/.config/kitty/kitty.conf
+cfn $HOME/.config/fontconfig/fonts.conf
+cfaz	$HOME/.config/shell/aliasrc
+cfa	$HOME/.config/fish/aliasesrc.fish
+cft	$HOME/.config/tmux/tmux.conf
+cfl	$HOME/.config/lf/lfrc
+cfL	$HOME/.config/lf/scope
+cfw $HOME/.config/waybar/config.ctl
+cfk $HOME/.config/kitty/kitty.conf
+cfp	$HOME/.zprofile
+cfe $HOME/.zshenv
+cff $HOME/.config/fish/config.fish

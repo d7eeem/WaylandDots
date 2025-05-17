@@ -1,0 +1,42 @@
+[options]
+suppress_default_binds = true
+[binds]
+# Key Bindings (navigation)
+
+h = prev
+p = prev
+l = next
+n = next
+gg = goto 1
+<Shift+G> = goto -1
+
+q = quit
+e = exec echo $imv_current_file
+o = overlay
+
+# Panning
+s = pan 0 -50
+w = pan 0 50
+a = pan 50 0
+d = pan -50 0
+
+
+
+# Gif playback
+<period> = next_frame
+<space> = toggle_playing
+
+
+# Zoom 
+<Up> = zoom 1
+<Shift+plus> = zoom 1
+i = zoom 1
+<Down> = zoom -1
+<minus> = zoom -1
+z = zoom actual
+c = center
+r = reset
+
+# Rotate Clockwise by 90 degrees
+<Ctrl+r> = rotate by 90
+

@@ -1,0 +1,41 @@
+[manager]
+ratio = [1, 3 , 4]
+sort_by = "natural"
+sort_dir_first = true
+linemode = "size"
+
+
+
+[opener]
+edit = [
+  { run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+  { run = 'nvim "%*"', desc = "$EDITOR", block = true, for = "windows" },
+]
+extract = [
+  { run = '7zfm "%1"', desc = "Open in 7zfm", orphan = true, for = "windows" },
+  { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+  { run = 'ya pub extract --list %*', desc = "Extract here", for = "windows" },
+]
+view = [
+  { run = 'imv-dir "$@"', desc = "$EDITOR", block = true, for = "unix"}
+]
+
+[open]
+rules = [
+  { name = "*.m3u", use = ['play', 'edit', 'reveal'] },
+  { name = "*/", use = ["edit", "open", "reveal"] },
+  { mime = "text/*", use = ["edit", "reveal"] },
+  { mime = "image/*", use = ["view"] },
+  { mime = "{audio,video}/*", use = ["play", "reveal"] },
+  { mime = "application/{,g}zip", use = ["extract", "reveal"] },
+  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", use = ["extract", "reveal"] },
+  { mime = "application/{json,x-ndjson}", use = ["edit", "reveal"] },
+  { mime = "*/javascript", use = ["edit", "reveal"] },
+  { mime = "inode/x-empty", use = ["edit", "reveal"] },
+  { name = "*", use = ["open", "reveal"] },
+]
+
+[plugin]
+prepend_previewers = [
+  { name = "*.md", run = "glow" },
+]
