@@ -1,0 +1,16 @@
+#!/bin/sh
+# _     _ _____
+#(_) __| |___  |_  ___   _ ____
+#| |/ _| |  / /\ \/ / | | |_  /
+#| | (_| | / /  >  <| |_| |/ /
+#|_|\__,_|/_/  /_/\_\__, /___|
+# Created by: d7eeem aka id7xyz
+# https://gitlab.com/d7eeem
+
+#kill thoes
+kquitapp6 kiod6
+kquitapp6 kded6
+pkill kioworker
+# reloads waybar
+pkill waybar
+hyprctl dispatch exec waybar

@@ -1,0 +1,7 @@
+"custom/discord": {
+    "format": "<span font_family='Font Awesome 6 Brands'>&#xf392;</span>",
+    "exec": "echo '<span font_family=\"Font Awesome 6 Brands\">&#xf392;</span>'",
+    "on-click": "sleep 0.1 && discord",
+    "interval": 86400,
+    "tooltip": true
+},

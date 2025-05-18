@@ -64,7 +64,7 @@
     progress_bar_corner_radius = 4
 
     # Corner radius for the icon image.
-    icon_corner_radius = 10
+    icon_corner_radius = 2
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
@@ -250,7 +250,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 10
+    corner_radius = 2
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -449,15 +449,15 @@
     timeout = 0
 
 [urgency_low]
-    background = "#659DA380"
-    foreground = "#CCFAFFE6"
-    frame_color = "#659DA303"
+    background = "#A3786580"
+    foreground = "#FFDBCCE6"
+    frame_color = "#A3786503"
     icon = "/home/tinker/.config/dunst/icons/hyprdots.svg"
     timeout = 5
 
 [urgency_normal]
-    background = "#3A6B5B80"
-    foreground = "#CCFFEFE6"
-    frame_color = "#3A6B5B03"
+    background = "#6B3C3A80"
+    foreground = "#FFCFCCE6"
+    frame_color = "#6B3C3A03"
     icon = "/home/tinker/.config/dunst/icons/hyprdots.svg"
     timeout = 5

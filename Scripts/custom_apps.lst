@@ -1,0 +1,32 @@
+# --------------------------------------------------- // System
+downgrade                                            # downgrade packages
+trash-cli-git                                        # cli to manage trash files
+amdgpu_top
+archlinux-xdg-menu
+yad
+localsend
+haruna
+loupe
+mission-center
+boxbuddy
+yazi
+zen-browser-bin
+# --------------------------------------------------- // Dependencies
+xdg-desktop-portal-gtk                                 # xdg desktop portal using gtk
+
+# --------------------------------------------------- // Gaming
+steam                                                  # gaming platform
+gamemode                                               # daemon and library for game optimisations
+mangohud                                               # system performance overlay
+gamescope                                            # micro-compositor for gaming
+gpu-screen-recorder 
+gpu-screen-recorder-ui 
+gpu-screen-recorder-gtk 
+gpu-screen-recorder-notification 
+protontricks
+winetricks
+# --------------------------------------------------- // Neovim
+neovim                                               # vim based text editor
+lua51
+luarocks
+shellcheck

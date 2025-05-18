@@ -7,6 +7,7 @@ alias lt='eza -aT --color=always --group-directories-first --icons' # tree listi
 alias l.="eza -a | grep -e '^\.'"                                   # show only dotfiles
 alias ks="ls"
 alias ca="clear"
+alias convert='magick convert'
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias tarnow='tar -acf '
 alias untar='tar -zxvf '

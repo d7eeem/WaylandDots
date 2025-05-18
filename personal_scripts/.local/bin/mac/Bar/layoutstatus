@@ -1,0 +1,15 @@
+#!/bin/sh
+# <bitbar.title>plexStream</bitbar.title>
+# <bitbar.version>v1.0</bitbar.version>
+# <bitbar.author>id7xyz</bitbar.author>
+# <bitbar.author.github>d7eeem</bitbar.author.github>
+# <bitbar.image>https://cdn.id7x.xyz/fghdfghdfgh.png</bitbar.image>
+# <bitbar.dependencies>jq</bitbar.dependencies>
+# _     _ _____
+#(_) __| |___  |_  ___   _ ____
+#| |/ _| |  / /\ \/ / | | |_  /
+#| | (_| | / /  >  <| |_| |/ /
+#|_|\__,_|/_/  /_/\_\__, /___|
+# Created by: d7eeem aka id7xyz
+# https://github.com/d7eeem
+

@@ -1,0 +1,9 @@
+    "custom/heroic": {
+        "format": "󰬏{}",
+        "rotate": ${r_deg},
+        "exec": "echo ; echo 󰬏 heroic",
+        "on-click": "sleep 0.1 && heroic",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+

@@ -1,0 +1,41 @@
+#!/bin/env bash
+# _     _ _____
+#(_) __| |___  |_  ___   _ ____
+#| |/ _| |  / /\ \/ / | | |_  /
+#| | (_| | / /  >  <| |_| |/ /
+#|_|\__,_|/_/  /_/\_\__, /___|
+# Created by: d7eeem aka id7xyz
+# https://gitlab.com/d7eeem
+
+
+gpu_temps="$(amdgpu_top -d --json | jq '.[].Sensors.["Edge Temperature"].value' | awk '{printf "%sC\n", $1}')"
+gpu_fan_speed="$(amdgpu_top -d --json | jq '.[].Sensors.["Fan"].value' | awk '{printf "%s RPM\n", $1}')"
+gpu_vram_use_mb="$(amdgpu_top -d --json | jq '.[].VRAM.["Total VRAM Usage"].value' | awk '{printf "%s MiB\n", $1}')"
+gpu_vram_use_gb="$(amdgpu_top -d --json | jq '.[].VRAM.["Total VRAM Usage"].value'  | awk '{printf "%.2f GiB\n", $1 /  (1024)}')"
+gpu_avg_power_use="$(amdgpu_top -d --json | jq '.[].Sensors.["Average Power"].value' | awk '{printf "%sW\n", $1}')"
+
+
+case "$1" in
+  vram_use_mb)
+    printf "%s\n" "$gpu_vram_use_mb"
+    ;;
+  vram_use_gb)
+    printf "%s\n" "$gpu_vram_use_gb"
+    ;;
+  gpu_temps)
+    printf "%s\n" "$gpu_temps"
+    ;;
+  fan_speed)
+    printf "%s\n" "$gpu_fan_speed"
+    ;;
+  gpu_power)
+    printf "%s\n" "$gpu_avg_power_use"
+    ;;
+  all)
+    printf "%s\n" "$gpu_temps"
+    printf "%s\n" "$gpu_vram_use_gb"
+    printf "%s\n" "$gpu_vram_use_mb"
+    printf "%s\n" "$gpu_fan_speed"
+    printf "%s\n" "$gpu_avg_power_use"
+    ;;
+esac
