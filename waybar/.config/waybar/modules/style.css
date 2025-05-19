@@ -11,6 +11,7 @@
 
 window#waybar {
     background: @bar-bg;
+    color: @main-fg;
 }
 
 tooltip {
@@ -19,47 +20,40 @@ tooltip {
     border-radius: ${t_radius}px;
     border-width: 0px;
 }
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
 
 #workspaces button {
     box-shadow: none;
     text-shadow: none;
-    border-radius: 10px;
-    margin-left: 1px;
-    margin-right: 1px;
-    margin-top: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 0px;
+    border-radius: 15px 15px 15px 15px;
+    padding: 0 3px;
+    margin: 0;
     color: @main-fg;
     animation: ws_normal 20s ease-in-out 1;
 }
 
 #workspaces button.active {
-    background: @none;
+    background: @wb-act-bg;
     color: @wb-act-fg;
-    border-radius: 10px;
-    margin-left: 1px;
-    margin-right: 1px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-left: 10px;
-    padding-right: 0px;
-    margin-bottom: 0px;
+    border-radius: 15px 15px 15px 15px;
+    margin: 0;
+    padding: 3px;
+    padding-left: 5px;
     animation: ws_active 20s ease-in-out 1;
     transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #workspaces button:hover {
-    background: none;
+    background: @wb-hvr-bg;
+    border-radius: 15px 15px 15px 15px;
+    margin: 0;
+    padding: 3px;
+    padding-left: 5px;
     color: @wb-hvr-fg;
-    border-radius: 10px;
-    margin-left: 2px;
-    margin-right: 2px;
-    margin-top: 0px;
-    padding-left: 8px;
-    padding-right: 0px;
-    margin-bottom: 0px;
-    animation: ws_hover 20s ease-in-out 1;
+    animation: ws_hover 20s ease-in-out 0;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
@@ -119,7 +113,6 @@ ${modules_ls}
     padding-${x4}: ${g_paddin}px;
 }
 
-#workspaces,
 #taskbar {
     padding: 0px;
 }

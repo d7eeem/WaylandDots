@@ -10,10 +10,6 @@
     "modules": [
         {
             "type": "custom",
-            "format": "\u001b[36m    コンピューター"
-        },
-        {
-            "type": "custom",
             "format": "┌─────────────────────────┐"
         },
         {
@@ -97,6 +93,10 @@
             "format": "└─────────────────────────┘"
         },
         "break",
+                {
+            "type": "custom",
+            "format": "\u001b[36m    コンピューター"
+        },
         {
             "type": "colors",
             "paddingLeft": 2,

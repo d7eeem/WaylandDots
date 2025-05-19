@@ -1,20 +1,18 @@
 $HOME/.config/hypr/themes/theme.conf|> $HOME/.config/hypr/themes/colors.conf
-#  ___________      _________                        __   
-#  \__    ___/      \_   ___ \_______ ___.__._______/  |_ 
-#   |    |  ______ /    \  \/\_  __ <   |  |\____ \   __\
-#   |    | /_____/ \     \____|  | \/\___  ||  |_> >  |  
-#   |____|          \______  /|__|   / ____||   __/|__|  
-#                          \/        \/     |__|      
 
-exec = gsettings set org.gnome.desktop.interface icon-theme 'Everforest-Dark'
-exec = gsettings set org.gnome.desktop.interface gtk-theme 'Gruvbox-Pink-Dark'
-exec = gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+$GTK-THEME = Gruvbox-Pink-Dark
+$ICON-THEME = Everforest-Dark
+
+#exec = gsettings set org.gnome.desktop.interface icon-theme 'Everforest-Dark'
+#exec = gsettings set org.gnome.desktop.interface gtk-theme 'Wallbash-Gtk'
+#exec = gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 exec = gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
 exec = gsettings set org.gnome.desktop.interface cursor-size 24
 
 general {
-    gaps_in = 3
+    gaps_in = 4
     gaps_out = 4
     border_size = 2
     col.active_border = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
@@ -28,4 +26,17 @@ group {
     col.border_inactive = rgba(1e8b50d9) rgba(50b050d9) 45deg
     col.border_locked_active = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
     col.border_locked_inactive = rgba(1e8b50d9) rgba(50b050d9) 45deg
+}
+
+decoration {
+    rounding = 10
+
+    blur {
+        enabled = yes
+        size = 4
+        passes = 2
+        new_optimizations = on
+        ignore_opacity = on
+        xray = false
+    }
 }

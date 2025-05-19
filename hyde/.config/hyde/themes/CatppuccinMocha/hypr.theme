@@ -1,6 +1,6 @@
 $HOME/.config/hypr/themes/theme.conf|> $HOME/.config/hypr/themes/colors.conf
 exec = gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
-exec = gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha'
+exec = gsettings set org.gnome.desktop.interface gtk-theme 'catppuccin-mocha-blue-standard+default'
 exec = gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 general {

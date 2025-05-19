@@ -1,0 +1,33 @@
+# ~/.config/uwsm/env
+
+# PATH
+export PATH="$PATH:/home/tinker/.local/bin/hyde/:/home/tinker/.local/bin/personal/"
+
+# XDG session and runtime
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+export XDG_RUNTIME_DIR=/run/user/1000
+
+# Wayland and toolkit configuration
+export WLR_DRM_DEVICES=/dev/dri/card0
+export GDK_BACKEND=wayland,x11
+export QT_QPA_PLATFORM="wayland;xcb"
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_STYLE_OVERRIDE=kvantum
+
+# GTK
+export GTK_THEME=Adwaita:dark
+export GDK_SCALE=1
+export XCURSOR_THEME=Bibata-Modern-Ice
+export XCURSOR_SIZE=24
+
+# Electron / Mozilla
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export MOZ_ENABLE_WAYLAND=1
+
+# Menu prefix
+export XDG_MENU_PREFIX=arch-
+
