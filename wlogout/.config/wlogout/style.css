@@ -1,0 +1,60 @@
+@import "/home/tinker/.cache/wal/colors-waybar.css";
+
+* {
+	background-image: none;
+	box-shadow: none ;
+  font-family: "Hack Nerd Font Mono";
+}
+
+window {
+	background-color: rgba(0, 0, 0, 0.85);
+}
+button {
+    font-size: 32px;
+    background-size: 25%;
+    padding-bottom: 125px;
+    margin: 10px;
+    border-radius: 12px;
+    background-color: @background;
+    border: 4px solid @color3;
+    color: @foreground;
+}
+
+button:focus, button:active, button:hover {
+	background-color: @color9;
+	outline-style: none;
+}
+
+
+
+
+/* #logout { */
+/*     background-image: image(url("$HOME/.config/wlogout/icons/logout_${BtnCol}.png"), url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png")); */
+/*     border-radius: 0px 0px 0px 0px; */
+/*     margin : ${mgn}px 0px ${mgn}px 0px; */
+/* } */
+/**/
+/* #suspend { */
+/*     background-image: image(url("$HOME/.config/wlogout/icons/suspend_${BtnCol}.png"), url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png")); */
+/*     border-radius: 0px 0px 0px 0px; */
+/*     margin : ${mgn}px 0px ${mgn}px 0px; */
+/* } */
+/**/
+/* #shutdown { */
+/*     background-image: image(url("$HOME/.config/wlogout/icons/shutdown_${BtnCol}.png"), url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png")); */
+/*     border-radius: 0px 0px 0px 0px; */
+/*     margin : ${mgn}px 0px ${mgn}px 0px; */
+/* } */
+/**/
+/**/
+/* #hibernate { */
+/*     background-image: image(url("$HOME/.config/wlogout/icons/hibernate_${BtnCol}.png"), url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png")); */
+/*     border-radius: 0px 0px 0px 0px; */
+/*     margin : ${mgn}px 0px ${mgn}px 0px; */
+/* } */
+/**/
+/* #reboot { */
+/*     background-image: image(url("$HOME/.config/wlogout/icons/reboot_${BtnCol}.png"), url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png")); */
+/*     border-radius: 0px 0px 0px 0px; */
+/*     margin : ${mgn}px 0px ${mgn}px 0px; */
+/* } */

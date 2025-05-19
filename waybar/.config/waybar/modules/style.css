@@ -111,7 +111,7 @@ ${modules_ls}
 #custom-sr_end,
 #custom-rl_end,
 #custom-rr_end {
-    color: @main-fg;
+    /* color: @main-fg; */
     background: @main-bg;
     opacity: 1;
     margin: ${x1g_margin}px ${x2g_margin}px ${x3g_margin}px ${x4g_margin}px;

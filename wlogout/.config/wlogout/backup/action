@@ -1,0 +1,2 @@
+    "action" : "loginctl terminate-user $USER",
+
