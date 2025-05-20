@@ -1,0 +1,11 @@
+    "custom/theme": {
+        "format": "{}",
+        "rotate": ${r_deg},
+        "exec": "echo ; echo 󰟡 switch theme",
+        "on-click": "sleep 0.1 && themeselect.sh",
+        "on-click-right": "themeswitch.sh -p",
+        "on-click-middle": "themeswitch.sh -n",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+

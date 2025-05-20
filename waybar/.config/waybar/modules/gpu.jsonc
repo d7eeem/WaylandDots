@@ -1,0 +1,6 @@
+    "custom/gpu": {
+        "exec": "$HOME/.local/bin/statusbar/sb-gpu.sh",
+        "on-click": "$HOME/.local/bin/statusbar/sb-gpu-options.sh",
+        "restart-interval": 5
+    },
+

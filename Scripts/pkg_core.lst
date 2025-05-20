@@ -1,4 +1,5 @@
 # --------------------------------------------------- // System
+snapper
 fish
 pipewire                                               # audio/video server
 pipewire-alsa                                          # pipewire alsa client
@@ -47,9 +48,10 @@ cliphist                                               # clipboard manager
 hyprsunset                                             # blue light filter
 hypridle                                               # idle daemon
 python-pyamdgpuinfo
+swayosd
 
 # --------------------------------------------------- // Dependencies
-polkit-gnome                                           # authentication agent
+hyprpolkitagent
 xdg-desktop-portal-hyprland                            # xdg desktop portal for hyprland
 xdg-desktop-portal-gtk                                 # file picker and dbus  integration
 xdg-user-dirs                                          # Manage user directories like ~/Desktop and ~/Music
@@ -100,6 +102,8 @@ steam                                                  # gaming platform
 gamemode                                               # daemon and library for game optimisations
 mangohud                                               # system performance overlay
 gamescope                                            # micro-compositor for gaming
+cachyos-gaming-meta
+cachyos-gaming-applications
 gpu-screen-recorder 
 gpu-screen-recorder-ui 
 gpu-screen-recorder-gtk 
