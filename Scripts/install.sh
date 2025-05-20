@@ -1,24 +1,5 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2154
-#|---/ /+--------------------------+---/ /|#
-#|--/ /-| Main installation script |--/ /-|#
-#|-/ /--| Prasanth Rangan          |-/ /--|#
-#|/ /---+--------------------------+/ /---|#
-
-cat <<"EOF"
-
--------------------------------------------------
-        .
-       / \         _       _  _      ___  ___
-      /^  \      _| |_    | || |_  _|   \| __|
-     /  _  \    |_   _|   | __ | || | |) | _|
-    /  | | ~\     |_|     |_||_|\_, |___/|___|
-   /.-'   '-.\                  |__/
-
--------------------------------------------------
-
-EOF
-
 #--------------------------------#
 # import variables and functions #
 #--------------------------------#
@@ -29,31 +10,24 @@ if ! source "${scrDir}/global_fn.sh"; then
     exit 1
 fi
 
+
 #------------------#
 # evaluate options #
 #------------------#
 flg_Install=0
-flg_Restore=0
 flg_Service=0
 flg_DryRun=0
-flg_Shell=0
-flg_Nvidia=1
-flg_ThemeInstall=1
-
-while getopts idrstmnh: RunStep; do
+flg_reboot=0
+flg_flat=0
+while getopts idfstmh: RunStep; do
     case $RunStep in
     i) flg_Install=1 ;;
     d)
         flg_Install=1
         export use_default="--noconfirm"
         ;;
-    r) flg_Restore=1 ;;
+    f) flg_flat=1 ;;
     s) flg_Service=1 ;;
-    n)
-        # shellcheck disable=SC2034
-        export flg_Nvidia=0
-        print_log -r "[nvidia] " -b "Ignored :: " "skipping Nvidia actions"
-        ;;
     h)
         # shellcheck disable=SC2034
         export flg_Shell=0
@@ -88,23 +62,51 @@ elif [ $OPTIND -eq 1 ]; then
     flg_Install=1
     flg_Restore=1
     flg_Service=1
+    flg_flat=1
 fi
 
-#--------------------#
-# pre-install script #
-#--------------------#
-if [ ${flg_Install} -eq 1 ] && [ ${flg_Restore} -eq 1 ]; then
+
+#---------------------#
+# install chaotic-aur #
+#---------------------#
     cat <<"EOF"
-                _         _       _ _
- ___ ___ ___   |_|___ ___| |_ ___| | |
-| . |  _| -_|  | |   |_ -|  _| .'| | |
-|  _|_| |___|  |_|_|_|___|_| |__,|_|_|
-|_|
+
+┬┌┐┌┌─┐┌┬┐┌─┐┬  ┬  ┬┌┐┌┌─┐  ┌─┐┬ ┬┌─┐┌─┐┌┬┐┬┌─┐ ┌─┐┬ ┬┬─┐
+││││└─┐ │ ├─┤│  │  │││││ ┬  │  ├─┤├─┤│ │ │ ││───├─┤│ │├┬┘
+┴┘└┘└─┘ ┴ ┴ ┴┴─┘┴─┘┴┘└┘└─┘  └─┘┴ ┴┴ ┴└─┘ ┴ ┴└─┘ ┴ ┴└─┘┴└─
+
+
 
 EOF
 
-    "${scrDir}/install_pre.sh"
+
+if grep -q '\[chaotic-aur\]' /etc/pacman.conf; then
+    print_log -sec "CHAOTIC-AUR" -stat "skipped" "Chaotic AUR entry found in pacman.conf..."
+else
+    prompt_timer 120 "Would you like to install Chaotic AUR? [y/n] | q to quit "
+    is_chaotic_aur=false
+
+    case "${PROMPT_INPUT}" in
+    y | Y)
+        is_chaotic_aur=true
+        ;;
+    n | N)
+        is_chaotic_aur=false
+        ;;
+    q | Q)
+        print_log -sec "Chaotic AUR" -crit "Quit" "Exiting..."
+        exit 1
+        ;;
+    *)
+        is_chaotic_aur=true
+        ;;
+    esac
+    if [ "${is_chaotic_aur}" == true ]; then
+        sudo pacman-key --init
+        sudo "${scrDir}/chaotic_aur.sh" --install
+    fi
 fi
+
 
 #------------#
 # installing #
@@ -132,21 +134,6 @@ EOF
         cat "${custom_pkg}" >>"${scrDir}/install_pkg.lst"
     fi
     echo -e "\n#user packages" >>"${scrDir}/install_pkg.lst" # Add a marker for user packages
-    #--------------------------------#
-    # add nvidia drivers to the list #
-    #--------------------------------#
-    if nvidia_detect; then
-        if [ ${flg_Nvidia} -eq 1 ]; then
-            cat /usr/lib/modules/*/pkgbase | while read -r kernel; do
-                echo "${kernel}-headers" >>"${scrDir}/install_pkg.lst"
-            done
-            nvidia_detect --drivers >>"${scrDir}/install_pkg.lst"
-        else
-            print_log -warn "Nvidia" " :: " "Nvidia GPU detected but ignored..."
-        fi
-    fi
-    nvidia_detect --verbose
-
     #----------------#
     # get user prefs #
     #----------------#
@@ -222,52 +209,10 @@ EOF
     [ ${flg_DryRun} -eq 1 ] || "${scrDir}/install_pkg.sh" "${scrDir}/install_pkg.lst"
 fi
 
-#---------------------------#
-# restore my custom configs #
-#---------------------------#
-if [ ${flg_Restore} -eq 1 ]; then
-    cat <<"EOF"
-
-             _           _d
- ___ ___ ___| |_ ___ ___|_|___ ___
-|  _| -_|_ -|  _| . |  _| |   | . |
-|_| |___|___|_| |___|_| |_|_|_|_  |
-                              |___|
-
-EOF
-
-    if [ "${flg_DryRun}" -ne 1 ] && [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
-        hyprctl keyword misc:disable_autoreload 1 -q
-    fi
-
-    "${scrDir}/restore_fnt.sh"
-    "${scrDir}/restore_cfg.sh"
-    "${scrDir}/restore_thm.sh"
-    print_log -g "[generate] " "cache ::" "Wallpapers..."
-    if [ "${flg_DryRun}" -ne 1 ]; then
-        "$HOME/.local/lib/hyde/swwwallcache.sh" -t ""
-        "$HOME/.local/lib/hyde/theme.switch.sh" -q || true
-        echo "[install] reload :: Hyprland"
-    fi
-
+if [[ ${flg_flat} -eq 1 ]]; then
+  "${scrDir}"/install_fpk.sh
 fi
 
-#---------------------#
-# post-install script #
-#---------------------#
-if [ ${flg_Install} -eq 1 ] && [ ${flg_Restore} -eq 1 ]; then
-    cat <<"EOF"
-
-             _      _         _       _ _
- ___ ___ ___| |_   |_|___ ___| |_ ___| | |
-| . | . |_ -|  _|  | |   |_ -|  _| .'| | |
-|  _|___|___|_|    |_|_|_|___|_| |__,|_|_|
-|_|
-
-EOF
-
-    "${scrDir}/install_pst.sh"
-fi
 
 #------------------------#
 # enable system services #
@@ -300,11 +245,27 @@ fi
 if [ $flg_Install -eq 1 ]; then
     print_log -stat "\nInstallation" "completed"
 fi
+
+
+if [ ${flg_reboot} -eq 1 ]; then
+    cat <<"EOF"
+    
+     
+ _     _____ _____  _____ 
+| |   |  _  |  __ \/  ___|
+| |   | | | | |  \/\ `--. 
+| |   | | | | | __  `--. \
+| |___\ \_/ / |_\ \/\__/ /
+\_____/\___/ \____/\____/ 
+                          
+                          
+EOF
+
 print_log -stat "Log" "View logs at ${cacheDir}/logs/${HYDE_LOG}"
 if [ $flg_Install -eq 1 ] ||
     [ $flg_Restore -eq 1 ] ||
     [ $flg_Service -eq 1 ]; then
-    print_log -stat "HyDE" "It is not recommended to use newly installed or upgraded HyDE without rebooting the system. Do you want to reboot the system? (y/N)"
+    print_log -stat "It is not recommended to use newly installed or upgraded HyDE without rebooting the system. Do you want to reboot the system? (y/N)"
     read -r answer
 
     if [[ "$answer" == [Yy] ]]; then
@@ -313,4 +274,7 @@ if [ $flg_Install -eq 1 ] ||
     else
         echo "The system will not reboot"
     fi
+fi
+else
+    print_log -sec "LOGS" -stat "skipped" "Consider REBOOTING"
 fi

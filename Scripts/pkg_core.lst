@@ -1,4 +1,5 @@
 # --------------------------------------------------- // System
+fish
 pipewire                                               # audio/video server
 pipewire-alsa                                          # pipewire alsa client
 pipewire-audio                                         # pipewire audio client
@@ -90,8 +91,8 @@ luarocks
 shellcheck
 lua-language-server
 # --------------------------------------------------- // Shell
-eza|fish                                               # file lister for fish
-starship|fish                                          # customizable shell prompt
+eza                                               # file lister for fish
+starship                                          # customizable shell prompt
 fastfetch                                              # system information fetch tool
 
 # --------------------------------------------------- // Gaming
@@ -107,7 +108,6 @@ protontricks
 winetricks
 
 
-# --------------------------------------------------- // Users
 # --------------------------------------------------- // Shell and CLI Utilities
 bat
 fd
@@ -115,43 +115,23 @@ ripgrep
 dua-cli
 duf
 
+
 # --------------------------------------------------- // Fonts - Nerd Fonts Hack, JetBrains Mono, FiraCode
-adobe-source-han-sans-cn-fonts
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
 adwaita-fonts
 awesome-terminal-fonts
 cantarell-fonts
-fontconfig
-gnu-free-fonts
-lib32-fontconfig
-libfontenc
-libxfont2
 noto-color-emoji-fontconfig
 noto-fonts
-noto-fonts-cjk
 noto-fonts-emoji
-opendesktop-fonts
-powerline-fonts
-python-fonttools
 ttf-font-awesome
 ttf-nerd-fonts-symbols
 ttf-nerd-fonts-symbols-common
-xorg-fonts-encodings
-ttf-hack
 ttf-hack-nerd
 ttf-fantasque-nerd
 ttf-firacode-nerd
 ttf-hack-nerd
 ttf-jetbrains-mono-nerd
 ttf-meslo-nerd
-ttf-nerd-fonts-symbols
-ttf-nerd-fonts-symbols-common
 
 # --------------------------------------------------- // File Manager
 nautilus
-
-
-gnome-themes-extra 
-sassc
-gtk-engine-murrine
