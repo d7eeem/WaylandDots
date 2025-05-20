@@ -1,9 +1,0 @@
-    "custom/files": {
-        "format": " {}",
-        "rotate": ${r_deg},
-        "exec": "echo ; echo  files",
-        "on-click": "sleep 0.1 && nautilus --new-window",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-

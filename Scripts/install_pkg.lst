@@ -45,6 +45,7 @@ satty                                                  # Modern Screenshot Annot
 cliphist                                               # clipboard manager
 hyprsunset                                             # blue light filter
 hypridle                                               # idle daemon
+python-pyamdgpuinfo
 
 # --------------------------------------------------- // Dependencies
 polkit-gnome                                           # authentication agent
@@ -87,6 +88,7 @@ neovim                                               # vim based text editor
 lua51
 luarocks
 shellcheck
+lua-language-server
 # --------------------------------------------------- // Shell
 eza|fish                                               # file lister for fish
 starship|fish                                          # customizable shell prompt
@@ -148,30 +150,8 @@ ttf-nerd-fonts-symbols-common
 
 # --------------------------------------------------- // File Manager
 nautilus
-# ------------------------------------------- // System
-com.github.tchx84.Flatseal                       # Flatseal
-io.github.flattool.Warehouse                     # Warehouse
-io.gitlab.adhami3310.Impression                  # Impression
-com.github.zocker_160.SyncThingy                 # Syncthing
-com.usebottles.bottles                           # Bottles
-io.github.dimtpap.coppwr                         # Coppwr
 
-# ------------------------------------------- // Browser
-com.brave.Browser                              # Brave
 
-# ------------------------------------------- // Productivity
-md.obsidian.Obsidian                           # Obsidian
-com.logseq.Logseq                              # Note taking app logseq
-
-# ------------------------------------------- // Image/Graphics
-org.inkscape.Inkscape                            # Inkscape
-org.upscayl.Upscayl                              # ImageUpscaler
-
-# ------------------------------------------- // Audio/Video
-com.github.iwalton3.jellyfin-mpv-shim          # Jellyfin MPV Shim
-
-# ------------------------------------------- // Gaming
-#com.github.Matoking.protontricks             # ProtonTricks
-com.vysp3r.ProtonPlus
-
-#user packages
+gnome-themes-extra 
+sassc
+gtk-engine-murrine
