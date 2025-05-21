@@ -1,0 +1,1 @@
+1|30|top| ( custom/missioncenter custom/heroic custom/steam custom/discord custom/files ) ( hyprland/window ) ( custom/nettraf ) | ( hyprland/workspaces custom/layout   ) | ( custom/audio_idle_inhibitor pulseaudio pulseaudio#microphone custom/updates custom/notifications custom/sb-memory custom/cpuinfo custom/gpuinfo ) ( custom/power custom/refreshbar tray clock ) 

@@ -1,24 +1,13 @@
-@import "theme.css";
 * {
-    font-family: FontAwesome, Hack Nerd Font;
-    font-size: 14px;
+    border: none;
+    border-radius: 0px;
+    font-family: "Hack Nerd Font";
     font-weight: bold;
     font-size: 12px;
     min-height: 10px;
 }
 
-window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
+@import "theme.css";
 
 window#waybar {
     background: @bar-bg;
@@ -67,6 +56,7 @@ tooltip {
     animation: ws_hover 20s ease-in-out 0;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
+
 #taskbar button {
     box-shadow: none;
 	  text-shadow: none;
