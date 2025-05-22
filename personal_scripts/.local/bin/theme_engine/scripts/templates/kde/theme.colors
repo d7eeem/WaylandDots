@@ -1,0 +1,105 @@
+[ColorEffects:Disabled]
+Color={{ surface2 }}
+ColorAmount=0.56
+ColorEffect=0
+ContrastAmount=0.65
+ContrastEffect=1
+IntensityAmount=0.1
+IntensityEffect=2
+
+[ColorEffects:Inactive]
+ChangeSelectionColor=true
+Color={{ surface0 }}
+ColorAmount=0.025
+ColorEffect=2
+ContrastAmount=0.1
+ContrastEffect=2
+Enable=false
+IntensityAmount=0
+IntensityEffect=0
+
+[Colors:Button]
+BackgroundAlternate={{ surface0 }}
+BackgroundNormal={{ surface0 }}
+DecorationFocus={{ accent }}
+DecorationHover={{ accent }}
+ForegroundActive={{ accent }}
+ForegroundInactive={{ surface2 }}
+ForegroundLink={{ accent }}
+ForegroundNegative={{ red }}
+ForegroundNeutral={{ yellow }}
+ForegroundNormal={{ text }}
+ForegroundPositive={{ green }}
+ForegroundVisited={{ mauve }}
+
+[Colors:Selection]
+BackgroundAlternate={{ accent }}
+BackgroundNormal={{ accent }}
+DecorationFocus={{ accent }}
+DecorationHover={{ accent }}
+ForegroundActive={{ text }}
+ForegroundInactive={{ surface2 }}
+ForegroundLink={{ sky }}
+ForegroundNegative={{ red }}
+ForegroundNeutral={{ yellow }}
+ForegroundNormal={{ base }}
+ForegroundPositive={{ green }}
+ForegroundVisited={{ mauve }}
+
+[Colors:Tooltip]
+BackgroundAlternate={{ base }}
+BackgroundNormal={{ base }}
+DecorationFocus={{ accent }}
+DecorationHover={{ accent }}
+ForegroundActive={{ accent }}
+ForegroundInactive={{ surface2 }}
+ForegroundLink={{ sky }}
+ForegroundNegative={{ red }}
+ForegroundNeutral={{ yellow }}
+ForegroundNormal={{ text }}
+ForegroundPositive={{ green }}
+ForegroundVisited={{ mauve }}
+
+[Colors:View]
+BackgroundAlternate={{ surface0 }}
+BackgroundNormal={{ base }}
+DecorationFocus={{ accent }}
+DecorationHover={{ accent }}
+ForegroundActive={{ accent }}
+ForegroundInactive={{ text }}
+ForegroundLink={{ sky }}
+ForegroundNegative={{ red }}
+ForegroundNeutral={{ yellow }}
+ForegroundNormal={{ text }}
+ForegroundPositive={{ green }}
+ForegroundVisited={{ mauve }}
+
+[Colors:Window]
+BackgroundAlternate={{ surface0 }}
+BackgroundNormal={{ base }}
+DecorationFocus={{ accent }}
+DecorationHover={{ accent }}
+ForegroundActive={{ accent }}
+ForegroundInactive={{ text }}
+ForegroundLink={{ sky }}
+ForegroundNegative={{ red }}
+ForegroundNeutral={{ yellow }}
+ForegroundNormal={{ text }}
+ForegroundPositive={{ green }}
+ForegroundVisited={{ mauve }}
+
+[General]
+ColorScheme=MaterialYou
+Name=MaterialYou
+shadeSortColumn=true
+
+[KDE]
+contrast=4
+
+[WM]
+activeBackground={{ base }}
+activeBlend={{ surface0 }}
+activeForeground={{ text }}
+inactiveBackground={{ surface0 }}
+inactiveBlend={{ surface1 }}
+inactiveForeground={{ text }} 

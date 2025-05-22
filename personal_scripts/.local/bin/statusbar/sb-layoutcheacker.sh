@@ -8,15 +8,13 @@
 # https://github.com/d7eeem
 
 # Define the path to the configuration file
-pathtofile="/home/tinker/.config/hypr/themes/theme.conf"
-
 # Query the current layout setting
-current_layout=$(grep 'layout =' "$pathtofile")
+current_layout=$(hyprctl -j getoption general:layout | jq '.str' | sed 's/"//g')
 
 # Check the current layout and print the corresponding symbol
-if [[ "$current_layout" == *"layout = dwindle"* ]]; then
+if [[ "$current_layout" == "dwindle" ]]; then
   printf "@\n"
-elif [[ "$current_layout" == *"layout = master"* ]]; then
+elif [[ "$current_layout" == "master" ]]; then
   printf "%s\n" "|-"
 else
   printf "Layout not found or unrecognized.\n"

@@ -15,9 +15,9 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","","custom/l_end","custom/missioncenter","custom/heroic","custom/steam","custom/discord","custom/files","custom/r_end","custom/l_end","hyprland/window","custom/r_end","custom/l_end","custom/nettraf","custom/r_end","","custom/padd"],
+	"modules-left": ["custom/padd","","custom/l_end","custom/missioncenter","custom/heroic","custom/steam","custom/discord","custom/files","custom/r_end","custom/l_end","custom/launcher","hyprland/window","custom/r_end","custom/l_end","custom/nettraf","custom/r_end","","custom/padd"],
 	"modules-center": ["custom/padd","","custom/l_end","hyprland/workspaces","custom/layout","","","custom/r_end","","custom/padd"],
-	"modules-right": ["custom/padd","","custom/l_end","custom/audio_idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/notifications","custom/sb-memory","custom/cpuinfo","custom/gpuinfo","custom/r_end","custom/l_end","custom/power","custom/refreshbar","tray","clock","custom/r_end","","custom/padd"],
+	"modules-right": ["custom/padd","","custom/l_end","custom/audio_idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/cpuinfo","custom/gpuinfo","custom/r_end","custom/l_end","custom/power","custom/refreshbar","tray","clock","custom/r_end","","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
@@ -65,6 +65,11 @@
         "tooltip": true
     },
 
+  "custom/launcher": {
+    "format": "",
+    "on-click": "/home/tinker/.local/bin/statusbar/sb-launcher.sh",
+    "tooltip-format": "Launch your favorite apps"
+  },
     "hyprland/window": {
         "format": "{}",
         "rotate": 0,
@@ -169,35 +174,6 @@
         "interval": 86400, // once every day
         "tooltip": true,
         "signal": 20,
-    },
-    "custom/notifications": {
-      // "format": "{icon} {}",
-        "format": "{} {icon}", // TODO: workaround for the module not showing up // revert when fixed
-        "rotate": 0,
-        "format-icons": {
-            "email-notification": "<span foreground='white'><sup></sup></span>",
-            "chat-notification": "󱋊<span foreground='white'><sup></sup></span>",
-            "warning-notification": "󱨪<span foreground='yellow'><sup></sup></span>",
-            "error-notification": "󱨪<span foreground='red'><sup></sup></span>",
-            "network-notification": "󱂇<span foreground='white'><sup></sup></span>",
-            "battery-notification": "󰁺<span foreground='white'><sup></sup></span>",
-            "update-notification": "󰚰<span foreground='white'><sup></sup></span>",
-            "music-notification": "󰝚<span foreground='white'><sup></sup></span>",
-            "volume-notification": "󰕿<span foreground='white'><sup></sup></span>",
-            "notification": "<span foreground='white'><sup></sup></span>",
-            "dnd": "",
-            "none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which dunstctl",
-        "exec": "notifications.py",
-        "on-scroll-down": "sleep 0.1 && dunstctl history-pop",
-        "on-click": "dunstctl set-paused toggle",
-        "on-click-middle": "dunstctl history-clear",
-        "on-click-right": "dunstctl close-all",
-        "interval": 1,
-        "tooltip": true,
-        "escape": true
     },
 "custom/sb-memory": {
   "exec": "/home/tinker/.local/bin/statusbar/sb-memory.sh",
