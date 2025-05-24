@@ -1,4 +1,0 @@
-"custom/sb-memory": {
-  "exec": "$HOME/.local/bin/statusbar/sb-memory.sh",
-  "interval": 1
-},

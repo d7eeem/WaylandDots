@@ -8,6 +8,7 @@ XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 CONFIG_DIR="$XDG_CONFIG_HOME/theme_engine"
 CACHE_DIR="$XDG_CACHE_HOME/theme_engine"
 STATE_DIR="$XDG_STATE_HOME/theme_engine"
+STYLE_WAYBAR="${STYLE_WAYBAR:-true}"  # Default to true, can be overridden by environment variable
 
 # Create necessary directories
 mkdir -p "$CACHE_DIR"/user/generated/{hypr,gtk}
@@ -237,6 +238,118 @@ apply_swaync() {
     fi
 }
 
+apply_waybar() {
+    # Skip if waybar styling is disabled
+    if [ "$STYLE_WAYBAR" = "false" ]; then
+        echo "Waybar styling is disabled. Skipping..."
+        return
+    fi
+
+    # Ensure waybar config directory exists
+    WAYBAR_CONFIG_DIR="$XDG_CONFIG_HOME/waybar"
+    mkdir -p "$WAYBAR_CONFIG_DIR/modules"
+
+    # Read colors from wal's SCSS file
+    if [ -f "$HOME/.cache/wal/colors.scss" ]; then
+        background=$(grep '^\$background:' "$HOME/.cache/wal/colors.scss" | cut -d' ' -f2 | tr -d ';')
+        foreground=$(grep '^\$foreground:' "$HOME/.cache/wal/colors.scss" | cut -d' ' -f2 | tr -d ';')
+    else
+        echo "Warning: wal colors.scss not found, using fallback colors"
+        background="#000000"
+        foreground="#ffffff"
+    fi
+
+    # Create theme.css with our colors
+    cat > "$WAYBAR_CONFIG_DIR/theme.css" << EOF
+@define-color foreground ${foreground};
+@define-color background ${background};
+
+@define-color main-bg ${background};
+@define-color main-fg ${foreground};
+
+@define-color wb-act-bg ${foreground};
+@define-color wb-act-fg ${background};
+
+@define-color wb-hvr-bg ${background};
+@define-color wb-hvr-fg ${foreground};
+
+* {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+EOF
+
+    # Run wbarconfgen.sh to generate the configuration
+    if [ -f "$CONFIG_DIR/hyde/wbarconfgen.sh" ]; then
+        sh "$CONFIG_DIR/hyde/wbarconfgen.sh"
+    fi
+}
+
+apply_flatpak() {
+    echo "Applying theme to Flatpak applications..."
+
+    # Check if flatpak is installed
+    if ! command -v flatpak >/dev/null 2>&1; then
+        echo "Flatpak is not installed. Skipping Flatpak theming."
+        return
+    fi
+
+    # Create Flatpak override directory if it doesn't exist
+    FLATPAK_CONFIG_DIR="$HOME/.var/app"
+    mkdir -p "$FLATPAK_CONFIG_DIR"
+
+    # Get list of installed Flatpak apps
+    while IFS= read -r app; do
+        if [ ! -z "$app" ]; then
+            echo "Processing Flatpak app: $app"
+            
+            # Create GTK config directories
+            app_gtk3_dir="$FLATPAK_CONFIG_DIR/$app/config/gtk-3.0"
+            app_gtk4_dir="$FLATPAK_CONFIG_DIR/$app/config/gtk-4.0"
+            mkdir -p "$app_gtk3_dir"
+            mkdir -p "$app_gtk4_dir"
+
+            # Copy GTK theme files
+            if [ -f "$XDG_CONFIG_HOME/gtk-3.0/gtk.css" ]; then
+                echo "Copying GTK3 theme to: $app_gtk3_dir"
+                cp -f "$XDG_CONFIG_HOME/gtk-3.0/gtk.css" "$app_gtk3_dir/"
+            fi
+
+            if [ -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css" ]; then
+                echo "Copying GTK4 theme to: $app_gtk4_dir"
+                cp -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css" "$app_gtk4_dir/"
+            fi
+
+            # Handle Waybar theme if present
+            app_waybar_dir="$FLATPAK_CONFIG_DIR/$app/config/waybar"
+            if [ -d "$app_waybar_dir" ]; then
+                echo "Found Waybar config for $app, copying theme"
+                cp -f "$XDG_CONFIG_HOME/waybar/theme.css" "$app_waybar_dir/"
+            fi
+
+            # Create GTK settings override
+            gtk_settings_dir="$FLATPAK_CONFIG_DIR/$app/config/gtk-3.0"
+            mkdir -p "$gtk_settings_dir"
+            cat > "$gtk_settings_dir/settings.ini" << EOL
+[Settings]
+gtk-theme-name=adw-gtk3
+gtk-application-prefer-dark-theme=true
+gtk-font-name=Cantarell 11
+EOL
+        fi
+    done < <(flatpak list --app --columns=application)
+
+    # Override global Flatpak GTK theme
+    mkdir -p "$HOME/.local/share/flatpak/overrides"
+    cat > "$HOME/.local/share/flatpak/overrides/global" << EOL
+[Environment]
+GTK_THEME=adw-gtk3
+ICON_THEME=Papirus-Dark
+EOL
+
+    echo "Flatpak theme application completed"
+}
+
 # Function to switch wallpaper and generate colors
 switch() {
     imgpath=$1
@@ -260,47 +373,54 @@ switch() {
     # Wait for pywal to finish and create the cache
     sleep 0.5
     
-    # Update _material.scss with colors from pywal
-    if [ -f "$HOME/.cache/wal/colors.json" ]; then
-        # Extract colors from pywal's JSON
-        colors=($(cat "$HOME/.cache/wal/colors.json" | jq -r '.colors | to_entries | .[] | .value'))
+    # Read colors from wal's SCSS file
+    if [ -f "$HOME/.cache/wal/colors.scss" ]; then
+        # Extract colors from wal's SCSS
+        background=$(grep '^\$background:' "$HOME/.cache/wal/colors.scss" | cut -d' ' -f2 | tr -d ';')
+        foreground=$(grep '^\$foreground:' "$HOME/.cache/wal/colors.scss" | cut -d' ' -f2 | tr -d ';')
+        cursor=$(grep '^\$cursor:' "$HOME/.cache/wal/colors.scss" | cut -d' ' -f2 | tr -d ';')
+        
+        # Extract color0-15
+        for i in {0..15}; do
+            color[$i]=$(grep "^\$color${i}:" "$HOME/.cache/wal/colors.scss" | cut -d' ' -f2 | tr -d ';')
+        done
         
         # Create or overwrite _material.scss with new colors
         cat > "$STATE_DIR/scss/_material.scss" << EOF
-\$rosewater: ${colors[6]};
-\$flamingo: ${colors[7]};
-\$pink: ${colors[5]};
-\$mauve: ${colors[4]};
-\$red: ${colors[1]};
-\$maroon: ${colors[2]};
-\$peach: ${colors[3]};
-\$yellow: ${colors[3]};
-\$green: ${colors[2]};
-\$teal: ${colors[4]};
-\$sky: ${colors[4]};
-\$sapphire: ${colors[4]};
-\$blue: ${colors[4]};
-\$lavender: ${colors[5]};
-\$text: ${colors[7]};
-\$subtext1: ${colors[7]};
-\$subtext0: ${colors[7]};
-\$overlay2: ${colors[7]};
-\$overlay1: ${colors[7]};
-\$overlay0: ${colors[7]};
-\$surface2: ${colors[0]};
-\$surface1: ${colors[0]};
-\$surface0: ${colors[0]};
-\$base: ${colors[0]};
-\$mantle: ${colors[0]};
-\$crust: ${colors[0]};
-\$accent: ${colors[4]}; 
+\$rosewater: ${color[6]};
+\$flamingo: ${color[7]};
+\$pink: ${color[5]};
+\$mauve: ${color[4]};
+\$red: ${color[1]};
+\$maroon: ${color[2]};
+\$peach: ${color[3]};
+\$yellow: ${color[3]};
+\$green: ${color[2]};
+\$teal: ${color[4]};
+\$sky: ${color[4]};
+\$sapphire: ${color[4]};
+\$blue: ${color[4]};
+\$lavender: ${color[5]};
+\$text: ${foreground};
+\$subtext1: ${foreground};
+\$subtext0: ${foreground};
+\$overlay2: ${foreground};
+\$overlay1: ${foreground};
+\$overlay0: ${foreground};
+\$surface2: ${background};
+\$surface1: ${background};
+\$surface0: ${background};
+\$base: ${background};
+\$mantle: ${background};
+\$crust: ${background};
+\$accent: ${color[4]}; 
 EOF
     else
-        echo "Error: pywal colors.json not found"
+        echo "Error: wal colors.scss not found"
         exit 1
     fi
 
-    # Load colors from material.scss
+    # Load colors from material.scss for other theme applications
     colornames=$(cat "$STATE_DIR/scss/_material.scss" | cut -d: -f1)
     colorstrings=$(cat "$STATE_DIR/scss/_material.scss" | cut -d: -f2 | cut -d ' ' -f2 | cut -d ";" -f1)
     IFS=$'\n'
@@ -313,6 +433,8 @@ EOF
     apply_gtk &
     apply_qt &
     apply_swaync &
+    apply_waybar &
+    apply_flatpak &
 }
 
 # Main script execution
