@@ -92,7 +92,12 @@ apply_hyprlock() {
     # Replace colors and wallpaper path
     sed -i "s|path = .*|path = $current_wall|" "$CACHE_DIR/user/generated/hypr/hyprlock.conf"
     for i in "${!colorlist[@]}"; do
-        sed -i "s/{{ ${colorlist[$i]} }}/${colorvalues[$i]#\#}/g" "$CACHE_DIR/user/generated/hypr/hyprlock.conf"
+        # Remove the $ prefix from color names and ensure proper color value handling
+        color_name=${colorlist[$i]#$}
+        color_value=${colorvalues[$i]#\#}
+        # Handle both formats: with and without # prefix
+        sed -i "s/#{{ ${color_name} }}/#${color_value}/g" "$CACHE_DIR/user/generated/hypr/hyprlock.conf"
+        sed -i "s/{{ ${color_name} }}/${color_value}/g" "$CACHE_DIR/user/generated/hypr/hyprlock.conf"
     done
     
     # Apply the config
@@ -105,25 +110,61 @@ apply_gtk() {
         return
     fi
     
-    # Get current GTK theme
+    # Get current GTK theme and color scheme
     current_theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
+    current_scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
     
     # Copy and process template
     cp "$CONFIG_DIR/scripts/templates/gtk/gtk-colors.css" "$CACHE_DIR/user/generated/gtk/gtk-colors.css"
+    
+    # First pass: Replace all direct color values
     for i in "${!colorlist[@]}"; do
-        sed -i "s/{{ ${colorlist[$i]} }}/#${colorvalues[$i]#\#}/g" "$CACHE_DIR/user/generated/gtk/gtk-colors.css"
+        # Remove the $ prefix from color names and ensure proper color value handling
+        color_name=${colorlist[$i]#$}
+        color_value=${colorvalues[$i]#\#}
+        
+        # Replace both formats of color variables
+        sed -i "s/#{{ ${color_name} }}/#${color_value}/g" "$CACHE_DIR/user/generated/gtk/gtk-colors.css"
+        sed -i "s/@{{ ${color_name} }}/@${color_value}/g" "$CACHE_DIR/user/generated/gtk/gtk-colors.css"
+        sed -i "s/{{ ${color_name} }}/${color_value}/g" "$CACHE_DIR/user/generated/gtk/gtk-colors.css"
     done
+    
+    # Second pass: Process any remaining CSS variable references
+    processed_file=$(cat "$CACHE_DIR/user/generated/gtk/gtk-colors.css")
+    while IFS= read -r line; do
+        if [[ $line =~ @define-color[[:space:]]+([^[:space:]]+)[[:space:]]+@([^[:space:]]+) ]]; then
+            var_name="${BASH_REMATCH[1]}"
+            ref_var="${BASH_REMATCH[2]}"
+            # Find the value of the referenced variable
+            ref_value=$(echo "$processed_file" | grep -oP "@define-color\s+${ref_var}\s+\K[^;]+")
+            if [ ! -z "$ref_value" ]; then
+                sed -i "s|@define-color[[:space:]]\+${var_name}[[:space:]]\+@${ref_var}|@define-color ${var_name} ${ref_value}|g" "$CACHE_DIR/user/generated/gtk/gtk-colors.css"
+            fi
+        fi
+    done < "$CACHE_DIR/user/generated/gtk/gtk-colors.css"
+    
+    # Ensure directories exist
+    mkdir -p "$XDG_CONFIG_HOME/gtk-3.0"
+    mkdir -p "$XDG_CONFIG_HOME/gtk-4.0"
     
     # Apply to both gtk3 and gtk4
     cp "$CACHE_DIR/user/generated/gtk/gtk-colors.css" "$XDG_CONFIG_HOME/gtk-3.0/gtk.css"
     cp "$CACHE_DIR/user/generated/gtk/gtk-colors.css" "$XDG_CONFIG_HOME/gtk-4.0/gtk.css"
     
-    # Keep the current theme (light/dark) state
-    if [[ "$current_theme" == *"-dark"* ]]; then
+    # First, set a temporary theme to force reload
+    gsettings set org.gnome.desktop.interface gtk-theme ''
+    
+    # Set the color scheme
+    if [[ "$current_theme" == *"dark"* ]] || [[ "$current_scheme" == *"prefer-dark"* ]]; then
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
         gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
     else
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
         gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
     fi
+    
+    # Force GTK to reload the theme
+    gtk-update-icon-cache -f -t ~/.local/share/icons/default 2>/dev/null || true
 }
 
 apply_qt() {
@@ -164,6 +205,38 @@ apply_qt() {
     fi
 }
 
+apply_swaync() {
+    if [ ! -f "$CONFIG_DIR/scripts/templates/swaync/style.css" ]; then
+        echo "Template file not found for swaync. Skipping that."
+        return
+    fi
+    
+    # Create necessary directories
+    mkdir -p "$CACHE_DIR/user/generated/swaync"
+    mkdir -p "$XDG_CONFIG_HOME/swaync"
+    
+    # Copy template
+    cp "$CONFIG_DIR/scripts/templates/swaync/style.css" "$CACHE_DIR/user/generated/swaync/style.css"
+    
+    # Replace color variables
+    for i in "${!colorlist[@]}"; do
+        # Remove the $ prefix from color names
+        color_name=${colorlist[$i]#$}
+        color_value=${colorvalues[$i]#\#}
+        
+        # Replace both formats of color variables (with and without #)
+        sed -i "s/@define-color ${color_name} .*/@define-color ${color_name} #${color_value}/g" "$CACHE_DIR/user/generated/swaync/style.css"
+    done
+    
+    # Apply the config
+    cp "$CACHE_DIR/user/generated/swaync/style.css" "$XDG_CONFIG_HOME/swaync/style.css"
+    
+    # Reload swaync if it's running
+    if pgrep -x "swaync" > /dev/null; then
+        pkill -USR2 swaync
+    fi
+}
+
 # Function to switch wallpaper and generate colors
 switch() {
     imgpath=$1
@@ -183,6 +256,49 @@ switch() {
 
     # Generate color scheme with pywal
     wal -i "$imgpath"
+    
+    # Wait for pywal to finish and create the cache
+    sleep 0.5
+    
+    # Update _material.scss with colors from pywal
+    if [ -f "$HOME/.cache/wal/colors.json" ]; then
+        # Extract colors from pywal's JSON
+        colors=($(cat "$HOME/.cache/wal/colors.json" | jq -r '.colors | to_entries | .[] | .value'))
+        
+        # Create or overwrite _material.scss with new colors
+        cat > "$STATE_DIR/scss/_material.scss" << EOF
+\$rosewater: ${colors[6]};
+\$flamingo: ${colors[7]};
+\$pink: ${colors[5]};
+\$mauve: ${colors[4]};
+\$red: ${colors[1]};
+\$maroon: ${colors[2]};
+\$peach: ${colors[3]};
+\$yellow: ${colors[3]};
+\$green: ${colors[2]};
+\$teal: ${colors[4]};
+\$sky: ${colors[4]};
+\$sapphire: ${colors[4]};
+\$blue: ${colors[4]};
+\$lavender: ${colors[5]};
+\$text: ${colors[7]};
+\$subtext1: ${colors[7]};
+\$subtext0: ${colors[7]};
+\$overlay2: ${colors[7]};
+\$overlay1: ${colors[7]};
+\$overlay0: ${colors[7]};
+\$surface2: ${colors[0]};
+\$surface1: ${colors[0]};
+\$surface0: ${colors[0]};
+\$base: ${colors[0]};
+\$mantle: ${colors[0]};
+\$crust: ${colors[0]};
+\$accent: ${colors[4]}; 
+EOF
+    else
+        echo "Error: pywal colors.json not found"
+        exit 1
+    fi
 
     # Load colors from material.scss
     colornames=$(cat "$STATE_DIR/scss/_material.scss" | cut -d: -f1)
@@ -196,6 +312,7 @@ switch() {
     apply_hyprlock &
     apply_gtk &
     apply_qt &
+    apply_swaync &
 }
 
 # Main script execution
