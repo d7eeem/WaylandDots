@@ -1,26 +1,43 @@
-# --------------------------------------------------- // System
-snapper
-fish
-pipewire                                               # audio/video server
-pipewire-alsa                                          # pipewire alsa client
-pipewire-audio                                         # pipewire audio client
-pipewire-jack                                          # pipewire jack client
-pipewire-pulse                                         # pipewire pulseaudio client
-gst-plugin-pipewire                                    # pipewire gstreamer client
-wireplumber                                            # pipewire session manager
-pavucontrol                                            # pulseaudio volume control
-pamixer                                                # pulseaudio cli mixer
-networkmanager                                         # network manager
-network-manager-applet                                 # network manager system tray utility
-bluez                                                  # bluetooth protocol stack
-bluez-utils                                            # bluetooth utility cli
-blueman                                                # bluetooth manager gui
-brightnessctl                                          # screen brightness control
-udiskie                                                # manage removable media
-downgrade                                            # downgrade packages
-trash-cli-git                                        # cli to manage trash files
-amdgpu_top
+#System
+#------
+coreutils
+glibc
+pam
+glib2
+gvfs
+xdg-user-dirs
+xdg-user-dirs-gtk
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
 archlinux-xdg-menu
+networkmanager
+network-manager-applet
+power-profiles-daemon
+upower
+snapper
+stow
+rsync
+wget
+curl
+axel
+jq
+ripgrep
+bc
+parallel
+imagemagick
+pacman-contrib
+trash-cli-git
+pamixer
+amdgpu_top
+downgrade
+fish
+pipewire
+bluez
+bluez-utils
+blueman
+brightnessctl
+udiskie
 yad
 localsend
 haruna
@@ -29,113 +46,164 @@ mission-center
 boxbuddy
 yazi
 zen-browser-bin
-boxbuddy
 python-pywal
-stow
-# --------------------------------------------------- // Window Manager
-hyprland                                               # wlroots-based wayland compositor
-dunst                                                  # notification daemon
-rofi-wayland                                           # application launcher
-waybar                                                 # system bar
-swww                                                   # wallpaper
-hyprlock                                               # lock screen
-wlogout                                                # logout menu
-grim                                                   # screenshot tool
-hyprpicker                                             # color picker
-slurp                                                  # region select for screenshot/screenshare
-satty                                                  # Modern Screenshot Annotation
-cliphist                                               # clipboard manager
-hyprsunset                                             # blue light filter
-hypridle                                               # idle daemon
+
+#Window Manager
+#--------------
+hyprland
+dunst
+rofi-wayland
+waybar
+swww
+hyprlock
+wlogout
+grim
+hyprpicker
+slurp
+satty
+cliphist
+hyprsunset
+hypridle
 python-pyamdgpuinfo
 swayosd
 
-# --------------------------------------------------- // Dependencies
+#Development Tools
+#-----------------
+cmake
+meson
+npm
+typescript
+go
+gjs
+python-build
+python-setuptools-scm
+python-wheel
+shellcheck
+lua-language-server
+neovim
+lua51
+luarocks
+visual-studio-code-bin
+github-desktop-bin
+
+#Dependencies
+#------------
 hyprpolkitagent
-xdg-desktop-portal-hyprland                            # xdg desktop portal for hyprland
-xdg-desktop-portal-gtk                                 # file picker and dbus  integration
-xdg-user-dirs                                          # Manage user directories like ~/Desktop and ~/Music
-pacman-contrib                                         # for system update check
-parallel                                               # for parallel processing
-jq                                                     # for json processing
-imagemagick                                            # for image processing
-qt5-imageformats                                       # for dolphin image thumbnails
-ffmpegthumbs                                           # for dolphin video thumbnails
-kde-cli-tools                                          # for dolphin file type defaults
-libnotify                                              # for notifications
-noto-fonts-emoji                                       # emoji font
+pacman-contrib
+imagemagick
+ffmpegthumbs
+libnotify
+noto-fonts-emoji
 ttf-font-awesome
 
-# --------------------------------------------------- // Theming
-nwg-look                                               # gtk configuration tool
-qt5ct                                                  # qt5 configuration tool
-qt6ct                                                  # qt6 configuration tool
-kvantum                                                # svg based qt6 theme engine
-kvantum-qt5                                            # svg based qt5 theme engine
-qt5-wayland                                            # wayland support in qt5
-qt6-wayland                                            # wayland support in qt6
+#Theming
+#-------
+nwg-look
 
-# --------------------------------------------------- // Applications
-firefox                                                # browser
-kitty                                                  # terminal
-dolphin                                                # kde file manager
-ark                                                    # kde file archiver
-unzip                                                  # extracting zip files
-vim                                                    # terminal text editor
-code                                                   # ide text editor
-nwg-displays                                           # monitor management utility
-fzf                                                    # Command-line fuzzy finder
+#Applications
+#------------
+firefox
+kitty
+unzip
+neovim
+code
+fzf
 
-# --------------------------------------------------- // Neovim
-neovim                                               # vim based text editor
+Neovim
+------
+neovim
 lua51
 luarocks
 shellcheck
 lua-language-server
-# --------------------------------------------------- // Shell
-eza                                               # file lister for fish
-starship                                          # customizable shell prompt
-fastfetch                                              # system information fetch tool
 
-# --------------------------------------------------- // Gaming
-steam                                                  # gaming platform
-gamemode                                               # daemon and library for game optimisations
-mangohud                                               # system performance overlay
-gamescope                                            # micro-compositor for gaming
-cachyos-gaming-meta
-cachyos-gaming-applications
-gpu-screen-recorder 
-gpu-screen-recorder-ui 
-gpu-screen-recorder-gtk 
-gpu-screen-recorder-notification 
-protontricks
-winetricks
-
-
-# --------------------------------------------------- // Shell and CLI Utilities
+Shell
+-----
+eza
+starship
+fastfetch
 bat
 fd
 ripgrep
 dua-cli
 duf
 
+#Gaming
+#------
+steam
+gamemode
+mangohud
+gamescope
+cachyos-gaming-meta
+cachyos-gaming-applications
+gpu-screen-recorder
+gpu-screen-recorder-ui
+protontricks
+winetricks
 
-# --------------------------------------------------- // Fonts - Nerd Fonts Hack, JetBrains Mono, FiraCode
+
+
+#Fonts
+#-----
 adwaita-fonts
 awesome-terminal-fonts
 cantarell-fonts
-noto-color-emoji-fontconfig
-noto-fonts
 noto-fonts-emoji
 ttf-font-awesome
 ttf-nerd-fonts-symbols
-ttf-nerd-fonts-symbols-common
 ttf-hack-nerd
 ttf-fantasque-nerd
-ttf-firacode-nerd
-ttf-hack-nerd
 ttf-jetbrains-mono-nerd
-ttf-meslo-nerd
 
-# --------------------------------------------------- // File Manager
+#File Manager
+#------------
 nautilus
+
+#Python Libraries
+#----------------
+python-pillow
+python-psutil
+python-pywal
+python-pywalfox
+python-pywayland
+python-libsass
+
+#Audio
+#-----
+pipewire
+pipewire-alsa
+pipewire-audio
+pipewire-jack
+pipewire-pulse
+gst-plugin-pipewire
+pavucontrol
+pamixer
+
+#Display / Wayland / Hyprland Tools
+#----------------------------------
+hyprland
+hypridle
+hyprlock
+hyprpicker
+rofi-wayland
+swww
+wf-recorder
+grim
+slurp
+swappy
+overskride
+ghostty
+foot
+playerctl
+cava
+waybar
+satty
+
+#Miscellaneous / Tools
+#---------------------
+tesseract
+tesseract-data-eng
+tesseract-data-script-latin
+grimshot
+wl-clipboard
+wev

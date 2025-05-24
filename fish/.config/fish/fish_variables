@@ -34,7 +34,7 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/tinker/\x2elocal/bin/theme_engine\x1e/home/tinker/\x2elocal/bin/personal\x1e/home/tinker/\x2elocal/bin/dmenu\x1e/home/tinker/\x2elocal/bin/hyde\x1e/home/tinker/\x2elocal/bin/hyper\x1e/home/tinker/\x2elocal/bin/rofi\x1e/home/tinker/\x2elocal/bin/statusbar\x1e/home/tinker/\x2elocal/bin/sysutils
+SETUVAR fish_user_paths:/home/tinker/WaylandDots/personal_scripts/\x2elocal/bin/hyde\x1e/home/tinker/\x2elocal/bin/theme_engine\x1e/home/tinker/\x2elocal/bin/personal\x1e/home/tinker/\x2elocal/bin/dmenu\x1e/home/tinker/\x2elocal/bin/hyde\x1e/home/tinker/\x2elocal/bin/hyper\x1e/home/tinker/\x2elocal/bin/rofi\x1e/home/tinker/\x2elocal/bin/statusbar\x1e/home/tinker/\x2elocal/bin/sysutils
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false
 SETUVAR pure_color_at_sign:pure_color_mute

@@ -1,3 +1,278 @@
-@import '../../.cache/wal/colors-waybar.css';
-@import 'themes/nova-dark/notifications.css';
-@import 'themes/nova-dark/central_control.css';
+/*
+ * vim: ft=less
+ */
+
+@define-color base #201e1e
+@define-color text #e7e0ca
+@define-color accent #C0BE96
+@define-color surface0 #201e1e
+@define-color surface1 #201e1e
+@define-color surface2 #201e1e
+@define-color red #9F9E7E
+@define-color pink #D3CCA1
+@define-color mauve #C0BE96
+@define-color lavender #D3CCA1
+@define-color blue #C0BE96
+@define-color green #94A283
+
+* {
+    font-family: "Hack Nerd Font Mono";
+    font-weight: bold;
+}
+
+.floating-notifications.background {
+    background: transparent;
+}
+
+.floating-notifications.background .notification-row .notification-background {
+    background: @base;
+    border: 2px solid @surface0;
+    border-radius: 12px;
+    margin: 8px;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.floating-notifications.background .notification-row .notification-background .notification {
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification.critical {
+    box-shadow: inset 0 0 8px 0 @red;
+}
+
+.notification-row .notification-background .notification .notification-content {
+    margin: 8px;
+}
+
+.notification-row .notification-background .notification .notification-content .summary {
+    color: @text;
+    text-shadow: none;
+}
+
+.notification-row .notification-background .notification .notification-content .time {
+    color: @text;
+    text-shadow: none;
+}
+
+.notification-row .notification-background .notification .notification-content .body {
+    color: @text;
+    text-shadow: none;
+}
+
+.notification-row .notification-background .notification > *:last-child > * {
+    min-height: 3.4em;
+}
+
+.notification-row .notification-background .notification .notification-content .notification-actions {
+    margin-top: 8px;
+}
+
+.notification-row .notification-background .notification .notification-content .notification-actions .notification-action {
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 8px;
+    color: @text;
+    text-shadow: none;
+    margin: 4px;
+    padding: 4px 8px;
+}
+
+.notification-row .notification-background .notification .notification-content .notification-actions .notification-action:hover {
+    background: @surface1;
+    border-color: @accent;
+}
+
+.notification-row .notification-background .close-button {
+    background: @surface0;
+    color: @text;
+    text-shadow: none;
+    padding: 0;
+    border-radius: 8px;
+    margin: 4px;
+    box-shadow: none;
+    border: none;
+}
+
+.notification-row .notification-background .close-button:hover {
+    background: @red;
+    color: @base;
+}
+
+.control-center {
+    background: @base;
+    border: 2px solid @surface0;
+    border-radius: 12px;
+}
+
+.control-center .notification-row .notification-background {
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 12px;
+    margin: 8px;
+    box-shadow: none;
+}
+
+.control-center .notification-row .notification-background .notification {
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.control-center .notification-row .notification-background .notification.critical {
+    box-shadow: inset 0 0 8px 0 @red;
+}
+
+.control-center .widget-title {
+    color: @text;
+    text-shadow: none;
+    padding: 8px;
+    margin: 8px;
+}
+
+.control-center .widget-title button {
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 8px;
+    color: @text;
+    text-shadow: none;
+    padding: 4px 8px;
+}
+
+.control-center .widget-title button:hover {
+    background: @surface1;
+    border-color: @accent;
+}
+
+.control-center .notification-row .notification-background .notification .notification-content .notification-actions .notification-action {
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 8px;
+    color: @text;
+    text-shadow: none;
+    margin: 4px;
+    padding: 4px 8px;
+}
+
+.control-center .notification-row .notification-background .notification .notification-content .notification-actions .notification-action:hover {
+    background: @surface1;
+    border-color: @accent;
+}
+
+.control-center .notification-row .notification-background .close-button {
+    background: @surface0;
+    color: @text;
+    text-shadow: none;
+    padding: 0;
+    border-radius: 8px;
+    margin: 4px;
+    box-shadow: none;
+    border: none;
+}
+
+.control-center .notification-row .notification-background .close-button:hover {
+    background: @red;
+    color: @base;
+}
+
+.control-center .widget-dnd {
+    margin: 8px;
+    padding: 8px;
+    border-radius: 12px;
+    background: @surface0;
+    border: 2px solid @surface1;
+}
+
+.control-center .widget-dnd > switch {
+    background: @surface1;
+    border: 2px solid @surface2;
+    border-radius: 14px;
+    box-shadow: none;
+}
+
+.control-center .widget-dnd > switch:checked {
+    background: @accent;
+    border-color: @lavender;
+}
+
+.control-center .widget-dnd > switch slider {
+    background: @text;
+    border-radius: 12px;
+    border: 2px solid @surface2;
+    box-shadow: none;
+}
+
+.control-center .widget-dnd > switch:checked slider {
+    background: @base;
+    border-color: @accent;
+}
+
+.control-center .widget-label {
+    margin: 8px;
+}
+
+.control-center .widget-label > label {
+    font-size: 1rem;
+    color: @text;
+}
+
+.control-center .widget-buttons-grid {
+    margin: 8px;
+    padding: 8px;
+    border-radius: 12px;
+    background: @surface0;
+    border: 2px solid @surface1;
+}
+
+.control-center .widget-buttons-grid > flowbox > flowboxchild > button {
+    background: @surface1;
+    border: 2px solid @surface2;
+    border-radius: 8px;
+    color: @text;
+    text-shadow: none;
+    margin: 4px;
+    padding: 8px;
+}
+
+.control-center .widget-buttons-grid > flowbox > flowboxchild > button:hover {
+    background: @surface2;
+    border-color: @accent;
+}
+
+.control-center .widget-mpris {
+    margin: 8px;
+    padding: 8px;
+    border-radius: 12px;
+    background: @surface0;
+    border: 2px solid @surface1;
+}
+
+.control-center .widget-mpris > box > button {
+    background: @surface1;
+    border: 2px solid @surface2;
+    border-radius: 8px;
+    color: @text;
+    text-shadow: none;
+    margin: 4px;
+    padding: 8px;
+}
+
+.control-center .widget-mpris > box > button:hover {
+    background: @surface2;
+    border-color: @accent;
+}
+
+.control-center .widget-mpris .widget-mpris-player {
+    padding: 8px;
+    margin: 8px;
+}
+
+.control-center .widget-mpris .widget-mpris-title {
+    color: @text;
+    text-shadow: none;
+    font-weight: bold;
+}
+
+.control-center .widget-mpris .widget-mpris-subtitle {
+    color: @text;
+    text-shadow: none;
+} 

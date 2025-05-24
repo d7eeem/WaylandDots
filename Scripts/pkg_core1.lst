@@ -1,0 +1,369 @@
+# --------------------------------------------------- // System
+coreutils                                               # Essential GNU core utilities (ls, cp, mv, etc.)
+glibc                                                   # The GNU C library – critical system component
+pam                                                     # Pluggable Authentication Modules for user authentication
+glib2                                                   # Core application library for GNOME and GTK apps
+gvfs                                                    # Virtual filesystem support for mounting remote filesystems
+xdg-user-dirs                                           # Manage standard user directories like ~/Documents
+xdg-user-dirs-gtk                                       # GTK frontend for xdg-user-dirs
+xdg-desktop-portal                                      # Desktop integration for sandboxed apps (Flatpak, etc.)
+xdg-desktop-portal-gtk                                  # GTK support for xdg-desktop-portal
+xdg-desktop-portal-hyprland                             # Hyprland support for xdg-desktop-portal
+archlinux-xdg-menu                                      # Generates .desktop menu files for WM/DE
+networkmanager                                          # Manages network connections
+network-manager-applet                                  # GUI tray applet for NetworkManager
+power-profiles-daemon                                   # Manages CPU power profiles
+upower                                                  # Power management daemon for battery and peripherals
+snapper                                                 # Filesystem snapshot management (Btrfs)
+stow                                                    # Symlink manager, useful for managing dotfiles
+rsync                                                   # File synchronization utility
+wget                                                    # Network downloader (HTTP, FTP)
+curl                                                    # Data transfer tool supporting multiple protocols
+axel                                                    # Multi-threaded download accelerator
+jq                                                      # JSON processor for scripts
+ripgrep                                                 # Fast recursive search tool (like grep, but better)
+bc                                                      # Command-line calculator with precision
+parallel                                                # Run jobs in parallel (useful in scripts)
+imagemagick                                             # Command-line tools for image conversion/editing
+pacman-contrib                                          # Additional tools for Pacman (like `checkupdates`)
+trash-cli-git                                           # CLI trash manager (moves files to trash instead of deleting)
+pamixer                                                 # CLI PulseAudio volume control
+amdgpu_top                                              # Monitor AMD GPU stats in real-time
+downgrade                                               # Easily downgrade packages using the Arch archive
+fish                                                    # Shell
+pipewire                                                # audio/video server
+pipewire-alsa                                           # pipewire alsa client
+pipewire-audio                                          # pipewire audio client
+pipewire-jack                                           # pipewire jack client
+pipewire-pulse                                          # pipewire pulseaudio client
+gst-plugin-pipewire                                     # pipewire gstreamer client
+wireplumber                                             # pipewire session manager
+pavucontrol                                             # pulseaudio volume control
+pamixer                                                 # pulseaudio cli mixer
+networkmanager                                          # network manager
+network-manager-applet                                  # network manager system tray utility
+bluez                                                   # bluetooth protocol stack
+bluez-utils                                             # bluetooth utility cli
+blueman                                                 # bluetooth manager gui
+brightnessctl                                           # screen brightness control
+udiskie                                                 # manage removable media
+downgrade                                               # downgrade packages
+trash-cli-git                                           # cli to manage trash files
+amdgpu_top
+yad
+localsend
+haruna
+loupe
+mission-center
+boxbuddy
+yazi
+zen-browser-bin
+boxbuddy
+python-pywal
+# --------------------------------------------------- // Window Manager
+hyprland                                               # wlroots-based wayland compositor
+dunst                                                  # notification daemon
+rofi-wayland                                           # application launcher
+waybar                                                 # system bar
+swww                                                   # wallpaper
+hyprlock                                               # lock screen
+wlogout                                                # logout menu
+grim                                                   # screenshot tool
+hyprpicker                                             # color picker
+slurp                                                  # region select for screenshot/screenshare
+satty                                                  # Modern Screenshot Annotation
+cliphist                                               # clipboard manager
+hyprsunset                                             # blue light filter
+hypridle                                               # idle daemon
+python-pyamdgpuinfo
+swayosd
+# --------------------------------------------------- // Development Tools
+cmake                     # Cross-platform build system generator
+meson                     # Fast and user-friendly build system
+npm                       # Node.js package manager
+typescript                # Typed superset of JavaScript for large-scale projects
+go                        # Go programming language compiler and tools
+gjs                       # GNOME JavaScript bindings, for app development
+python-build              # Python build backend
+python-setuptools-scm     # Version management for Python projects
+python-wheel              # Python built-package format
+shellcheck                # Static analysis tool for shell scripts
+lua-language-server       # Language server for Lua (IDE features)
+neovim                    # Vim-based extensible text editor with Lua support
+lua51                     # Lua 5.1 interpreter
+luarocks                  # Package manager for Lua modules
+visual-studio-code-bin    # VS Code IDE (binary release)
+github-desktop-bin        # GitHub desktop client (binary release)
+
+
+# --------------------------------------------------- // Dependencies
+hyprpolkitagent
+pacman-contrib                                         # for system update check
+imagemagick                                            # for processing
+ffmpegthumbs                                           # for video thumbnails
+libnotify                                              # for notifications
+noto-fonts-emoji                                       # emoji font
+ttf-font-awesome
+
+# --------------------------------------------------- // Theming
+nwg-look                                                # gtk configuration tool
+#qt5ct                                                  # qt5 configuration tool
+#qt6ct                                                  # qt6 configuration tool
+#kvantum                                                # svg based qt6 theme engine
+#kvantum-qt5                                            # svg based qt5 theme engine
+#qt5-wayland                                            # wayland support in qt5
+#qt6-wayland                                            # wayland support in qt6
+#qt5-imageformats                                       # for dolphin image thumbnails
+#kde-cli-tools                                          # for dolphin file type defaults
+
+# --------------------------------------------------- // Applications
+firefox                                                # browser
+kitty                                                  # terminal
+dolphin                                                # kde file manager
+ark                                                    # kde file archiver
+unzip                                                  # extracting zip files
+vim                                                    # terminal text editor
+code                                                   # ide text editor
+fzf                                                    # Command-line fuzzy finder
+
+# --------------------------------------------------- // Neovim
+neovim                                               # vim based text editor
+lua51
+luarocks
+shellcheck
+lua-language-server
+# --------------------------------------------------- // Shell
+eza                                               # file lister for fish
+starship                                          # customizable shell prompt
+fastfetch                                              # system information fetch tool
+
+# --------------------------------------------------- // Gaming
+steam                                                  # gaming platform
+gamemode                                               # daemon and library for game optimisations
+mangohud                                               # system performance overlay
+gamescope                                              # micro-compositor for gaming
+cachyos-gaming-meta
+cachyos-gaming-applications
+gpu-screen-recorder 
+gpu-screen-recorder-ui 
+gpu-screen-recorder-gtk 
+gpu-screen-recorder-notification 
+protontricks
+winetricks
+
+
+# --------------------------------------------------- // Shell and CLI Utilities
+bat
+fd
+ripgrep
+dua-cli
+duf
+
+
+# --------------------------------------------------- // Fonts - Nerd Fonts Hack, JetBrains Mono, FiraCode
+adwaita-fonts
+awesome-terminal-fonts
+cantarell-fonts
+noto-color-emoji-fontconfig
+noto-fonts
+noto-fonts-emoji
+ttf-font-awesome
+ttf-nerd-fonts-symbols
+ttf-nerd-fonts-symbols-common
+ttf-hack-nerd
+ttf-fantasque-nerd
+ttf-firacode-nerd
+ttf-hack-nerd
+ttf-jetbrains-mono-nerd
+ttf-meslo-nerd
+
+# --------------------------------------------------- // File Manager
+nautilus
+
+# --------------------------------------------------- // Python Libraries
+python-pillow             # Python Imaging Library fork (image processing)
+python-psutil             # Process and system utilities for Python
+python-pywal              # Python bindings for pywal (colorscheme generator)
+python-pywalfox           # Python interface for pywalfox (browser color integration)
+python-pywayland          # Python bindings for Wayland protocol
+python-pyamdgpuinfo       # Python AMD GPU info library
+python-libsass            # Python bindings for LibSass (SASS compiler)
+
+# --------------------------------------------------- // System Tools / Services
+hyprpolkitagent           # PolicyKit agent tailored for Hyprland
+networkmanager            # Manages network connections and devices
+bluez                     # Bluetooth protocol stack
+bluez-utils               # Bluetooth command-line utilities
+blueman                   # Bluetooth manager GUI
+wireplumber               # PipeWire session manager for audio/video
+gnome-keyring             # GNOME password and key management service
+gnome-control-center      # GNOME system settings UI
+brightnessctl             # CLI tool to control screen brightness
+ddcutil                   # Control monitor settings via DDC/CI commands
+udiskie                   # Automount/removable media manager daemon
+localsend                 # Local network file sharing tool
+fastfetch                 # Fast system info fetcher (like neofetch)
+mission-center            # System dashboard and notification hub
+boxbuddy                  # Small clipboard manager / utility tool
+zen-browser-bin           # Binary build of Zen Browser (privacy-focused)
+yad                       # Yet Another Dialog – creates GUI dialogs from shell scripts
+
+# --------------------------------------------------- // Display / Wayland / Hyprland Tools
+hyprland                  # Wayland compositor based on wlroots
+hypridle                  # Idle manager and screen blanking for Hyprland
+hyprutils                 # Utility scripts and tools for Hyprland
+hyprlock                  # Screen locker for Hyprland
+hyprpicker                # Color picker tool for Hyprland
+wlogout                   # Logout/shutdown/reboot menu for Wayland
+wl-clipboard              # Clipboard utilities for Wayland
+rofi-wayland              # Application launcher optimized for Wayland
+swww                      # Wayland wallpaper setter
+wf-recorder               # Screen recorder for Wayland
+grim                      # Screenshot utility for Wayland
+slurp                     # Tool to select screen region on Wayland
+swappy                    # Screenshot annotation tool
+overskride                # Window and input manager for Wayland
+ghostty                   # Terminal emulator for Wayland
+foot                      # Lightweight Wayland terminal emulator
+kitty                     # Feature-rich GPU-based terminal emulator
+playerctl                 # CLI media player controller
+cava                      # Console audio visualizer
+matugen-bin               # Generate material design color palettes
+gammastep                 # Adjust screen gamma temperature (blue light filter)
+waybar                    # Highly customizable Wayland status bar
+satty                     # Modern screenshot annotation app
+cliphist                  # Clipboard history manager
+hyprsunset                # Blue light filter daemon for Hyprland
+swayosd                   # On-screen display for Sway/Wayland
+
+# --------------------------------------------------- // Dependencies
+jq                        # Command-line JSON processor
+parallel                  # Run jobs in parallel from the command line
+imagemagick               # Image processing tools and libraries
+libnotify                 # Desktop notification library
+noto-fonts-emoji          # Emoji font family (Google Noto)
+ttf-font-awesome          # Iconic font and CSS toolkit
+kde-cli-tools             # Command line tools for KDE environment
+ffmpegthumbs              # Video thumbnail generator for Dolphin file manager
+pacman-contrib            # Utilities for pacman package manager (e.g., powerpill)
+xdg-desktop-portal-gtk    # GTK integration for xdg-desktop-portal (file picker)
+xdg-desktop-portal-hyprland # xdg-desktop-portal backend for Hyprland
+xdg-user-dirs             # Manage user directories (like ~/Desktop, ~/Music)
+
+
+# --------------------------------------------------- // Audio
+pipewire                  # Multimedia server for audio/video (replacement for PulseAudio)
+pipewire-alsa             # ALSA compatibility for PipeWire
+pipewire-audio            # Audio support for PipeWire
+pipewire-jack             # JACK audio connection support via PipeWire
+pipewire-pulse            # PulseAudio compatibility layer for PipeWire
+gst-plugin-pipewire       # GStreamer plugin for PipeWire support
+pavucontrol               # PulseAudio volume control GUI
+pamixer                   # CLI mixer for PulseAudio
+wireplumber               # PipeWire session manager for audio/video
+
+
+
+# --------------------------------------------------- // GTK 
+glib2                      # Core GNOME library for C programming
+glib2-devel                # Development files for GLib (needed for building apps)
+gobject-introspection      # Generates metadata for GObject-based libraries (used in language bindings)
+gtk3                       # GTK+ 3 toolkit for graphical user interfaces
+gtkmm3                     # C++ bindings for GTK+ 3
+gtksourceview3             # Source code editing widget for GTK+ 3
+gtksourceviewmm            # C++ bindings for gtksourceview3
+gtk-layer-shell            # Library to create GTK apps that integrate with Wayland layers
+cairomm                    # C++ bindings for the Cairo graphics library
+
+
+# --------------------------------------------------- // Themes / Cursors / UI Enhancers
+adw-gtk-theme-git          # Adwaita GTK theme variant (modern styling)
+gradience                  # GTK theme based on Adwaita with customization options
+bibata-cursor-theme-bin    # Bibata cursor theme (default set)
+bibata-rainbow-cursor-theme # Bibata cursor theme with rainbow colors
+bibata-extra-cursor-theme  # Extra cursor variants for Bibata theme
+bibata-cursor-translucent  # Translucent cursor variants for Bibata
+nwg-look                   # GTK and icon theme manager CLI tool
+
+
+# --------------------------------------------------- // Applications
+firefox                    # Popular web browser
+kitty                      # GPU-accelerated terminal emulator
+dolphin                    # KDE file manager
+ark                        # KDE archive manager (file compression/extraction)
+unzip                      # Command-line utility to extract ZIP archives
+vim                        # Terminal-based text editor
+code                       # Visual Studio Code IDE (text editor)
+nwg-displays               # Monitor management tool (for Wayland)
+fzf                        # Command-line fuzzy finder
+haruna                     # Music player for Wayland
+loupe                      # Image viewer with zoom capabilities
+yad                        # Yet Another Dialog — creates graphical dialogs from shell scripts
+gowall                     # Wallpaper manager
+mpv                        # Media player supporting many formats
+nautilus                   # GNOME file manager
+yazi                       # Lightweight music player
+
+
+
+# --------------------------------------------------- // Fonts - Nerd Fonts Hack, JetBrains Mono, FiraCode
+apple-fonts                # Apple system fonts
+fontconfig                 # Font configuration and customization library
+noto-fonts-emoji           # Emoji font by Google Noto
+ttf-gabarito-git          # Gabarito font (Brazilian handwriting font)
+ttf-jetbrains-mono-nerd    # JetBrains Mono Nerd Font patched (programming font)
+ttf-material-symbols-variable-git # Material Design symbols variable font
+ttf-noto-sans-cjk-vf       # Noto Sans CJK variable font (Chinese/Japanese/Korean)
+ttf-readex-pro             # Readex Pro font (variable font)
+ttf-rubik-vf               # Rubik variable font
+ttf-space-mono-nerd        # Space Mono Nerd Font patched (monospaced)
+adwaita-fonts              # GNOME default font family
+awesome-terminal-fonts     # Terminal icons font
+cantarell-fonts            # GNOME Cantarell font family
+noto-color-emoji-fontconfig # Configuration for color emoji fonts
+noto-fonts                 # Google Noto fonts family
+ttf-font-awesome           # Iconic font toolkit
+ttf-nerd-fonts-symbols     # Nerd Fonts symbols patch
+ttf-nerd-fonts-symbols-common # Common Nerd Fonts symbols
+ttf-hack-nerd              # Hack font patched with Nerd Fonts
+ttf-fantasque-nerd         # Fantasque Sans Mono patched with Nerd Fonts
+ttf-firacode-nerd          # FiraCode font with Nerd Fonts patch
+ttf-meslo-nerd             # Meslo font patched with Nerd Fonts
+
+
+
+# --------------------------------------------------- // Shell / Terminal Enhancements
+fish                       # Friendly interactive shell (alternative to bash/zsh)
+starship                   # Cross-shell prompt with Git and other info
+eza                        # Modern replacement for 'ls' command with git and colors
+
+# --------------------------------------------------- // Gaming
+steam                      # Gaming platform and store
+gamemode                   # Game performance optimization daemon
+mangohud                   # Vulkan/OpenGL overlay to monitor performance
+gamescope                  # Micro-compositor for gaming on Wayland
+cachyos-gaming-meta        # Meta package for gaming-related software (CachyOS)
+cachyos-gaming-applications # Gaming-related applications for CachyOS
+gpu-screen-recorder        # GPU-accelerated screen recording tool
+gpu-screen-recorder-ui     # UI for GPU screen recorder
+gpu-screen-recorder-gtk    # GTK frontend for GPU screen recorder
+gpu-screen-recorder-notification # Notification integration for screen recorder
+protontricks               # Manage Wine/Proton prefixes for gaming
+winetricks                 # Helper scripts for Wine configuration
+
+
+
+# --------------------------------------------------- // Shell and CLI Utilities
+bat                        # Cat clone with syntax highlighting and Git integration
+fd                         # Simple, fast, user-friendly alternative to 'find'
+ripgrep                    # Fast recursive search tool (grep alternative)
+dua-cli                    # Disk usage analyzer CLI tool
+duf                        # Disk usage/free utility (pretty CLI output)
+
+
+
+# --------------------------------------------------- // AI / OCR / Misc Tools
+tesseract                  # Optical character recognition (OCR) engine
+tesseract-data-eng         # English language data for Tesseract OCR
+metar                      # CLI tool for METAR aviation weather reports
+dart-sass                  # Dart implementation of Sass CSS preprocessor

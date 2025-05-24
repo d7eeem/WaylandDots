@@ -1,1 +1,2 @@
-@theme "./themes/material-you/material-you.rasi"
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+

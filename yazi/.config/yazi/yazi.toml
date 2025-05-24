@@ -17,7 +17,7 @@ extract = [
   { run = 'ya pub extract --list %*', desc = "Extract here", for = "windows" },
 ]
 view = [
-  { run = 'imv-dir "$@"', desc = "$EDITOR", block = true, for = "unix"}
+  { run = 'loupe "$@"', desc = "$EDITOR", block = true, for = "unix"}
 ]
 
 [open]
