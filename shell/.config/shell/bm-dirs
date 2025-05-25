@@ -5,7 +5,7 @@ cy  ${XDG_CONFIG_HOME:-$HOME/.config}/yazi
 D   ${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
 d   ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
 dt  ${XDG_DATA_HOME:-$HOME/.local/share}
-rr  $HOME/.local/src
+rr  $HOME/.config/rofi/
 h   $HOME/
 m   /mnt/
 pp  ${XDG_PICTURES_DIR:-$HOME/Pictures}

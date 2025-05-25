@@ -2,30 +2,35 @@
     "label" : "shutdown",
     "action" : "systemctl poweroff",
     "keybind" : "s"
+    "text": "Shutdown"
 }
 {
     "label" : "reboot",
     "action" : "systemctl reboot",
     "keybind" : "r"
+    "text": "reboot"
 }
 {
     "label" : "logout",
     "action" : "loginctl kill-session $XDG_SESSION_ID",
     "keybind" : "e"
+    "text": "logout"
 }
 {
     "label" : "sleep",
     "action" : "systemctl suspend",
     "keybind" : "h"
+    "text": "suspend"
 }
 {
     "label" : "lock",
     "action" : "hyprlock",
     "keybind" : "l"
+    "text": "lock"
 }
 {
     "label" : "hibernate",
-"action" : "swaylock -f",
-"keybind" : "l"
-
+    "action" : "systemctl suspend",
+    "keybind" : "l"
+    "text": "suspend"
 }

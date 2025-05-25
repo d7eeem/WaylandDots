@@ -1,5 +1,20 @@
 #!/usr/bin/env sh
 
+send_swayosd() {
+    case "$ctrl" in
+        pamixer)
+            if [ "$srce" = "--default-source" ]; then
+                swayosd-client --input-volume "$vol"
+            else
+                swayosd-client --output-volume "$vol"
+            fi
+            ;;
+        playerctl)
+            swayosd-client --output-volume "$vol"
+            ;;
+    esac
+}
+
 scrDir=`dirname "$(realpath "$0")"`
 source $scrDir/globalcontrol.sh
 
@@ -101,12 +116,12 @@ step="${2:-5}"
 # execute action
 
 case "${1}" in
-    i) action_${ctrl} i ;;
-    d) action_${ctrl} d ;;
-    m) "${ctrl}" "${srce}" -t && notify_mute && exit 0 ;;
+    i) action_${ctrl} i  && send_swayosd ;;
+    d) action_${ctrl} d  && send_swayosd ;;
+    m) "${ctrl}" "${srce}" -t && notify_mute && send_swayosd && exit 0 ;;
     bindde | bindd) handle_bindings "$2" ;;
     *) print_error ;;
 esac
 
-notify_vol
+#notify_vol
 

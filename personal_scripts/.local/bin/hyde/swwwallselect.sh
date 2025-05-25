@@ -5,7 +5,7 @@
 
 scrDir="$(dirname "$(realpath "$0")")"
 source "${scrDir}/globalcontrol.sh"
-rofiConf="${confDir}/rofi/selector.rasi"
+rofiConf="$HOME/.config/rofi/launchers/type-7/style-9.rasi"
 
 
 #// set rofi scaling
@@ -52,4 +52,4 @@ fi
 
 
 wal -i "$(readlink /home/tinker/.config/hyde/themes/GruvboxRetro/wall.set)"
-sleep 0.1 && "${scrDir}/update-wallpath.sh"
+#sleep 0.1 && "${scrDir}/update-wallpath.sh"

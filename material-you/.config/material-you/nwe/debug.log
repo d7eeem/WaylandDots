@@ -1,0 +1,10 @@
+2025-05-24 22:03:52,268 - INFO - Starting theme generation for image: /mnt/games/Nextcloud/Wallpapers/GruvboxRetro_wallpapers/gruvbox_00012.png
+2025-05-24 22:03:52,268 - INFO - Full image path: /mnt/games/Nextcloud/Wallpapers/GruvboxRetro_wallpapers/gruvbox_00012.png
+2025-05-24 22:03:52,269 - INFO - Using matugen at: /usr/bin/matugen
+2025-05-24 22:03:52,314 - INFO - Command executed: /usr/bin/matugen --json rgba image /mnt/games/Nextcloud/Wallpapers/GruvboxRetro_wallpapers/gruvbox_00012.png
+2025-05-24 22:03:52,314 - INFO - Return code: 0
+2025-05-24 22:03:52,314 - INFO - CSS file 'waybar-colors2.css' generated successfully: /home/tinker/.config/material-you/waybar-colors2.css
+2025-05-24 22:03:52,314 - INFO - CSS file 'colors.css' generated successfully: /home/tinker/.config/gtk-3.0/colors.css
+2025-05-24 22:03:52,314 - INFO - CSS file 'colors1.css' generated successfully: /home/tinker/.config/gtk-4.0/colors1.css
+2025-05-24 22:03:52,314 - INFO - JSON file 'colors.json' generated successfully: /home/tinker/.config/material-you/colors.json
+2025-05-24 22:03:52,315 - INFO - SCSS file 'colors.scss' generated successfully: /home/tinker/.config/material-you/colors.scss

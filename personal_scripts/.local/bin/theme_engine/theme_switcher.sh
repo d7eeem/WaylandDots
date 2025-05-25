@@ -253,6 +253,7 @@ apply_waybar() {
     if [ -f "$HOME/.cache/wal/colors.scss" ]; then
         background=$(grep '^\$background:' "$HOME/.cache/wal/colors.scss" | cut -d' ' -f2 | tr -d ';')
         foreground=$(grep '^\$foreground:' "$HOME/.cache/wal/colors.scss" | cut -d' ' -f2 | tr -d ';')
+        color12=$(grep '^\$color12:' "$HOME/.cache/wal/colors.scss" | cut -d' ' -f2 | tr -d ';')
     else
         echo "Warning: wal colors.scss not found, using fallback colors"
         background="#000000"
@@ -270,7 +271,7 @@ apply_waybar() {
 @define-color wb-act-bg ${foreground};
 @define-color wb-act-fg ${background};
 
-@define-color wb-hvr-bg ${background};
+@define-color wb-hvr-bg ${color12};
 @define-color wb-hvr-fg ${foreground};
 
 * {
@@ -369,6 +370,8 @@ switch() {
 
     # Generate color scheme with pywal
     wal -i "$imgpath"
+    /usr/bin/matugen image  "$imgpath"
+    cp "$imgpath" "$HOME/.config/rofi/images/background.png"
     
     # Wait for pywal to finish and create the cache
     sleep 0.5
@@ -427,14 +430,21 @@ EOF
     colorlist=($colornames)
     colorvalues=($colorstrings)
 
-    # Apply themes
+apply_cache() {
+    magick "${imgpath}[0]" -strip -resize 1000 -gravity center -extent 1000 -quality 90 "/home/tinker/.cache/theme_engine/wall.thmb"
+    magick "${imgpath}[0]" -strip -thumbnail 500x500^ -gravity center -extent 500x500 "/home/tinker/.cache/theme_engine/wall.sqre"
+    magick "${imgpath}[0]" -strip -scale 10% -blur 0x3 -resize 100% "/home/tinker/.cache/theme_engine/wall.blur"
+}
+
+    Apply themes
     apply_hyprland &
     apply_hyprlock &
     apply_gtk &
-    apply_qt &
+    # apply_qt &
     apply_swaync &
     apply_waybar &
     apply_flatpak &
+    apply_cache & 
 }
 
 # Main script execution

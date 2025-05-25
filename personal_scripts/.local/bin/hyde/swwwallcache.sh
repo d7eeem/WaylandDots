@@ -8,7 +8,7 @@ source "${scrDir}/globalcontrol.sh"
 export thmbDir
 export dcolDir
 
-[ -d "${hydeThemeDir}" ] && cacheIn="${hydeThemeDir}" || exit 1
+#[ -d "${hydeThemeDir}" ] && cacheIn="${hydeThemeDir}" || exit 1
 [ -d "${thmbDir}" ] || mkdir -p "${thmbDir}"
 [ -d "${dcolDir}" ] || mkdir -p "${dcolDir}"
 [ -d "${cacheDir}/landing" ] || mkdir -p "${cacheDir}/landing"
