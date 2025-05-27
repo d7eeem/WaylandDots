@@ -6,7 +6,7 @@
     "layer": "top",
     "position": "top",
     "mod": "dock",
-    "height": 30,
+    "height": 32,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -15,90 +15,21 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","","custom/l_end","custom/missioncenter","custom/heroic","custom/steam","custom/discord","custom/files","custom/r_end","custom/l_end","custom/launcher","hyprland/window","custom/r_end","custom/l_end","custom/nettraf","custom/r_end","","custom/padd"],
-	"modules-center": ["custom/padd","","custom/l_end","hyprland/workspaces","custom/layout","custom/r_end","","custom/padd"],
+	"modules-left": ["custom/padd","","custom/l_end","custom/layout","custom/r_end","custom/l_end","hyprland/workspaces","custom/r_end","custom/l_end","custom/launcher","hyprland/window","","custom/r_end","custom/l_end","wlr/taskbar","custom/r_end","custom/l_end","custom/nettraf","custom/r_end","custom/l_end","custom/heroic","custom/files","custom/r_end","","custom/padd"],
+	"modules-center": ["custom/padd","","custom/l_end","","custom/steam","custom/discord","custom/r_end","","custom/padd"],
 	"modules-right": ["custom/padd","","custom/l_end","custom/audio_idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/cpuinfo","custom/gpuinfo","custom/r_end","custom/l_end","custom/power","custom/refreshbar","tray","clock","custom/r_end","custom/l_end","custom/swaync","custom/r_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
 
-    "custom/missioncenter": {
-        "format": "{}",
-        "rotate": 0,
-        "exec": "echo ; echo  MissionCenter-Windows TaskManager-",
-        "on-click": "sleep 0.1 && flatpak run io.missioncenter.MissionCenter",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-    "custom/heroic": {
-        "format": "󰬏{}",
-        "rotate": 0,
-        "exec": "echo ; echo 󰬏 heroic",
-        "on-click": "sleep 0.1 && heroic",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-    "custom/steam": {
-        "format": "{}",
-        "rotate": 0,
-        "exec": "echo ; echo  Steam",
-        "on-click": "sleep 0.1 && steam",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-"custom/discord": {
-    "format": "<span font_family='Font Awesome 6 Brands'>&#xf392;</span>",
-    "exec": "echo '<span font_family=\"Font Awesome 6 Brands\">&#xf392;</span>'",
-    "on-click": "sleep 0.1 && discord",
-    "interval": 86400,
-    "tooltip": true
-},
-    "custom/files": {
-        "format": " {}",
-        "rotate": 0,
-        "exec": "echo ; echo  files",
-        "on-click": "sleep 0.1 && nautilus --new-window",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-  "custom/launcher": {
-    "format": "",
-    "on-click": "/home/tinker/.local/bin/statusbar/sb-launcher.sh",
-    "tooltip-format": "Launch your favorite apps"
-  },
-    "hyprland/window": {
-        "format": "{}",
-        "rotate": 0,
-        "separate-outputs": true,
-        "rewrite": {
-            "tinker@luna:(.*)": "$1 ",
-            "(.*) — Mozilla Firefox": "$1 󰈹",
-            "(.*) — Ablaze Floorp": "$1 - floorp 󰈹",
-            "(.*)Mozilla Firefox": "Firefox 󰈹",
-            "(.*) — Dolphin": "$1 󰉋",
-            "(.*)Steam": "Steam 󰓓",
-            "(.*) - Brave": "$1 ",
-            "New Tab - Brave": "Brave ",
-            "(.*)Brave": "Brave ",
-            "(.*) - Discord": "$1  ",
-            "(.*?)-\\s*YouTube(.*)": "$1󰗃", 
-            "(.*?\\s)YouTube(.*)": "$1YouTube 󰗃"
-        },
-        "max-length": 40
-    },
-
-    "custom/nettraf": {
-      "exec": "/home/tinker/.local/bin/statusbar/sb-nettraf.sh",
+    "custom/layout": {
+      "exec": "/home/tinker/.local/bin/statusbar/sb-layoutcheacker.sh",
       "restart-interval": 1
     },
     "hyprland/workspaces": {
       "active-only": false,
       "all-outputs": true,
-      "format": "{icon}",
+      "format": "{name}",
       "show-special": false,
       "on-click": "activate",
       "on-scroll-up": "hyprctl dispatch workspace +1",
@@ -115,10 +46,103 @@
         "default": " "
       }
     },
-    "custom/layout": {
-      "exec": "/home/tinker/.local/bin/statusbar/sb-layoutcheacker.sh",
+  "custom/launcher": {
+    "format": "",
+    "on-click": "/home/tinker/.local/bin/statusbar/sb-launcher.sh",
+    "tooltip-format": "Launch your favorite apps"
+  },
+    "hyprland/window": {
+        "format": "{}",
+        "rotate": 0,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*)Zen Browser": "Zen Browser ",
+            "title<.*youtube.*>": "",
+            "(.*) - fish": "> [$1]",
+            "kiTTY": "$1  ",
+            "(.*)Steam": "Steam 󰓓",
+            "(.*) - Brave": "$1 ",
+            "New Tab - Brave": "Brave ",
+            "(.*)Brave": "Brave ",
+            "(.*) - Discord": "$1  "
+        },
+        "max-length": 10
+    },
+    // "hyprland/window": {
+    //     "format": "{}",
+    //     "rotate": 0,
+    //     "separate-outputs": true,
+    //     "rewrite": {
+    //         "tinker@luna:(.*)": "$1 ",
+    //         "(.*) — Mozilla Firefox": "$1 󰈹",
+    //         "(.*) — Ablaze Floorp": "$1 - floorp 󰈹",
+    //         "(.*)Mozilla Firefox": "Firefox 󰈹",
+    //         "(.*) — Dolphin": "$1 󰉋",
+    //         "(.*)Steam": "Steam 󰓓",
+    //         "(.*) - Brave": "$1 ",
+    //         "New Tab - Brave": "Brave ",
+    //         "(.*)Brave": "Brave ",
+    //         "(.*) - Discord": "$1  ",
+    //         "(.*?)-\\s*YouTube(.*)": "$1󰗃", 
+    //         "(.*?\\s)YouTube(.*)": "$1YouTube 󰗃"
+    //     },
+    //     "max-length": 25
+    // },
+    //
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"rotate": 0,
+		"icon-size": 19,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"Alacritty",
+      "kitty"
+		],
+		"app_ids-mapping": {
+			"firefoxdeveloperedition": "firefox-developer-edition"
+		}
+	},
+
+    "custom/nettraf": {
+      "exec": "/home/tinker/.local/bin/statusbar/sb-nettraf.sh",
       "restart-interval": 1
     },
+    "custom/heroic": {
+        "format": "󰮡",
+        "rotate": 0,
+        "exec": "echo ; echo  heroic",
+        "on-click": "sleep 0.1 && heroic",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/files": {
+        "format": "",
+        "rotate": 0,
+        "exec": "echo ; echo  files",
+        "on-click": "sleep 0.1 && nautilus --new-window",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/steam": {
+        "format": "",
+        "rotate": 0,
+        "exec": "echo ; echo  Steam",
+        "on-click": "sleep 0.1 && steam",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+"custom/discord": {
+    "format": "",
+    "exec": "echo ''",
+    "on-click": "sleep 0.1 && discord",
+    "interval": 86400,
+    "tooltip": true
+},
 "custom/audio_idle_inhibitor": {
 	  	  "format": "{icon}",
 	  	  "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
@@ -172,11 +196,11 @@
     },
 
     "custom/updates": {
-        "exec": "systemupdate.sh",
+        "exec": "/home/tinker/.local/bin/hyde/systemupdate.sh",
         "return-type": "json",
         "format": "{}",
         "rotate": 0,
-        "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+        "on-click": "hyprctl dispatch exec '/home/tinker/.local/bin/hyde/systemupdate.sh up'",
         "interval": 86400, // once every day
         "tooltip": true,
         "signal": 20,
@@ -233,7 +257,7 @@
     },
 
     "tray": {
-        "icon-size": 18,
+        "icon-size": 19,
         "rotate": 0,
         "spacing": 5
     },

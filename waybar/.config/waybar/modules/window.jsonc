@@ -1,21 +1,38 @@
     "hyprland/window": {
         "format": "{}",
-        "rotate": ${r_deg},
+        "rotate": 0,
         "separate-outputs": true,
         "rewrite": {
-            "${USER}@${set_sysname}:(.*)": "$1 ",
-            "(.*) — Mozilla Firefox": "$1 󰈹",
-            "(.*) — Ablaze Floorp": "$1 - floorp 󰈹",
-            "(.*)Mozilla Firefox": "Firefox 󰈹",
-            "(.*) — Dolphin": "$1 󰉋",
+            "(.*)Zen Browser": "Zen Browser ",
+            "title<.*youtube.*>": "",
+            "(.*) - fish": "> [$1]",
+            "kiTTY": "$1  ",
             "(.*)Steam": "Steam 󰓓",
             "(.*) - Brave": "$1 ",
             "New Tab - Brave": "Brave ",
             "(.*)Brave": "Brave ",
-            "(.*) - Discord": "$1  ",
-            "(.*?)-\\s*YouTube(.*)": "$1󰗃", 
-            "(.*?\\s)YouTube(.*)": "$1YouTube 󰗃"
+            "(.*) - Discord": "$1  "
         },
-        "max-length": 40
+        "max-length": 10
     },
-
+    // "hyprland/window": {
+    //     "format": "{}",
+    //     "rotate": ${r_deg},
+    //     "separate-outputs": true,
+    //     "rewrite": {
+    //         "${USER}@${set_sysname}:(.*)": "$1 ",
+    //         "(.*) — Mozilla Firefox": "$1 󰈹",
+    //         "(.*) — Ablaze Floorp": "$1 - floorp 󰈹",
+    //         "(.*)Mozilla Firefox": "Firefox 󰈹",
+    //         "(.*) — Dolphin": "$1 󰉋",
+    //         "(.*)Steam": "Steam 󰓓",
+    //         "(.*) - Brave": "$1 ",
+    //         "New Tab - Brave": "Brave ",
+    //         "(.*)Brave": "Brave ",
+    //         "(.*) - Discord": "$1  ",
+    //         "(.*?)-\\s*YouTube(.*)": "$1󰗃", 
+    //         "(.*?\\s)YouTube(.*)": "$1YouTube 󰗃"
+    //     },
+    //     "max-length": 25
+    // },
+    //

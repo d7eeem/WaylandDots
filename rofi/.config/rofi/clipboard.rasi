@@ -19,7 +19,7 @@ configuration {
 /*****----- Main Window -----*****/
 window {
     height:                      30em;
-    width:                       45em;
+    width:                       25em;
     transparency:                "real";
     fullscreen:                  false;
     enabled:                     true;
@@ -45,7 +45,7 @@ mainbox {
 box {
     orientation:                 horizontal;
     spacing:                     0.5em;
-    children:                    [ inputbar, listbox ];
+    children:                    [ listbox ];
 }
 
 listbox {

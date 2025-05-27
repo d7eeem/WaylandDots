@@ -1,5 +1,5 @@
     "custom/files": {
-        "format": " {}",
+        "format": "",
         "rotate": ${r_deg},
         "exec": "echo ; echo  files",
         "on-click": "sleep 0.1 && nautilus --new-window",

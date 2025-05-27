@@ -21,3 +21,4 @@ vnp ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/lua/plugins
 do  $HOME/WaylandDots/
 hh  $HOME/.config/hypr/
 wb  $HOME/.config/waybar/
+nc  $HOME/Nextcloud/

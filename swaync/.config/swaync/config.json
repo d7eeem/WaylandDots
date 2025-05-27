@@ -18,6 +18,7 @@
     "notification-icon-size": 50,
     "notification-body-image-height": 140,
     "notification-body-image-width": 200,
+    "popup-position": "bottom-right",
     "timeout": 6,
     "timeout-low": 3,
     "timeout-critical": 0,
