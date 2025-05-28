@@ -1,0 +1,7 @@
+"custom/recorder": {
+    "format": "{}",
+    "exec": "~/.local/bin/personal/screencapstatus.sh",
+    "interval": 1,
+    "return-type": "json",
+    "on-click": "pkill -x wf-recorder"
+},
