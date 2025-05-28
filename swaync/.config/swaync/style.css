@@ -2,18 +2,18 @@
  * vim: ft=less
  */
 
-@define-color base #1a2124
-@define-color text #c5c7c8
-@define-color accent #8B9288
-@define-color surface0 #1a2124
-@define-color surface1 #1a2124
-@define-color surface2 #1a2124
-@define-color red #92877C
-@define-color pink #A49F8F
-@define-color mauve #8B9288
-@define-color lavender #A49F8F
-@define-color blue #8B9288
-@define-color green #CF827E
+@define-color base #101416
+@define-color text #c3c4c4
+@define-color accent #CF795F
+@define-color surface0 #101416
+@define-color surface1 #101416
+@define-color surface2 #101416
+@define-color red #75665B
+@define-color pink #7C8574
+@define-color mauve #CF795F
+@define-color lavender #7C8574
+@define-color blue #CF795F
+@define-color green #9A705B
 
 * {
     font-family: "Hack Nerd Font Mono";

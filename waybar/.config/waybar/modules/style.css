@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0px;
-    font-family: "Hack Nerd Font";
+    font-family: Hack Nerd Font Propo;
     font-weight: bold;
     font-size: 12px;
     min-height: 10px;
@@ -103,6 +103,17 @@ tooltip {
 #tray menu separator {
     min-height: 10px
 }
+#custom-recorder.recording {
+    border-radius: 15px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background: #F65C13;
+    color: #ffffff;
+}
+
+
 #custom-discord,
 #custom-heroic,
 #custom-steam,

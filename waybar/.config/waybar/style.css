@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0px;
-    font-family: "Hack Nerd Font";
+    font-family: Hack Nerd Font Propo;
     font-weight: bold;
     font-size: 12px;
     min-height: 10px;
@@ -17,7 +17,7 @@ window#waybar {
 tooltip {
     background: @main-bg;
     color: @main-fg;
-    border-radius: 8px;
+    border-radius: 7px;
     border-width: 0px;
 }
 #workspaces {
@@ -103,6 +103,17 @@ tooltip {
 #tray menu separator {
     min-height: 10px
 }
+#custom-recorder.recording {
+    border-radius: 15px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background: #F65C13;
+    color: #ffffff;
+}
+
+
 #custom-discord,
 #custom-heroic,
 #custom-steam,
@@ -138,6 +149,7 @@ tooltip {
 #custom-notifications,
 #custom-power,
 #pulseaudio,
+#custom-recorder,
 #custom-refreshbar,
 #custom-sb-memory,
 #custom-spotify,
@@ -161,7 +173,7 @@ tooltip {
     /* color: @main-fg; */
     background: @main-bg;
     opacity: 1;
-    margin: 4px 0px 4px 0px;
+    margin: 3px 0px 3px 0px;
     padding-left: 4px;
     padding-right: 4px;
 }
@@ -170,37 +182,37 @@ tooltip {
     padding: 0px;
 }
 #custom-r_end {
-    border-radius: 0px 22px 22px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+    border-radius: 0px 19px 19px 0px;
+    margin-right: 8px;
+    padding-right: 0px;
 }
 
 #custom-l_end {
-    border-radius: 22px 0px 0px 22px;
-    margin-left: 9px;
-    padding-left: 3px;
+    border-radius: 19px 0px 0px 19px;
+    margin-left: 8px;
+    padding-left: 0px;
 }
 
 #custom-sr_end {
     border-radius: 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+    margin-right: 8px;
+    padding-right: 0px;
 }
 
 #custom-sl_end {
     border-radius: 0px;
-    margin-left: 9px;
-    padding-left: 3px;
+    margin-left: 8px;
+    padding-left: 0px;
 }
 
 #custom-rr_end {
-    border-radius: 0px 8px 8px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+    border-radius: 0px 7px 7px 0px;
+    margin-right: 8px;
+    padding-right: 0px;
 }
 
 #custom-rl_end {
-    border-radius: 8px 0px 0px 8px;
-    margin-left: 9px;
-    padding-left: 3px;
+    border-radius: 7px 0px 0px 7px;
+    margin-left: 8px;
+    padding-left: 0px;
 }

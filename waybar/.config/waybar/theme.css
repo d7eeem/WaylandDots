@@ -1,14 +1,14 @@
-@define-color foreground #c5c7c8;
-@define-color background #1a2124;
+@define-color foreground #c3c4c4;
+@define-color background #101416;
 
-@define-color main-bg #1a2124;
-@define-color main-fg #c5c7c8;
+@define-color main-bg #101416;
+@define-color main-fg #c3c4c4;
 
-@define-color wb-act-bg #c5c7c8;
-@define-color wb-act-fg #1a2124;
+@define-color wb-act-bg #c3c4c4;
+@define-color wb-act-fg #101416;
 
-@define-color wb-hvr-bg #8B9288;
-@define-color wb-hvr-fg #c5c7c8;
+@define-color wb-hvr-bg #CF795F;
+@define-color wb-hvr-fg #c3c4c4;
 
 * {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
