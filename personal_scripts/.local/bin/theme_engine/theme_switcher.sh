@@ -158,53 +158,53 @@ apply_gtk() {
   # Set the color scheme
   if [[ "$current_theme" == *"dark"* ]] || [[ "$current_scheme" == *"prefer-dark"* ]]; then
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Everforest-Dark'
   else
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
-    gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Everforest-Dark'
   fi
 
   # Force GTK to reload the theme
   gtk-update-icon-cache -f -t ~/.local/share/icons/default 2>/dev/null || true
 }
-
-apply_qt() {
-  # Apply Kvantum theme if available
-  if [ -f "$CONFIG_DIR/scripts/kvantum/materialQT.sh" ]; then
-    sh "$CONFIG_DIR/scripts/kvantum/materialQT.sh"
-  fi
-  if [ -f "$CONFIG_DIR/scripts/kvantum/changeAdwColors.py" ]; then
-    python "$CONFIG_DIR/scripts/kvantum/changeAdwColors.py"
-  fi
-
-  # Update KDE color scheme
-  if is_kde; then
-    # Create KDE color scheme directory
-    mkdir -p "$HOME/.local/share/color-schemes"
-
-    # Copy and process the color scheme template
-    cp "$CONFIG_DIR/scripts/templates/kde/theme.colors" "$CACHE_DIR/user/generated/kde/theme.colors"
-
-    # Replace color variables
-    for i in "${!colorlist[@]}"; do
-      color_name=${colorlist[$i]#$}
-      color_value=${colorvalues[$i]#\#}
-      sed -i "s/{{ ${color_name} }}/${color_value}/g" "$CACHE_DIR/user/generated/kde/theme.colors"
-    done
-
-    # Install the color scheme
-    cp "$CACHE_DIR/user/generated/kde/theme.colors" "$HOME/.local/share/color-schemes/MaterialYou.colors"
-
-    # Apply the color scheme
-    plasma-apply-colorscheme MaterialYou
-
-    # Reload Dolphin if it's running
-    if pgrep -x "dolphin" >/dev/null; then
-      killall dolphin
-      dolphin &
-    fi
-  fi
-}
+#
+# apply_qt() {
+#   # Apply Kvantum theme if available
+#   if [ -f "$CONFIG_DIR/scripts/kvantum/materialQT.sh" ]; then
+#     sh "$CONFIG_DIR/scripts/kvantum/materialQT.sh"
+#   fi
+#   if [ -f "$CONFIG_DIR/scripts/kvantum/changeAdwColors.py" ]; then
+#     python "$CONFIG_DIR/scripts/kvantum/changeAdwColors.py"
+#   fi
+#
+#   # Update KDE color scheme
+#   if is_kde; then
+#     # Create KDE color scheme directory
+#     mkdir -p "$HOME/.local/share/color-schemes"
+#
+#     # Copy and process the color scheme template
+#     cp "$CONFIG_DIR/scripts/templates/kde/theme.colors" "$CACHE_DIR/user/generated/kde/theme.colors"
+#
+#     # Replace color variables
+#     for i in "${!colorlist[@]}"; do
+#       color_name=${colorlist[$i]#$}
+#       color_value=${colorvalues[$i]#\#}
+#       sed -i "s/{{ ${color_name} }}/${color_value}/g" "$CACHE_DIR/user/generated/kde/theme.colors"
+#     done
+#
+#     # Install the color scheme
+#     cp "$CACHE_DIR/user/generated/kde/theme.colors" "$HOME/.local/share/color-schemes/MaterialYou.colors"
+#
+#     # Apply the color scheme
+#     plasma-apply-colorscheme MaterialYou
+#
+#     # Reload Dolphin if it's running
+#     if pgrep -x "dolphin" >/dev/null; then
+#       killall dolphin
+#       dolphin &
+#     fi
+#   fi
+# }
 
 apply_swaync() {
   if [ ! -f "$CONFIG_DIR/scripts/templates/swaync/style.css" ]; then
@@ -287,71 +287,71 @@ EOF
 
 }
 
-apply_flatpak() {
-  echo "Applying theme to Flatpak applications..."
-
-  # Check if flatpak is installed
-  if ! command -v flatpak >/dev/null 2>&1; then
-    echo "Flatpak is not installed. Skipping Flatpak theming."
-    return
-  fi
-
-  # Create Flatpak override directory if it doesn't exist
-  FLATPAK_CONFIG_DIR="$HOME/.var/app"
-  mkdir -p "$FLATPAK_CONFIG_DIR"
-
-  # Get list of installed Flatpak apps
-  while IFS= read -r app; do
-    if [ ! -z "$app" ]; then
-      echo "Processing Flatpak app: $app"
-
-      # Create GTK config directories
-      app_gtk3_dir="$FLATPAK_CONFIG_DIR/$app/config/gtk-3.0"
-      app_gtk4_dir="$FLATPAK_CONFIG_DIR/$app/config/gtk-4.0"
-      mkdir -p "$app_gtk3_dir"
-      mkdir -p "$app_gtk4_dir"
-
-      # Copy GTK theme files
-      if [ -f "$XDG_CONFIG_HOME/gtk-3.0/gtk.css" ]; then
-        echo "Copying GTK3 theme to: $app_gtk3_dir"
-        cp -f "$XDG_CONFIG_HOME/gtk-3.0/gtk.css" "$app_gtk3_dir/"
-      fi
-
-      if [ -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css" ]; then
-        echo "Copying GTK4 theme to: $app_gtk4_dir"
-        cp -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css" "$app_gtk4_dir/"
-      fi
-
-      # Handle Waybar theme if present
-      app_waybar_dir="$FLATPAK_CONFIG_DIR/$app/config/waybar"
-      if [ -d "$app_waybar_dir" ]; then
-        echo "Found Waybar config for $app, copying theme"
-        cp -f "$XDG_CONFIG_HOME/waybar/theme.css" "$app_waybar_dir/"
-      fi
-
-      # Create GTK settings override
-      gtk_settings_dir="$FLATPAK_CONFIG_DIR/$app/config/gtk-3.0"
-      mkdir -p "$gtk_settings_dir"
-      cat >"$gtk_settings_dir/settings.ini" <<EOL
-[Settings]
-gtk-theme-name=adw-gtk3
-gtk-application-prefer-dark-theme=true
-gtk-font-name=Cantarell 11
-EOL
-    fi
-  done < <(flatpak list --app --columns=application)
-
-  # Override global Flatpak GTK theme
-  mkdir -p "$HOME/.local/share/flatpak/overrides"
-  cat >"$HOME/.local/share/flatpak/overrides/global" <<EOL
-[Environment]
-GTK_THEME=adw-gtk3
-ICON_THEME=Papirus-Dark
-EOL
-
-  echo "Flatpak theme application completed"
-}
-
+# apply_flatpak() {
+#   echo "Applying theme to Flatpak applications..."
+#
+#   # Check if flatpak is installed
+#   if ! command -v flatpak >/dev/null 2>&1; then
+#     echo "Flatpak is not installed. Skipping Flatpak theming."
+#     return
+#   fi
+#
+#   # Create Flatpak override directory if it doesn't exist
+#   FLATPAK_CONFIG_DIR="$HOME/.var/app"
+#   mkdir -p "$FLATPAK_CONFIG_DIR"
+#
+#   # Get list of installed Flatpak apps
+#   while IFS= read -r app; do
+#     if [ ! -z "$app" ]; then
+#       echo "Processing Flatpak app: $app"
+#
+#       # Create GTK config directories
+#       app_gtk3_dir="$FLATPAK_CONFIG_DIR/$app/config/gtk-3.0"
+#       app_gtk4_dir="$FLATPAK_CONFIG_DIR/$app/config/gtk-4.0"
+#       mkdir -p "$app_gtk3_dir"
+#       mkdir -p "$app_gtk4_dir"
+#
+#       # Copy GTK theme files
+#       if [ -f "$XDG_CONFIG_HOME/gtk-3.0/gtk.css" ]; then
+#         echo "Copying GTK3 theme to: $app_gtk3_dir"
+#         cp -f "$XDG_CONFIG_HOME/gtk-3.0/gtk.css" "$app_gtk3_dir/"
+#       fi
+#
+#       if [ -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css" ]; then
+#         echo "Copying GTK4 theme to: $app_gtk4_dir"
+#         cp -f "$XDG_CONFIG_HOME/gtk-4.0/gtk.css" "$app_gtk4_dir/"
+#       fi
+#
+#       # Handle Waybar theme if present
+#       app_waybar_dir="$FLATPAK_CONFIG_DIR/$app/config/waybar"
+#       if [ -d "$app_waybar_dir" ]; then
+#         echo "Found Waybar config for $app, copying theme"
+#         cp -f "$XDG_CONFIG_HOME/waybar/theme.css" "$app_waybar_dir/"
+#       fi
+#
+#       # Create GTK settings override
+#       gtk_settings_dir="$FLATPAK_CONFIG_DIR/$app/config/gtk-3.0"
+#       mkdir -p "$gtk_settings_dir"
+#       cat >"$gtk_settings_dir/settings.ini" <<EOL
+# [Settings]
+# gtk-theme-name=Everforest-Dark
+# gtk-application-prefer-dark-theme=true
+# gtk-font-name=Cantarell 11
+# EOL
+#     fi
+#   done < <(flatpak list --app --columns=application)
+#
+#   # Override global Flatpak GTK theme
+#   mkdir -p "$HOME/.local/share/flatpak/overrides"
+#   cat >"$HOME/.local/share/flatpak/overrides/global" <<EOL
+# [Environment]
+# GTK_THEME=Everforest-Dark
+# ICON_THEME=Papirus-Dark
+# EOL
+#
+#   echo "Flatpak theme application completed"
+# }
+#
 # Function to switch wallpaper and generate colors
 switch() {
   imgpath=$1
@@ -440,12 +440,12 @@ EOF
   Apply themes
   apply_hyprland &
   apply_hyprlock &
-  apply_gtk &
-  # apply_qt &
   apply_swaync &
-  apply_flatpak &
   apply_cache &
   apply_waybar &
+  apply_gtk &
+  # apply_qt &
+  # apply_flatpak &
 }
 
 # Main script execution
