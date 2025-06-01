@@ -1,5 +1,5 @@
     "custom/refreshbar": {
-        "format": " {}",
+        "format": "",
         "rotate": ${r_deg},
         "exec": "echo ; echo   refresh bar",
         "on-click": "sleep 0.1 && refresh_waybar.sh",

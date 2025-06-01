@@ -20,6 +20,7 @@ tooltip {
     border-radius: 7px;
     border-width: 0px;
 }
+
 #workspaces {
     margin: 0;
     padding: 0;
@@ -48,18 +49,22 @@ tooltip {
 
 #workspaces button:hover {
     background: @wb-hvr-bg;
-    border-radius: 15px 15px 15px 15px;
-    margin: 0;
-    padding: 3px;
-    padding-left: 5px;
-    color: @wb-hvr-fg;
-    animation: ws_hover 20s ease-in-out 0;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    color: @wb-act-color;
+    margin-left: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 3px;
+    animation: tb_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
+
+
 #workspaces button.urgent {
-  background-color: @red;
-  border-radius: 1em;
-  color: @wb-act-color;
+    margin: 0;
+    color: red;
+    padding: 0 3px;
+    border-radius: 1em;
+    animation: ws_normal 20s ease-in-out 1;
 
 }
 
@@ -80,19 +85,19 @@ tooltip {
 
 #taskbar button.active {
     background: @wb-hvr-bg;
-    color: @wb-act-color;
-    margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-right: 3px;
-    animation: tb_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
-}
+    border-radius: 15px 15px 15px 15px;
+    padding-left: 10px;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 0;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  }
 
 #taskbar button:hover {
     background: @wb-hvr-bg;
-    color: @wb-hvr-color;
-    animation: tb_hover 20s ease-in-out 1;
+    border-radius: 15px 15px 15px 15px;
+    padding-left: 10px;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 0;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
@@ -112,8 +117,6 @@ tooltip {
     background: #F65C13;
     color: #ffffff;
 }
-
-
 #custom-discord,
 #custom-heroic,
 #custom-steam,
@@ -122,20 +125,27 @@ tooltip {
     min-width: 10px;         /* optional: forces equal spacing */
     margin: 0 2px;         /* small spacing between icons */
     padding: 0 4px;        /* inner spacing */
+    background: @main-bg;
+    opacity: 1;
+    margin: 4px 0px 4px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
     font-family: "JetBrainsMono Nerd Font", "Material Design Icons", "Font Awesome 6 Brands";
 }
-#custom-audio_idle_inhibitor,
+#custom-audio_idle_inhibitor {
+  color: @wb-act-color;
+  padding-right: 5px;
+  font-size: 16px;
+  background: none;
+}
 #backlight,
 #bluetooth,
 #custom-cliphist,
 #clock,
 #custom-cpuinfo,
 #cpu,
-#custom-discord,
-#custom-files,
 #custom-gpuinfo,
 #custom-gpu,
-#custom-heroic,
 #idle_inhibitor,
 #custom-keybindhint,
 #language,
@@ -147,13 +157,12 @@ tooltip {
 #custom-nettraf,
 #network,
 #custom-notifications,
+#custom-player,
 #custom-power,
 #pulseaudio,
 #custom-recorder,
 #custom-refreshbar,
 #custom-sb-memory,
-#custom-spotify,
-#custom-steam,
 #custom-swaync,
 #taskbar,
 #custom-theme,
@@ -173,7 +182,7 @@ tooltip {
     /* color: @main-fg; */
     background: @main-bg;
     opacity: 1;
-    margin: 3px 0px 3px 0px;
+    margin: 4px 0px 4px 0px;
     padding-left: 4px;
     padding-right: 4px;
 }
@@ -182,37 +191,37 @@ tooltip {
     padding: 0px;
 }
 #custom-r_end {
-    border-radius: 0px 19px 19px 0px;
-    margin-right: 8px;
-    padding-right: 0px;
+    border-radius: 0px 21px 21px 0px;
+    margin-right: 9px;
+    padding-right: 3px;
 }
 
 #custom-l_end {
-    border-radius: 19px 0px 0px 19px;
-    margin-left: 8px;
-    padding-left: 0px;
+    border-radius: 21px 0px 0px 21px;
+    margin-left: 9px;
+    padding-left: 3px;
 }
 
 #custom-sr_end {
     border-radius: 0px;
-    margin-right: 8px;
-    padding-right: 0px;
+    margin-right: 9px;
+    padding-right: 3px;
 }
 
 #custom-sl_end {
     border-radius: 0px;
-    margin-left: 8px;
-    padding-left: 0px;
+    margin-left: 9px;
+    padding-left: 3px;
 }
 
 #custom-rr_end {
     border-radius: 0px 7px 7px 0px;
-    margin-right: 8px;
-    padding-right: 0px;
+    margin-right: 9px;
+    padding-right: 3px;
 }
 
 #custom-rl_end {
     border-radius: 7px 0px 0px 7px;
-    margin-left: 8px;
-    padding-left: 0px;
+    margin-left: 9px;
+    padding-left: 3px;
 }

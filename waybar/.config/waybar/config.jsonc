@@ -6,7 +6,7 @@
     "layer": "top",
     "position": "top",
     "mod": "dock",
-    "height": 28,
+    "height": 30,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -15,37 +15,47 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","custom/l_end","custom/layout","custom/r_end","custom/l_end","hyprland/workspaces","custom/r_end","custom/l_end","custom/launcher","hyprland/window","custom/r_end","custom/l_end","wlr/taskbar","custom/r_end","custom/l_end","custom/nettraf","custom/r_end","custom/l_end","custom/heroic","custom/files","custom/r_end","custom/padd"],
-	"modules-center": ["custom/padd","custom/l_end","custom/steam","custom/discord","custom/r_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/recorder","custom/l_end","custom/audio_idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/cpuinfo","custom/gpuinfo","custom/r_end","custom/l_end","custom/power","custom/refreshbar","tray","clock","custom/r_end","custom/l_end","custom/swaync","custom/r_end","custom/padd"],
+	"modules-left": ["custom/padd","custom/l_end","custom/files","custom/heroic","custom/steam","custom/discord","custom/r_end","custom/l_end","custom/launcher","hyprland/window","custom/r_end","custom/l_end","wlr/taskbar","custom/r_end","custom/l_end","custom/nettraf","custom/r_end","custom/l_end","custom/player","custom/r_end","custom/padd"],
+	"modules-center": ["custom/padd","custom/l_end","custom/layout","custom/r_end","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/recorder","custom/audio_idle_inhibitor","custom/l_end","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","cpu","custom/r_end","custom/l_end","custom/power","custom/refreshbar","tray","custom/r_end","custom/l_end","clock","custom/r_end","custom/l_end","custom/swaync","custom/r_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
 
-    "custom/layout": {
-      "exec": "/home/tinker/.local/bin/statusbar/sb-layoutcheacker.sh",
-      "restart-interval": 1
+    "custom/files": {
+        "format": "",
+        "rotate": 0,
+        "exec": "echo ; echo  files",
+        "on-click": "sleep 0.1 && nautilus --new-window",
+        "interval" : 86400, // once every day
+        "tooltip": true
     },
-    "hyprland/workspaces": {
-      "active-only": false,
-      "all-outputs": true,
-      "format": "{name}",
-      "show-special": false,
-      "on-click": "activate",
-      "on-scroll-up": "hyprctl dispatch workspace +1",
-      "on-scroll-down": "hyprctl dispatch workspace -1",
-      "persistent-workspaces": {
-        "1": [],
-        "2": [],
-        "3": [],
-        "4": [],
-        "5": []
-      },
-      "format-icons": {
-        "active": " ",
-        "default": " "
-      }
+
+    "custom/heroic": {
+        "format": "󰮡",
+        "rotate": 0,
+        "exec": "echo ; echo  heroic",
+        "on-click": "sleep 0.1 && heroic",
+        "interval" : 86400, // once every day
+        "tooltip": true
     },
+
+    "custom/steam": {
+        "format": "",
+        "rotate": 0,
+        "exec": "echo ; echo  Steam",
+        "on-click": "sleep 0.1 && steam",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+"custom/discord": {
+    "format": "",
+    "exec": "echo '󰙯'",
+    "on-click": "sleep 0.1 && discord",
+    "interval": 86400,
+    "tooltip": true
+},
   "custom/launcher": {
     "format": "",
     "on-click": "/home/tinker/.local/bin/statusbar/sb-launcher.sh",
@@ -91,8 +101,6 @@
     //
 	"wlr/taskbar": {
 		"format": "{icon}",
-		"rotate": 0,
-		"icon-size": 16,
 		"tooltip-format": "{title}",
 		"on-click": "activate",
 		"on-click-middle": "close",
@@ -109,40 +117,59 @@
       "exec": "/home/tinker/.local/bin/statusbar/sb-nettraf.sh",
       "restart-interval": 1
     },
-    "custom/heroic": {
-        "format": "󰮡",
+    "custom/player": {
+        "exec": "/home/tinker/.local/bin/hyde/mediaplayer.py",
+        "format": "󰝚 {}",
+        "none": "",
         "rotate": 0,
-        "exec": "echo ; echo  heroic",
-        "on-click": "sleep 0.1 && heroic",
-        "interval" : 86400, // once every day
+        "return-type": "json",
+        "on-click": "swayosd-client --playerctl play-pause",
+        // "on-click": "playerctl play-pause --all-players",
+        "on-click-right": "swayosd-client --playerctl next",
+        // "on-click-right": "playerctl next --all-players",
+        "on-click-middle": "swayosd-client --playerctl prev",
+        // "on-click-middle": "playerctl previous --all-players",
+        "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume raise",
+        "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume lower",
+        "max-length": 25,
+        "escape": true,
         "tooltip": true
     },
 
-    "custom/files": {
-        "format": "",
-        "rotate": 0,
-        "exec": "echo ; echo  files",
-        "on-click": "sleep 0.1 && nautilus --new-window",
-        "interval" : 86400, // once every day
-        "tooltip": true
+    "custom/layout": {
+      "exec": "/home/tinker/.local/bin/statusbar/sb-layoutcheacker.sh",
+      "restart-interval": 1
     },
-
-    "custom/steam": {
-        "format": "",
-        "rotate": 0,
-        "exec": "echo ; echo  Steam",
-        "on-click": "sleep 0.1 && steam",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-"custom/discord": {
-    "format": "",
-    "exec": "echo '󰙯'",
-    "on-click": "sleep 0.1 && discord",
-    "interval": 86400,
-    "tooltip": true
-},
+  "hyprland/workspaces": {
+      "active-only": false,
+      "all-outputs": true,
+      "format": "{icon}",
+      "show-special": false,
+      "on-click": "activate",
+      "on-scroll-up": "hyprctl dispatch workspace +1",
+      "on-scroll-down": "hyprctl dispatch workspace -1",
+      "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      },
+      "format-icons": {
+        // "active": "",
+        // "default": "",
+        "1": "一",
+		    "2": "二",
+		    "3": "三",
+		    "4": "四",
+		    "5": "五",
+        "6": "六",
+        "7": "七",
+        "8": "八",
+        "9": "九",
+        "10":"十"
+    }
+ },
 "custom/recorder": {
     "format": "{}",
     "exec": "~/.local/bin/personal/screencapstatus.sh",
@@ -156,24 +183,20 @@
 	  	  "exec-if": "which sway-audio-idle-inhibit",
 	  	  "return-type": "json",
 	  	  "format-icons": {
-	  	  	  "output": " ",
-	  	  	  "input": " ",
-	  	  	  "output-input": "   ",
+	  	  	  "output": "",
+	  	  	  "input": "",
+	  	  	  "output-input": "  ",
 	  	  	  "none": ""
 	  	}
 	  },
     "pulseaudio": {
-        "format": "{icon}  {volume}",
+        "format": "{icon} {volume}",
         "rotate": 0,
         "format-muted": "<span font='12'>󰝟</span>",
         "on-click": "pavucontrol -t 3",
-        //"on-click-middle": "volumecontrol.sh -o m",
         "on-click-middle": "/home/tinker/.local/bin/statusbar/sb-volume.sh",
-        //"on-scroll-up": "volumecontrol.sh -o i",
-        "on-scroll-up": "swayosd-client --output-volume raise",
-        // "on-scroll-up": "pamixer --allow-boost -i 5",
-        //"on-scroll-down": "volumecontrol.sh -o d",
-        "on-scroll-down": "swayosd-client --output-volume lower",
+        "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume raise",
+        "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume lower",
         "tooltip-format": "{icon}  {desc} // {volume}%",
         "scroll-step": 5,
         "format-icons": {
@@ -193,11 +216,9 @@
         "format-source": "<span font='12'>󰍬</span>",
         "format-source-muted": "",
         "on-click": "pavucontrol -t 4",
-        "on-click-middle": "swayosd-client --input-volume=mute-toggle",
-        "on-scroll-up": "swayosd-client --input-volume raise",
-        //"on-scroll-up": "volumecontrol.sh -i i",
-        "on-scroll-down": "swayosd-client --input-volume lower",
-        // "on-scroll-down": "volumecontrol.sh -i d",
+        "on-click-middle": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\" --input-volume=mute-toggle",
+        "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\" --input-volume raise",
+        "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\" --input-volume lower",
         "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
         "scroll-step": 5
     },
@@ -216,15 +237,6 @@
   "exec": "/home/tinker/.local/bin/statusbar/sb-memory.sh",
   "interval": 1
 },
-    "custom/cpuinfo": {
-        "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/cpuinfo.sh",
-        "return-type": "json",
-        "format": "{}",
-        "rotate": 0,
-        "restart-interval": 5, // once every 5 seconds
-        "tooltip": true,
-        "max-length": 1000
-    },
     "custom/gpuinfo": {
         "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/gpuinfo.sh",
         "return-type": "json",
@@ -245,17 +257,44 @@
         "tooltip": true,
         "max-length": 1000,
     },
+    "custom/cpuinfo": {
+        "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/cpuinfo.sh",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "restart-interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000
+    },
+    "cpu": {
+        "interval": 10,
+        "format-alt": "󰍛 {usage}%",
+        "rotate": 0,
+        "format": "{icon0}{icon1}{icon2}{icon3}",
+      // "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+        "format-icons": [
+          "<span color='#69ff94'>▁</span>", // green
+          "<span color='#2aa9ff'>▂</span>", // blue
+          "<span color='#f8f8f2'>▃</span>", // white
+          "<span color='#f8f8f2'>▄</span>", // white
+          "<span color='#ffffa5'>▅</span>", // yellow
+          "<span color='#ffffa5'>▆</span>", // yellow
+          "<span color='#ff9977'>▇</span>", // orange
+          "<span color='#dd532e'>█</span>"  // red
+     ]
+    },
+
 
 "custom/power": {
-    "format": "⏻ ",
-    "exec": "echo ; echo 󰟡 power // blur",
+    "format": "⏻",
+    "exec": "echo ; echo ⏻ power",
     "on-click": "wlogout",
     "on-click-right": "wlogout",
     "interval" : 86400, // once every day
     "tooltip": true
 },
     "custom/refreshbar": {
-        "format": " {}",
+        "format": "",
         "rotate": 0,
         "exec": "echo ; echo   refresh bar",
         "on-click": "sleep 0.1 && refresh_waybar.sh",
@@ -264,7 +303,7 @@
     },
 
     "tray": {
-        "icon-size": 16,
+        "icon-size": 18,
         "rotate": 0,
         "spacing": 5
     },

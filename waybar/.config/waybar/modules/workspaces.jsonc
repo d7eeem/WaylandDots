@@ -1,7 +1,7 @@
-    "hyprland/workspaces": {
+  "hyprland/workspaces": {
       "active-only": false,
       "all-outputs": true,
-      "format": "{name}",
+      "format": "{icon}",
       "show-special": false,
       "on-click": "activate",
       "on-scroll-up": "hyprctl dispatch workspace +1",
@@ -14,7 +14,17 @@
         "5": []
       },
       "format-icons": {
-        "active": " ",
-        "default": " "
-      }
-    },
+        // "active": "",
+        // "default": "",
+        "1": "一",
+		    "2": "二",
+		    "3": "三",
+		    "4": "四",
+		    "5": "五",
+        "6": "六",
+        "7": "七",
+        "8": "八",
+        "9": "九",
+        "10":"十"
+    }
+ },

@@ -1,7 +1,5 @@
 	"wlr/taskbar": {
 		"format": "{icon}",
-		"rotate": ${r_deg},
-		"icon-size": ${i_task},
 		"tooltip-format": "{title}",
 		"on-click": "activate",
 		"on-click-middle": "close",
