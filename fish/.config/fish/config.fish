@@ -73,7 +73,7 @@ function history
     builtin history --show-time='%F %T '
 end
 
-function backup --argument filename
+function bak --argument filename
     cp $filename $filename.bak
 end
 
@@ -87,6 +87,10 @@ function copy
     else
         command cp $argv
     end
+end
+
+function ssh
+    env TERM=xterm-256color ssh $argv
 end
 
 starship init fish | source

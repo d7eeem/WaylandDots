@@ -1,12 +1,15 @@
-
 @import "colors.css";
+
+* {
+  background-image: none;
+  box-shadow: none;
+}
 
 window {
     font-family: Hack Nerd Font Mono;
     font-size: 30px;
     color:  @background;
     background-color: alpha(@on_primary,0.2);
-
 } 
 
 button {

@@ -105,7 +105,12 @@ esac
 
 # list modules and generate theme style
 
-export modules_ls=$(grep -m 1 '".*.": {'  --exclude="$modules_dir/footer.jsonc" $modules_dir/*.jsonc | cut -d '"' -f 2 | awk -F '/' '{ if($1=="custom") print "#custom-"$NF"," ; else print "#"$NF","}')
+export modules_ls=$(grep -m 1 '".*.": {'  --exclude="$modules_dir/footer.jsonc"  --exclude="$modules_dir/audio_idle_inhibitor.jsonc" \
+  --exclude="$modules_dir/files.jsonc" \
+  --exclude="$modules_dir/discord.jsonc" \
+  --exclude="$modules_dir/heroic.jsonc" \
+  --exclude="$modules_dir/steam.jsonc" \
+  $modules_dir/*.jsonc | cut -d '"' -f 2 | awk -F '/' '{ if($1=="custom") print "#custom-"$NF"," ; else print "#"$NF","}')
 envsubst < $in_file > $out_file
 
 

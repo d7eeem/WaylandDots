@@ -102,7 +102,7 @@ apply_hyprlock() {
   done
 
   # Apply the config
-  cp "$CACHE_DIR/user/generated/hypr/hyprlock.conf" "$XDG_CONFIG_HOME/hypr/hyprlock.conf" && hyprctl reload
+  cp "$CACHE_DIR/user/generated/hypr/hyprlock.conf" "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
 }
 
 apply_gtk() {
@@ -158,10 +158,10 @@ apply_gtk() {
   # Set the color scheme
   if [[ "$current_theme" == *"dark"* ]] || [[ "$current_scheme" == *"prefer-dark"* ]]; then
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    gsettings set org.gnome.desktop.interface gtk-theme 'Everforest-Dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Colloid-Orange-Dark-Everforest'
   else
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
-    gsettings set org.gnome.desktop.interface gtk-theme 'Everforest-Dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Colloid-Orange-Dark-Everforest'
   fi
 
   # Force GTK to reload the theme
@@ -437,7 +437,6 @@ EOF
     magick "${imgpath}[0]" -strip -scale 10% -blur 0x3 -resize 100% "/home/tinker/.cache/theme_engine/wall.blur"
   }
 
-  Apply themes
   apply_hyprland &
   apply_hyprlock &
   apply_swaync &

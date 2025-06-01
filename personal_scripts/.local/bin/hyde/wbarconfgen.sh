@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # read control file and initialize variables
-
+set -x
 scrDir="$(dirname "$(realpath "$0")")"
 # shellcheck disable=SC1091
 source "${scrDir}/globalcontrol.sh"
