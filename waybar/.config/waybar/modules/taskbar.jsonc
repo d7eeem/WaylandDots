@@ -1,5 +1,6 @@
 	"wlr/taskbar": {
 		"format": "{icon}",
+    "icon-theme": "Numix-Circle",
 		"tooltip-format": "{title}",
 		"on-click": "activate",
 		"on-click-middle": "close",
@@ -9,6 +10,9 @@
 		],
 		"app_ids-mapping": {
 			"firefoxdeveloperedition": "firefox-developer-edition"
-		}
+		},
+    "rewrite":  {
+      "Firefox Web Browser": "Firefox"
+    }
 	},
 

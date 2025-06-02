@@ -15,9 +15,9 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","custom/l_end","custom/files","custom/heroic","custom/steam","custom/discord","custom/r_end","custom/l_end","custom/launcher","hyprland/window","custom/r_end","custom/l_end","wlr/taskbar","custom/r_end","custom/l_end","custom/nettraf","custom/r_end","custom/l_end","custom/player","custom/r_end","custom/padd"],
+	"modules-left": ["custom/padd","custom/l_end","custom/files","custom/heroic","custom/steam","custom/discord","custom/cliphist","custom/r_end","custom/l_end","custom/launcher","hyprland/window","custom/r_end","custom/l_end","wlr/taskbar","custom/r_end","custom/l_end","custom/nettraf","custom/r_end","custom/l_end","custom/player","custom/r_end","custom/padd"],
 	"modules-center": ["custom/padd","custom/l_end","custom/layout","custom/r_end","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/recorder","custom/audio_idle_inhibitor","custom/l_end","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","cpu","custom/r_end","custom/l_end","custom/power","custom/refreshbar","tray","custom/r_end","custom/l_end","clock","custom/r_end","custom/l_end","custom/swaync","custom/r_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/recorder","custom/audio_idle_inhibitor","custom/l_end","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","custom/r_end","custom/l_end","custom/power","custom/refreshbar","tray","custom/r_end","custom/l_end","clock","custom/r_end","custom/l_end","custom/swaync","custom/r_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
@@ -56,6 +56,17 @@
     "interval": 86400,
     "tooltip": true
 },
+    "custom/cliphist": {
+        "format": "󰅇",
+        "rotate": 0,
+        "exec": "echo ; echo 󰅇 clipboard history",
+        "on-click": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh c",
+        "on-click-right": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh d",
+        "on-click-middle": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh w",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
   "custom/launcher": {
     "format": "",
     "on-click": "/home/tinker/.local/bin/statusbar/sb-launcher.sh",
@@ -101,6 +112,7 @@
     //
 	"wlr/taskbar": {
 		"format": "{icon}",
+    "icon-theme": "Numix-Circle",
 		"tooltip-format": "{title}",
 		"on-click": "activate",
 		"on-click-middle": "close",
@@ -110,7 +122,10 @@
 		],
 		"app_ids-mapping": {
 			"firefoxdeveloperedition": "firefox-developer-edition"
-		}
+		},
+    "rewrite":  {
+      "Firefox Web Browser": "Firefox"
+    }
 	},
 
     "custom/nettraf": {
@@ -266,24 +281,6 @@
         "tooltip": true,
         "max-length": 1000
     },
-    "cpu": {
-        "interval": 10,
-        "format-alt": "󰍛 {usage}%",
-        "rotate": 0,
-        "format": "{icon0}{icon1}{icon2}{icon3}",
-      // "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
-        "format-icons": [
-          "<span color='#69ff94'>▁</span>", // green
-          "<span color='#2aa9ff'>▂</span>", // blue
-          "<span color='#f8f8f2'>▃</span>", // white
-          "<span color='#f8f8f2'>▄</span>", // white
-          "<span color='#ffffa5'>▅</span>", // yellow
-          "<span color='#ffffa5'>▆</span>", // yellow
-          "<span color='#ff9977'>▇</span>", // orange
-          "<span color='#dd532e'>█</span>"  // red
-     ]
-    },
-
 
 "custom/power": {
     "format": "⏻",
