@@ -5,21 +5,25 @@ io.gitlab.adhami3310.Impression                  # Impression
 com.github.zocker_160.SyncThingy                 # Syncthing
 com.usebottles.bottles                           # Bottles
 io.github.dimtpap.coppwr                         # Coppwr
-
 # ------------------------------------------- // Browser
 com.brave.Browser                              # Brave
-
 # ------------------------------------------- // Productivity
 md.obsidian.Obsidian                           # Obsidian
 com.logseq.Logseq                              # Note taking app logseq
-
 # ------------------------------------------- // Image/Graphics
 org.inkscape.Inkscape                            # Inkscape
 org.upscayl.Upscayl                              # ImageUpscaler
-
 # ------------------------------------------- // Audio/Video
 com.github.iwalton3.jellyfin-mpv-shim          # Jellyfin MPV Shim
-
 # ------------------------------------------- // Gaming
 #com.github.Matoking.protontricks             # ProtonTricks
 com.vysp3r.ProtonPlus
+cafe.avery.Delfin
+com.mattjakeman.ExtensionManager
+com.nextcloud.desktopclient.nextcloud
+io.github.nozwock.Packet                      # send via bluetooth
+it.mijorus.gearlever
+org.gimp.GIMP 
+org.gnome.gitlab.somas.Apostrophe 
+page.tesk.Refine
+page.kramo.Cartridges
