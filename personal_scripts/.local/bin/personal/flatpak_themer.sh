@@ -14,5 +14,5 @@ export ACCENT="mauve"
 # Set the theme
 
 
-sudo flatpak override --env=GTK_THEME="Colloid-Orange-Dark-Everforest"
+sudo flatpak override --env=GTK_THEME="Everforest-Dark"
 #sudo flatpak override --env=GTK_THEME="catppuccin-${FLAVOR}-${ACCENT}-standard+default"

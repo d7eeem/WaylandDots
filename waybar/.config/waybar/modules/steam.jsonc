@@ -1,5 +1,5 @@
     "custom/steam": {
-        "format": "",
+        "format": "S",
         "rotate": ${r_deg},
         "exec": "echo ; echo  Steam",
         "on-click": "sleep 0.1 && steam",

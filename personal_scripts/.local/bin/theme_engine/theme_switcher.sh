@@ -52,13 +52,13 @@ get_cursor_pos() {
 }
 
 apply_hyprland() {
-  if [ ! -f "$CONFIG_DIR/scripts/templates/hypr/hyprland/colors.conf" ]; then
+  if [ ! -f "$CONFIG_DIR/scripts/templates/hypr/themes/colors.conf" ]; then
     echo "Template file not found for Hyprland colors. Skipping that."
     return
   fi
 
   # Copy template
-  cp "$CONFIG_DIR/scripts/templates/hypr/hyprland/colors.conf" "$CACHE_DIR/user/generated/hypr/colors.conf"
+  cp "$CONFIG_DIR/scripts/templates/hypr/themes/colors.conf" "$CACHE_DIR/user/generated/hypr/colors.conf"
 
   # Replace color variables
   for i in "${!colorlist[@]}"; do
@@ -75,7 +75,7 @@ apply_hyprland() {
   done
 
   # Copy to hyprland config
-  cp "$CACHE_DIR/user/generated/hypr/colors.conf" "$XDG_CONFIG_HOME/hypr/hyprland/colors.conf"
+  cp "$CACHE_DIR/user/generated/hypr/colors.conf" "$XDG_CONFIG_HOME/hypr/themes/colors.conf"
 }
 
 apply_hyprlock() {

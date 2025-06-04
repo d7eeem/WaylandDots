@@ -8,10 +8,21 @@
 }
 
 @import "theme.css";
+#window {
+    border-radius: 7px;
+}
 
 window#waybar {
     background: @bar-bg;
     color: @main-fg;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+window#waybar.empty #window {
+    background-color: transparent;
 }
 
 tooltip {
@@ -117,6 +128,7 @@ tooltip {
     background: #F65C13;
     color: #ffffff;
 }
+#custom-cliphist,
 #custom-discord,
 #custom-heroic,
 #custom-steam,
@@ -136,16 +148,23 @@ tooltip {
   color: @wb-act-color;
   padding-right: 5px;
   font-size: 16px;
-  background: none;
+  text-shadow: none;
+  background: transparent;
+  opacity: 1;
+  margin: 4px 0px 4px 0px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
+
+
 #backlight,
 #bluetooth,
-#custom-cliphist,
 #clock,
 #custom-cpuinfo,
 #cpu,
 #custom-gpuinfo,
 #custom-gpu,
+#idle_inhibitor,
 #idle_inhibitor,
 #custom-keybindhint,
 #language,
@@ -162,6 +181,7 @@ tooltip {
 #pulseaudio,
 #custom-recorder,
 #custom-refreshbar,
+#custom-sb-clock,
 #custom-sb-memory,
 #custom-swaync,
 #taskbar,

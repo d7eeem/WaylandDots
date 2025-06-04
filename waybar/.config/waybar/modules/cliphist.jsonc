@@ -1,5 +1,5 @@
     "custom/cliphist": {
-        "format": "󰅇",
+        "format": "C",
         "rotate": ${r_deg},
         "exec": "echo ; echo 󰅇 clipboard history",
         "on-click": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh c",

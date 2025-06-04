@@ -15,15 +15,35 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","custom/l_end","custom/files","custom/heroic","custom/steam","custom/discord","custom/cliphist","custom/r_end","custom/l_end","custom/launcher","hyprland/window","custom/r_end","custom/l_end","wlr/taskbar","custom/r_end","custom/l_end","custom/nettraf","custom/r_end","custom/l_end","custom/player","custom/r_end","custom/padd"],
-	"modules-center": ["custom/padd","custom/l_end","custom/layout","custom/r_end","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/recorder","custom/audio_idle_inhibitor","custom/l_end","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","custom/r_end","custom/l_end","custom/power","custom/refreshbar","tray","custom/r_end","custom/l_end","clock","custom/r_end","custom/l_end","custom/swaync","custom/r_end","custom/padd"],
+	"modules-left": ["custom/padd","custom/rl_end","wlr/taskbar","custom/rr_end","custom/rl_end","custom/files","custom/heroic","custom/steam","custom/discord","custom/cliphist","custom/rr_end","custom/rl_end","custom/nettraf","custom/rr_end","hyprland/window","custom/padd"],
+	"modules-center": ["custom/padd","custom/recorder","custom/rl_end","custom/layout","hyprland/workspaces","custom/rr_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/audio_idle_inhibitor","custom/rl_end","idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","custom/rr_end","custom/rl_end","custom/power","custom/refreshbar","tray","custom/rr_end","custom/rl_end","clock","custom/swaync","custom/rr_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
 
+	"wlr/taskbar": {
+		"format": "{icon}",
+    "icon-theme": "Numix-Circle",
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"Alacritty",
+      "kitty",
+      "steam",
+      "discord"
+		],
+		"app_ids-mapping": {
+			"firefoxdeveloperedition": "firefox-developer-edition"
+		},
+    "rewrite":  {
+      "Mozilla Firefox": "Firefox"
+    }
+	},
+
     "custom/files": {
-        "format": "",
+        "format": "F",
         "rotate": 0,
         "exec": "echo ; echo  files",
         "on-click": "sleep 0.1 && nautilus --new-window",
@@ -32,7 +52,7 @@
     },
 
     "custom/heroic": {
-        "format": "󰮡",
+        "format": "H",
         "rotate": 0,
         "exec": "echo ; echo  heroic",
         "on-click": "sleep 0.1 && heroic",
@@ -41,7 +61,7 @@
     },
 
     "custom/steam": {
-        "format": "",
+        "format": "S",
         "rotate": 0,
         "exec": "echo ; echo  Steam",
         "on-click": "sleep 0.1 && steam",
@@ -50,14 +70,14 @@
     },
 
 "custom/discord": {
-    "format": "",
+    "format": "D",
     "exec": "echo '󰙯'",
     "on-click": "sleep 0.1 && discord",
     "interval": 86400,
     "tooltip": true
 },
     "custom/cliphist": {
-        "format": "󰅇",
+        "format": "C",
         "rotate": 0,
         "exec": "echo ; echo 󰅇 clipboard history",
         "on-click": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh c",
@@ -67,90 +87,33 @@
         "tooltip": true
     },
 
-  "custom/launcher": {
-    "format": "",
-    "on-click": "/home/tinker/.local/bin/statusbar/sb-launcher.sh",
-    "tooltip-format": "Launch your favorite apps"
-  },
+    "custom/nettraf": {
+      "exec": "/home/tinker/.local/bin/statusbar/sb-nettraf.sh",
+      "restart-interval": 1
+    },
     "hyprland/window": {
         "format": "{}",
         "rotate": 0,
         "separate-outputs": true,
         "rewrite": {
-            "(.*)Zen Browser": "Zen Browser ",
+            "(.*)Zen Browser": " Zen  ",
             "title<.*youtube.*>": "",
-            "(.*) - fish": "> [$1]",
+            "(.*) - fish": " > [$1] ",
             "kiTTY": "$1  ",
-            "(.*)Steam": "Steam 󰓓",
-            "(.*) - Brave": "$1 ",
-            "New Tab - Brave": "Brave ",
-            "(.*)Brave": "Brave ",
-            "(.*) - Discord": "$1  "
+            "(.*)Steam": " Steam 󰓓 ",
+            "(.*) - Brave": " Brave  ",
+            "New Tab - Brave": " Brave  ",
+            "(.*) - Discord": " $1  "
         },
         "max-length": 10
     },
-    // "hyprland/window": {
-    //     "format": "{}",
-    //     "rotate": 0,
-    //     "separate-outputs": true,
-    //     "rewrite": {
-    //         "tinker@luna:(.*)": "$1 ",
-    //         "(.*) — Mozilla Firefox": "$1 󰈹",
-    //         "(.*) — Ablaze Floorp": "$1 - floorp 󰈹",
-    //         "(.*)Mozilla Firefox": "Firefox 󰈹",
-    //         "(.*) — Dolphin": "$1 󰉋",
-    //         "(.*)Steam": "Steam 󰓓",
-    //         "(.*) - Brave": "$1 ",
-    //         "New Tab - Brave": "Brave ",
-    //         "(.*)Brave": "Brave ",
-    //         "(.*) - Discord": "$1  ",
-    //         "(.*?)-\\s*YouTube(.*)": "$1󰗃", 
-    //         "(.*?\\s)YouTube(.*)": "$1YouTube 󰗃"
-    //     },
-    //     "max-length": 25
-    // },
-    //
-	"wlr/taskbar": {
-		"format": "{icon}",
-    "icon-theme": "Numix-Circle",
-		"tooltip-format": "{title}",
-		"on-click": "activate",
-		"on-click-middle": "close",
-		"ignore-list": [
-			"Alacritty",
-      "kitty"
-		],
-		"app_ids-mapping": {
-			"firefoxdeveloperedition": "firefox-developer-edition"
-		},
-    "rewrite":  {
-      "Firefox Web Browser": "Firefox"
-    }
-	},
-
-    "custom/nettraf": {
-      "exec": "/home/tinker/.local/bin/statusbar/sb-nettraf.sh",
-      "restart-interval": 1
-    },
-    "custom/player": {
-        "exec": "/home/tinker/.local/bin/hyde/mediaplayer.py",
-        "format": "󰝚 {}",
-        "none": "",
-        "rotate": 0,
-        "return-type": "json",
-        "on-click": "swayosd-client --playerctl play-pause",
-        // "on-click": "playerctl play-pause --all-players",
-        "on-click-right": "swayosd-client --playerctl next",
-        // "on-click-right": "playerctl next --all-players",
-        "on-click-middle": "swayosd-client --playerctl prev",
-        // "on-click-middle": "playerctl previous --all-players",
-        "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume raise",
-        "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume lower",
-        "max-length": 25,
-        "escape": true,
-        "tooltip": true
-    },
-
+"custom/recorder": {
+    "format": "{}",
+    "exec": "~/.local/bin/personal/screencapstatus.sh",
+    "interval": 1,
+    "return-type": "json",
+    "on-click": "pkill -x wf-recorder"
+},
     "custom/layout": {
       "exec": "/home/tinker/.local/bin/statusbar/sb-layoutcheacker.sh",
       "restart-interval": 1
@@ -185,13 +148,6 @@
         "10":"十"
     }
  },
-"custom/recorder": {
-    "format": "{}",
-    "exec": "~/.local/bin/personal/screencapstatus.sh",
-    "interval": 1,
-    "return-type": "json",
-    "on-click": "pkill -x wf-recorder"
-},
 "custom/audio_idle_inhibitor": {
 	  	  "format": "{icon}",
 	  	  "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
@@ -200,10 +156,20 @@
 	  	  "format-icons": {
 	  	  	  "output": "",
 	  	  	  "input": "",
-	  	  	  "output-input": "  ",
+	  	  	  "output-input": " ",
 	  	  	  "none": ""
 	  	}
 	  },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "rotate": 0,
+        "format-icons": {
+            "activated": "",
+            "deactivated": "󰛊"
+        },
+        "tooltip-format-activated":"Caffeine Mode Active",
+        "tooltip-format-deactivated":"Caffeine Mode Inactive"
+    },
     "pulseaudio": {
         "format": "{icon} {volume}",
         "rotate": 0,

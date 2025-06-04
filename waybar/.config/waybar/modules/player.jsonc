@@ -14,6 +14,7 @@
         "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume lower",
         "max-length": 25,
         "escape": true,
-        "tooltip": true
+        "tooltip": true,
+        "hide-empty-text": true
     },
 

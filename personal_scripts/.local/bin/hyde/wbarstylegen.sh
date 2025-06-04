@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 
 # detect hypr theme and initialize variables
@@ -10,7 +10,7 @@ modules_dir="$waybar_dir/modules"
 conf_ctl="$waybar_dir/config.ctl"
 in_file="$waybar_dir/modules/style.css"
 out_file="$waybar_dir/style.css"
-src_file="${confDir}/hypr/themes/theme.conf"
+src_file="${confDir}/hypr/themes/colors.conf"
 
 
 # calculate height from control file or monitor res
@@ -103,21 +103,32 @@ case ${w_position} in
 esac
 
 
+#
+# hypr_border=`awk -F '=' '{if($1~" rounding ") print $2}' $src_file | sed 's/ //g'`
+# if [ "$hypr_border" == "0" ] ; then
+#     sed -i "/border-radius: /c\    border-radius: 0px;" $out_file
+# fi
+#
+
+font_name="Hack Nerd Font Propo"
+export font_name=${font_name:-"Hack Nerd Font Propo"}
+
 # list modules and generate theme style
+export modules_ls
+# modules_ls=$(grep -m 1 '".*.": {'  --exclude="$modules_dir/footer.jsonc" "${modules_dir}"/*.jsonc | cut -d '"' -f 2 | awk -F '/' '{ if($1=="custom") print "#custom-"$NF"," ; else print "#"$NF","}')
+modules_ls=$(grep -m 1 '".*.": {' --exclude="$modules_dir/footer.jsonc" \
+   --exclude="$modules_dir/audio_idle_inhibitor.jsonc" \
+   --exclude="$modules_dir/files.jsonc" \
+   --exclude="$modules_dir/discord.jsonc" \
+   --exclude="$modules_dir/heroic.jsonc" \
+   --exclude="$modules_dir/steam.jsonc" \
+   --exclude="$modules_dir/cliphist.jsonc" \
+   "${modules_dir}"/*.jsonc | cut -d '"' -f 2 | awk -F '/' '{print ($1=="custom" ? "#custom-"$NF : "#"$NF)","}')
+envsubst <"$in_file" >"$out_file"
 
-export modules_ls=$(grep -m 1 '".*.": {'  --exclude="$modules_dir/footer.jsonc"  --exclude="$modules_dir/audio_idle_inhibitor.jsonc" \
-  --exclude="$modules_dir/files.jsonc" \
-  --exclude="$modules_dir/discord.jsonc" \
-  --exclude="$modules_dir/heroic.jsonc" \
-  --exclude="$modules_dir/steam.jsonc" \
-  $modules_dir/*.jsonc | cut -d '"' -f 2 | awk -F '/' '{ if($1=="custom") print "#custom-"$NF"," ; else print "#"$NF","}')
-envsubst < $in_file > $out_file
-
-
-# override rounded couners
-
-hypr_border=`awk -F '=' '{if($1~" rounding ") print $2}' $src_file | sed 's/ //g'`
-if [ "$hypr_border" == "0" ] ; then
-    sed -i "/border-radius: /c\    border-radius: 0px;" $out_file
+# override rounded corners
+hypr_border=$(awk -F '=' '{if($1~" rounding ") print $2}' "$src_file" | sed 's/ //g')
+hypr_border=${hypr_border:-$WAYBAR_BORDER_RADIUS}
+if [ "$hypr_border" == "0" ] || [ -z "$hypr_border" ]; then
+    sed -i "/border-radius: /c\    border-radius: 0px;" "$out_file"
 fi
-

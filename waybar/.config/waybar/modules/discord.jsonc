@@ -1,5 +1,5 @@
 "custom/discord": {
-    "format": "",
+    "format": "D",
     "exec": "echo '󰙯'",
     "on-click": "sleep 0.1 && discord",
     "interval": 86400,

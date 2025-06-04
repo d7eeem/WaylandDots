@@ -1,5 +1,5 @@
     "custom/heroic": {
-        "format": "󰮡",
+        "format": "H",
         "rotate": ${r_deg},
         "exec": "echo ; echo  heroic",
         "on-click": "sleep 0.1 && heroic",
