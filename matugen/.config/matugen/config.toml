@@ -1,0 +1,6 @@
+[config]
+version_check = false
+
+[templates.wlogout]
+input_path = './templates/colors.css'
+output_path = '~/.config/wlogout/colors.css'
