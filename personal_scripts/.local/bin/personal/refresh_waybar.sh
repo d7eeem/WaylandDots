@@ -14,4 +14,11 @@
 #waybar --config "${waybar_dir}"/config.jsonc --style "${waybar_dir}"/style.css > /dev/null 2>&1 &
 
 
-~/.local/bin/hyde/wbarconfgen.sh n
+case "$1" in
+  C)
+    ~/.local/bin/hyde/wbarconfgen.sh
+    ;;
+  n)
+    ~/.local/bin/hyde/wbarconfgen.sh n
+    ;;
+esac

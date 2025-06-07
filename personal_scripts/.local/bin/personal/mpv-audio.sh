@@ -10,6 +10,6 @@
 if [ -n "$1" ];then  
     mpv --no-audio-display --volume=50 "$1" 
   else
-    du -a /home/id7eeem/Downloads  /home/id7eeem/Media | cut -f2- | grep 'mp3$\|ogg$\|wav$\|m4a$' | fzf | xargs -I '{}' mpv --no-audio-display --volume=50 {}
+    du -a /home/$USER | cut -f2- | grep 'mp3$\|ogg$\|wav$\|m4a$' | fzf | xargs -I '{}' mpv --no-audio-display --volume=50 {}
 
 fi
