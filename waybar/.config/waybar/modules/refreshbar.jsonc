@@ -2,7 +2,8 @@
         "format": "",
         "rotate": ${r_deg},
         "exec": "echo ; echo   refresh bar",
-        "on-click": "sleep 0.1 && refresh_waybar.sh",
+        "on-click": "sleep 0.1 && refresh_waybar.sh c",
+        "on-click-right": "sleep 0.1 && refresh_waybar.sh n",
         "interval" : 86400, // once every day
         "tooltip": true
     },

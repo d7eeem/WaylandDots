@@ -40,7 +40,7 @@ tooltip {
 #workspaces button {
     box-shadow: none;
     text-shadow: none;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 7px;
     padding: 0 3px;
     margin: 0;
     color: @main-fg;
@@ -79,24 +79,38 @@ tooltip {
 
 }
 
+#taskbar {
+    color: @main-fg;
+    background: @main-bg;
+    opacity: 1;
+    margin: 4px 0px 4px 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 7px;
+}
+#taskbar.empty {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
 #taskbar button {
     box-shadow: none;
 	  text-shadow: none;
     padding: 0px;
-    border-radius: 9px;
+    border-radius: 7px;
     margin-top: 3px;
     margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-left: 6px;
     padding-right: 3px;
-    margin-right: 0px;
     color: @wb-color;
     animation: tb_normal 20s ease-in-out 1;
 }
 
 #taskbar button.active {
     background: @wb-hvr-bg;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 7px;
     padding-left: 10px;
     color: @wb-hvr-fg;
     animation: ws_hover 20s ease-in-out 0;
@@ -105,8 +119,8 @@ tooltip {
 
 #taskbar button:hover {
     background: @wb-hvr-bg;
-    border-radius: 15px 15px 15px 15px;
-    padding-left: 10px;
+    border-radius: 7px;
+    padding-left: 7px;
     color: @wb-hvr-fg;
     animation: ws_hover 20s ease-in-out 0;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
@@ -120,7 +134,7 @@ tooltip {
     min-height: 10px
 }
 #custom-recorder.recording {
-    border-radius: 15px;
+    border-radius: 7px;
     margin-left: 3px;
     margin-right: 3px;
     padding-left: 12px;
@@ -172,9 +186,6 @@ ${modules_ls}
     padding-${x4}: ${g_paddin}px;
 }
 
-#taskbar {
-    padding: 0px;
-}
 #custom-r_end {
     border-radius: ${x1rb_radius}px ${x2rb_radius}px ${x3rb_radius}px ${x4rb_radius}px;
     margin-${x4}: ${e_margin}px;

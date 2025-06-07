@@ -15,9 +15,9 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","custom/rl_end","wlr/taskbar","custom/rr_end","custom/rl_end","custom/files","custom/heroic","custom/steam","custom/discord","custom/cliphist","custom/rr_end","custom/rl_end","custom/nettraf","custom/rr_end","hyprland/window","custom/padd"],
+	"modules-left": ["custom/padd","wlr/taskbar","custom/rl_end","custom/files","custom/heroic","custom/steam","custom/discord","custom/cliphist","custom/rr_end","custom/rl_end","custom/nettraf","custom/rr_end","hyprland/window","custom/padd"],
 	"modules-center": ["custom/padd","custom/recorder","custom/rl_end","custom/layout","hyprland/workspaces","custom/rr_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/audio_idle_inhibitor","custom/rl_end","idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","custom/rr_end","custom/rl_end","custom/power","custom/refreshbar","tray","custom/rr_end","custom/rl_end","clock","custom/swaync","custom/rr_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/audio_idle_inhibitor","custom/rl_end","idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","custom/rr_end","custom/rl_end","hyprland/language","custom/power","custom/refreshbar","tray","custom/rr_end","custom/rl_end","clock","custom/swaync","custom/rr_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
@@ -247,6 +247,13 @@
         "tooltip": true,
         "max-length": 1000
     },
+    "hyprland/language": {
+        "format": "{short}",
+        "rotate": 0,
+        "on-click": "/home/tinker/WaylandDots/personal_scripts/.local/bin/hyde/keyboardswitch.sh",
+
+    },
+
 
 "custom/power": {
     "format": "⏻",
@@ -260,7 +267,8 @@
         "format": "",
         "rotate": 0,
         "exec": "echo ; echo   refresh bar",
-        "on-click": "sleep 0.1 && refresh_waybar.sh",
+        "on-click": "sleep 0.1 && refresh_waybar.sh c",
+        "on-click-right": "sleep 0.1 && refresh_waybar.sh n",
         "interval" : 86400, // once every day
         "tooltip": true
     },
