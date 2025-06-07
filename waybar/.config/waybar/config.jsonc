@@ -16,8 +16,8 @@
 // positions generated based on config.ctl //
 
 	"modules-left": ["custom/padd","wlr/taskbar","custom/rl_end","custom/files","custom/heroic","custom/steam","custom/discord","custom/cliphist","custom/rr_end","custom/rl_end","custom/nettraf","custom/rr_end","hyprland/window","custom/padd"],
-	"modules-center": ["custom/padd","custom/recorder","custom/rl_end","custom/layout","hyprland/workspaces","custom/rr_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/audio_idle_inhibitor","custom/rl_end","idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","custom/rr_end","custom/rl_end","hyprland/language","custom/power","custom/refreshbar","tray","custom/rr_end","custom/rl_end","clock","custom/swaync","custom/rr_end","custom/padd"],
+	"modules-center": ["custom/padd","custom/recorder","custom/rl_end","hyprland/workspaces","custom/rr_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/audio_idle_inhibitor","custom/rl_end","idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","custom/rr_end","custom/rl_end","hyprland/language","custom/power","custom/refreshbar","tray","custom/rr_end","custom/rl_end","clock","custom/swaync","custom/rr_end","custom/layout","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
@@ -114,10 +114,6 @@
     "return-type": "json",
     "on-click": "pkill -x wf-recorder"
 },
-    "custom/layout": {
-      "exec": "/home/tinker/.local/bin/statusbar/sb-layoutcheacker.sh",
-      "restart-interval": 1
-    },
   "hyprland/workspaces": {
       "active-only": false,
       "all-outputs": true,
@@ -267,8 +263,9 @@
         "format": "",
         "rotate": 0,
         "exec": "echo ; echo   refresh bar",
-        "on-click": "sleep 0.1 && refresh_waybar.sh c",
-        "on-click-right": "sleep 0.1 && refresh_waybar.sh n",
+        "on-click": "sleep 0.1 && /home/tinker/WaylandDots/personal_scripts/.local/bin/hyde/wbarconfgen.sh",
+        "on-click-right": "sleep 0.1 && /home/tinker/WaylandDots/personal_scripts/.local/bin/hyde/wbarconfgen.sh n",
+        "on-click-middle": "sleep 0.1 && /home/tinker/WaylandDots/personal_scripts/.local/bin/hyde/wbarconfgen.sh p",
         "interval" : 86400, // once every day
         "tooltip": true
     },
@@ -324,6 +321,10 @@
     "on-click-right": "swaync-client -cp",
     "escape": true
   },
+    "custom/layout": {
+      "exec": "/home/tinker/.local/bin/statusbar/sb-layoutcheacker.sh",
+      "restart-interval": 1
+    },
 
 // modules for padding //
 

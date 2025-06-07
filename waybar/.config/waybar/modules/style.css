@@ -169,6 +169,17 @@ tooltip {
   padding-left: 4px;
   padding-right: 4px;
 }
+#custom-layout {
+  color: @wb-act-color;
+  padding-right: 5px;
+  font-size: 20px;
+  text-shadow: none;
+  background: transparent;
+  opacity: 1;
+  margin: 4px 0px 4px 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
 
 
 ${modules_ls}

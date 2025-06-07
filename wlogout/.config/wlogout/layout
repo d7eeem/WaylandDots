@@ -1,8 +1,8 @@
 {
     "label" : "shutdown",
     "action" : "systemctl poweroff",
-    "keybind" : "s"
-    "text": "Shutdown"
+    "keybind" : "p"
+    "text": "shutdown"
 }
 {
     "label" : "reboot",
@@ -31,6 +31,6 @@
 {
     "label" : "hibernate",
     "action" : "systemctl suspend",
-    "keybind" : "l"
+    "keybind" : "s"
     "text": "suspend"
 }

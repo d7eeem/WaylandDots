@@ -2,8 +2,9 @@
         "format": "",
         "rotate": ${r_deg},
         "exec": "echo ; echo   refresh bar",
-        "on-click": "sleep 0.1 && refresh_waybar.sh c",
-        "on-click-right": "sleep 0.1 && refresh_waybar.sh n",
+        "on-click": "sleep 0.1 && /home/tinker/WaylandDots/personal_scripts/.local/bin/hyde/wbarconfgen.sh",
+        "on-click-right": "sleep 0.1 && /home/tinker/WaylandDots/personal_scripts/.local/bin/hyde/wbarconfgen.sh n",
+        "on-click-middle": "sleep 0.1 && /home/tinker/WaylandDots/personal_scripts/.local/bin/hyde/wbarconfgen.sh p",
         "interval" : 86400, // once every day
         "tooltip": true
     },
