@@ -13,6 +13,11 @@ use = "yazi-rs/plugins:full-border"
 rev = "63f9650"
 hash = "3996fc74044bc44144b323686f887e1"
 
+[[plugin.deps]]
+use = "GrzegorzKozub/mdcat"
+rev = "7b7380a"
+hash = "40c20e6c1085d1f45309b9f148bf4f6e"
+
 [[flavor.deps]]
 use = "bennyyip/gruvbox-dark"
 rev = "91fdfa7"

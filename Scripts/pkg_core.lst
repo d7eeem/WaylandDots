@@ -46,7 +46,7 @@ mission-center
 boxbuddy
 yazi
 zen-browser-bin
-python-pywal
+python-pywal16
 
 #Window Manager
 #--------------
@@ -142,8 +142,6 @@ gpu-screen-recorder-ui
 protontricks
 winetricks
 
-
-
 #Fonts
 #-----
 adwaita-fonts
@@ -164,7 +162,6 @@ nautilus
 #----------------
 python-pillow
 python-psutil
-python-pywal
 python-pywalfox
 python-pywayland
 python-libsass
@@ -226,7 +223,6 @@ hyprshot
 matugen-bin
 sway-audio-idle-inhibit-git
 swaync
-python-pywalfox
 wf-recorder
 foot
 cliphist

@@ -37,5 +37,5 @@ rules = [
 
 [plugin]
 prepend_previewers = [
-  { name = "*.md", run = "glow" },
+  { name = "*.md", run = "mdcat" },
 ]

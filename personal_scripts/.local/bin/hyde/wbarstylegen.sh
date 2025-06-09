@@ -125,6 +125,7 @@ modules_ls=$(grep -m 1 '".*.": {' --exclude="$modules_dir/footer.jsonc" \
    --exclude="$modules_dir/cliphist.jsonc" \
    --exclude="$modules_dir/taskbar.jsonc" \
    --exclude="$modules_dir/layout.jsonc" \
+   --exclude="$modules_dir/wallchange.jsonc" \
    "${modules_dir}"/*.jsonc | cut -d '"' -f 2 | awk -F '/' '{print ($1=="custom" ? "#custom-"$NF : "#"$NF)","}')
 envsubst <"$in_file" >"$out_file"
 
