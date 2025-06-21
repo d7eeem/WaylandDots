@@ -1,0 +1,11 @@
+  "custom/scrot": {
+    "format": "󰄀",
+    "rotate": ${r_deg},
+    "exec": "echo : echo 󰄀 ScreenShot tool",
+    "on-click": "/home/tinker/.local/bin/personal/hyprshot.sh sm",
+    "on-click-right": "/home/tinker/.local/bin/personal/hyprshot.sh sw",
+    "on-click-middle": "/home/tinker/.local/bin/personal/hyprshot.sh sa",
+    "interval": 86400,
+    "tooltip": true,
+    "tooltip-format": "Left-click = fullscreen\nRight-click = window\nMiddle-click = slected area\n"
+  },

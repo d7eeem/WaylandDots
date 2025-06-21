@@ -1,4 +1,6 @@
 "custom/sb-memory": {
-  "exec": "$HOME/.local/bin/statusbar/sb-memory.sh",
+  "exec": "$HOME/.local/bin/hyde/raminfo.fish",
+  "return-type": "json",
+  "tooltip": true,
   "interval": 1
 },

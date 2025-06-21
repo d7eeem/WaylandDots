@@ -15,9 +15,9 @@
 
 // positions generated based on config.ctl //
 
-	"modules-left": ["custom/padd","wlr/taskbar","custom/rl_end","custom/files","custom/heroic","custom/steam","custom/discord","custom/cliphist","custom/wallchange","custom/rr_end","custom/rl_end","custom/nettraf","custom/rr_end","hyprland/window","custom/padd"],
+	"modules-left": ["custom/padd","wlr/taskbar","custom/rl_end","custom/brave","custom/cliphist","custom/discord","custom/files","custom/heroic","custom/steam","custom/zen","custom/rr_end","custom/rl_end","custom/nettraf","custom/rr_end","hyprland/window","custom/padd"],
 	"modules-center": ["custom/padd","custom/recorder","custom/rl_end","hyprland/workspaces","custom/rr_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/audio_idle_inhibitor","custom/rl_end","idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","custom/rr_end","custom/rl_end","hyprland/language","custom/power","custom/refreshbar","tray","custom/rr_end","custom/rl_end","clock","custom/swaync","custom/rr_end","custom/layout","custom/padd"],
+	"modules-right": ["custom/padd","custom/audio_idle_inhibitor","custom/rl_end","idle_inhibitor","pulseaudio","pulseaudio#microphone","custom/updates","custom/sb-memory","custom/gpuinfo","custom/cpuinfo","custom/rr_end","custom/rl_end","custom/scrot","hyprland/language","custom/power","custom/refreshbar","tray","custom/rr_end","custom/rl_end","clock","custom/swaync","custom/rr_end","custom/rl_end","custom/layout","custom/rr_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
@@ -42,6 +42,34 @@
     }
 	},
 
+    "custom/brave": {
+        "format": "B",
+        "rotate": 0,
+        "exec": "echo ; echo Brave",
+        "on-click": "sleep 0.1 && /home/tinker/.local/bin/personal/brave.fish",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/cliphist": {
+        "format": "C",
+        "rotate": 0,
+        "exec": "echo ; echo 󰅇 clipboard history",
+        "on-click": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh c",
+        "on-click-right": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh d",
+        "on-click-middle": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh w",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+"custom/discord": {
+    "format": "D",
+    "exec": "echo '󰙯'",
+    "exec": "echo ; echo discord",
+    "on-click": "sleep 0.1 && discord",
+    "interval": 86400,
+    "tooltip": true
+},
     "custom/files": {
         "format": "F",
         "rotate": 0,
@@ -69,31 +97,12 @@
         "tooltip": true
     },
 
-"custom/discord": {
-    "format": "D",
-    "exec": "echo '󰙯'",
-    "on-click": "sleep 0.1 && discord",
-    "interval": 86400,
-    "tooltip": true
-},
-    "custom/cliphist": {
-        "format": "C",
+    "custom/zen": {
+        "format": "Z",
         "rotate": 0,
-        "exec": "echo ; echo 󰅇 clipboard history",
-        "on-click": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh c",
-        "on-click-right": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh d",
-        "on-click-middle": "sleep 0.1 && /home/tinker/.local/bin/rofi/cliphist.sh w",
+        "exec": "echo ; echo zen",
+        "on-click": "sleep 0.1 && /home/tinker/.local/bin/personal/zen.fish",
         "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
-    "custom/wallchange": {
-        "format": "W",
-        //"format": "󰆊",
-        "rotate": 0,
-        "exec": "echo ; echo 󰆊 switch wallpaper",
-        "on-click": "setsid -f /home/tinker/.local/bin/statusbar/sb-waybarwaller.sh",
-        "interval" : 86400,
         "tooltip": true
     },
 
@@ -211,7 +220,7 @@
     },
 
     "custom/updates": {
-        "exec": "/home/tinker/.local/bin/hyde/systemupdate.sh",
+        "exec": "/home/tinker/.local/bin/hyde/systemupdate.fish",
         "return-type": "json",
         "format": "{}",
         "rotate": 0,
@@ -221,22 +230,24 @@
         "signal": 20,
     },
 "custom/sb-memory": {
-  "exec": "/home/tinker/.local/bin/statusbar/sb-memory.sh",
+  "exec": "/home/tinker/.local/bin/hyde/raminfo.fish",
+  "return-type": "json",
+  "tooltip": true,
   "interval": 1
 },
     "custom/gpuinfo": {
-        "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/gpuinfo.sh",
+        "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/gpuinfo_amd.fish",
         "return-type": "json",
         "format": "{}",
         "rotate": 0,
         "interval": 5, // once every 5 seconds
         "tooltip": true,
         "max-length": 1000,
-        "on-click": "/home/tinker/.local/bin/hyde/gpuinfo.sh --toggle",
+        "on-click": "/home/tinker/.local/bin/hyde/gpuinfo_amd.fish --toggle",
     },
 
     "custom/gpuinfo#amd": {
-        "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/gpuinfo.sh --use amd ",
+        "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/gpuinfo_amd.fish --use amd ",
         "return-type": "json",
         "format": "{}",
         "rotate": 0,
@@ -253,6 +264,17 @@
         "tooltip": true,
         "max-length": 1000
     },
+  "custom/scrot": {
+    "format": "󰄀",
+    "rotate": 0,
+    "exec": "echo : echo 󰄀 ScreenShot tool",
+    "on-click": "/home/tinker/.local/bin/personal/hyprshot.sh sm",
+    "on-click-right": "/home/tinker/.local/bin/personal/hyprshot.sh sw",
+    "on-click-middle": "/home/tinker/.local/bin/personal/hyprshot.sh sa",
+    "interval": 86400,
+    "tooltip": true,
+    "tooltip-format": "Left-click = fullscreen\nRight-click = window\nMiddle-click = slected area\n"
+  },
     "hyprland/language": {
         "format": "{short}",
         "rotate": 0,

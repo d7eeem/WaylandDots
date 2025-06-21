@@ -1,0 +1,9 @@
+    "custom/brave": {
+        "format": "B",
+        "rotate": ${r_deg},
+        "exec": "echo ; echo Brave",
+        "on-click": "sleep 0.1 && /home/tinker/.local/bin/personal/brave.fish",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+

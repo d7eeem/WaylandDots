@@ -1,5 +1,5 @@
     "custom/updates": {
-        "exec": "/home/tinker/.local/bin/hyde/systemupdate.sh",
+        "exec": "/home/tinker/.local/bin/hyde/systemupdate.fish",
         "return-type": "json",
         "format": "{}",
         "rotate": ${r_deg},

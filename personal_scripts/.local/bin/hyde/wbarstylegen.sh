@@ -122,6 +122,8 @@ modules_ls=$(grep -m 1 '".*.": {' --exclude="$modules_dir/footer.jsonc" \
    --exclude="$modules_dir/discord.jsonc" \
    --exclude="$modules_dir/heroic.jsonc" \
    --exclude="$modules_dir/steam.jsonc" \
+   --exclude="$modules_dir/brave.jsonc" \
+   --exclude="$modules_dir/zen.jsonc" \
    --exclude="$modules_dir/cliphist.jsonc" \
    --exclude="$modules_dir/taskbar.jsonc" \
    --exclude="$modules_dir/layout.jsonc" \

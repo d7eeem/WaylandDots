@@ -158,10 +158,10 @@ apply_gtk() {
   # Set the color scheme
   if [[ "$current_theme" == *"dark"* ]] || [[ "$current_scheme" == *"prefer-dark"* ]]; then
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    gsettings set org.gnome.desktop.interface gtk-theme 'Colloid-Orange-Dark-Everforest'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Everforest-Dark'
   else
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
-    gsettings set org.gnome.desktop.interface gtk-theme 'Colloid-Orange-Dark-Everforest'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Everforest-Dark'
   fi
 
   # Force GTK to reload the theme

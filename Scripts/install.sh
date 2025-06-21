@@ -33,7 +33,10 @@ while getopts idfstmh: RunStep; do
         export flg_Shell=0
         print_log -r "[shell] " -b "Reevaluate :: " "shell options"
         ;;
-    t) flg_DryRun=1 ;;
+    t)
+        flg_DryRun=1
+        flg_Install=1
+        ;;
     m) flg_ThemeInstall=0 ;;
     *)
         cat <<EOF
@@ -227,15 +230,28 @@ if [ ${flg_Service} -eq 1 ]; then
 
 EOF
 
+
     while read -r serviceChk; do
 
-        if [[ $(systemctl list-units --all -t service --full --no-legend "${serviceChk}.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "${serviceChk}.service" ]]; then
-            print_log -y "[skip] " -b "active " "Service ${serviceChk}"
+        # Handle .timer units separately
+        if [[ "$serviceChk" == *.timer ]]; then
+            if systemctl list-units --all -t timer --full --no-legend "${serviceChk}" | sed 's/^\s*//g' | cut -f1 -d' ' | grep -Fxq "${serviceChk}"; then
+                print_log -y "[skip] " -b "active " "Timer ${serviceChk}"
+            else
+                print_log -y "enable" "Timer ${serviceChk}"
+                if [ "$flg_DryRun" -ne 1 ]; then
+                    sudo systemctl enable "${serviceChk}"
+                fi
+            fi
         else
-            print_log -y "start" "Service ${serviceChk}"
-            if [ $flg_DryRun -ne 1 ]; then
-                sudo systemctl enable "${serviceChk}.service"
-                sudo systemctl start "${serviceChk}.service"
+            # Default: assume it's a service
+            if [[ $(systemctl list-units --all -t service --full --no-legend "${serviceChk}.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "${serviceChk}.service" ]]; then
+                print_log -y "[skip] " -b "active " "Service ${serviceChk}"
+            else
+                print_log -y "start" "Service ${serviceChk}"
+                if [ "$flg_DryRun" -ne 1 ]; then
+                    sudo systemctl enable --now "${serviceChk}.service"
+                fi
             fi
         fi
 
