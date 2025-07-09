@@ -9,7 +9,7 @@ window {
     font-family: Hack Nerd Font Mono;
     font-size: 30px;
     color:  @background;
-    background-color: alpha(@on_primary,0.2);
+    background-color: alpha(@on_primary,0.1);
 } 
 
 button {
