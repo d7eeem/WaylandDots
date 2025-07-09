@@ -1,0 +1,71 @@
+configuration {
+  show-icons: false;
+}
+
+* {
+  font: "0xProto Nerd Font Propo 12";
+  text-color: #d3c6aa;
+  background-color: #2b3339;
+}
+
+window {
+  background-color: rgba(43, 51, 57, 0.9);
+  border-radius: 12px;
+  padding: 20px;
+  width: 900px;
+  blur: true;
+  transparency: "real";
+  spacing: 30px;
+  children: [message, listview];
+}
+
+listview {
+  columns: 3;
+  lines: 2;
+  dynamic: true;
+  fixed-height: true;
+  fixed-columns: true;
+  spacing: 15px;
+  background-color: transparent;
+  scrollbar: false;
+  margin-top: 30px;
+}
+
+element {
+  padding: 20px 12px;
+  border-radius: 10px;
+  background-color: #3c4841;
+  text-color: #d3c6aa;
+  horizontal-align: 0.5;
+  vertical-align: 0.5;
+}
+
+element selected {
+  background-color: rgba(167, 192, 128, 0.2);
+  text-color: #d3c6aa;
+}
+
+element-text {
+  font: "0xProto Nerd Font Propo 14";
+  background-color: transparent;
+  text-color: inherit;
+  horizontal-align: 0.5;
+  vertical-align: 0.5;
+}
+
+message {
+  enabled: true;
+  margin: 10px 0px 0px 0px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: rgba(60, 72, 65, 0.6);
+  text-color: #9da9a0;
+  font: "0xProto Nerd Font Propo 10";
+}
+
+textbox {
+  horizontal-align: 0.5;
+  vertical-align: 0.5;
+  background-color: transparent;
+  text-color: inherit;
+}

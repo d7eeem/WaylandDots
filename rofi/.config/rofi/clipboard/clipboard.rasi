@@ -1,0 +1,16 @@
+configuration {
+    font:                "0xProto Nerd Font Propo";
+
+    dynamic:             false;
+    fixed-num-lines:     true;
+
+    display-drun:        " ";
+    drun-prompt:         " ";
+
+    drun { 
+        lines: 15;
+        columns: 1;
+    }
+}
+
+@theme "./style_1.rasi"

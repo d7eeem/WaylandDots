@@ -1,6 +1,8 @@
 
-dir="$HOME/.config/rofi/launchers/type-7"
-theme='style-9'
+#dir="/home/tinker/WaylandDots/rofi/.config/rofi/launchers/type-1"
+dir="/home/tinker/WaylandDots/rofi/.config/rofi/launchers/type-1"
+#theme='style-1"
+theme='style-2'
 
 ## Run
 rofi \
