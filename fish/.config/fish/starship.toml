@@ -3,8 +3,6 @@
 #Prompt
 format = """
 $sudo\
-$username\
-$hostname\
 $directory\
 $git_branch\
 $git_commit\
@@ -31,8 +29,6 @@ format = '[$user]($style)@'
 disabled = false
 show_always = true
 [directory]
-# truncation_length = 2
-# truncation_symbol = '…/'
 truncate_to_repo = true
 home_symbol	= ' ~'
 
@@ -40,7 +36,6 @@ home_symbol	= ' ~'
 [hostname]
 ssh_only = false
 format = '[$ssh_symbol](bold blue)[$hostname](bold red) '
-trim_at = '.companyname.com'
 disabled = false
 
 
