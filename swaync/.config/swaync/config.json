@@ -1,94 +1,105 @@
 {
-    "$schema": "/etc/xdg/swaync/configSchema.json",
-    "positionX": "right",
-    "positionY": "top",
-    "layer": "overlay",
-    "control-center-layer": "top",
-    "layer-shell": true,
-    "cssPriority": "application",
-    "control-center-width": 480,
-    "control-center-height": 695,
-    "control-center-margin-top": 10,
-    "control-center-margin-bottom": 10,
-    "control-center-margin-right": 10,
-    "control-center-margin-left": 10,
-    "notification-2fa-action": true,
-    "notification-inline-replies": true,
-    "notification-window-width": 300,
-    "notification-icon-size": 50,
-    "notification-body-image-height": 140,
-    "notification-body-image-width": 200,
-    "popup-position": "bottom-right",
-    "timeout": 6,
-    "timeout-low": 3,
-    "timeout-critical": 0,
-    "fit-to-screen": false,
-    "keyboard-shortcuts": true,
-    "image-visibility": "when-available",
-    "transition-time": 200,
-    "hide-on-clear": false,
-    "hide-on-action": true,
-    "script-fail-notify": true,
-    "widgets": [
-        "buttons-grid",
-        "volume",
-        "backlight",
-        "mpris",
-        "notifications",
-        "title"
-    ],
-    "widget-config": {
-        "title": {
-            "text": "",
-            "clear-all-button": true,
-            "button-text": "Clear"
-        },
-        "dnd": {
-            "text": "not implemented"
-        },
-        "label": {
-            "max-lines": 2,
-            "text": "Notification"
-        },
-        "mpris": {
-            "image-size": 98,
-            "image-radius": 10
-        },
-        "volume": {
-            "label": "󰕾 "
-        },
-        "backlight": {
-            "label": "󰃟 ",
-            "device": "amdgpu_bl1",
-            "min": 10
-        },
-        "buttons-grid": {
-            "actions": [
-                {
-                    "label": "   Connected",
-                    "command": "swaync-widgets wifi"
-                },
-                {
-                    "label": "󰕾  Mute",
-                    "command": "swaync-widgets mute"
-                },
-                {
-                    "label": "󰂲  Bluetooth",
-                    "command": "swaync-widgets bluetooth"
-                },
-                {
-                    "label": "  VPN",
-                    "command": "swaync-widgets vpn"
-                },
-                {
-                    "label": "  Picker",
-                    "command": "/home/tohru/.config/hypr/scripts/hyprpicker.sh"
-                },
-                {
-                    "label": "  Screenshot",
-                    "command": "/home/tohru/.config/hypr/scripts/screenshot.sh"
-                }
-            ]
-        }
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "layer-shell-cover-screen": true,
+  "cssPriority": "application",
+  "control-center-width": 480,
+  "control-center-height": 695,
+  "control-center-margin-top": 10,
+  "control-center-margin-bottom": 10,
+  "control-center-margin-right": 10,
+  "control-center-margin-left": 10,
+  "notification-2fa-action": true,
+  "notification-inline-replies": true,
+  "notification-window-width": 300,
+  "notification-icon-size": 50,
+  "notification-body-image-height": 140,
+  "notification-body-image-width": 200,
+  "popup-position": "bottom-right",
+  "timeout": 6,
+  "timeout-low": 5,
+  "timeout-critical": 0,
+  "fit-to-screen": false,
+  "relative-timestamps": true,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "text-empty": "No reports",
+  "script-fail-notify": true,
+  "scripts": {
+    "example-script": {
+      "exec": "echo 'Do something...'",
+      "urgency": "Normal"
+    },
+    "example-action-script": {
+      "exec": "echo 'Do something actionable!'",
+      "urgency": "Normal",
+      "run-on": "action"
     }
+  },
+  "notification-visibility": {
+    "example-name": {
+      "state": "muted",
+      "urgency": "Low",
+      "app-name": "Spotify"
+    }
+  },
+  "widgets": [
+    "inhibitors",
+    "title",
+    "notifications",
+    "mpris",
+    "dnd",
+    "volume",
+    "buttons-grid"
+  ],
+  "widget-config": {
+    "inhibitors": {
+      "text": "Inhibitors",
+      "button-text": "Clear All",
+      "clear-all-button": true
+    },
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    },
+    "dnd": {
+      "text": "Don't disturb"
+    },
+    "label": {
+      "max-lines": 5,
+      "text": "Label Text"
+    },
+    "mpris": {
+      "image-size": 98,
+      "image-radius": 10
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "  Picker",
+          "command": "/usr/bin/hyprpicker"
+        },
+        {
+          "label": "  Screenshot",
+          "command": "/home/tinker/.local/bin/personal/hyprshot.sh sm"
+        },
+        {
+          "label": "󰕾  Mute",
+          "command": "/home/tinker/.local/bin/statusbar/sb-volume.sh"
+        },
+        {
+          "label": "󰂲  Bluetooth",
+          "command": "swaync-widgets bluetooth"
+        }
+      ]
+    }
+  }
 }
