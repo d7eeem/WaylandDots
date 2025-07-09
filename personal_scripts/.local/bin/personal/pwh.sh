@@ -1,7 +1,11 @@
-#!/bin/sh
-if [ -n "$1" ];
-then 
-  pwd | echo -n $(sed -e 's/\/home\/id7eeem/$HOME/g')/$1 | wl-copy
+#!/bin/bash
+
+# Get the current path, replacing /home/username with $HOME
+current_path="${PWD/#$HOME/\$HOME}"
+
+# If an argument is provided, append it to the path
+if [ -n "$1" ]; then
+  echo -n "$current_path/$1" | wl-copy
 else
-pwd | sed -e 's/\/home\/id7eeem/$HOME/g' | wl-copy
+  echo -n "$current_path" | wl-copy
 fi

@@ -13,7 +13,7 @@ current_layout=$(hyprctl -j getoption general:layout | jq '.str' | sed 's/"//g')
 
 # Check the current layout and print the corresponding symbol
 if [[ "$current_layout" == "dwindle" ]]; then
-  printf "φ"
+  printf "@"
 elif [[ "$current_layout" == "master" ]]; then
   echo "⊢"
 else
