@@ -1,20 +1,12 @@
-    "custom/gpuinfo": {
-        "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/gpuinfo_amd.fish",
-        "return-type": "json",
-        "format": "{}",
-        "rotate": ${r_deg},
-        "interval": 5, // once every 5 seconds
-        "tooltip": true,
-        "max-length": 1000,
-        "on-click": "/home/tinker/.local/bin/hyde/gpuinfo_amd.fish --toggle",
-    },
-
-    "custom/gpuinfo#amd": {
-        "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/gpuinfo_amd.fish --use amd ",
-        "return-type": "json",
-        "format": "{}",
-        "rotate": ${r_deg},
-        "interval": 5, // once every 5 seconds
-        "tooltip": true,
-        "max-length": 1000,
-    },
+{
+  "custom/gpuinfo": {
+    "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/gpuinfo_amd.fish",
+    "return-type": "json",
+    "format": "{}",
+    "rotate": 0,
+    "interval": 5,
+    "tooltip": true,
+    "max-length": 1000,
+    "on-click": "/home/tinker/.local/bin/hyde/gpuinfo_amd.fish --toggle"
+  }
+}

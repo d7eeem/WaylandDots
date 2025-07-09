@@ -1,0 +1,31 @@
+{
+  "include": [
+    "~/.config/waybar/modules/audio_idle_inhibitor.jsonc",
+    "~/.config/waybar/modules/clock.jsonc",
+    "~/.config/waybar/modules/cpuinfo.jsonc",
+    "~/.config/waybar/modules/drop.jsonc",
+    "~/.config/waybar/modules/gps.jsonc",
+    "~/.config/waybar/modules/gpuinfo.jsonc",
+    "~/.config/waybar/modules/gpuinfo#amd.jsonc",
+    "~/.config/waybar/modules/idle_inhibitor.jsonc",
+    "~/.config/waybar/modules/jack.jsonc",
+    "~/.config/waybar/modules/memory.jsonc",
+    "~/.config/waybar/modules/network.jsonc",
+    "~/.config/waybar/modules/notification.jsonc",
+    "~/.config/waybar/modules/power-profiles-daemon.jsonc",
+    "~/.config/waybar/modules/power.jsonc",
+    "~/.config/waybar/modules/privacy.jsonc",
+    "~/.config/waybar/modules/pulseaudio.jsonc",
+    "~/.config/waybar/modules/recorder.jsonc",
+    "~/.config/waybar/modules/sep_left.jsonc",
+    "~/.config/waybar/modules/sep_left_alt.jsonc",
+    "~/.config/waybar/modules/sep_right.jsonc",
+    "~/.config/waybar/modules/sep_right_alt.jsonc",
+    "~/.config/waybar/modules/systemd-failed-units.jsonc",
+    "~/.config/waybar/modules/tray.jsonc",
+    "~/.config/waybar/modules/updates.jsonc",
+    "~/.config/waybar/modules/upower.jsonc",
+    "~/.config/waybar/modules/window.jsonc",
+    "~/.config/waybar/modules/workspaces.jsonc"
+  ]
+} 

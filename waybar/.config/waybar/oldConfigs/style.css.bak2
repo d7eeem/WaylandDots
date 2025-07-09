@@ -1,0 +1,196 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "0xProto Nerd Font Propo";
+}
+
+window#waybar {
+  background: transparent;
+  margin-top: 5px;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+tooltip {
+  background: #2b3339;
+  color: #d3c6aa;
+  border-radius: 7px;
+  border-width: 0px;
+}
+
+#workspaces {
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-top: 0px;
+  padding: 0;
+  background-color: #2b3339;
+}
+
+#workspaces button {
+  background: transparent;
+  padding: 4px 4px;
+  margin-left: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-right: 4px;
+  font-size: 14px;
+  min-width: 15px;
+  font-weight: bold;
+  color: #d3c6aa;
+}
+
+#workspaces button:hover {
+  background: #8F6066;
+  border-radius: 5px;
+}
+
+#workspaces button.active {
+  color: #78c2a5;
+}
+
+#window {
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 8px;
+  border-radius: 6px;
+  transition: none;
+  color: #d3c6aa;
+  background: #2b3339;
+}
+
+#clock {
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 6px;
+  transition: none;
+  color: #d3c6aa;
+  background: #2b3339;
+}
+
+#pulseaudio {
+  margin-right: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 6px;
+  transition: none;
+  color: #d3c6aa;
+  background: #2b3339;
+}
+
+#pulseaudio.muted {
+  background-color: #a7c080;
+  color: #2a5c45;
+}
+
+#network,
+#custom-power,
+#custom-memory,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-updates,
+#custom-notification,
+#custom-weather #network {
+  margin-right: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 6px;
+  transition: none;
+  color: #d3c6aa;
+  background: #2b3339;
+}
+
+#custom-drop {
+  margin-right: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 6px;
+  transition: none;
+  color: #d3c6aa;
+  background: #8F6066;
+}
+
+#custom-audio_idle_inhibitor {
+  margin-right: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 6px;
+  transition: none;
+  color: #d3c6aa;
+  background: #2b3339;
+
+  /* background-color: alpha(@color0, 0.45); */
+  /* color: @foreground; */
+  /* padding: 2px 10px; */
+  /* margin: 6px 4px; */
+  /* border-radius: 8px; */
+  /* border: 1px solid alpha(@color4, 0.3); */
+  /* color: @color5; */
+}
+
+#custom-recorder.recording {
+  border-radius: 7px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background: #F65C13;
+  color: #ffffff;
+}
+
+#backlight {
+  margin-right: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 6px;
+  transition: none;
+  color: #d3c6aa;
+  background: #2b3339;
+}
+
+#battery {
+  margin-right: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 6px;
+  transition: none;
+  color: #d3c6aa;
+  background: #2b3339;
+}
+
+#battery.charging {
+  color: #2a5c45;
+  background-color: #a7c080;
+}
+
+#battery.warning:not(.charging) {
+  background-color: #dbbc7f;
+  color: black;
+}
+
+#battery.critical:not(.charging) {
+  background-color: #e67e80;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#tray {
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 6px;
+  transition: none;
+  color: #ffffff;
+  background: #2b3339;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}

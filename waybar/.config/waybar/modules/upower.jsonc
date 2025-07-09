@@ -1,0 +1,9 @@
+{
+  "upower": {
+    "native-path": "ps-controller-battery-58:10:31:97:56:e4",
+    "icon-size": 20,
+    "hide-if-empty": true,
+    "tooltip": true,
+    "tooltip-spacing": 20
+  }
+}

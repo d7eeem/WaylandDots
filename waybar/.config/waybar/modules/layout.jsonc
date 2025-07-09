@@ -1,4 +1,0 @@
-    "custom/layout": {
-      "exec": "$HOME/.local/bin/statusbar/sb-layoutcheacker.sh",
-      "restart-interval": 1
-    },

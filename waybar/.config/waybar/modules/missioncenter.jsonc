@@ -1,9 +1,0 @@
-    "custom/missioncenter": {
-        "format": "{}",
-        "rotate": ${r_deg},
-        "exec": "echo ; echo  MissionCenter-Windows TaskManager-",
-        "on-click": "sleep 0.1 && flatpak run io.missioncenter.MissionCenter",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-

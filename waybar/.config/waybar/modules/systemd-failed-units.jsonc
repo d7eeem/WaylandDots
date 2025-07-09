@@ -1,0 +1,9 @@
+{
+  "systemd-failed-units": {
+    "hide-on-ok": false,
+    "format": "\u2717 {nr_failed}",
+    "format-ok": "\u2713",
+    "system": true,
+    "user": false
+  }
+}

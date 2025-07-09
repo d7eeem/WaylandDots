@@ -1,0 +1,6 @@
+{
+  "custom/sep_left": {
+    "format": " <span>|</span> ",
+    "tooltip": false
+  }
+}

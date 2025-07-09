@@ -1,0 +1,6 @@
+{
+  "custom/sep_right_alt": {
+    "format": "<span>|</span> ",
+    "tooltip": false
+  }
+}

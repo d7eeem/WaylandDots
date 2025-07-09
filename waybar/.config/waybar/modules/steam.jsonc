@@ -1,9 +1,0 @@
-    "custom/steam": {
-        "format": "S",
-        "rotate": ${r_deg},
-        "exec": "echo ; echo  Steam",
-        "on-click": "sleep 0.1 && steam",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-

@@ -1,9 +1,16 @@
-
-"custom/power": {
-    "format": "⏻",
-    "exec": "echo ; echo ⏻ power",
-    "on-click": "wlogout",
-    "on-click-right": "wlogout",
-    "interval" : 86400, // once every day
-    "tooltip": true
-},
+{
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/menus/power_menu.xml",
+    "menu-actions": {
+      "suspend": "systemctl suspend",
+      "logout": "hyprctl dispatch exit",
+      "shutdown": "systemctl poweroff",
+      "reboot": "systemctl reboot",
+      "lock": "hyprlock"
+    },
+    "on-click-right": "wlogout"
+  }
+}

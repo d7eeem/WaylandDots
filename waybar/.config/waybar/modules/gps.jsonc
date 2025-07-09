@@ -1,0 +1,13 @@
+{
+  "gps": {
+    "format": "{mode}",
+    "format-disabled": "",
+    "format-no-fix": "No fix",
+    "format-fix-3d": "{status}",
+    "tooltip-format": "{mode}",
+    "tooltip-format-no-fix": "{satellites_visible} satellites visible",
+    "tooltip-format-fix-2d": "{satellites_used}/{satellites_visible} satellites used",
+    "tooltip-format-fix-3d": "Altitude: {altitude_hae}m",
+    "hide-disconnected": false
+  }
+}

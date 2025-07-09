@@ -1,9 +1,0 @@
-    "custom/zen": {
-        "format": "Z",
-        "rotate": ${r_deg},
-        "exec": "echo ; echo zen",
-        "on-click": "sleep 0.1 && /home/tinker/.local/bin/personal/zen.fish",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-

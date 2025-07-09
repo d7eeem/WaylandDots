@@ -1,0 +1,8 @@
+{
+  "jack": {
+    "format": "DSP {load}%",
+    "format-xrun": "{xruns} xruns",
+    "format-disconnected": "DSP off",
+    "realtime": true
+  }
+}

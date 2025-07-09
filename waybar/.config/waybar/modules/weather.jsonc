@@ -1,4 +1,0 @@
-    "custom/weather": {
-      "exec": "$HOME/.local/bin/statusbar/sb-wether.sh",
-      "interval": 500
-    },

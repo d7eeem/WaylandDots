@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+    <child><object class="GtkMenuItem" id="zen">
+      <property name="label">Zen</property></object></child>
+    <child><object class="GtkMenuItem" id="steam">
+      <property name="label">Steam</property></object></child>
+    <child><object class="GtkMenuItem" id="brave">
+      <property name="label">Brave</property></object></child>
+    <child><object class="GtkMenuItem" id="discord">
+      <property name="label">Discord</property></object></child>
+    <child><object class="GtkMenuItem" id="file">
+      <property name="label">Files</property></object></child>
+  </object>
+</interface>

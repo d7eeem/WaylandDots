@@ -1,0 +1,19 @@
+{
+  "custom/drop": {
+    "format": "\ue275",
+    "rotate": 0,
+    "exec": "echo ; echo \ue275 Dropdown menu for apps",
+    "on-click": "sleep 0.1 && /home/tinker/.local/bin/statusbar/sb-droper.fish",
+    "interval": 86400,
+    "tooltip": true,
+    "menu": "on-click-right",
+    "menu-file": "$HOME/.config/waybar/menus/drop_menu.xml",
+    "menu-actions": {
+      "zen": "nohup zen-browser >/dev/null 2>&1 &",
+      "steam": "nohup steam >/dev/null 2>&1 &",
+      "discord": "nohup discord >/dev/null 2>&1 &",
+      "file": "nohup nautilus >/dev/null 2>&1 &",
+      "brave": "nohup brave >/dev/null 2>&1 &"
+    }
+  }
+}
