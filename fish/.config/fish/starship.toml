@@ -1,67 +1,44 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
-#Prompt
-format = """
-$sudo\
-$directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
-$status\
-$cmd_duration\
-$jobs\
-$character"""
-add_newline = false
+format = '''
+$directory$git_branch$time$cmd_duration
+$character'''
 command_timeout = 1500
 
-[character] 
-success_symbol = '[➜]()'
-error_symbol = '[➜]()'
-vimcmd_symbol = '[V]()'
 
-[package]
-disabled = true
 
-[username]
-format = '[$user]($style)@'
-disabled = false
-show_always = true
+
+palette = 'colors'
+
+[palettes.colors]
+color1 = '#f9b1db'
+color2 = '#501e40'
+color3 = '#d3c2c9'
+color4 = '#251e21'
+color5 = '#501e40'
+color6 = '#181115'
+color7 = '#181115'
+color8 = '#f9b1db'
+color9 = '#f4ba9e'
+
+# Prompt symbols 
+[character]
+success_symbol = "[➜](color9 bold)"
+error_symbol = "[➜](@{error})"
+vicmd_symbol = "[<](#f9e2af)"
+
 [directory]
-truncate_to_repo = true
-home_symbol	= ' ~'
-
-
-[hostname]
-ssh_only = false
-format = '[$ssh_symbol](bold blue)[$hostname](bold red) '
-disabled = false
-
+format = "[](fg:color1 bg:color4)[ ](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[](fg:color4)"
 
 [git_branch]
-format = '[$branch(:$remote_branch)]($style) '
+format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
 truncation_length = 4
 truncation_symbol = ''
 
 [cmd_duration]
-format = '[$duration]($style) '
-min_time = 2_000
+format = '[[](fg:color4)$duration](fg:color3 bg:color4)[](fg:color4) '
+min_time = 2000
 
-[jobs]
-format = '[$symbol$number]($style)'
-symbol = '+ '
-number_threshold = 4
-symbol_threshold = 2
+[time]
+format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
+disabled = false
+time_format = "%R" # Hour:Minute Format
 
-[sudo]
-format = '[$symbol]($style)'
-symbol = '🧙 '
-disabled = true
-
-[status]
-symbol = '🔴'
-success_symbol = '🟢'
-format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
-map_symbol = true
-disabled = true
