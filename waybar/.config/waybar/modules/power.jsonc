@@ -11,6 +11,7 @@
       "reboot": "systemctl reboot",
       "lock": "hyprlock"
     },
-    "on-click-right": "wlogout"
+    "on-click-right": "wlogout",
+    "on-click-middle": "~/.config/rofi/powermenu/powermenu.sh"
   }
 }

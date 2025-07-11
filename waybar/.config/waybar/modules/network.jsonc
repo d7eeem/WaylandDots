@@ -1,9 +1,28 @@
+// {
+//   "network": {
+//     "format-wifi": "󰈀{essid}",
+//     "format-ethernet": "",
+//     "format-disconnected": "󰈀 Off",
+//     "tooltip-format": "{ifname} ({ipaddr})",
+//     "on-click": "nm-connection-editor"
+//   }
+// }
 {
   "network": {
-    "format-wifi": "󰈀{essid}",
-    "format-ethernet": "",
-    "format-disconnected": "󰈀 Off",
-    "tooltip-format": "{ifname} ({ipaddr})",
-    "on-click": "nm-connection-editor"
+    "format-ethernet": "󰈀",
+    "format-wifi": "{icon}",
+    "format-disconnected": "󰤭 ",
+    "format-icons": [
+      "󰤯 ",
+      "󰤟 ",
+      "󰤢 ",
+      "󰤥 ",
+      "󰤨 "
+    ],
+    "tooltip-format-wifi": "{essid}",
+    "tooltip-format-ethernet": "IP: {ipaddr}\n{ifname}",
+    "on-click": "kitty -e nmtui",
+    "on-click-right": "nm-connection-editor",
+    "nospacing": 1
   }
 }

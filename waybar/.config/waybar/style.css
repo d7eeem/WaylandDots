@@ -2,7 +2,7 @@
 
 /* ========== Base Styles ========== */
 * {
-  border: none;
+  border: @color0;
   border-radius: 7px;
   font-family: "0xProto Nerd Font Propo";
   font-size: 12px;
@@ -16,69 +16,152 @@ tooltip {
   border-radius: 7px;
   border: 1px solid alpha(@color4, 0.3);
 }
+
 tooltip * {
-  color: @color5;
+  color: @color7;
 }
 
 /* ========== Waybar Window ========== */
 window#waybar {
-  /* background-color: alpha(@background, 0.85); */
   background: transparent;
   color: @foreground;
-  /* border-radius: 7px; */
-  /* border: 2px solid alpha(@color4, 0.3); */
 }
 
+window#waybar.empty {
+  background: none;
+}
+
+
 /* ========== Module Blocks ========== */
-#window, #clock, #clock-date, #pulseaudio, #custom-memory, #custom-cpuinfo,
-#temperature, #upower, #tray, #custom-gpuinfo, #custom-updates, #custom-power,
-#custom-recorder, #network, #custom-notification, #custom-weather, #power-profiles-daemon,
-#custom-audio_idle_inhibitor, #workspaces, #custom-drop, #idle_inhibitor{
+#window {
   background-color: alpha(@color0, 0.45);
   padding: 2px 10px;
-  margin: 2px 1px;
+  margin: 2px 0px 2px 0px;
   border-radius: 7px;
   border: 1px solid alpha(@color4, 0.3);
   font-weight: bold;
-  color: @color5;
+  color: @color7;
 }
 
-/* ========== Module-Specific Colors ========== */
-#network { color: #89dceb;  font-size: 14px; margin: 2px 1px; }
-#network.disconnected { color: @color1; }
-#pulseaudio, #pulseaudio.muted { color: @color5; }
-#custom-power { color: #f38ba8; font-size: 14px; margin: 2px 1px; }
+window#waybar.empty #window {
+  background: none;
+  border: none;
+
+}
+
+
+#clock,
+#clock-date,
+#pulseaudio,
+#custom-memory,
+#custom-cpuinfo,
+#cpu,
+#bluetooth,
+#language,
+#temperature,
+#upower,
+#tray,
+#custom-gpuinfo,
+#custom-updates,
+#custom-power,
+#custom-recorder,
+#network,
+#custom-weather,
+#power-profiles-daemon,
+#custom-audio_idle_inhibitor,
+#idle_inhibitor {
+  background-color: alpha(@color0, 0.45);
+  padding: 2px 10px;
+  margin: 2px 0px 2px 0px;
+
+  border-radius: 7px;
+  border: 1px solid alpha(@color4, 0.3);
+  font-weight: bold;
+  color: @color7;
+}
+
+#custom-notification {
+  background-color: alpha(@color0, 0.45);
+  padding: 2px;
+  margin: 2px 0px 2px 0px;
+
+  border-radius: 7px;
+  border: 1px solid alpha(@color4, 0.3);
+  font-weight: bold;
+  color: @color7;
+  font-size: 12px;
+  min-width: 10px;
+}
+
 #custom-drop {
+  background-color: alpha(@color0, 0.45);
+  padding: 2px 10px;
+  margin: 2px 0px 2px 0px;
+
+  border-radius: 7px;
+  border: 1px solid alpha(@color4, 0.3);
+  font-weight: bold;
+  color: @color7;
+  font-size: 15px;
   min-width: 15px;
 }
+
+
+/* ========== Module-Specific Colors ========== */
+#network {
+  color: #89dceb;
+  font-size: 18px;
+  margin: 2px 0px 2px 0px;
+
+}
+
+#network.disconnected {
+  color: @color1;
+}
+
+#pulseaudio {
+  color: @color7;
+}
+
+#pulseaudio.muted {
+  background-color: @color6;
+  color: @color0;
+  font-size: 15px;
+}
+
+#custom-power {
+  color: #f38ba8;
+  font-size: 16px;
+  margin: 2px 0px 2px 0px;
+
+}
+
+
 #custom-drop:hover {
   background-color: @color6;
   color: @background;
 }
+
 #custom-recorder.recording {
   background: #F65C13;
   color: #fff;
   padding: 2px 12px;
-  margin: 3px;
+  margin: 2px 0px 2px 0px;
+
   border-radius: 7px;
 }
+
 #power-profiles-daemon {
   min-width: 15px;
 }
 
 /* ========== Workspaces ========== */
-/*  {
-  background: alpha(@color0, 0.45);
-  border: 0;
-  padding: 0;
-  border-radius: 7px;
-  margin: 4px;
-}*/
+
 #workspaces button {
   background-color: alpha(@color0, 0.45);
-  color: @color5;
+  color: @color7;
   padding: 2px 4px;
-  margin: 2px;
+  margin: 2px 0px 2px 0px;
   border-radius: 7px;
   border: 1px solid alpha(@color4, 0.3);
   font-size: 13px;
@@ -86,25 +169,32 @@ window#waybar {
   font-weight: bold;
   transition: all 0.2s ease-in-out;
 }
+
 #workspaces button:hover {
-  background-color: @color8;
+  background-color: @color7;
   color: @foreground;
 }
+
 #workspaces button.focused {
-  background-color: @color5;
+  background-color: @color7;
   color: @background;
 }
+
 #workspaces button.active {
   background-color: @color6;
   color: @background;
 }
+
 #workspaces button.urgent {
-  background-color: @color1;
+  background-color: #ef4444;
   color: @background;
+  animation: all 0.2s ease-in-out;
 }
 
 /* ========== Tray ========== */
-#tray { padding: 2px 4px; }
+#tray {
+  margin: 2px 0px 2px 0px;
+}
 
 /* ========== Menus ========== */
 menu {
@@ -113,20 +203,10 @@ menu {
   background: @background;
   color: @color15;
 }
+
 menuitem {
-  color: @color5;
+  color: @color7;
   border: 1px solid alpha(@color4, 0.3);
   margin: 2px;
   padding: 0 5px;
-}
-menuitem:hover {
-  color: @color15;
-}
-
-/* ========== Invisible Separators ========== */
-#custom-sep_left, #custom-sep_left_alt, #custom-sep_right, #custom-sep_right_alt {
-  font-size: 1px;
-  opacity: 0;
-  margin: 0;
-  padding: 0;
 }

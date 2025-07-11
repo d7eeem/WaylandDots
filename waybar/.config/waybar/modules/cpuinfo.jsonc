@@ -6,6 +6,7 @@
     "rotate": 0,
     "restart-interval": 5,
     "tooltip": true,
-    "max-length": 1000
+    "max-length": 1000,
+    "on-click": "kitty -e btop"
   }
 }

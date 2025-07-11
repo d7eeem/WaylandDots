@@ -3,6 +3,7 @@
     "exec": "/home/tinker/.local/bin/hyde/raminfo.fish",
     "return-type": "json",
     "tooltip": true,
-    "interval": 1
+    "interval": 1,
+    "on-click": "kitty -e htop"
   }
 }

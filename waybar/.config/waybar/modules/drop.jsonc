@@ -1,6 +1,7 @@
 {
   "custom/drop": {
-    "format": "\ue275",
+    "format": "",
+    // "format": "\ue275",
     "rotate": 0,
     "exec": "echo ; echo \ue275 Dropdown menu for apps",
     "on-click": "sleep 0.1 && /home/tinker/.local/bin/statusbar/sb-droper.fish",

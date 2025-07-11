@@ -2,7 +2,11 @@
   "include": [
     "~/.config/waybar/modules/audio_idle_inhibitor.jsonc",
     "~/.config/waybar/modules/clock.jsonc",
+    "~/.config/waybar/modules/language.jsonc",
+    "~/.config/waybar/modules/player.jsonc",
+    "~/.config/waybar/modules/bluetooth.jsonc",
     "~/.config/waybar/modules/cpuinfo.jsonc",
+    "~/.config/waybar/modules/cpu.jsonc",
     "~/.config/waybar/modules/drop.jsonc",
     "~/.config/waybar/modules/gps.jsonc",
     "~/.config/waybar/modules/gpuinfo.jsonc",
