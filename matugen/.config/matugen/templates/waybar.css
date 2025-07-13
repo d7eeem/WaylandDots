@@ -2,20 +2,20 @@
 @define-color background {{colors.surface_container_lowest.default.hex}};
 @define-color cursor {{colors.on_surface.default.hex}};
 
-@define-color color0 {{colors.surface_container_lowest.default.hex}};        /* pywal background */
-@define-color color1 {{colors.primary.default.hex}};                         /* pywal color1 (accent warm) */
-@define-color color2 {{colors.primary_container.default.hex}};               /* pywal color2 (muted accent) */
-@define-color color3 {{colors.tertiary.default.hex}};                        /* pywal color3 (highlight) */
-@define-color color4 {{colors.tertiary_container.default.hex}};              /* pywal color4 (highlight container) */
-@define-color color5 {{colors.secondary.default.hex}};                       /* pywal color5 (cool tone) */
-@define-color color6 {{colors.secondary_container.default.hex}};             /* pywal color6 (cool tone container) */
-@define-color color7 {{colors.on_surface.default.hex}};                      /* pywal foreground */
+@define-color color0 {{colors.surface_container_lowest.default.hex}};
+@define-color color1 {{colors.primary.default.hex}};
+@define-color color2 {{colors.primary_container.default.hex}};
+@define-color color3 {{colors.tertiary.default.hex}};
+@define-color color4 {{colors.tertiary_container.default.hex}};
+@define-color color5 {{colors.secondary.default.hex}};
+@define-color color6 {{colors.secondary_container.default.hex}};
+@define-color color7 {{colors.on_surface.default.hex}};
 
-@define-color color8 {{colors.outline.default.hex}};                         /* pywal bright black */
-@define-color color9 {{colors.primary.default.hex}};                         /* pywal bright red = base red */
-@define-color color10 {{colors.primary_container.default.hex}};              /* pywal bright green = base green */
-@define-color color11 {{colors.tertiary.default.hex}};                       /* pywal bright yellow = base yellow */
-@define-color color12 {{colors.tertiary_container.default.hex}};             /* pywal bright blue = base blue */
-@define-color color13 {{colors.secondary.default.hex}};                      /* pywal bright magenta */
-@define-color color14 {{colors.secondary_container.default.hex}};            /* pywal bright cyan */
+@define-color color8 {{colors.outline.default.hex}};
+@define-color color9 {{colors.primary.default.hex}};
+@define-color color10 {{colors.primary_container.default.hex}};
+@define-color color11 {{colors.tertiary.default.hex}};
+@define-color color12 {{colors.tertiary_container.default.hex}};
+@define-color color13 {{colors.secondary.default.hex}};
+@define-color color14 {{colors.secondary_container.default.hex}};
 @define-color color15 {{colors.on_surface.default.hex}};

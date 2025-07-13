@@ -3,8 +3,8 @@
     "format": "{icon}",
     "rotate": 0,
     "format-icons": {
-      "activated": "\uec15",
-      "deactivated": "\udb81\udeca"
+      "activated": "󰅶",
+      "deactivated": "󰛊"
     },
     "tooltip-format-activated": "Caffeine Mode Active",
     "tooltip-format-deactivated": "Caffeine Mode Inactive"

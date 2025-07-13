@@ -1,7 +1,8 @@
 #!/usr/bin/env fish
 
 # Get used RAM in GB with icon (using the user's command, but with the correct icon for Waybar)
-set icon ""  # U+F1C0 (Font Awesome database icon)
+#set icon ""  # U+F1C0 (Font Awesome database icon)
+set icon " "
 set mem_text (free --mebi | sed -n '2{p}' | awk -v icn="$icon" '{printf ("%s %2.1fGB", icn, ($3 / 1024))}')
 
 # Get top memory-consuming processes

@@ -1,21 +1,21 @@
-@define-color foreground #eddfe4;
-@define-color background #130c10;
-@define-color cursor #eddfe4;
+@define-color foreground #f1dfdb;
+@define-color background #140c0a;
+@define-color cursor #f1dfdb;
 
-@define-color color0 #130c10;        /* pywal background */
-@define-color color1 #f9b1db;                         /* pywal color1 (accent warm) */
-@define-color color2 #6a3458;               /* pywal color2 (muted accent) */
-@define-color color3 #f4ba9e;                        /* pywal color3 (highlight) */
-@define-color color4 #653d28;              /* pywal color4 (highlight container) */
-@define-color color5 #debece;                       /* pywal color5 (cool tone) */
-@define-color color6 #57404d;             /* pywal color6 (cool tone container) */
-@define-color color7 #eddfe4;                      /* pywal foreground */
+@define-color color0 #140c0a;
+@define-color color1 #ffb4a3;
+@define-color color2 #733426;
+@define-color color3 #dbc58c;
+@define-color color4 #544519;
+@define-color color5 #e7bdb4;
+@define-color color6 #5d3f39;
+@define-color color7 #f1dfdb;
 
-@define-color color8 #9c8d93;                         /* pywal bright black */
-@define-color color9 #f9b1db;                         /* pywal bright red = base red */
-@define-color color10 #6a3458;              /* pywal bright green = base green */
-@define-color color11 #f4ba9e;                       /* pywal bright yellow = base yellow */
-@define-color color12 #653d28;             /* pywal bright blue = base blue */
-@define-color color13 #debece;                      /* pywal bright magenta */
-@define-color color14 #57404d;            /* pywal bright cyan */
-@define-color color15 #eddfe4;
+@define-color color8 #a08c88;
+@define-color color9 #ffb4a3;
+@define-color color10 #733426;
+@define-color color11 #dbc58c;
+@define-color color12 #544519;
+@define-color color13 #e7bdb4;
+@define-color color14 #5d3f39;
+@define-color color15 #f1dfdb;

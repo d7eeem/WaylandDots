@@ -1,44 +1,46 @@
 format = '''
-$directory$git_branch$time$cmd_duration
-$character'''
+ $directory$git_branch$git_status$time$lua$cmd_duration
+ $character'''
 command_timeout = 1500
-
-
 
 
 palette = 'colors'
 
 [palettes.colors]
-color1 = '#f9b1db'
-color2 = '#501e40'
-color3 = '#d3c2c9'
-color4 = '#251e21'
-color5 = '#501e40'
-color6 = '#181115'
-color7 = '#181115'
-color8 = '#f9b1db'
-color9 = '#f4ba9e'
+color1 = '#ffb4a3'
+color2 = '#561f12'
+color3 = '#d8c2bd'
+color4 = '#271d1b'
+color5 = '#561f12'
+color6 = '#1a110f'
+color7 = '#1a110f'
+color8 = '#ffb4a3'
+color9 = '#dbc58c'
 
-# Prompt symbols 
-[character]
-success_symbol = "[➜](color9 bold)"
-error_symbol = "[➜](@{error})"
-vicmd_symbol = "[<](#f9e2af)"
-
-[directory]
-format = "[](fg:color1 bg:color4)[ ](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[](fg:color4)"
-
-[git_branch]
-format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
-truncation_length = 4
-truncation_symbol = ''
-
-[cmd_duration]
-format = '[[](fg:color4)$duration](fg:color3 bg:color4)[](fg:color4) '
-min_time = 2000
-
+# # Prompt symbols 
+# [character]
+# success_symbol = "[➜](color9 bold)"
+# error_symbol = "[➜](@{error})"
+# vicmd_symbol = "[<](#f9e2af)"
+#
+# [directory]
+# format = "[](fg:color1 bg:color4)[ ](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[](fg:color4) "
+#
+# [git_branch]
+# format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
+# truncation_length = 4
+# truncation_symbol = ''
+#
+# [git_status]
+# format = '([](fg:color4)[ $all_status$ahead_behind ](fg:color3 bg:color4)[](fg:color4)) '
+# disabled = false
+#
+#
 [time]
-format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
+# format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
 disabled = false
 time_format = "%R" # Hour:Minute Format
-
+#
+[cmd_duration]
+format = '[$duration](fg:color3)'
+min_time = 2000

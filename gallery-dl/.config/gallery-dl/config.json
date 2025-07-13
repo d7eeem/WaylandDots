@@ -42,31 +42,56 @@
       "recursion": 0,
       "videos": true,
       "parent-directory": true,
-      "directory": ["Reddit", "{subreddit}"],
+      "directory": [
+        "Reddit",
+        "{subreddit}"
+      ],
       "filename": "{date:%Y-%m-%d_%H-%M-%S}~_~{subreddit}~_~{id}-{num}.{author}~_~{title[0:27]}~_~{filename}.{extension}",
       "user": {
-        "directory": ["Reddit", "{author}"]
+        "directory": [
+          "Reddit",
+          "{author}"
+        ]
       }
     },
     "reddit>redgifs": {
-      "directory": ["redgifs"]
+      "directory": [
+        "redgifs"
+      ]
     },
     "redgifs": {
-      "format": ["hd", "sd", "gif"]
+      "format": [
+        "hd",
+        "sd",
+        "gif"
+      ]
     },
     "twitter": {
       "cookies-from-browser": "firefox",
       "sleep": 5,
       "sleep-request": "6-12",
-      "directory": ["Twitter", "{author}"],
+      "directory": [
+        "Twitter",
+        "{author}"
+      ],
       "filename": "{tweet_id}_{num}.{extension}"
     },
     "instagram": {
       "cookies-from-browser": "chrome",
       "sleep": 5,
       "sleep-request": "6-12",
-      "directory": ["Instagram", "{author}"],
+      "directory": [
+        "Instagram",
+        "{author}"
+      ],
       "filename": "{shortcode}_{num}.{extension}"
+    },
+    "deviantart": {
+      "client-id": "46515",
+      "client-secret": "cf3d51d354867d51ae455d58b66fd9b3"
+    },
+    "bunkr": {
+      "endpoint": "/api/_001_v2"
     }
   }
 }

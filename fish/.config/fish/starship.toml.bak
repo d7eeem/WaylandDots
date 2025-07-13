@@ -65,3 +65,33 @@ success_symbol = '🟢'
 format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
 map_symbol = true
 disabled = true
+
+[directory]
+format = " [$path ](fg:color1) "
+truncation_length = 3
+truncation_symbol = ""
+
+[git_branch]
+format = "[(bg:color8 fg:color4) $branch](fg:color1) "
+truncation_length = 4
+truncation_symbol = ''
+
+[git_status]
+format = '([ $all_status$ahead_behind ](fg:color1)) '
+disabled = false
+
+
+[time]
+format = "[(bg:color8 fg:color4) $time](fg:color1) "
+disabled = false
+time_format = "%R" # Hour:Minute Format
+
+[cmd_duration]
+format = ' [$duration](fg:color3)'
+min_time = 2000
+
+[lua]
+format = " [lua](italic) [${symbol}${version}]($style)"
+version_format = "${raw}"
+symbol = "⨀ "
+style = "bold bright-yellow"

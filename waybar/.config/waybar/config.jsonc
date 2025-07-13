@@ -11,8 +11,8 @@
   "reload_style_on_change": true,
   "modules-left": [
     "custom/drop",
-    "hyprland/workspaces",
     "power-profiles-daemon",
+    "hyprland/workspaces",
     "hyprland/window"
   ],
   "modules-center": [
@@ -30,8 +30,8 @@
     "pulseaudio",
     "network",
     "hyprland/language",
-    "bluetooth",
     "tray",
+    "bluetooth",
     "custom/notification",
     "custom/power"
   ]
