@@ -87,8 +87,8 @@
       "filename": "{shortcode}_{num}.{extension}"
     },
     "deviantart": {
-      "client-id": "46515",
-      "client-secret": "cf3d51d354867d51ae455d58b66fd9b3"
+      "client-id": "redacted",
+      "client-secret": "redacted"
     },
     "bunkr": {
       "endpoint": "/api/_001_v2"
