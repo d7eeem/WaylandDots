@@ -2,277 +2,240 @@
  * vim: ft=less
  */
 
-@define-color base {{ base }};
-@define-color text {{ text }};
-@define-color accent {{ accent }};
-@define-color surface0 {{ surface0 }};
-@define-color surface1 {{ surface1 }};
-@define-color surface2 {{ surface2 }};
-@define-color red {{ red }};
-@define-color pink {{ pink }};
-@define-color mauve {{ mauve }};
-@define-color lavender {{ lavender }};
-@define-color blue {{ blue }};
-@define-color green {{ green }};
+/***
+ *    ┏┓┓ ┏┏┓┓┏┳┓┏┓  ┏┓┓┏┏┓┳┓┏┓┏┓┳┓┏┓┏┓┏┳┓
+ *    ┗┓┃┃┃┣┫┗┫┃┃┃ ━━┣ ┃┃┣ ┣┫┣ ┃┃┣┫┣ ┗┓ ┃ 
+ *    ┗┛┗┻┛┛┗┗┛┛┗┗┛  ┗┛┗┛┗┛┛┗┻ ┗┛┛┗┗┛┗┛ ┻ 
+ *                                        
+ */
+
+/* Colors */
+@define-color background 	    #272e33;
+@define-color background-alt 	    #475258;
+@define-color background-alt-darker #414b50;
+@define-color accent-normal    	    #83c092;
+@define-color accent-error     	    #e67e80;
+@define-color bordercolor           #83c092;
+@define-color fontcolor 	    #d3c6aa;
+@define-color fontaltcolor 	    #272e33;
+
+
+
+
+/* Config */
 
 * {
-    font-family: "Hack Nerd Font Mono";
-    font-weight: bold;
+    font-family: "0xProto Nerd Font Propo";
+    font-style: italic;
 }
 
-.floating-notifications.background {
+/* Notification */
+
+.notification {
+    background: @background;
+    color: @fontcolor;
+    border: 3px solid @bordercolor;
+    border-radius: 10px;
+    padding:10px;
+}
+
+.body {
+  color: @fontcolor;
+}
+
+.summary {
+  font-size: 16px;
+  font-weight: 700;
+  background: transparent;
+  color: @accent-normal;
+  text-shadow: none;
+}
+
+.time {
+  font-size: 16px;
+  font-weight: 700;
+  background: transparent;
+  color: @fontcolor;
+  text-shadow: none;
+  margin-right: 18px;
+}
+
+.close-button {
+  background-color: @accent-error;
+  color: @fontaltcolor;
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 6px;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+    color: @fontcolor;
     background: transparent;
 }
 
-.floating-notifications.background .notification-row .notification-background {
-    background: @base;
-    border: 2px solid @surface0;
-    border-radius: 12px;
-    margin: 8px;
-    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
+.notification.critical progress {
+  background-color: @accent-error;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification {
-    padding: 8px;
-    border-radius: 12px;
+.notification.low progress,
+.notification.normal progress {
+  background-color: @accent-normal;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification.critical {
-    box-shadow: inset 0 0 8px 0 @red;
-}
-
-.notification-row .notification-background .notification .notification-content {
-    margin: 8px;
-}
-
-.notification-row .notification-background .notification .notification-content .summary {
-    color: @text;
-    text-shadow: none;
-}
-
-.notification-row .notification-background .notification .notification-content .time {
-    color: @text;
-    text-shadow: none;
-}
-
-.notification-row .notification-background .notification .notification-content .body {
-    color: @text;
-    text-shadow: none;
-}
-
-.notification-row .notification-background .notification > *:last-child > * {
-    min-height: 3.4em;
-}
-
-.notification-row .notification-background .notification .notification-content .notification-actions {
-    margin-top: 8px;
-}
-
-.notification-row .notification-background .notification .notification-content .notification-actions .notification-action {
-    background: @surface0;
-    border: 2px solid @surface1;
-    border-radius: 8px;
-    color: @text;
-    text-shadow: none;
-    margin: 4px;
-    padding: 4px 8px;
-}
-
-.notification-row .notification-background .notification .notification-content .notification-actions .notification-action:hover {
-    background: @surface1;
-    border-color: @accent;
-}
-
-.notification-row .notification-background .close-button {
-    background: @surface0;
-    color: @text;
-    text-shadow: none;
-    padding: 0;
-    border-radius: 8px;
-    margin: 4px;
-    box-shadow: none;
-    border: none;
-}
-
-.notification-row .notification-background .close-button:hover {
-    background: @red;
-    color: @base;
-}
+/* Control Center */
 
 .control-center {
-    background: @base;
-    border: 2px solid @surface0;
-    border-radius: 12px;
+    background-color: @background;
+    color: @fontcolor;
+    border: 3px solid @bordercolor;
+    padding: 10px;
 }
 
-.control-center .notification-row .notification-background {
-    background: @surface0;
-    border: 2px solid @surface1;
-    border-radius: 12px;
+/* Notifications expanded-group */
+
+.notification-group {
+  margin: 2px 8px 2px 8px;
+  font-size: 14px;
+
+}
+
+.notification-group-icon {
+  color: @fontcolor;
+}
+
+.notification-group-headers {
+  color: @fontcolor;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+  background: @accent-normal;
+  color: @fontaltcolor;
+  margin: 4px; 
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.notification-group-collapse-button:hover,
+.notification-group-close-all-button:hover {
+  background: @accent-error;
+  color: @fontaltcolor;
+}  
+
+
+/* widget title */
+.widget-title {
+  color: @fontcolor;
+}
+.widget-title>button {
+  font-size: 1rem;
+  color: @fontcolor;
+  background: @background-alt-darker;
+  box-shadow: none;
+}
+
+.widget-title>button:hover {
+  background: @accent-error;
+  color: @fontaltcolor;
+}
+
+/* widget button grid */
+button {
+    border: 0px;
+    min-width: 35px;
+    background: @background-alt;
+}
+
+.widget-buttons-grid {
+  font-size: x-large;
+  background: @background-alt-darker;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    color: @fontcolor;
     margin: 8px;
-    box-shadow: none;
+    padding: 10px;
 }
 
-.control-center .notification-row .notification-background .notification {
-    padding: 8px;
-    border-radius: 12px;
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+  background: alpha(@fontcolor, 0.55);
 }
 
-.control-center .notification-row .notification-background .notification.critical {
-    box-shadow: inset 0 0 8px 0 @red;
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background: @accent-normal;
 }
 
-.control-center .widget-title {
-    color: @text;
-    text-shadow: none;
-    padding: 8px;
-    margin: 8px;
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
+    color: @fontaltcolor;
 }
 
-.control-center .widget-title button {
-    background: @surface0;
-    border: 2px solid @surface1;
-    border-radius: 8px;
-    color: @text;
-    text-shadow: none;
-    padding: 4px 8px;
+
+
+
+/* dnd widget */
+.widget-dnd {
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: large;
+  color: @fontcolor;
 }
 
-.control-center .widget-title button:hover {
-    background: @surface1;
-    border-color: @accent;
+.widget-dnd>switch {
+  background: @background-alt;
+  color: @fontcolor;
+  border-radius: 6px;
 }
 
-.control-center .notification-row .notification-background .notification .notification-content .notification-actions .notification-action {
-    background: @surface0;
-    border: 2px solid @surface1;
-    border-radius: 8px;
-    color: @text;
-    text-shadow: none;
-    margin: 4px;
-    padding: 4px 8px;
+.widget-dnd>switch:checked {
+  background: @accent-error;
+  border: 1px solid @accent-error;
 }
 
-.control-center .notification-row .notification-background .notification .notification-content .notification-actions .notification-action:hover {
-    background: @surface1;
-    border-color: @accent;
+
+/* volume & backlight widget */
+
+.widget-volume {
+  background: @background-alt-darker;
+  color: @fontcolor;
+  font-size: x-large;
 }
 
-.control-center .notification-row .notification-background .close-button {
-    background: @surface0;
-    color: @text;
-    text-shadow: none;
-    padding: 0;
-    border-radius: 8px;
-    margin: 4px;
-    box-shadow: none;
-    border: none;
+
+.widget-backlight {
+  background: @background-alt-darker;
+  color: @fontcolor;
+  font-size: x-large;
 }
 
-.control-center .notification-row .notification-background .close-button:hover {
-    background: @red;
-    color: @base;
+/* music player widget */
+.widget-mpris {
+  background: transparent;
+  margin: 8px;
 }
 
-.control-center .widget-dnd {
-    margin: 8px;
-    padding: 8px;
-    border-radius: 12px;
-    background: @surface0;
-    border: 2px solid @surface1;
+.widget-mpris button {
+  background-color: transparent;
+  border-radius: 6px;
 }
 
-.control-center .widget-dnd > switch {
-    background: @surface1;
-    border: 2px solid @surface2;
-    border-radius: 14px;
-    box-shadow: none;
+.widget-mpris button:hover {
+  background-color: @accent-normal;
+  color: @fontaltcolor;
 }
 
-.control-center .widget-dnd > switch:checked {
-    background: @accent;
-    border-color: @lavender;
+
+/* sliders in backlight and volume */
+
+trough slider {
+    background: @fontcolor;
 }
 
-.control-center .widget-dnd > switch slider {
-    background: @text;
-    border-radius: 12px;
-    border: 2px solid @surface2;
-    box-shadow: none;
+trough slider:hover {
+    background: @accent-normal;
 }
 
-.control-center .widget-dnd > switch:checked slider {
-    background: @base;
-    border-color: @accent;
-}
 
-.control-center .widget-label {
-    margin: 8px;
+trough highlight {
+  background: @accent-normal;
 }
-
-.control-center .widget-label > label {
-    font-size: 1rem;
-    color: @text;
-}
-
-.control-center .widget-buttons-grid {
-    margin: 8px;
-    padding: 8px;
-    border-radius: 12px;
-    background: @surface0;
-    border: 2px solid @surface1;
-}
-
-.control-center .widget-buttons-grid > flowbox > flowboxchild > button {
-    background: @surface1;
-    border: 2px solid @surface2;
-    border-radius: 8px;
-    color: @text;
-    text-shadow: none;
-    margin: 4px;
-    padding: 8px;
-}
-
-.control-center .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-    background: @surface2;
-    border-color: @accent;
-}
-
-.control-center .widget-mpris {
-    margin: 8px;
-    padding: 8px;
-    border-radius: 12px;
-    background: @surface0;
-    border: 2px solid @surface1;
-}
-
-.control-center .widget-mpris > box > button {
-    background: @surface1;
-    border: 2px solid @surface2;
-    border-radius: 8px;
-    color: @text;
-    text-shadow: none;
-    margin: 4px;
-    padding: 8px;
-}
-
-.control-center .widget-mpris > box > button:hover {
-    background: @surface2;
-    border-color: @accent;
-}
-
-.control-center .widget-mpris .widget-mpris-player {
-    padding: 8px;
-    margin: 8px;
-}
-
-.control-center .widget-mpris .widget-mpris-title {
-    color: @text;
-    text-shadow: none;
-    font-weight: bold;
-}
-
-.control-center .widget-mpris .widget-mpris-subtitle {
-    color: @text;
-    text-shadow: none;
-} 
