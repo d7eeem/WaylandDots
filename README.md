@@ -18,10 +18,8 @@
 - And some LLMs
 
 
-### Pics
-
-
 
 #### TODO
 - [ ] fix api key inegration for xbackbone 
 - [ ] fix keys sourceing for env_var
+- [ ] Add Photos
