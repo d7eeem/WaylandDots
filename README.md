@@ -1,4 +1,4 @@
-#This is my personal dumpster fire of dotfiles no support will be given 
+# This is my personal dumpster fire of dotfiles no support will be given 
 
 
 - some source of functions and scripts
