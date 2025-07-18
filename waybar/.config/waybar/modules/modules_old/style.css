@@ -1,0 +1,236 @@
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "0xProto Nerd Font Propo" ;
+    font-weight: bold;
+    font-size: 12px;
+    min-height: 10px;
+}
+
+@import "theme.css";
+#window {
+    border-radius: 7px;
+}
+
+window#waybar {
+    background-color: rgba(30,30,30,0.4);
+    /* background: @main-bg; */
+    color: @main-fg;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+tooltip {
+    background: @main-bg;
+    color: @main-fg;
+    border-radius: ${t_radius}px;
+    border-width: 0px;
+}
+
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    box-shadow: none;
+    text-shadow: none;
+    border-radius: 7px;
+    padding: 0 3px;
+    margin: 0;
+    color: @main-fg;
+    animation: ws_normal 20s ease-in-out 1;
+}
+
+#workspaces button.active {
+    background: @wb-hvr-bg;
+    color: @wb-act-color;
+    margin-left: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 3px;
+    animation: tb_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button:hover {
+    background: @wb-hvr-bg;
+    color: @wb-act-color;
+    margin-left: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 3px;
+    animation: tb_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+
+#workspaces button.urgent {
+    margin: 0;
+    color: red;
+    padding: 0 3px;
+    border-radius: 1em;
+    animation: ws_normal 20s ease-in-out 1;
+
+}
+
+#taskbar {
+    color: @main-fg;
+    background: @main-bg;
+    opacity: 1;
+    margin: 4px 0px 4px 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 7px;
+}
+#taskbar.empty {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+#taskbar button {
+    box-shadow: none;
+	  text-shadow: none;
+    padding: 0px;
+    border-radius: 7px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-left: 6px;
+    padding-right: 3px;
+    color: @wb-color;
+    animation: tb_normal 20s ease-in-out 1;
+}
+
+#taskbar button.active {
+    background: @wb-hvr-bg;
+    border-radius: 7px;
+    padding-left: 10px;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 0;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  }
+
+#taskbar button:hover {
+    background: @wb-hvr-bg;
+    border-radius: 7px;
+    padding-left: 7px;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 0;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#tray menu * {
+    min-height: 16px
+}
+
+#tray menu separator {
+    min-height: 10px
+}
+#custom-recorder.recording {
+    border-radius: 7px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background: #F65C13;
+    color: #ffffff;
+}
+#custom-wallchange,
+#custom-cliphist,
+#custom-discord,
+#custom-heroic,
+#custom-steam,
+#custom-brave,
+#custom-zen,
+#custom-files {
+    font-size: 12pt;         /* tweak for your bar height */
+    min-width: 10px;         /* optional: forces equal spacing */
+    margin: 0 2px;         /* small spacing between icons */
+    padding: 0 4px;        /* inner spacing */
+    background: @main-bg;
+    opacity: 1;
+    margin: 4px 0px 4px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-family: "JetBrainsMono Nerd Font", "Material Design Icons", "Font Awesome 6 Brands";
+}
+#custom-layout {
+    font-size: 10pt;         /* tweak for your bar height */
+    margin: 0 2px;         /* small spacing between icons */
+    padding: 0 4px;        /* inner spacing */
+    background: @main-bg;
+    opacity: 1;
+    margin: 4px 0px 4px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    font-family: "JetBrainsMono Nerd Font", "Material Design Icons", "Font Awesome 6 Brands";
+}
+#custom-audio_idle_inhibitor {
+  color: @wb-act-color;
+  padding-right: 5px;
+  font-size: 16px;
+  text-shadow: none;
+  background: transparent;
+  opacity: 1;
+  margin: 4px 0px 4px 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+${modules_ls}
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end {
+    /* color: @main-fg; */
+    background: @main-bg;
+    opacity: 1;
+    margin: ${x1g_margin}px ${x2g_margin}px ${x3g_margin}px ${x4g_margin}px;
+    padding-${x3}: ${g_paddin}px;
+    padding-${x4}: ${g_paddin}px;
+}
+
+#custom-r_end {
+    border-radius: ${x1rb_radius}px ${x2rb_radius}px ${x3rb_radius}px ${x4rb_radius}px;
+    margin-${x4}: ${e_margin}px;
+    padding-${x4}: ${e_paddin}px;
+}
+
+#custom-l_end {
+    border-radius: ${x1lb_radius}px ${x2lb_radius}px ${x3lb_radius}px ${x4lb_radius}px;
+    margin-${x3}: ${e_margin}px;
+    padding-${x3}: ${e_paddin}px;
+}
+
+#custom-sr_end {
+    border-radius: 0px;
+    margin-${x4}: ${e_margin}px;
+    padding-${x4}: ${e_paddin}px;
+}
+
+#custom-sl_end {
+    border-radius: 0px;
+    margin-${x3}: ${e_margin}px;
+    padding-${x3}: ${e_paddin}px;
+}
+
+#custom-rr_end {
+    border-radius: ${x1rc_radius}px ${x2rc_radius}px ${x3rc_radius}px ${x4rc_radius}px;
+    margin-${x4}: ${e_margin}px;
+    padding-${x4}: ${e_paddin}px;
+}
+
+#custom-rl_end {
+    border-radius: ${x1lc_radius}px ${x2lc_radius}px ${x3lc_radius}px ${x4lc_radius}px;
+    margin-${x3}: ${e_margin}px;
+    padding-${x3}: ${e_paddin}px;
+}

@@ -1,0 +1,11 @@
+{
+  "custom/updates": {
+    "exec": "/home/tinker/.local/bin/hyde/systemupdate.fish",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "hyprctl dispatch exec '/home/tinker/.local/bin/hyde/systemupdate.sh up'",
+    "interval": 86400, // once every day
+    "tooltip": true,
+    "signal": 20
+  }
+}

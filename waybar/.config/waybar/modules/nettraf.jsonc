@@ -1,0 +1,6 @@
+{
+  "custom/nettraf": {
+    "exec": "$HOME/.local/bin/statusbar/sb-nettraf.sh",
+    "restart-interval": 1
+  }
+}

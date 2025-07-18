@@ -1,0 +1,10 @@
+{
+  "custom/wallchange": {
+    "format": "W",
+    //"format": "󰆊",
+    "exec": "echo ; echo 󰆊 switch wallpaper",
+    "on-click": "setsid -f $HOME/.local/bin/statusbar/sb-waybarwaller.sh",
+    "interval": 86400,
+    "tooltip": true
+  }
+}

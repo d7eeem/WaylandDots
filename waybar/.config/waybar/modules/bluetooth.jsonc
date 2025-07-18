@@ -3,8 +3,8 @@
     "format-disabled": "",
     "format-off": "",
     "format-on": "",
-    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-    "format-connected": " {device_alias} {device_battery_percentage}%",
+    "format-connected-battery": "{device_alias}{device_battery_percentage}%",
+    "format-connected": "{device_alias}{device_battery_percentage}%",
     "interval": 30,
     "on-click": "blueman-manager",
     "format-no-controller": ""

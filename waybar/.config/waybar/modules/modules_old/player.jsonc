@@ -1,0 +1,15 @@
+{
+  "custom/player": {
+    "format": "󰌳 {}",
+    "max-length": 50,
+    "exec-on-event": "on-click",
+    "interval": 1,
+    "return-type": "json",
+    "on-click": "playerctl play-pause",
+    "on-scroll-down": "playerctl previous",
+    "on-scroll-up": "playerctl next",
+    "tooltip": true,
+    "escape": true,
+    "exec": "/home/jveju/.config/waybar/player.sh"
+  }
+}

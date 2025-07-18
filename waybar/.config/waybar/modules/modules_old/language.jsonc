@@ -1,0 +1,7 @@
+    "hyprland/language": {
+        "format": "{short}",
+        "rotate": ${r_deg},
+        "on-click": "/home/tinker/WaylandDots/personal_scripts/.local/bin/hyde/keyboardswitch.sh",
+
+    },
+

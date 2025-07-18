@@ -1,0 +1,55 @@
+{
+  "group/dropper": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "custom/groupname2",
+      "custom/steam",
+      "custom/brave",
+      "custom/heroic",
+      "custom/discord",
+      "custom/files"
+    ]
+  },
+  "custom/brave": {
+    "format": "B",
+    "exec": "echo ; echo Brave",
+    "on-click": "sleep 0.1 && /home/tinker/.local/bin/personal/brave.fish",
+    "interval": 86400, // once every day
+    "tooltip": true
+  },
+  "custom/files": {
+    "format": "",
+    "exec": "echo ; echo  files",
+    "on-click": "sleep 0.1 && nautilus --new-window",
+    "interval": 86400, // once every day
+    "tooltip": true
+  },
+  "custom/heroic": {
+    "format": "",
+    "exec": "echo ; echo  heroic",
+    "on-click": "sleep 0.1 && heroic",
+    "interval": 86400, // once every day
+    "tooltip": true
+  },
+  "custom/steam": {
+    "format": "",
+    "exec": "echo ; echo  Steam",
+    "on-click": "sleep 0.1 && steam",
+    "interval": 86400, // once every day
+    "tooltip": true
+  },
+  "custom/discord": {
+    "format": "󰙯",
+    "exec": "echo '󰙯'; echo discord",
+    "on-click": "sleep 0.1 && discord",
+    "interval": 86400,
+    "tooltip": true
+  },
+  "custom/groupname2": {
+    "format": " "
+  }
+}

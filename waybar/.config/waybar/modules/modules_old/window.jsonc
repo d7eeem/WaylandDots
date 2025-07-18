@@ -1,0 +1,18 @@
+{
+  "hyprland/window": {
+    "format": "{}",
+    "rotate": 0,
+    "separate-outputs": true,
+    "rewrite": {
+      "(.*)Zen Browser": " Zen  ",
+      "title<.*youtube.*>": "",
+      "(.*) - fish": " > [$1] ",
+      "kiTTY": "$1  ",
+      "(.*)Steam": " Steam 󰓓 ",
+      "(.*) - Brave": " Brave  ",
+      "New Tab - Brave": " Brave  ",
+      "(.*) - Discord": " $1  "
+    },
+    "max-length": 10
+  }
+}

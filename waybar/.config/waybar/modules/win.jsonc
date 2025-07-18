@@ -1,0 +1,17 @@
+{
+  "group/win": {
+    "orientation": "vertical",
+    "modules": [
+      "hyprland/window",
+      "hyprland/window#win2"
+    ]
+  },
+  "hyprland/window": {
+    "format": "{initialClass}",
+    "on-click-middle": "hyprctl dispatch killactive"
+  },
+  "hyprland/window#win2": {
+    "format": "{title}",
+    "on-click-middle": "hyprctl dispatch killactive"
+  }
+}

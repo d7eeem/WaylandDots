@@ -1,0 +1,36 @@
+{
+  "pulseaudio": {
+    "format": "{icon} {volume}",
+    "format-muted": "<span font='12'>󰝟</span>",
+    "on-click": "pavucontrol -t 3",
+    "on-click-middle": "/home/tinker/.local/bin/statusbar/sb-volume.sh",
+    "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume raise",
+    "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume lower",
+    "tooltip-format": "{icon}  {desc} // {volume}%",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "<span font='12'>󰍬</span>",
+    "format-source-muted": "",
+    "on-click": "pavucontrol -t 4",
+    "on-click-middle": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\" --input-volume=mute-toggle",
+    "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\" --input-volume raise",
+    "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\" --input-volume lower",
+    "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+    "scroll-step": 5
+  }
+}

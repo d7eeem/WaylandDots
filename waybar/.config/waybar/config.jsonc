@@ -5,45 +5,33 @@
   "height": 36,
   "spacing": 5,
   "margin-top": 3,
-  "margin-right": 10,
-  "margin-left": 10,
+  "margin-right": 15,
+  "margin-left": 15,
   "include": "~/.config/waybar/modules.jsonc",
   "reload_style_on_change": true,
   "modules-left": [
     "custom/drop",
-    "power-profiles-daemon",
     "hyprland/workspaces",
-    "hyprland/window"
+    "custom/player",
+    "custom/nettraf"
   ],
   "modules-center": [
-    "clock",
-    "custom/recorder"
+    "hyprland/window",
+    "custom/recorder",
+    "privacy"
   ],
   "modules-right": [
+    "clock",
     "custom/audio_idle_inhibitor",
     "idle_inhibitor",
-    "custom/cpuinfo",
-    "cpu",
-    "custom/memory",
-    "custom/gpuinfo",
     "custom/updates",
+    "group/hardware",
     "pulseaudio",
-    "network",
     "hyprland/language",
+    "network",
     "tray",
     "bluetooth",
     "custom/notification",
     "custom/power"
   ]
 }
-
-
-// positions generated based on config.ctl //
-
-	"modules-left": ["custom/padd","","custom/padd"],
-	"modules-center": ["custom/padd","","custom/padd"],
-	"modules-right": ["custom/padd","","custom/padd"],
-
-
-// sourced from modules based on config.ctl //
-

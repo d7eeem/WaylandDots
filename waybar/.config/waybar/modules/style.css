@@ -2,9 +2,6 @@
 /* @import url("colors.css"); */
 
 
-@define-color special alpha(@color0, 0.2);
-
-
 * {
   border: @color4;
   border-radius: 7px;
@@ -24,43 +21,61 @@ tooltip * {
   color: @color7;
 }
 
+window#waybar {
+  color: @foreground;
+  padding: 2px 4px 2px 4px;
+  border: 1px solid alpha(@color3, 0.9);
+}
+
+
+window#waybar.empty {
+  background: transparent; 
+}
+
+
 #window {
   background-color: alpha(@color0, 0.90);
   padding: 2px 10px;
   margin: 2px 0px 2px 0px;
   border-radius: 7px;
-  border: 1px solid alpha(@color3, 0.9);
   font-weight: bold;
   color: @color7;
-}
-
-window#waybar {
-  background-color: @special;
-  color: @foreground;
+  border: 1px solid alpha(@color3, 0.9);
 }
 
 window#waybar.empty #window {
-  background: none;
-  border: none;
+  background: alpha(@background, 0.50);
 }
 
+window#waybar.hidden,
+window#waybar.empty {
+  background: alpha(@background, 0.50);
+}
 
+#win,
+#cpu,
+#tray,
 #clock,
 #clock-date,
 #pulseaudio,
 #custom-memory,
 #custom-cpuinfo,
-#cpu,
 #bluetooth,
 #language,
+#taskbar,
 #temperature,
 #upower,
-#tray,
-#custom-nettraf,
-#custom-player,
 #hardware,
+#dropper,
+#custom-brave,
+#custom-steam,
+#custom-discord,
+#custom-files,
+#custom-heroic,
 #custom-gpuinfo,
 #custom-updates,
+#custom-nettraf,
+#custom-player,
 #custom-power,
 #custom-recorder,
 #network,
@@ -89,10 +104,23 @@ window#waybar.empty #window {
   min-width: 20px;
 }
 
+#hardware {
+  background-color: alpha(@color0, 0.90);
+  padding: 2px 10px;
+  margin: 2px 0px 2px 0px;
+  border-radius: 7px;
+  border: 1px solid alpha(@color3, 0.9);
+  font-weight: bold;
+  color: @color7;
+  font-size: 20px;
+  min-width: 10px;
+}
+
+#custom-layout,
 #custom-drop {
   background-color: alpha(@color0, 0.90);
   padding: 2px 10px;
-  margin: 2px 0px 2px 4px;
+  margin: 2px 0px 2px 0px;
   border-radius: 7px;
   border: 1px solid alpha(@color3, 0.9);
   font-weight: bold;
@@ -106,19 +134,28 @@ window#waybar.empty #window {
 }
 
 #cpu:hover,
+#clock:hover,
+#dropper:hover,
 #network:hover,
+#menuitem:hover,
 #language:hover,
+#hardware:hover,
 #bluetooth:hover,
 #pulseaudio:hover,
+#custom-brave:hover,
+#custom-steam:hover,
+#custom-files:hover,
+#custom-heroic:hover,
 #custom-memory:hover,
 #idle_inhibitor:hover,
 #custom-updates:hover,
 #custom-cpuinfo:hover,
 #custom-gpuinfo:hover,
+#custom-discord:hover,
 #custom-notification:hover,
 #power-profiles-daemon:hover,
 #custom-audio_idle_inhibitor:hover {
-  background-color: @color13;
+  background-color: @color4;
   color: @background;
 }
 
@@ -131,10 +168,9 @@ window#waybar.empty #window {
 }
 
 #network {
-  color: #89dceb;
+  color: @color7;
   font-size: 18px;
   margin: 2px 0px 2px 0px;
-
 }
 
 #network.disconnected {
@@ -155,23 +191,22 @@ window#waybar.empty #window {
   color: @color7;
   /* color: #f38ba8; */
   font-size: 16px;
-  margin: 2px 4px 2px 0px;
+  margin: 2px 0px 2px 0px;
 }
 
 #custom-power:hover {
-  background-color: @color13;
+  background-color: @color4;
   color: @background;
 }
 
 #custom-drop:hover {
-  background-color: @color13;
+  background-color: @color4;
   color: @background;
 }
 
-#privacy-item.screenshare,
 #custom-recorder.recording {
   background: #F65C13;
-  color: white;
+  color: #fff;
   padding: 2px 12px;
   margin: 2px 0px 2px 0px;
   border-radius: 7px;
@@ -185,18 +220,18 @@ window#waybar.empty #window {
 
 /* ========== Workspaces ========== */
 
-/* #workspaces { */
-/*   background-color: alpha(@color0, 0.9); */
-/*   border-radius: 9px; */
-/*   border: 1px solid alpha(@color3, 0.90); */
-/*   padding: 0; */
-/*   padding: 2px; */
-/*   margin: 2px 0px 2px 0px; */
-/* } */
+#workspaces {
+  background-color: alpha(@color0, 0.9);
+  border-radius: 9px;
+  border: 1px solid alpha(@color3, 0.90);
+  padding: 0;
+  padding: 2px;
+  margin: 2px 0px 2px 0px;
+}
 
 #workspaces button {
   background-color: alpha(@color0, 0.90);
-  color: @color7;
+  color: white;
   padding: 2px 4px;
   margin: 2px 2px 2px 2px;
   border-radius: 7px;
@@ -218,8 +253,8 @@ window#waybar.empty #window {
 }
 
 #workspaces button.active {
-  background-color: @color13;
-  color: @color0;
+  background-color: @color11;
+  color: white;
 }
 
 #workspaces button.urgent {

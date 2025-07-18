@@ -5,8 +5,12 @@
     "separate-outputs": true,
     "rewrite": {
       "title<.*youtube.*>": "\uf16a",
-      "(.*)Steam": " Steam \udb81\udcd3 "
+      "(.*)Steam": " Steam \udb81\udcd3 ",
+      "(.*)Discord": "Discord  ",
+      "(.*)KiTTY": "KITTY 󰄛",
+      "(.*)org.gnome.Nautilus": "Nautilus",
+      "(.*)org.telegram.desktop": "Telegram"
     },
-    "max-length": 25
+    "max-length": 12
   }
 }

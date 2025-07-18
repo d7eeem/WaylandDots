@@ -1,15 +1,20 @@
 {
   "custom/player": {
-    "format": "󰌳 {}",
-    "max-length": 50,
-    "exec-on-event": "on-click",
-    "interval": 1,
+    "exec": "/home/tinker/.local/bin/hyde/mediaplayer.py",
+    "format": "󰝚 {}",
+    "none": "",
     "return-type": "json",
-    "on-click": "playerctl play-pause",
-    "on-scroll-down": "playerctl previous",
-    "on-scroll-up": "playerctl next",
-    "tooltip": true,
+    "on-click": "swayosd-client --playerctl play-pause",
+    // "on-click": "playerctl play-pause --all-players",
+    "on-click-right": "swayosd-client --playerctl next",
+    // "on-click-right": "playerctl next --all-players",
+    "on-click-middle": "swayosd-client --playerctl prev",
+    // "on-click-middle": "playerctl previous --all-players",
+    "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume raise",
+    "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume lower",
+    "max-length": 25,
     "escape": true,
-    "exec": "/home/jveju/.config/waybar/player.sh"
+    "tooltip": true,
+    "hide-empty-text": true
   }
 }
