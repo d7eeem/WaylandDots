@@ -1,6 +1,6 @@
 #!/bin/bash
 upload() {
-    RESPONSE="$(curl -s -F "token=token_5583ed0627e4d9067369a7d26a3bb934" -F "upload=@${1}" https://xback.aloqaili.xyz/upload)";
+    RESPONSE="$(curl -s -F "token=$XBACK_BONE" -F "upload=@${1}" https://xback.aloqaili.xyz/upload)";
 
     if [[ "$(echo "${RESPONSE}" | jq -r '.message')" == "OK" ]]; then
         URL="$(echo "${RESPONSE}" | jq -r '.url')";
