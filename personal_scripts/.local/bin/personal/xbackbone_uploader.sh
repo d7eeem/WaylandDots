@@ -1,4 +1,9 @@
 #!/bin/bash
+
+if [ -f ~/.env ]; then
+  export $(grep -v '^#' ~/.env | xargs)
+fi
+
 upload() {
     RESPONSE="$(curl -s -F "token=$XBACK_BONE" -F "upload=@${1}" https://xback.aloqaili.xyz/upload)";
 

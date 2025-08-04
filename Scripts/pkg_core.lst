@@ -94,9 +94,6 @@ pacman-contrib
 imagemagick
 ffmpegthumbs
 libnotify
-noto-fonts-emoji
-ttf-font-awesome
-
 #Theming
 #-------
 nwg-look
@@ -148,11 +145,17 @@ adwaita-fonts
 awesome-terminal-fonts
 cantarell-fonts
 noto-fonts-emoji
-ttf-font-awesome
 ttf-nerd-fonts-symbols
+ttf-nerd-fonts-symbols-common
+noto-color-emoji-fontconfig
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-font-awesome
 ttf-hack-nerd
 ttf-fantasque-nerd
 ttf-jetbrains-mono-nerd
+ttf-0xproto-nerd
 
 #File Manager
 #------------
@@ -226,12 +229,7 @@ swaync
 wf-recorder
 foot
 cliphist
-ttf-nerd-fonts-symbols
-ttf-nerd-fonts-symbols-common
 discord
 vesktop
 ntfs-3g
-noto-color-emoji-fontconfig
-noto-fonts
-noto-fonts-cjk
-noto-fonts-emoji
+

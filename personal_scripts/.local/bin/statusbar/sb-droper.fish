@@ -22,7 +22,7 @@ switch $choice
         nohup discord >/dev/null 2>&1 &
 
     case "Jellyfin"
-        nohup flatpak run cafe.avery.Delfin >/dev/null 2>&1 &
+        nohup flatpak run moe.tsuna.tsukimi  >/dev/null 2>&1 &
 
     case "Vesktop"
         nohup vesktop >/dev/null 2>&1 &

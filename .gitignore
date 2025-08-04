@@ -2,3 +2,4 @@ zsh/.config/zsh/.zcompdump
 dunst/.config/dunst/icons/*
 	yazi/.config/yazi/keymap.toml-*
 	yazi/.config/yazi/yazi.toml-*
+gallery-dl/.config/gallery-dl/downloaded.sqlite3
