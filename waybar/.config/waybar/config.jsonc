@@ -4,26 +4,29 @@
   "exclusive": true,
   "height": 36,
   "spacing": 5,
-  "margin-top": 3,
-  "margin-right": 15,
-  "margin-left": 15,
+  "margin-top": 2,
+  "margin-right": 10,
+  "margin-left": 10,
   "include": "~/.config/waybar/modules.jsonc",
   "reload_style_on_change": true,
   "modules-left": [
     "custom/drop",
-    "hyprland/workspaces",
     "custom/player",
-    "custom/nettraf"
+    "custom/nettraf",
+    "hyprland/window",
   ],
   "modules-center": [
-    "hyprland/window",
+    "custom/notification",
+    "hyprland/workspaces",
+    "custom/power",
     "custom/recorder",
-    "privacy"
+    "privacy",
   ],
   "modules-right": [
     "clock",
     "custom/audio_idle_inhibitor",
     "idle_inhibitor",
+    "custom/memory",
     "custom/updates",
     "group/hardware",
     "pulseaudio",
@@ -31,7 +34,5 @@
     "network",
     "tray",
     "bluetooth",
-    "custom/notification",
-    "custom/power"
-  ]
+  ],
 }

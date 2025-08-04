@@ -9,7 +9,8 @@
       "(.*)Discord": "Discord  ",
       "(.*)KiTTY": "KITTY 󰄛",
       "(.*)org.gnome.Nautilus": "Nautilus",
-      "(.*)org.telegram.desktop": "Telegram"
+      "(.*)org.telegram.desktop": "Telegram",
+      "(.*)cafe.avery.Delfin": "Delfin"
     },
     "max-length": 12
   }

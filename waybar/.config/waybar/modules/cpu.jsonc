@@ -8,16 +8,16 @@
   "cpu": {
     "interval": 10,
     "format-alt": "󰍛 {usage}%",
-    "format": "{icon0}{icon1}{icon2}{icon3}",
+    "format": "{icon0}{icon1}{icon2}{icon3}{icon5}",
     "format-icons": [
-      "<span color='#69ff94'>▁</span>", // green
-      "<span color='#2aa9ff'>▂</span>", // blue
-      "<span color='#f8f8f2'>▃</span>", // white
-      "<span color='#f8f8f2'>▄</span>", // white
-      "<span color='#ffffa5'>▅</span>", // yellow
-      "<span color='#ffffa5'>▆</span>", // yellow
-      "<span color='#ff9977'>▇</span>", // orange
-      "<span color='#dd532e'>█</span>" // red
+      "<span color='#69ff94'>▁</span>", // Green
+      "<span color='#2aa9ff'>▂</span>", // Blue
+      "<span color='#f8f8f2'>▃</span>", // White
+      "<span color='#f8f8f2'>▄</span>", // White
+      "<span color='#ffffa5'>▅</span>", // Yellow
+      "<span color='#ffffa5'>▆</span>", // Yellow
+      "<span color='#ff9977'>▇</span>", // Orange
+      "<span color='#dd532e'>█</span>"  // Red
     ]
   }
 }

@@ -4,6 +4,7 @@
     "$HOME/.config/waybar/modules/hardware_group.jsonc",
     "$HOME/.config/waybar/modules/clock.jsonc",
     "$HOME/.config/waybar/modules/mpris.jsonc",
+    "$HOME/.config/waybar/modules/corner.jsonc",
     "$HOME/.config/waybar/modules/win.jsonc",
     "$HOME/.config/waybar/modules/taskbar.jsonc",
     "$HOME/.config/waybar/modules/language.jsonc",

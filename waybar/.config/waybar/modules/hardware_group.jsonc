@@ -10,7 +10,6 @@
       "custom/groupname",
       "custom/cpuinfo",
       "cpu",
-      "custom/memory",
       "custom/gpuinfo"
     ]
   },
