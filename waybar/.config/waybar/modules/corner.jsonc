@@ -1,0 +1,10 @@
+{
+  "custom/corner-left": {
+    "format": " ",
+    "tooltip": false,
+  },
+  "custom/corner-right": {
+    "format": " ",
+    "tooltip": false,
+  },
+}
