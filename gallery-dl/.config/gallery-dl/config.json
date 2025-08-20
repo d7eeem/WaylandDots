@@ -29,12 +29,13 @@
       "jfi": "jpg"
     },
     "reddit": {
-      "client-id": "",
-      "client-secret": "",
-      "user-agent": "Python:gld:v1.0 (by /u/)",
+      "client-id": "$REDDIT_ID",
+      "user-agent": "Python:$REDDIT_APP:v1.0 (by /u/$REDDIT_DEV",
       "refresh-token": "cache",
       "comments": 0,
       "morecomments": false,
+      "sleep": 5,
+      "sleep-request": "6-12",
       "date-min": 0,
       "date-max": 253402210800,
       "date-format": "%Y-%m-%dT%H:%M:%S",
@@ -73,7 +74,7 @@
       "sleep-request": "6-12",
       "directory": [
         "Twitter",
-        "{author}"
+        "{user[nick]}"
       ],
       "filename": "{tweet_id}_{num}.{extension}"
     },
