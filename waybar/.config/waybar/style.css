@@ -35,9 +35,11 @@ tooltip * {
 .modules-center {
   padding-left: 3px;
 }
+.modules-center {
+padding-right: 2px;
+}
 
 .modules-left,
-.modules-center,
 .modules-right {
   background-color: @special;
   /* background-color: alpha(@color0, 0.99); */
@@ -60,7 +62,7 @@ window#waybar {
 }
 
 window#waybar.empty #window {
-  background: none;
+  background-color: transparent;
   border: none;
 }
 

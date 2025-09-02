@@ -36,6 +36,10 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 
 [opener]
+play = [
+  { run = 'player.sh "$@"', orphan = true, for = "unix" },
+	{ run = '"C:\Program Files\mpv.exe" %*', orphan = true, for = "windows" }
+]
 edit = [
   { run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
   { run = 'nvim "%*"', desc = "$EDITOR", block = true, for = "windows" },

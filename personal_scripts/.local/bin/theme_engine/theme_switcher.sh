@@ -9,7 +9,9 @@ CACHE_DIR="$XDG_CACHE_HOME/theme_engine"
 STATE_DIR="$XDG_STATE_HOME/theme_engine"
 
 # Create necessary directories
-mkdir -p "$CACHE_DIR/user/generated/{hypr,gtk}"
+mkdir -p "$CACHE_DIR/user/generated/hypr"
+mkdir -p "$CACHE_DIR/user/generated/gtk"
+mkdir -p "$CACHE_DIR/user/generated/swaync"
 mkdir -p "$STATE_DIR/scss"
 
 # Function to check if running under KDE
@@ -40,41 +42,30 @@ get_cursor_pos() {
 }
 
 apply_hyprland() {
-  local template="$CONFIG_DIR/scripts/templates/hypr/themes/colors.conf"
-  local out="$CACHE_DIR/user/generated/hypr/colors.conf"
-  [ -f "$template" ] || { echo "Template file not found for Hyprland colors. Skipping."; return; }
-  cp "$template" "$out"
-  for i in "${!colorlist[@]}"; do
-    color_name=${colorlist[$i]}
-    color_value=${colorvalues[$i]}
-    sed -i "s/{{ ${color_name} }}/${color_value}/g" "$out"
-    sed -i "s/rgba({{ ${color_name} }}ff)/rgba(${color_value}ff)/g" "$out"
-    sed -i "s/rgba({{ ${color_name} }}cc)/rgba(${color_value}cc)/g" "$out"
-  done
-  cp "$out" "$XDG_CONFIG_HOME/hypr/themes/colors.conf"
-}
-
-apply_hyprlock() {
-  local template="$CONFIG_DIR/scripts/templates/hypr/hyprlock.conf"
-  local out="$CACHE_DIR/user/generated/hypr/hyprlock.conf"
-  [ -f "$template" ] || { echo "Template file not found for hyprlock. Skipping."; return; }
-  current_wall=$(swww query | head -1 | awk -F 'image: ' '{print $2}')
-  if [ -f "$CACHE_DIR/video_frame.png" ]; then
-    hyprlock_wall="$CACHE_DIR/video_frame.png"
-  elif [[ "$current_wall" == *.png ]]; then
-    hyprlock_wall="$current_wall"
-  else
-    hyprlock_wall="$CACHE_DIR/wall.png"
+  if [ ! -f "$CONFIG_DIR/scripts/templates/hypr/themes/colors.conf" ]; then
+    echo "Template file not found for Hyprland colors. Skipping that."
+    return
   fi
-  cp "$template" "$out"
-  sed -i "s|path = .*|path = $hyprlock_wall|" "$out"
+
+  # Copy template
+  cp "$CONFIG_DIR/scripts/templates/hypr/themes/colors.conf" "$CACHE_DIR/user/generated/hypr/colors.conf"
+
+  # Replace color variables
   for i in "${!colorlist[@]}"; do
-    color_name=${colorlist[$i]}
-    color_value=${colorvalues[$i]}
-    sed -i "s/#{{ ${color_name} }}/#${color_value}/g" "$out"
-    sed -i "s/{{ ${color_name} }}/${color_value}/g" "$out"
+    # Remove the $ prefix from color names
+    color_name=${colorlist[$i]#$}
+    color_value=${colorvalues[$i]#\#}
+
+    # Replace in variable declarations
+    sed -i "s/{{ ${color_name} }}/${color_value}/g" "$CACHE_DIR/user/generated/hypr/colors.conf"
+
+    # Replace in rgba() functions
+    sed -i "s/rgba({{ ${color_name} }}ff)/rgba(${color_value}ff)/g" "$CACHE_DIR/user/generated/hypr/colors.conf"
+    sed -i "s/rgba({{ ${color_name} }}cc)/rgba(${color_value}cc)/g" "$CACHE_DIR/user/generated/hypr/colors.conf"
   done
-  cp "$out" "$XDG_CONFIG_HOME/hypr/hyprlock.conf"
+
+  # Copy to hyprland config
+  cp "$CACHE_DIR/user/generated/hypr/colors.conf" "$XDG_CONFIG_HOME/hypr/themes/colors.conf"
 }
 
 apply_gtk() {
@@ -222,7 +213,7 @@ EOF
   apply_swaync &
   apply_gtk &
   wait
-  apply_hyprlock &
+  #apply_hyprlock &
 }
 
 if [[ "$1" ]]; then

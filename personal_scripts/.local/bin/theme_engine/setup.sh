@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 # Define paths
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -6,7 +7,10 @@ XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
 # Create directory structure
-mkdir -p "$XDG_CONFIG_HOME/theme_engine/scripts/templates/"{gtk,hypr/themes,kde,swaync}
+mkdir -p "$XDG_CONFIG_HOME/theme_engine/scripts/templates/gtk"
+mkdir -p "$XDG_CONFIG_HOME/theme_engine/scripts/templates/hypr/themes"
+mkdir -p "$XDG_CONFIG_HOME/theme_engine/scripts/templates/kde"
+mkdir -p "$XDG_CONFIG_HOME/theme_engine/scripts/templates/swaync"
 mkdir -p "$XDG_CACHE_HOME/theme_engine/user/generated/"{hypr,gtk,kde,swaync}
 mkdir -p "$XDG_STATE_HOME/theme_engine/scss"
 mkdir -p "$HOME/.local/share/color-schemes"

@@ -11,16 +11,14 @@
   "reload_style_on_change": true,
   "modules-left": [
     "custom/drop",
-    "custom/player",
-    "custom/nettraf",
-    "hyprland/window",
+    // "custom/player",
+    // "custom/nettraf",
+    "hyprland/workspaces",
   ],
   "modules-center": [
-    "custom/notification",
-    "hyprland/workspaces",
-    "custom/power",
+    "hyprland/window",
     "custom/recorder",
-    "privacy",
+    "privacy"
   ],
   "modules-right": [
     "clock",
@@ -33,6 +31,7 @@
     "hyprland/language",
     "network",
     "tray",
-    "bluetooth",
-  ],
+    "custom/power",
+    "custom/notification"
+  ]
 }

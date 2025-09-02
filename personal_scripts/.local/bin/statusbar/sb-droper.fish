@@ -22,7 +22,7 @@ switch $choice
         nohup discord >/dev/null 2>&1 &
 
     case "Jellyfin"
-        nohup flatpak run moe.tsuna.tsukimi  >/dev/null 2>&1 &
+        nohup flatpak run cafe.avery.Delfin  >/dev/null 2>&1 &
 
     case "Vesktop"
         nohup vesktop >/dev/null 2>&1 &
@@ -40,7 +40,7 @@ switch $choice
         nohup zen-browser >/dev/null 2>&1 &
 
     case "Brave"
-        nohup brave >/dev/null 2>&1 &
+        nohup brave.fish >/dev/null 2>&1 &
 
     case "Theme"
         nohup /home/tinker/.local/bin/theme_engine/theme_switcher.sh >/dev/null 2>&1 &

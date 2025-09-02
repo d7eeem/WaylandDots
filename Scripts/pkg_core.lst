@@ -47,7 +47,6 @@ boxbuddy
 yazi
 zen-browser-bin
 python-pywal16
-
 #Window Manager
 #--------------
 hyprland
@@ -67,7 +66,6 @@ hyprsunset
 hypridle
 python-pyamdgpuinfo
 swayosd
-
 #Development Tools
 #-----------------
 cmake
@@ -81,23 +79,18 @@ python-setuptools-scm
 python-wheel
 shellcheck
 lua-language-server
-
 lua51
 luarocks
 visual-studio-code-bin
 github-desktop-bin
-
 #Dependencies
 #------------
 hyprpolkitagent
-pacman-contrib
-imagemagick
 ffmpegthumbs
 libnotify
 #Theming
 #-------
 nwg-look
-
 #Applications
 #------------
 firefox
@@ -105,16 +98,9 @@ kitty
 unzip
 code
 fzf
-
 #Neovim
-
 #------
 neovim
-lua51
-luarocks
-shellcheck
-lua-language-server
-
 #Shell
 #-----
 eza
@@ -122,10 +108,8 @@ starship
 fastfetch
 bat
 fd
-ripgrep
 dua-cli
 duf
-
 #Gaming
 #------
 steam
@@ -138,7 +122,6 @@ gpu-screen-recorder
 gpu-screen-recorder-ui
 protontricks
 winetricks
-
 #Fonts
 #-----
 adwaita-fonts
@@ -150,17 +133,14 @@ ttf-nerd-fonts-symbols-common
 noto-color-emoji-fontconfig
 noto-fonts
 noto-fonts-cjk
-noto-fonts-emoji
 ttf-font-awesome
 ttf-hack-nerd
 ttf-fantasque-nerd
 ttf-jetbrains-mono-nerd
 ttf-0xproto-nerd
-
 #File Manager
 #------------
 nautilus
-
 #Python Libraries
 #----------------
 python-pillow
@@ -168,37 +148,23 @@ python-psutil
 python-pywalfox
 python-pywayland
 python-libsass
-
 #Audio
 #-----
-pipewire
 pipewire-alsa
 pipewire-audio
 pipewire-jack
 pipewire-pulse
 gst-plugin-pipewire
 pavucontrol
-pamixer
-
 #Display / Wayland / Hyprland Tools
 #----------------------------------
-hyprland
-hypridle
-hyprlock
-hyprpicker
-rofi-wayland
-swww
 wf-recorder
-slurp
 swappy
 overskride
 ghostty
 foot
 playerctl
 cava
-waybar
-satty
-
 #Miscellaneous / Tools
 #---------------------
 tesseract
@@ -210,10 +176,8 @@ lsix
 chafa
 tree
 gtk-engine-murrine
-stylepak-git
-everforest-gtk-theme-git
-catppuccin-gtk-theme-mocha
-colloid-everforest-gtk-theme-git
+#everforest-gtk-theme-git
+#catppuccin-gtk-theme-mocha
 ttf-firacode-nerd
 nodejs-material-design-icons
 imv
@@ -221,14 +185,10 @@ bash-language-server
 proxychains-ng
 gallery-dl
 woff2-material-symbols-variable-git
-tela-circle-icon-theme
 hyprshot
 matugen-bin
 sway-audio-idle-inhibit-git
 swaync
-wf-recorder
-foot
-cliphist
 discord
 vesktop
 ntfs-3g
