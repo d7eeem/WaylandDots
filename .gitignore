@@ -1,5 +1,7 @@
 zsh/.config/zsh/.zcompdump
 dunst/.config/dunst/icons/*
-	yazi/.config/yazi/keymap.toml-*
-	yazi/.config/yazi/yazi.toml-*
+yazi/.config/yazi/keymap.toml-*
+yazi/.config/yazi/yazi.toml-*
 gallery-dl/.config/gallery-dl/downloaded.sqlite3
+personal_scripts/.local/bin/yt-dlp
+gallery-dl/.config/gallery-dl/config.json
