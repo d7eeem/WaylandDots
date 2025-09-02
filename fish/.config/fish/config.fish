@@ -96,5 +96,8 @@ end
 #https://haseebmajid.dev/posts/2024-02-28-how-to-load-secret-environment-variables-in-fish-shell/
 #https://gist.github.com/nikoheikkila/dd4357a178c8679411566ba2ca280fcc
 #envsource ~/.env
+if test -f ~/.env
+    envsource ~/.env
+end
 
 starship init fish | source
