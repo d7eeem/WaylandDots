@@ -2,7 +2,6 @@
 /* @import url("colors.css"); */
 
 @define-color special alpha(@color0, 0.99);
-
 * {
   /* border: @color4; */
   /* border-radius: 7px; */
@@ -96,6 +95,10 @@ window#waybar.empty #window {
   border: 1px solid alpha(@color3, 0.9);
   font-weight: bold;
   color: @color7;
+}
+
+#hardware * {
+  margin: 0 1px; /* horizontal spacing between items */
 }
 
 #custom-notification {

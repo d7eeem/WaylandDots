@@ -11,9 +11,8 @@
   "reload_style_on_change": true,
   "modules-left": [
     "custom/drop",
-    // "custom/player",
-    // "custom/nettraf",
     "hyprland/workspaces",
+    "custom/nettraf"
   ],
   "modules-center": [
     "hyprland/window",
@@ -24,8 +23,6 @@
     "clock",
     "custom/audio_idle_inhibitor",
     "idle_inhibitor",
-    "custom/memory",
-    "custom/updates",
     "group/hardware",
     "pulseaudio",
     "hyprland/language",

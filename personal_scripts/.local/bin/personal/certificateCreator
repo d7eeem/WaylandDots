@@ -1,0 +1,155 @@
+#!/bin/env bash
+# _     _ _____
+#(_) __| |___  |_  ___   _ ____
+#| |/ _| |  / /\ \/ / | | |_  /
+#| | (_| | / /  >  <| |_| |/ /
+#|_|\__,_|/_/  /_/\_\__, /___|
+# Created by: d7eeem aka id7xyz
+# https://gitlab.com/d7eeem
+
+# PKPass Certificate Generator Script
+# This script automates the process of generating certificates for Apple PKPass files
+
+set -e  # Exit on error
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Function to print colored output
+print_step() {
+    echo -e "${GREEN}[STEP]${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
+
+print_info() {
+    echo -e "${YELLOW}[INFO]${NC} $1"
+}
+
+# Check for required commands
+for cmd in openssl wget; do
+    if ! command -v $cmd &> /dev/null; then
+        print_error "$cmd is required but not installed. Please install it first."
+        exit 1
+    fi
+done
+
+# Prompt for company name
+read -p "Enter your company name: " COMPANY_NAME
+
+# Step 1: Generate private key
+print_step "Generating private key (pkpass.key)..."
+openssl genrsa -out pkpass.key 2048
+print_info "Private key generated successfully"
+
+# Step 2: Generate certificate signing request
+print_step "Generating certificate signing request (pkpass.csr)..."
+echo ""
+print_info "You will be asked to enter certificate information."
+print_info "IMPORTANT: Leave 'Challenge password' EMPTY (just press Enter)"
+echo ""
+openssl req -new -key pkpass.key -out pkpass.csr
+print_info "Certificate signing request generated successfully"
+
+# Step 3: Instructions for Apple Developer Portal
+echo ""
+print_info "========================================="
+print_info "MANUAL STEPS REQUIRED:"
+print_info "========================================="
+echo "1. Go to https://developer.apple.com/account/"
+echo "2. Click 'Certificates, Identifiers & Profiles'"
+echo "3. Click on 'Identifiers'"
+echo "4. Filter to 'Pass Type IDs'"
+echo "5. Register a New Identifier, choose 'Pass Type IDs'"
+echo "6. Enter Description and Identifier (e.g., pass.com.example.www)"
+echo "7. Click 'Register'"
+echo "8. Select your identifier and click 'Create Certificate'"
+echo "9. Upload the pkpass.csr file from this directory"
+echo "10. Download the certificate and save it as 'pass.cer' in this directory"
+echo ""
+read -p "Press Enter when you have downloaded pass.cer to this directory..."
+
+# Check if pass.cer exists
+if [ ! -f "pass.cer" ]; then
+    print_error "pass.cer not found in current directory. Please download it first."
+    exit 1
+fi
+
+# Step 4: Download Apple's root certificate
+print_step "Downloading Apple WWDR certificate..."
+if [ -f "AppleWWDRCA.cer" ]; then
+    print_info "AppleWWDRCA.cer already exists, skipping download"
+else
+    wget -q http://developer.apple.com/certificationauthority/AppleWWDRCA.cer
+    print_info "Apple WWDR certificate downloaded successfully"
+fi
+
+# Step 5: Convert .cer files to .pem format
+print_step "Converting .cer files to .pem format..."
+openssl x509 -inform der -in AppleWWDRCA.cer -out AppleWWDRCA.pem
+openssl x509 -inform der -in pass.cer -out pass.pem
+print_info "Certificates converted to .pem format"
+
+# Step 6: Generate .p12 certificate
+print_step "Generating .p12 certificate..."
+echo ""
+print_info "You will be asked to enter a password for the .p12 file."
+print_info "Choose a STRONG password - you'll need it to generate PKPass files."
+echo ""
+openssl pkcs12 -export -clcerts -inkey pkpass.key -in pass.pem -certfile AppleWWDRCA.pem -name "$COMPANY_NAME" -out pkpass.p12
+
+# Step 7: Display certificate information
+echo ""
+print_step "Certificate generated successfully!"
+echo ""
+print_info "========================================="
+print_info "CERTIFICATE INFORMATION:"
+print_info "========================================="
+
+# Extract Team Identifier (OU)
+TEAM_ID=$(openssl pkcs12 -in pkpass.p12 -nodes -passin pass: 2>/dev/null | openssl x509 -noout -subject | grep -oP 'OU\s*=\s*\K[^/,]+' || echo "Unable to extract automatically")
+
+echo "Team Identifier (OU): $TEAM_ID"
+
+# Extract and display expiration date
+EXPIRY_DATE=$(openssl x509 -in pass.pem -noout -enddate | cut -d= -f2)
+echo "Certificate Expiration: $EXPIRY_DATE"
+
+# Display Pass Type ID instruction
+echo ""
+print_info "Your Pass Type ID (Certificate Identifier) can be found in:"
+print_info "Apple Developer Portal > Identifiers > Your Pass Type ID"
+
+echo ""
+print_info "========================================="
+print_info "REQUIRED FOR PKPASS GENERATION:"
+print_info "========================================="
+echo "1. Certificate Identifier: (from Apple Developer Portal)"
+echo "2. Team Identifier (OU): $TEAM_ID"
+echo "3. P12 File: pkpass.p12"
+echo "4. P12 Password: (the password you just entered)"
+
+echo ""
+print_info "========================================="
+print_info "FILES GENERATED:"
+print_info "========================================="
+echo "- pkpass.key (private key - keep secure!)"
+echo "- pkpass.csr (certificate signing request)"
+echo "- pass.pem (your certificate)"
+echo "- AppleWWDRCA.pem (Apple's root certificate)"
+echo "- pkpass.p12 (final certificate bundle - keep secure!)"
+
+echo ""
+print_info "========================================="
+print_info "SECURITY REMINDER:"
+print_info "========================================="
+echo "The .p12 file contains your private key and certificates."
+echo "Keep it secure and only distribute it to trusted servers."
+echo "Make sure it's only readable by your PKPass generator application."
+
+echo ""
+print_step "Setup complete! Don't forget to set a calendar reminder for certificate expiration: $EXPIRY_DATE"

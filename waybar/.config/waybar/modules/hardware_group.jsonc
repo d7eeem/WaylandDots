@@ -1,19 +1,17 @@
 {
   "group/hardware": {
     "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 500,
-      "children-class": "not-power",
-      "transition-left-to-right": false
-    },
+    // "drawer": {
+    //   "transition-duration": 500,
+    //   "children-class": "not-power",
+    //   "transition-left-to-right": false
+    // },
     "modules": [
-      "custom/groupname",
+      "custom/updates",
+      "custom/memory",
       "custom/cpuinfo",
       "cpu",
-      "custom/gpuinfo"
-    ]
+      "custom/gpuinfo",
+    ],
   },
-  "custom/groupname": {
-    "format": " 󰇅 "
-  }
 }

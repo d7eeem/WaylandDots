@@ -47,6 +47,7 @@ boxbuddy
 yazi
 zen-browser-bin
 python-pywal16
+
 #Window Manager
 #--------------
 hyprland
@@ -73,16 +74,11 @@ meson
 npm
 typescript
 go
-gjs
-python-build
-python-setuptools-scm
-python-wheel
 shellcheck
 lua-language-server
 lua51
 luarocks
 visual-studio-code-bin
-github-desktop-bin
 #Dependencies
 #------------
 hyprpolkitagent
@@ -133,7 +129,7 @@ ttf-nerd-fonts-symbols-common
 noto-color-emoji-fontconfig
 noto-fonts
 noto-fonts-cjk
-ttf-font-awesome
+otf-font-awesome
 ttf-hack-nerd
 ttf-fantasque-nerd
 ttf-jetbrains-mono-nerd
@@ -176,8 +172,6 @@ lsix
 chafa
 tree
 gtk-engine-murrine
-#everforest-gtk-theme-git
-#catppuccin-gtk-theme-mocha
 ttf-firacode-nerd
 nodejs-material-design-icons
 imv

@@ -19,6 +19,7 @@ com.github.iwalton3.jellyfin-mpv-shim          # Jellyfin MPV Shim
 #com.github.Matoking.protontricks             # ProtonTricks
 com.vysp3r.ProtonPlus
 cafe.avery.Delfin
+io.github.Faugus.faugus-launcher
 com.mattjakeman.ExtensionManager
 com.nextcloud.desktopclient.nextcloud
 io.github.nozwock.Packet                      # send via bluetooth
@@ -27,3 +28,5 @@ org.gimp.GIMP
 org.gnome.gitlab.somas.Apostrophe 
 page.tesk.Refine
 page.kramo.Cartridges
+org.videolan.VLC
+org.kde.haruna

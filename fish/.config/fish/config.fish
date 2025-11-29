@@ -10,6 +10,10 @@ function fish_greeting
     fastfetch
 end
 
+set -gx ROCR_VISIBLE_DEVICES 0
+set -gx OLLAMA_NUM_PARALLEL 2
+set -gx OLLAMA_HOST 0.0.0.0
+
 # Format man pages
 set -x MANROFFOPT "-c"
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -37,7 +41,6 @@ if test -d ~/Applications/depot_tools
         set -p PATH ~/Applications/depot_tools
     end
 end
-
 
 ## Functions
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
@@ -93,11 +96,75 @@ function ssh
     env TERM=xterm-256color ssh $argv
 end
 
-#https://haseebmajid.dev/posts/2024-02-28-how-to-load-secret-environment-variables-in-fish-shell/
-#https://gist.github.com/nikoheikkila/dd4357a178c8679411566ba2ca280fcc
-#envsource ~/.env
+## gallery-dl Reddit setup
+
+# Source your main .env file
 if test -f ~/.env
-    envsource ~/.env
+    # If you have the bass plugin or envsource function
+    if type -q envsource
+        envsource ~/.env
+    else
+        # Fallback: manual parsing of .env file
+        for line in (cat ~/.env | grep -v '^#' | grep -v '^\s*$')
+            set -l parts (string split -m 1 '=' -- $line)
+            if test (count $parts) -eq 2
+                set -gx $parts[1] $parts[2]
+            end
+        end
+    end
+end
+
+# Helper function to create Reddit config
+function __gallery_dl_create_reddit_config
+    # Check if required environment variables are set
+    if not set -q REDDIT_ID; or not set -q REDDIT_APP
+        echo "Error: REDDIT_ID and REDDIT_APP environment variables must be set" >&2
+        return 1
+    end
+
+    # Create secure temporary file
+    set -l temp_config (mktemp)
+    chmod 600 $temp_config
+
+    # Write config
+    echo "{
+  \"extractor\": {
+    \"reddit\": {
+      \"client-id\": \"$REDDIT_ID\",
+      \"client-secret\": \"$REDDIT_APP\"
+    }
+  }
+}" > $temp_config
+
+    echo $temp_config
+end
+
+# Function to run gallery-dl with Reddit credentials from .env
+function gallery-dl-reddit
+    set -l temp_config (__gallery_dl_create_reddit_config)
+    or return 1
+
+    gallery-dl --config $temp_config $argv
+    set -l exit_code $status
+
+    # Cleanup
+    rm -f $temp_config
+
+    return $exit_code
+end
+
+# Function for Reddit OAuth setup
+function gallery-dl-reddit-oauth
+    set -l temp_config (__gallery_dl_create_reddit_config)
+    or return 1
+
+    gallery-dl --config $temp_config oauth:reddit
+    set -l exit_code $status
+
+    # Cleanup
+    rm -f $temp_config
+
+    return $exit_code
 end
 
 starship init fish | source

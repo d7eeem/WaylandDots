@@ -1,17 +1,46 @@
 {
   "pulseaudio": {
-    "format": "{icon} {volume}%",
+    "format": "{icon} {volume}% {format_source}",
     "format-muted": "\udb81\udf5f",
+    "format-source": "󰍬",
+    "format-source-muted": "",
     "format-icons": {
       "default": [
         "\uf026",
         "\uf027",
         "\uf028"
-      ]
+      ],
     },
     "on-click": "pavucontrol -t 3",
     "on-click-middle": "/home/tinker/.local/bin/statusbar/sb-volume.sh",
     "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume raise",
-    "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume lower"
-  }
+    "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume lower",
+  },
 }
+// {
+//   "pulseaudio": {
+//     "format": "{icon} {volume} {format_source}",
+//     "format-muted": "<span font='12'>󰝟</span> {format_source}",
+//     "format-source": "<span font='12'>󰍬</span>",
+//     "format-source-muted": "",
+//     "on-click": "pavucontrol -t 3",
+//     "on-click-middle": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\" --input-volume=mute-toggle",
+//     "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\" --output-volume raise",
+//     "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\" --output-volume lower",
+//     "tooltip-format": "{icon} {desc} // {volume}%\n{format_source} {source_desc} // {source_volume}%",
+//     "scroll-step": 5,
+//     "format-icons": {
+//       "headphone": "",
+//       "hands-free": "",
+//       "headset": "",
+//       "phone": "",
+//       "portable": "",
+//       "car": "",
+//       "default": [
+//         "",
+//         "",
+//         ""
+//       ],
+//     },
+//   },
+// }

@@ -7,6 +7,7 @@ set options \
   Files \
   Brave \
   Theme \
+  anymex\
   Discord \
   Vesktop \
   Jellyfin \
@@ -37,7 +38,7 @@ switch $choice
         nohup nautilus >/dev/null 2>&1 &
 
     case "Zen"
-        nohup zen-browser >/dev/null 2>&1 &
+        nohup zen.fish >/dev/null 2>&1 &
 
     case "Brave"
         nohup brave.fish >/dev/null 2>&1 &
@@ -45,7 +46,9 @@ switch $choice
     case "Theme"
         nohup /home/tinker/.local/bin/theme_engine/theme_switcher.sh >/dev/null 2>&1 &
 
+    case "anymex"
+	      nohup /home/tinker/AppImages/anymex.appimage >/dev/null 2>&1 &
+
     case '*'
         exit 1
 end
-
