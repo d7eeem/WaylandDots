@@ -8,7 +8,7 @@ configuration {
 	drun-display-format:        "{name}";
 	window-format:              "{w}:{t}";
 }
-@import                          "/home/tinker/.cache/wal/colors-rofi-dark.rasi"
+@import                          "./themes/matugen.rasi"
 
 
 /*****----- Global Properties -----*****/

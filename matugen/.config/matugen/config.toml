@@ -16,7 +16,7 @@ output_path = '~/.config/wlogout/colors.css'
 
 [templates.rofi]
 input_path = './templates/rofi-colors.rasi'
-output_path = '~/.config/rofi/launchers/type-3/colors.rasi'
+output_path = '~/.config/rofi/launchers/type-1/themes/matugen.rasi'
 
 [templates.waybar]
 input_path = './templates/waybar.css'
@@ -42,3 +42,13 @@ output_path = '~/.config/fish/starship.toml'
 # input_path = './templates/gtk-colors.css'
 # output_path = '~/.config/gtk-4.0/gtk.css'
 
+[templates.ghostty]
+input_path = './templates/ghostty'
+output_path = '~/.config/ghostty/themes/matugen'
+post_hook = 'pkill -SIGUSR2 ghostty'
+
+
+[templates.pywalfox]
+input_path = './templates/pywalfox-colors.json'
+output_path = '~/.cache/wal/colors.json'
+post_hook = 'pywalfox update'

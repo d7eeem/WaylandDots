@@ -10,14 +10,14 @@
  */
 
 /* Colors */
-@define-color background             #181825;  /* mantle */
-@define-color background-alt         #313244;  /* surface0 */
-@define-color background-alt-darker #45475a;  /* surface1 */
-@define-color accent-normal          #89b4fa;  /* blue */
-@define-color accent-error           #f38ba8;  /* red */
-@define-color bordercolor            #89b4fa;  /* blue */
-@define-color fontcolor              #cdd6f4;  /* text */
-@define-color fontaltcolor           #1e1e2e;  /* base */
+@define-color background 	    #272e33;
+@define-color background-alt 	    #475258;
+@define-color background-alt-darker #414b50;
+@define-color accent-normal    	    #83c092;
+@define-color accent-error     	    #e67e80;
+@define-color bordercolor           #83c092;
+@define-color fontcolor 	    #d3c6aa;
+@define-color fontaltcolor 	    #272e33;
 
 
 

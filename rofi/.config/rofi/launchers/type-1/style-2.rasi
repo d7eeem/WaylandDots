@@ -14,7 +14,7 @@ configuration {
   }
 }
 
-@import "/home/tinker/.cache/wal/colors-rofi-dark.rasi"
+@import "./themes/matugen.rasi"
 
 * {
   font: "0xProto Nerd Font Propo 10";
@@ -49,7 +49,7 @@ mainbox {
 imagebox {
   padding: 20px;
   background-color: transparent;
-  background-image: url("~/.cache/theme_engine/wall.sqre", height);
+  background-image: url("~/.cache/wallpaper/wall.sqre", height);
   orientation: vertical;
   border-radius: 7px;
   children: [ "inputbar", "dummy", "mode-switcher"];
@@ -61,7 +61,7 @@ listbox {
   background-color: transparent;
   orientation: vertical;
   border-radius: 7px;
-  children: [ "message", "listview"];
+  children: [ "listview"];
 }
 
 /*****----- Inputbar -----*****/
@@ -69,27 +69,19 @@ listbox {
 inputbar {
   enabled: true;
   spacing: 10px;
-  padding: 15px;
+  padding: 10px;
   border-radius: 7px;
   background-color: @on-primary;
-  text-color: @on-surface;
+  text-color: @normal-foreground;
   children: [ "textbox-prompt-colon", "entry"];
 }
 
-// inputbar {
-//     enabled:                     true;
-//     width:                       27em;
-//     spacing:                     0em;
-//     padding:                     0em;
-//     expand:                      true;
-//     children:                    [ "entry" ];
-//     background-color:            transparent;
-//     // background-image:            url("~/.cache/hyde/wall.sqre", height);
-//     background-image:            url("/home/tinker/.cache/theme_engine/wall.sqre", height);
-//     border-radius:               1em;
-// }
-entry {
-  enabled: true;
+#entry {
+  spacing: 0;
+  text-color: @normal-foreground;
+  border-radius: 7px;
+  spacing: 4px;
+  padding: 4px;
 }
 
 listbox {
@@ -192,7 +184,7 @@ message {
 }
 
 textbox {
-  padding: 12px;
+  padding: 9px;
   border-radius: 7px;
   background-color: @background-alt;
   text-color: @foreground;
@@ -203,6 +195,8 @@ textbox {
 textbox-prompt-colon {
   enabled: true;
   expand: false;
+  padding: 4px;
+  border-radius: 7px;
   str: "  ";
   background-color: @background-alt;
   text-color: @foreground;

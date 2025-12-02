@@ -1,4 +1,4 @@
-@import "~/.cache/wal/colors-rofi-dark.rasi"
+@import "../../rofi/launchers/type-1/themes/catt.rasi"
 
 * {
     font:            "0xProto Nerd Font Propo 11";

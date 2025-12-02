@@ -2,45 +2,42 @@ format = '''
  $directory$git_branch$git_status$time$lua$cmd_duration
  $character'''
 command_timeout = 1500
-
-
 palette = 'colors'
 
 [palettes.colors]
-color1 = '#abc7ff'
-color2 = '#0c305f'
-color3 = '#c4c6d0'
-color4 = '#1e2025'
-color5 = '#0c305f'
-color6 = '#111318'
-color7 = '#111318'
-color8 = '#abc7ff'
-color9 = '#ddbce0'
+color1 = '#ffb3ad'
+color2 = '#73332f'
+color3 = '#f1dedd'
+color4 = '#271d1c'
+color5 = '#ffdad7'
+color6 = '#1a1110'
+color7 = '#1a1110'
+color8 = '#e7bdb9'
+color9 = '#e1c28c'
 
-# # Prompt symbols 
+# prompt symbols 
 # [character]
 # success_symbol = "[➜](color9 bold)"
-# error_symbol = "[➜](@{error})"
-# vicmd_symbol = "[<](#f9e2af)"
-#
+# error_symbol = "[➜](red)"
+# vicmd_symbol = "[<](yellow)"
+
 # [directory]
-# format = "[](fg:color1 bg:color4)[ ](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[](fg:color4) "
-#
+# format = "[](fg:color1 bg:color4)[ ](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[](fg:color4) "
+
 # [git_branch]
-# format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
+# format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
 # truncation_length = 4
 # truncation_symbol = ''
-#
+
 # [git_status]
-# format = '([](fg:color4)[ $all_status$ahead_behind ](fg:color3 bg:color4)[](fg:color4)) '
+# format = '([](fg:color4)[ $all_status$ahead_behind ](fg:color3 bg:color4)[](fg:color4)) '
 # disabled = false
-#
-#
+
 [time]
-# format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
+# format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
 disabled = false
-time_format = "%R" # Hour:Minute Format
-#
+time_format = "%r" # hour:minute format
+
 [cmd_duration]
 format = '[$duration](fg:color3)'
 min_time = 2000
