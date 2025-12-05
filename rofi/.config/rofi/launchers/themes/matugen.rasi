@@ -2,34 +2,34 @@
   /* Material Design 3 Color Palette from Matugen */
   
   /* Primary colors */
-  primary: #ffb3b3;
-  primary-fixed: #ffdad9;
-  primary-fixed-dim: #ffb3b3;
-  on-primary: #561d20;
-  on-primary-fixed: #3b080d;
-  on-primary-fixed-variant: #733335;
-  primary-container: #733335;
-  on-primary-container: #ffdad9;
+  primary: #ffb3af;
+  primary-fixed: #ffdad7;
+  primary-fixed-dim: #ffb3af;
+  on-primary: #571d1d;
+  on-primary-fixed: #3b080a;
+  on-primary-fixed-variant: #733331;
+  primary-container: #733331;
+  on-primary-container: #ffdad7;
   
   /* Secondary colors */
-  secondary: #e6bdbc;
-  secondary-fixed: #ffdad9;
-  secondary-fixed-dim: #e6bdbc;
-  on-secondary: #442929;
-  on-secondary-fixed: #2c1515;
-  on-secondary-fixed-variant: #5d3f3f;
-  secondary-container: #5d3f3f;
-  on-secondary-container: #ffdad9;
+  secondary: #e7bdba;
+  secondary-fixed: #ffdad7;
+  secondary-fixed-dim: #e7bdba;
+  on-secondary: #442928;
+  on-secondary-fixed: #2c1514;
+  on-secondary-fixed-variant: #5d3f3d;
+  secondary-container: #5d3f3d;
+  on-secondary-container: #ffdad7;
   
   /* Tertiary colors */
-  tertiary: #e5c18d;
-  tertiary-fixed: #ffdeae;
-  tertiary-fixed-dim: #e5c18d;
-  on-tertiary: #422c05;
-  on-tertiary-fixed: #281900;
-  on-tertiary-fixed-variant: #5b421a;
-  tertiary-container: #5b421a;
-  on-tertiary-container: #ffdeae;
+  tertiary: #e2c28c;
+  tertiary-fixed: #ffdea8;
+  tertiary-fixed-dim: #e2c28c;
+  on-tertiary: #402d05;
+  on-tertiary-fixed: #271900;
+  on-tertiary-fixed-variant: #594319;
+  tertiary-container: #594319;
+  on-tertiary-container: #ffdea8;
   
   /* Error colors */
   error: #ffb4ab;
@@ -39,22 +39,22 @@
   
   /* Surface colors */
   surface: #1a1111;
-  on-surface: #f0dede;
-  on-surface-variant: #d7c1c1;
-  outline: #a08c8c;
-  outline-variant: #524343;
+  on-surface: #f1dedd;
+  on-surface-variant: #d8c2c0;
+  outline: #a08c8b;
+  outline-variant: #534342;
   shadow: #000000;
   scrim: #000000;
-  inverse-surface: #f0dede;
-  inverse-on-surface: #382e2e;
-  inverse-primary: #8f4a4b;
+  inverse-surface: #f1dedd;
+  inverse-on-surface: #382e2d;
+  inverse-primary: #904a47;
   surface-dim: #1a1111;
   surface-bright: #423736;
   surface-container-lowest: #140c0c;
-  surface-container-low: #221919;
+  surface-container-low: #231919;
   surface-container: #271d1d;
   surface-container-high: #322827;
-  surface-container-highest: #3d3232;
+  surface-container-highest: #3d3231;
 
   /* Mapped Rofi color variables */
   background: @surface;

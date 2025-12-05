@@ -5,15 +5,15 @@ command_timeout = 1500
 palette = 'colors'
 
 [palettes.colors]
-color1 = '#ffb3b3'
-color2 = '#733335'
-color3 = '#f0dede'
+color1 = '#ffb3af'
+color2 = '#733331'
+color3 = '#f1dedd'
 color4 = '#271d1d'
-color5 = '#ffdad9'
+color5 = '#ffdad7'
 color6 = '#1a1111'
 color7 = '#1a1111'
-color8 = '#e6bdbc'
-color9 = '#e5c18d'
+color8 = '#e7bdba'
+color9 = '#e2c28c'
 
 # prompt symbols 
 # [character]
