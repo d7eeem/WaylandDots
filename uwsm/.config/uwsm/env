@@ -1,0 +1,46 @@
+# ----------------------------
+# Desktop & Session
+# ----------------------------
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+
+# ----------------------------
+# Qt
+# ----------------------------
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_STYLE_OVERRIDE=kvantum
+
+# ----------------------------
+# GTK
+# ----------------------------
+export GTK_THEME=WhiteSur-Dark
+export GDK_SCALE=1
+export GDK_BACKEND=wayland
+
+# ----------------------------
+# Electron / Mozilla
+# ----------------------------
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export MOZ_ENABLE_WAYLAND=1
+
+# ----------------------------
+# Menus
+# ----------------------------
+export XDG_MENU_PREFIX=arch-
+
+# ----------------------------
+# Cursor
+# ----------------------------
+export HYPRCURSOR_THEME=Bibata-Modern-Ice
+export HYPRCURSOR_SIZE=20
+export XCURSOR_THEME=Bibata-Modern-Ice
+export XCURSOR_SIZE=20
+
+# ----------------------------
+# SSH
+# ----------------------------
+export SSH_AUTH_SOCK=/home/tinker/.bitwarden-ssh-agent.sock

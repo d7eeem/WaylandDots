@@ -1,0 +1,9 @@
+# ----------------------------
+# Wayland / GPU
+# ----------------------------
+export WLR_DRM_DEVICES=/dev/dri/card0
+
+# ----------------------------
+# PATH
+# ----------------------------
+export PATH=$PATH:/home/tinker/.config/hypr/scripts

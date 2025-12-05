@@ -1,1 +1,0 @@
-/home/tinker/.config/rofi/rofi_launcher_selector.sh
