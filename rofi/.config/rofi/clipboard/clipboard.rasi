@@ -13,4 +13,6 @@ configuration {
     }
 }
 
+
+
 @theme "./style_1.rasi"

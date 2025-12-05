@@ -1,4 +1,3 @@
-
 /*
  * vim: ft=less
  */
@@ -11,15 +10,14 @@
  */
 
 /* Colors */
-@define-color background            #1a1111;
-@define-color background-alt        #1a1111;
-@define-color background-alt-darker #221919;
-@define-color accent-normal         #ffb3b3; 
-@define-color accent-error          #3b080d; 
-@define-color bordercolor           #e6bdbc;
-@define-color fontcolor             #ffb3b3;
-@define-color fontaltcolor          #f0dede;
-
+@define-color background             #181825;  /* mantle */
+@define-color background-alt         #313244;  /* surface0 */
+@define-color background-alt-darker #45475a;  /* surface1 */
+@define-color accent-normal          #89b4fa;  /* blue */
+@define-color accent-error           #f38ba8;  /* red */
+@define-color bordercolor            #89b4fa;  /* blue */
+@define-color fontcolor              #cdd6f4;  /* text */
+@define-color fontaltcolor           #1e1e2e;  /* base */
 
 
 

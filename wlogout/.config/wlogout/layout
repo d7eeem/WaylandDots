@@ -29,8 +29,8 @@
     "text": "lock"
 }
 {
-    "label" : "hibernate",
-    "action" : "systemctl suspend",
-    "keybind" : "s"
-    "text": "suspend"
+    "label" : "windows",
+    "action" : "reboot-to-windows",
+    "keybind" : "w"
+    "text": "windows"
 }

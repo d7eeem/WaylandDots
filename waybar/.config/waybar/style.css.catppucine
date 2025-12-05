@@ -16,23 +16,23 @@ window#waybar {
 /* ==================== Tooltip ==================== */
 
 tooltip {
-  background-color: @background;
+  background-color: rgba(30, 30, 46, 0.99);
   color: @color7;
   border-radius: 7px;
-  border: 1px solid @color1;
+  border: 1px solid rgba(235, 160, 172, 0.9);
 }
 
 /* ==================== Module Containers ==================== */
 
 .modules-left {
-  background-color: @background;
+  background-color: rgba(30, 30, 46, 0.99);
   border-radius: 7px;
   padding-left: 0;
   padding-right: 3px;
 }
 
 .modules-right {
-  background-color: @background;
+  background-color: rgba(30, 30, 46, 0.99);
   border-radius: 7px;
   padding-left: 3px;
   padding-right: 3px;
@@ -46,12 +46,12 @@ tooltip {
 /* ==================== Workspaces ==================== */
 
 #workspaces button {
-  background-color: @background;
+  background-color: rgba(30, 30, 46, 0.9);
   color: @color7;
   padding: 2px 4px;
   margin: 2px;
   border-radius: 7px;
-  border: 1px solid @color1;
+  border: 1px solid rgba(235, 160, 172, 0.9);
   font-size: 20px;
   min-width: 30px;
   font-weight: bold;
@@ -104,12 +104,12 @@ tooltip {
 #custom-recorder,
 #power-profiles-daemon,
 #custom-audio_idle_inhibitor {
-  background-color: @background;
+  background-color: rgba(30, 30, 46, 0.9);
   color: @color7;
   padding: 2px 10px;
   margin: 2px 0;
   border-radius: 7px;
-  border: 1px solid @color1;
+  border: 1px solid rgba(235, 160, 172, 0.9);
   font-weight: bold;
   transition: background-color 0.2s, color 0.2s;
 }
@@ -137,7 +137,7 @@ window#waybar.empty #window {
 
 #network {
   font-size: 18px;
-  color: @color11;
+  color: @color12;
 }
 
 #pulseaudio.muted {
@@ -147,20 +147,20 @@ window#waybar.empty #window {
 }
 
 #custom-power {
-  background-color: @background;
+  background-color: rgba(30, 30, 46, 0.9);
   color: @color7;
   font-size: 14px;
   margin: 2px 4px 2px 0;
   padding: 2px 10px;
   border-radius: 7px;
-  border: 1px solid @color1;
+  border: 1px solid rgba(235, 160, 172, 0.9);
   font-weight: bold;
 }
 
 #custom-notification {
-  background-color: @background;
+  background-color: rgba(30, 30, 46, 0.9);
   color: @color7;
-  border: 1px solid @color1;
+  border: 1px solid rgba(235, 160, 172, 0.9);
   font-size: 14px;
   min-width: 20px;
   padding: 2px;
@@ -216,12 +216,12 @@ menu {
   background-color: @color0;
   color: @color15;
   border-radius: 7px;
-  border: 1px solid @color1;
+  border: 1px solid rgba(235, 160, 172, 0.9);
 }
 
 menuitem {
   color: @color7;
-  border: 1px solid @color1;
+  border: 1px solid rgba(235, 160, 172, 0.9);
   margin: 2px;
   padding: 0 5px;
 }

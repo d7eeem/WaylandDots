@@ -44,7 +44,7 @@ switch $choice
         nohup brave.fish >/dev/null 2>&1 &
 
     case "Theme"
-        nohup /home/tinker/.local/bin/theme_engine/theme_switcher.sh >/dev/null 2>&1 &
+        nohup /home/tinker/.local/bin/personal/setwall.sh >/dev/null 2>&1 &
 
     case "anymex"
 	      nohup /home/tinker/AppImages/anymex.appimage >/dev/null 2>&1 &

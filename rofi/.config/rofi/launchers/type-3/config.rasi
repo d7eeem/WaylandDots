@@ -1,5 +1,5 @@
 @theme "/dev/null"
-@import "colors.rasi"
+@import "../themes/matugen.rasi"
 
 configuration {
   modi: "window,run,drun";
@@ -39,7 +39,7 @@ mainbox {
 imagebox {
   padding: 20px;
   background-color: transparent;
-  background-image: url("~//.cache/theme_engine/wall.sqre", height);
+  background-image: url("~/.cache/wallpaper/wall.sqre");
   orientation: vertical;
   border-radius: 7px;
   children: [ "inputbar", "dummy", "mode-switcher"];

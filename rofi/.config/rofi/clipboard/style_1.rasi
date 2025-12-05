@@ -1,4 +1,4 @@
-@import "../../rofi/launchers/type-1/themes/catt.rasi"
+@import "../../rofi/launchers/themes/matugen.rasi"
 
 * {
     font:            "0xProto Nerd Font Propo 11";
@@ -82,6 +82,6 @@ element-text {
 }
 
 element selected {
-    background-color:   @background;
-    text-color:         @foreground;
+    background-color:   @active-background;
+    text-color:         @active-foreground;
 }

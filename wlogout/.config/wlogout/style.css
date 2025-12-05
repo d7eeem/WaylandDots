@@ -72,10 +72,10 @@ button:hover {
 #sleep:hover {
   background-image: image(url("./icons/sleep-hover.png"));
 }
-#hibernate {
-  background-image: image(url("./icons/hibernate.png"));
+#windows {
+  background-image: image(url("./icons/windows.png"));
 }
-#hibernate:hover {
-  background-image: image(url("./icons/hibernate_hover.png"));
+#windows:hover {
+  background-image: image(url("./icons/windows-hover.png"));
 }
 

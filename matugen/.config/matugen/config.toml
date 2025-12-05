@@ -16,11 +16,18 @@ output_path = '~/.config/wlogout/colors.css'
 
 [templates.rofi]
 input_path = './templates/rofi-colors.rasi'
-output_path = '~/.config/rofi/launchers/type-1/themes/matugen.rasi'
+output_path = '~/.config/rofi/launchers/themes/matugen.rasi'
 
 [templates.waybar]
 input_path = './templates/waybar.css'
 output_path = '~/.config/waybar/colors.css'
+post_hook = 'sleep 5 && pkill waybar && hyprctl dispatch exec waybar'
+
+
+[templates.swaync]
+input_path = './templates/swaync.css'
+output_path = '~/.config/swaync/style.css'
+post_hook = 'swaync-client -R -rs; notify-send "Done"'
 
 [templates.hyprland]
 input_path = './templates/hyprland-colors2.conf'
