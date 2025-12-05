@@ -2,7 +2,7 @@
 @import "../themes/matugen.rasi"
 
 configuration {
-  modi: "window,run,drun";
+  modi: "drun,run";
   display-drun: "Applications";
   display-window: "Windows";
   display-run: "Run";
@@ -17,7 +17,7 @@ window {
   location: center;
   anchor: center;
   fullscreen: false;
-  width: 1000px;
+  width: 750px;
   x-offset: 0px;
   y-offset: 0px;
   enabled: true;
@@ -57,31 +57,34 @@ dummy {
   background-color: transparent;
 }
 
+
 inputbar {
   enabled: true;
   spacing: 10px;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 10px;
+  border-radius: 7px;
   background-color: @on-primary;
-  text-color: @on-surface;
+  text-color: @primary;
   children: [ "textbox-prompt-colon", "entry"];
+}
+
+#entry {
+  spacing: 0;
+  text-color: @normal-foreground;
+  background-color: @surface;
+  border-radius: 7px;
+  spacing: 4px;
+  padding: 4px;
 }
 
 textbox-prompt-colon {
   enabled: true;
   expand: false;
+  padding: 5px;
+  border-radius: 7px;
   str: "  ";
-  background-color: inherit;
-  text-color: inherit;
-}
-
-entry {
-  enabled: true;
-  background-color: inherit;
-  text-color: inherit;
-  cursor: text;
-  placeholder: "Search";
-  placeholder-color: inherit;
+  background-color: @background;
+  text-color: @primary;
 }
 
 mode-switcher {
@@ -93,7 +96,7 @@ mode-switcher {
 
 button {
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 7px;
   background-color: @on-primary;
   text-color: inherit;
   cursor: pointer;
@@ -126,7 +129,7 @@ element {
   enabled: true;
   spacing: 15px;
   padding: 8px;
-  border-radius: 10px;
+  border-radius: 7px;
   background-color: transparent;
   text-color: @on-surface;
   cursor: pointer;
@@ -183,7 +186,7 @@ message {
 
 textbox {
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 7px;
   background-color: @on-primary;
   text-color: @on-surface;
   vertical-align: 0.5;

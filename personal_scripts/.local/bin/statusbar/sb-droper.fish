@@ -20,34 +20,34 @@ set choice (printf '%s\n' $options | rofi -dmenu -p "Launch App" -theme $HOME/.c
 # Launch based on selection
 switch $choice
     case "Discord"
-        nohup discord >/dev/null 2>&1 &
+        uwsm app -a discord -- discord &
 
     case "Jellyfin"
-        nohup flatpak run cafe.avery.Delfin  >/dev/null 2>&1 &
+        uwsm app -a delfin -- flatpak run cafe.avery.Delfin &
 
     case "Vesktop"
-        nohup vesktop >/dev/null 2>&1 &
+        uwsm app -a vesktop -- vesktop &
 
     case "Steam"
-        nohup steam >/dev/null 2>&1 &
+        uwsm app -a steam -- steam &
 
     case "Heroic Games Launcher"
-        nohup heroic >/dev/null 2>&1 &
+        uwsm app -a heroic -- heroic &
 
     case "Files"
-        nohup nautilus >/dev/null 2>&1 &
+        uwsm app -a nautilus -- nautilus &
 
     case "Zen"
-        nohup zen.fish >/dev/null 2>&1 &
+        uwsm app -a zen -- zen.fish &
 
     case "Brave"
-        nohup brave.fish >/dev/null 2>&1 &
+        uwsm app -a brave -- brave.fish &
 
     case "Theme"
-        nohup $HOME/.local/bin/personal/setwall.sh >/dev/null 2>&1 &
+        uwsm app -a setwall -- $HOME/.local/bin/personal/setwall.sh &
 
     case "anymex"
-	      nohup $HOME/AppImages/anymex.appimage >/dev/null 2>&1 &
+        uwsm app -a anymex -- $HOME/AppImages/anymex.appimage &
 
     case '*'
         exit 1

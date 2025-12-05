@@ -1,0 +1,107 @@
+@import "~/.config/rofi/launchers/themes/matugen.rasi"
+
+configuration {
+    show-icons: true;
+    display-drun: " Select Wallpaper";
+    drun-display-format: "{name}";
+}
+
+* {
+    font: "0xProto Nerd Font Propo 10";
+}
+
+window {
+    width: 2000px;
+    height: 450px;
+    background-color: var(surface-container);
+    border: 2px;
+    border-color: var(outline);
+    border-radius: 7px;
+    padding: 20px;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing: 15px;
+}
+
+inputbar {
+    background-color: var(surface-container-high);
+    border-radius: 7px;
+    padding: 16px;
+    children: [prompt, entry];
+    border: 1px;
+    border-color: var(outline-variant);
+}
+
+prompt {
+    text-color: var(primary);
+    background-color: transparent;
+    margin: 0 10px 0 0;
+}
+
+entry {
+    text-color: var(on-surface);
+    background-color: transparent;
+    placeholder: "Search...";
+    placeholder-color: var(on-surface-variant);
+}
+
+message {
+    background-color: var(surface-container-low);
+    border-radius: 7px;
+    padding: 8px 12px;
+    margin: 0 0 10px 0;
+}
+
+textbox {
+    text-color: var(on-surface-variant);
+    background-color: transparent;
+}
+
+listview {
+    columns: 7;
+    lines: 2;
+    flow: horizontal;
+    cycle: true;
+    scrollbar: false;
+    spacing: 15px;
+    background-color: transparent;
+}
+
+element {
+    orientation: vertical;
+    padding: 12px;
+    border-radius: 7px;
+    background-color: var(surface-container-high);
+    border: 2px;
+    border-color: transparent;
+}
+
+element selected {
+    background-color: var(primary-container);
+    border-color: var(primary);
+}
+
+element-icon {
+    size: 16em;
+    border-radius: 7px;
+    background-color: var(surface-container-lowest);
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    text-color: var(on-surface);
+    background-color: transparent;
+    margin: 8px 0 0 0;
+}
+
+element selected.normal {
+    background-color: var(primary-container);
+    border-color: var(primary);
+}
+
+element-text selected {
+    text-color: var(on-primary-container);
+}
