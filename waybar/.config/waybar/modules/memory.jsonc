@@ -1,6 +1,6 @@
 {
   "custom/memory": {
-    "exec": "/home/tinker/.local/bin/hyde/raminfo.fish",
+    "exec": "$HOME/.local/bin/statusbar/raminfo.fish",
     "return-type": "json",
     "tooltip": true,
     "interval": 1,

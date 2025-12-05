@@ -2,7 +2,7 @@
 
 
 # Absolute path to your color config
-COLOR_FILE="/home/tinker/.cache/wal/colors-hyprland.conf"
+COLOR_FILE="$HOME/.cache/wal/colors-hyprland.conf"
 
 # Extract color7 and color4 from the Hyprland-style config
 get_color() {

@@ -3,7 +3,7 @@
     "format": "{icon} {volume}",
     "format-muted": "<span font='12'>󰝟</span>",
     "on-click": "pavucontrol -t 3",
-    "on-click-middle": "/home/tinker/.local/bin/statusbar/sb-volume.sh",
+    "on-click-middle": "$HOME/.local/bin/statusbar/sb-volume.sh",
     "on-scroll-up": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume raise",
     "on-scroll-down": "swayosd-client --monitor \"$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')\"  --output-volume lower",
     "tooltip-format": "{icon}  {desc} // {volume}%",

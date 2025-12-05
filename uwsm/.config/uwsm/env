@@ -43,4 +43,4 @@ export XCURSOR_SIZE=20
 # ----------------------------
 # SSH
 # ----------------------------
-export SSH_AUTH_SOCK=/home/tinker/.bitwarden-ssh-agent.sock
+export SSH_AUTH_SOCK=$HOME/.bitwarden-ssh-agent.sock

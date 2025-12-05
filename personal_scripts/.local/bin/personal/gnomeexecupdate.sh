@@ -6,8 +6,8 @@ if [ ! -f /etc/arch-release ] ; then
 fi
 
 # source variables
-scrDir="/home/tinker/.local/bin/hyde/"
-source "$scrDir/globalcontrol.sh"
+scrDir="$HOME/.local/bin/hyde/"
+source $HOME/.local/bin/sysutils/globalcontrol.sh
 get_aurhlpr
 fpk_exup="flatpak update"
 

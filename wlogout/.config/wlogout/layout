@@ -1,36 +1,36 @@
 {
     "label" : "shutdown",
     "action" : "systemctl poweroff",
-    "keybind" : "p"
+    "keybind" : "p",
     "text": "shutdown"
 }
 {
     "label" : "reboot",
     "action" : "systemctl reboot",
-    "keybind" : "r"
+    "keybind" : "r",
     "text": "reboot"
 }
 {
     "label" : "logout",
-    "action" : "hyprctl dispatch exit",
-    "keybind" : "e"
+    "action" : "uwsm stop",
+    "keybind" : "e",
     "text": "logout"
 }
 {
     "label" : "sleep",
     "action" : "systemctl suspend",
-    "keybind" : "h"
+    "keybind" : "h",
     "text": "suspend"
 }
 {
     "label" : "lock",
     "action" : "hyprlock",
-    "keybind" : "l"
+    "keybind" : "l",
     "text": "lock"
 }
 {
     "label" : "windows",
     "action" : "reboot-to-windows",
-    "keybind" : "w"
+    "keybind" : "w",
     "text": "windows"
 }

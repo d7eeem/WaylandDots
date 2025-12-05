@@ -1,5 +1,5 @@
   "custom/launcher": {
     "format": "",
-    "on-click": "/home/tinker/.local/bin/statusbar/sb-launcher.sh",
+    "on-click": "$HOME/.local/bin/statusbar/sb-launcher.sh",
     "tooltip-format": "Launch your favorite apps"
   },

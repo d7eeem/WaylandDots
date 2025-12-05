@@ -6,4 +6,13 @@ export WLR_DRM_DEVICES=/dev/dri/card0
 # ----------------------------
 # PATH
 # ----------------------------
-export PATH=$PATH:/home/tinker/.config/hypr/scripts
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin/personal
+export PATH=$PATH:$HOME/.local/bin/dmenu
+export PATH=$PATH:$HOME/.local/bin/statusbar
+export PATH=$PATH:$HOME/.local/bin/hyper
+export PATH=$PATH:$HOME/.local/bin/hyde
+export PATH=$PATH:$HOME/.local/bin/sysutils
+export PATH=$PATH:$HOME/.config/hypr/scripts
+export PATH=$PATH:$HOME/.local/share/node_modules/bin
+export PATH=$PATH:$HOME/.npm-global/bin

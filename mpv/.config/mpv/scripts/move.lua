@@ -8,7 +8,7 @@ local function move(action)
         return
     end
     -- call external script
-    local args = { "/home/tinker/.local/bin/personal/move_video.sh", action, path }
+    local args = { "$HOME/.local/bin/personal/move_video.sh", action, path }
     -- adjust path above to your script path
     local res = utils.subprocess({ args = args, cancellable = false })
     if res.status == 0 then

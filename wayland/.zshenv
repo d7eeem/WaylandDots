@@ -39,7 +39,7 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export PATH="$HOME/.local/share/node_modules/bin:$PATH"
 export DICS="/usr/share/stardict/dic/"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin"
-export LF_ICONS="/home/tinker/.config/shell/lf-icons"
+export LF_ICONS="$HOME/.config/shell/lf-icons"
 export SUDO_ASKPASS="$HOME/.local/bin/personal/askpass.sh"
 export PATH=~/.npm-global/bin:$PATH
 
@@ -64,7 +64,7 @@ alias nnn='nnn -Pp'
 
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && setsid shortcuts.sh >/dev/null 2>&1
 
-source /home/tinker/.config/shell/lf-icons
+source $HOME/.config/shell/lf-icons
 
 
 ZSH_AUTOSUGGEST_STRATEGY=history

@@ -9,7 +9,7 @@
 
 set -e
 
-  #/home/tinker/.local/bin/personal/wal-on-wallpaper.sh
+  #$HOME/.local/bin/personal/wal-on-wallpaper.sh
   # Initial wallpaper
   #
   #

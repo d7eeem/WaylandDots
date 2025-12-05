@@ -86,7 +86,7 @@
                 },
                 {
                     "label": "  Screenshot",
-                    "command": "/home/tinker/.local/bin/personal/hyprshot.sh sm"
+                    "command": "$HOME/.local/bin/personal/hyprshot.sh sm"
                 }
             ]
         }

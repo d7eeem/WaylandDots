@@ -10,13 +10,13 @@
 
 case "$1" in
   full) echo 1
-gnome-screenshot -f /home/tinker/Pictures/Screenshot_full_"$(date +"%Y-%m-%d_%H-%M")".png && "$HOME"/.local/bin/personal/xbackbone_uploader.sh "$(find /home/tinker/Pictures/ -maxdepth 1 -type f -iname "*full*" | tail -n 1)"
+gnome-screenshot -f $HOME/Pictures/Screenshot_full_"$(date +"%Y-%m-%d_%H-%M")".png && "$HOME"/.local/bin/personal/xbackbone_uploader.sh "$(find $HOME/Pictures/ -maxdepth 1 -type f -iname "*full*" | tail -n 1)"
   ;;
   area) echo 2 or 3
-gnome-screenshot -a -f /home/tinker/Pictures/Screenshot_area_"$(date +"%Y-%m-%d_%H-%M")".png && "$HOME"/.local/bin/personal/xbackbone_uploader.sh "$(find /home/tinker/Pictures/ -maxdepth 1 -type f -iname "*area*" | tail -n 1)"
+gnome-screenshot -a -f $HOME/Pictures/Screenshot_area_"$(date +"%Y-%m-%d_%H-%M")".png && "$HOME"/.local/bin/personal/xbackbone_uploader.sh "$(find $HOME/Pictures/ -maxdepth 1 -type f -iname "*area*" | tail -n 1)"
   ;;
   window)
-gnome-screenshot -w -f /home/tinker/Pictures/Screenshot_window_"$(date +"%Y-%m-%d_%H-%M")".png && "$HOME"/.local/bin/personal/xbackbone_uploader.sh "$(find /home/tinker/Pictures/ -maxdepth 1 -type f -iname "*window*" | tail -n 1)"
+gnome-screenshot -w -f $HOME/Pictures/Screenshot_window_"$(date +"%Y-%m-%d_%H-%M")".png && "$HOME"/.local/bin/personal/xbackbone_uploader.sh "$(find $HOME/Pictures/ -maxdepth 1 -type f -iname "*window*" | tail -n 1)"
   ;;
 esac
 

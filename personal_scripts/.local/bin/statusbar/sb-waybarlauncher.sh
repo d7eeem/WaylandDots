@@ -7,4 +7,4 @@
 # Created by: d7eeem aka id7xyz
 # https://gitlab.com/d7eeem
 
-setsid -f /home/tinker/.local/bin/statusbar/sb-waybarwaller.sh && sleep 1 && killall -9 waybar && sleep 1 && setsid -f waybar
+setsid -f $HOME/.local/bin/statusbar/sb-waybarwaller.sh && sleep 1 && killall -9 waybar && sleep 1 && setsid -f waybar

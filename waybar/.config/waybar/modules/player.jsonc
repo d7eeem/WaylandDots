@@ -1,6 +1,6 @@
 {
   "custom/player": {
-    "exec": "/home/tinker/.local/bin/hyde/mediaplayer.py",
+    "exec": "$HOME/.local/bin/statusbar/mediaplayer.py",
     "format": "󰝚 {}",
     "none": "",
     "return-type": "json",

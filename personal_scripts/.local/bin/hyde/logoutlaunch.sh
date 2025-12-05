@@ -13,7 +13,7 @@ fi
 #// set file variables
 
 scrDir=`dirname "$(realpath "$0")"`
-source $scrDir/globalcontrol.sh
+source $HOME/.local/bin/sysutils/globalcontrol.sh
 [ -z "${1}" ] || wlogoutStyle="${1}"
 wLayout="${confDir}/wlogout/layout_${wlogoutStyle}"
 wlTmplt="${confDir}/wlogout/style_${wlogoutStyle}.css"

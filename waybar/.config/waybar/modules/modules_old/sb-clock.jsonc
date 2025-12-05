@@ -1,6 +1,6 @@
 {
   "custom/sb-clock": {
-    "exec": "/home/tinker/.local/bin/statusbar/sb-clock.sh",
+    "exec": "$HOME/.local/bin/statusbar/sb-clock.sh",
     "interval": 60,
     "tooltip": true,
     "format": "{}",

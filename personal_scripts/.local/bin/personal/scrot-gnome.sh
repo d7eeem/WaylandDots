@@ -10,11 +10,11 @@
 
 
 area () {
-gnome-screenshot --area -f /home/tinker/Pictures/gnome/screenshot_area_$(date +"%Y%m%d_%H%M%S").png  && $HOME/.local/bin/personal/xbackbone_uploader.sh "$(find /home/tinker/Pictures/gnome -maxdepth 1 -type f -iname "*area*" | tail -n 1)"
+gnome-screenshot --area -f $HOME/Pictures/gnome/screenshot_area_$(date +"%Y%m%d_%H%M%S").png  && $HOME/.local/bin/personal/xbackbone_uploader.sh "$(find $HOME/Pictures/gnome -maxdepth 1 -type f -iname "*area*" | tail -n 1)"
 }
 
 window (){
-gnome-screenshot --window -f /home/tinker/Pictures/gnome/screenshot_window_$(date +"%Y%m%d_%H%M%S").png  && $HOME/.local/bin/personal/xbackbone_uploader.sh "$(find /home/tinker/Pictures/gnome -maxdepth 1 -type f -iname "*window*" | tail -n 1)"
+gnome-screenshot --window -f $HOME/Pictures/gnome/screenshot_window_$(date +"%Y%m%d_%H%M%S").png  && $HOME/.local/bin/personal/xbackbone_uploader.sh "$(find $HOME/Pictures/gnome -maxdepth 1 -type f -iname "*window*" | tail -n 1)"
 }
 
 

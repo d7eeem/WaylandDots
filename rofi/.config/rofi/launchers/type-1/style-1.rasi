@@ -66,7 +66,7 @@ inputbar {
     expand:                      true;
     children:                    [ "entry" ];
     background-color:            transparent;
-    background-image:            url("/home/tinker/.cache/wallpaper/wall.sqre");
+    background-image:            url("$HOME/.cache/wallpaper/wall.sqre");
     border-radius:               1em;
 }
 entry {

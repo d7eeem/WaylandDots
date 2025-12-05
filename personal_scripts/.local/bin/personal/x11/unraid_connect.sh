@@ -9,4 +9,4 @@
 
 
 
-sudo --askpass mount -t nfs 10.10.10.8:/mnt/user/ /home/tinker/unRAID/
+sudo --askpass mount -t nfs 10.10.10.8:/mnt/user/ $HOME/unRAID/

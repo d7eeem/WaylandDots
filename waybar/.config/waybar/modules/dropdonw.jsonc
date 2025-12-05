@@ -17,7 +17,7 @@
   "custom/brave": {
     "format": "B",
     "exec": "echo ; echo Brave",
-    "on-click": "sleep 0.1 && /home/tinker/.local/bin/personal/brave.fish",
+    "on-click": "sleep 0.1 && $HOME/.local/bin/personal/brave.fish",
     "interval": 86400, // once every day
     "tooltip": true
   },

@@ -1,8 +1,8 @@
 ﻿## Source from conf.d before our fish config
-source /home/tinker/.config/fish/done.fish
-source /home/tinker/.config/fish/shorts.fish
-source /home/tinker/.config/fish/aliasesrc.fish
-source /home/tinker/.config/fish/globle_variables.fish
+source $HOME/.config/fish/done.fish
+source $HOME/.config/fish/shorts.fish
+source $HOME/.config/fish/aliasesrc.fish
+source $HOME/.config/fish/globle_variables.fish
 
 ## Set values
 ## Run fastfetch as welcome message

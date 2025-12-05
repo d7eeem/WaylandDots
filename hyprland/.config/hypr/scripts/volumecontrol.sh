@@ -16,7 +16,7 @@ send_swayosd() {
 }
 
 scrDir=`dirname "$(realpath "$0")"`
-source $scrDir/globalcontrol.sh
+source $HOME/.local/bin/sysutils/globalcontrol.sh
 
 # define functions
 

@@ -1,6 +1,6 @@
 {
   "custom/gpuinfo": {
-    "exec": "NO_EMOJI=1 /home/tinker/.local/bin/hyde/gpuinfo_amd.fish",
+    "exec": "NO_EMOJI=1 $HOME/.local/bin/statusbar/gpuinfo_amd.fish",
     "return-type": "json",
     "format": "{}",
     "rotate": 0,
@@ -8,6 +8,6 @@
     "tooltip": true,
     "max-length": 1000,
     "on-click": "kitty -e nvtop"
-    // "on-click": "/home/tinker/.local/bin/hyde/gpuinfo_amd.fish --toggle"
+    // "on-click": "$HOME/.local/bin/statusbar/gpuinfo_amd.fish --toggle"
   }
 }

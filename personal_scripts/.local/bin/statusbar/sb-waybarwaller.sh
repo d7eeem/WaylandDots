@@ -8,4 +8,4 @@
 # https://gitlab.com/d7eeem
 
 
-/home/tinker/.config/theme_engine/theme_switcher.sh "$(find "/home/tinker/Nextcloud/Wallpapers" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)"
+$HOME/.config/theme_engine/theme_switcher.sh "$(find "$HOME/Nextcloud/Wallpapers" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)"

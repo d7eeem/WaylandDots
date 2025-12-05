@@ -9,7 +9,7 @@
 
 
 if [ ! -e "/tmp/${HYPRLAND_INSTANCE_SIGNATURE}.wob" ]; then
-  mkfifo "/tmp/${HYPRLAND_INSTANCE_SIGNATURE}.wob" && tail -f "/tmp/${HYPRLAND_INSTANCE_SIGNATURE}.wob" | wob -c /home/tinker/.config/wob/wob.ini
+  mkfifo "/tmp/${HYPRLAND_INSTANCE_SIGNATURE}.wob" && tail -f "/tmp/${HYPRLAND_INSTANCE_SIGNATURE}.wob" | wob -c $HOME/.config/wob/wob.ini
 else
-  tail -f "/tmp/${HYPRLAND_INSTANCE_SIGNATURE}.wob" | wob -c /home/tinker/.config/wob/wob.ini -vv
+  tail -f "/tmp/${HYPRLAND_INSTANCE_SIGNATURE}.wob" | wob -c $HOME/.config/wob/wob.ini -vv
 fi

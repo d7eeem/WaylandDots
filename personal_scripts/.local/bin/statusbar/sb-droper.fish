@@ -14,8 +14,8 @@ set options \
   "Heroic Games Launcher"
 
 # Use Rofi to select
-#set choice (printf '%s\n' $options | rofi -dmenu -p "Launch App" -theme /home/tinker/.config/rofi/clipboard.rasi )
-set choice (printf '%s\n' $options | rofi -dmenu -p "Launch App" -theme /home/tinker/.config/rofi/clipboard/clipboard.rasi )
+#set choice (printf '%s\n' $options | rofi -dmenu -p "Launch App" -theme $HOME/.config/rofi/clipboard.rasi )
+set choice (printf '%s\n' $options | rofi -dmenu -p "Launch App" -theme $HOME/.config/rofi/clipboard/clipboard.rasi )
 
 # Launch based on selection
 switch $choice
@@ -44,10 +44,10 @@ switch $choice
         nohup brave.fish >/dev/null 2>&1 &
 
     case "Theme"
-        nohup /home/tinker/.local/bin/personal/setwall.sh >/dev/null 2>&1 &
+        nohup $HOME/.local/bin/personal/setwall.sh >/dev/null 2>&1 &
 
     case "anymex"
-	      nohup /home/tinker/AppImages/anymex.appimage >/dev/null 2>&1 &
+	      nohup $HOME/AppImages/anymex.appimage >/dev/null 2>&1 &
 
     case '*'
         exit 1

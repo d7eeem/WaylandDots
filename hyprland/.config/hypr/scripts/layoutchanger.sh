@@ -11,7 +11,7 @@
 #
 
 # Define the path to the file
-pathtofile="/home/tinker/.config/hypr/themes/theme.conf"
+pathtofile="$HOME/.config/hypr/themes/theme.conf"
 
 # Check if the file contains "layout = dwindle"
 if grep -q "layout = dwindle" "$pathtofile"; then

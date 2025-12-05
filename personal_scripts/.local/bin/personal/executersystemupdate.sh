@@ -7,7 +7,7 @@ fi
 
 # source variables
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalcontrol.sh"
+source $HOME/.local/bin/sysutils/globalcontrol.sh
 get_aurhlpr
 fpk_exup="flatpak update"
 

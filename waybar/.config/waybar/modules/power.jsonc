@@ -11,7 +11,7 @@
       "reboot": "systemctl reboot",
       "lock": "hyprlock"
     },
-    "on-click": "wlogout",
-    "on-click-middle": "~/.config/rofi/powermenu/powermenu.sh"
+    "on-click": "uwsm app -- wlogout",
+    "on-click-middle": "uwsm app -- ~/.config/rofi/powermenu/powermenu.sh"
   }
 }

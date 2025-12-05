@@ -8,4 +8,4 @@
 # https://github.com/d7eeem
 
 
-rofi --config /home/tinker/.config/rofi/config.rasi -show run
+rofi --config $HOME/.config/rofi/config.rasi -show run

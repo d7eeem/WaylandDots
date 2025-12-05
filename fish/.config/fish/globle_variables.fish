@@ -18,7 +18,7 @@ set -U __done_notification_urgency_level low
 set -gx EDITOR nvim
 
 ## Starship Prompt Configuration
-set -gx STARSHIP_CONFIG /home/tinker/.config/fish/starship.toml
+set -gx STARSHIP_CONFIG $HOME/.config/fish/starship.toml
 set -gx STARSHIP_CACHE ~/.cache/starship/cache
 
 ## SSH and Sudo Password Helper

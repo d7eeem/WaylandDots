@@ -1,14 +1,14 @@
-2025-05-25 02:59:34,517 - INFO - Starting theme generation for image: /home/tinker/Downloads/bunnies-road.png
-2025-05-25 02:59:34,517 - INFO - Full image path: /home/tinker/Downloads/bunnies-road.png
+2025-05-25 02:59:34,517 - INFO - Starting theme generation for image: $HOME/Downloads/bunnies-road.png
+2025-05-25 02:59:34,517 - INFO - Full image path: $HOME/Downloads/bunnies-road.png
 2025-05-25 02:59:34,518 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 02:59:34,518 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Downloads/bunnies-road.png
+2025-05-25 02:59:34,518 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Downloads/bunnies-road.png
 2025-05-25 02:59:34,518 - INFO - Return code: 1
 2025-05-25 02:59:34,518 - ERROR - Stderr: Error: 
    0: [91mTOML parse error at line 5, column 8
    0:   |
-   0: 5 | scss = "/home/tinker/.local/state/theme_engine/scss/_material.scss"
+   0: 5 | scss = "$HOME/.local/state/theme_engine/scss/_material.scss"
    0:   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   0: invalid type: string "/home/tinker/.local/state/theme_engine/scss/_material.scss", expected struct Template
+   0: invalid type: string "$HOME/.local/state/theme_engine/scss/_material.scss", expected struct Template
    0: [0m
 
 [96mSuggestion[0m: Error reading config file, check https://github.com/InioX/Matugen#configuration for help
@@ -17,17 +17,17 @@ Backtrace omitted. Run with RUST_BACKTRACE=1 environment variable to display it.
 Run with RUST_BACKTRACE=full to include source snippets.
 
 2025-05-25 02:59:34,518 - ERROR - Matugen failed with return code 1
-2025-05-25 03:00:48,806 - INFO - Starting theme generation for image: /home/tinker/Downloads/bunnies-road.png
-2025-05-25 03:00:48,806 - INFO - Full image path: /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:00:48,806 - INFO - Starting theme generation for image: $HOME/Downloads/bunnies-road.png
+2025-05-25 03:00:48,806 - INFO - Full image path: $HOME/Downloads/bunnies-road.png
 2025-05-25 03:00:48,806 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 03:00:48,807 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:00:48,807 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Downloads/bunnies-road.png
 2025-05-25 03:00:48,807 - INFO - Return code: 1
 2025-05-25 03:00:48,807 - ERROR - Stderr: Error: 
    0: [91mTOML parse error at line 5, column 8
    0:   |
-   0: 5 | scss = "/home/tinker/.local/state/theme_engine/scss/_material.scss"
+   0: 5 | scss = "$HOME/.local/state/theme_engine/scss/_material.scss"
    0:   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   0: invalid type: string "/home/tinker/.local/state/theme_engine/scss/_material.scss", expected struct Template
+   0: invalid type: string "$HOME/.local/state/theme_engine/scss/_material.scss", expected struct Template
    0: [0m
 
 [96mSuggestion[0m: Error reading config file, check https://github.com/InioX/Matugen#configuration for help
@@ -36,17 +36,17 @@ Backtrace omitted. Run with RUST_BACKTRACE=1 environment variable to display it.
 Run with RUST_BACKTRACE=full to include source snippets.
 
 2025-05-25 03:00:48,807 - ERROR - Matugen failed with return code 1
-2025-05-25 03:02:33,731 - INFO - Starting theme generation for image: /home/tinker/Downloads/bunnies-road.png
-2025-05-25 03:02:33,731 - INFO - Full image path: /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:02:33,731 - INFO - Starting theme generation for image: $HOME/Downloads/bunnies-road.png
+2025-05-25 03:02:33,731 - INFO - Full image path: $HOME/Downloads/bunnies-road.png
 2025-05-25 03:02:33,732 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 03:02:33,732 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:02:33,732 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Downloads/bunnies-road.png
 2025-05-25 03:02:33,732 - INFO - Return code: 1
 2025-05-25 03:02:33,732 - ERROR - Stderr: Error: 
    0: [91mTOML parse error at line 5, column 8
    0:   |
-   0: 5 | scss = "/home/tinker/.local/state/theme_engine/scss/_material.scss"
+   0: 5 | scss = "$HOME/.local/state/theme_engine/scss/_material.scss"
    0:   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   0: invalid type: string "/home/tinker/.local/state/theme_engine/scss/_material.scss", expected struct Template
+   0: invalid type: string "$HOME/.local/state/theme_engine/scss/_material.scss", expected struct Template
    0: [0m
 
 [96mSuggestion[0m: Error reading config file, check https://github.com/InioX/Matugen#configuration for help
@@ -55,17 +55,17 @@ Backtrace omitted. Run with RUST_BACKTRACE=1 environment variable to display it.
 Run with RUST_BACKTRACE=full to include source snippets.
 
 2025-05-25 03:02:33,732 - ERROR - Matugen failed with return code 1
-2025-05-25 03:03:47,178 - INFO - Starting theme generation for image: /home/tinker/Downloads/bunnies-road.png
-2025-05-25 03:03:47,178 - INFO - Full image path: /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:03:47,178 - INFO - Starting theme generation for image: $HOME/Downloads/bunnies-road.png
+2025-05-25 03:03:47,178 - INFO - Full image path: $HOME/Downloads/bunnies-road.png
 2025-05-25 03:03:47,179 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 03:03:47,179 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:03:47,179 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Downloads/bunnies-road.png
 2025-05-25 03:03:47,180 - INFO - Return code: 1
 2025-05-25 03:03:47,180 - ERROR - Stderr: Error: 
    0: [91mTOML parse error at line 5, column 8
    0:   |
-   0: 5 | scss = "/home/tinker/.local/state/theme_engine/scss/_material.scss"
+   0: 5 | scss = "$HOME/.local/state/theme_engine/scss/_material.scss"
    0:   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   0: invalid type: string "/home/tinker/.local/state/theme_engine/scss/_material.scss", expected struct Template
+   0: invalid type: string "$HOME/.local/state/theme_engine/scss/_material.scss", expected struct Template
    0: [0m
 
 [96mSuggestion[0m: Error reading config file, check https://github.com/InioX/Matugen#configuration for help
@@ -74,17 +74,17 @@ Backtrace omitted. Run with RUST_BACKTRACE=1 environment variable to display it.
 Run with RUST_BACKTRACE=full to include source snippets.
 
 2025-05-25 03:03:47,180 - ERROR - Matugen failed with return code 1
-2025-05-25 03:05:12,860 - INFO - Starting theme generation for image: /home/tinker/Downloads/bunnies-road.png
-2025-05-25 03:05:12,860 - INFO - Full image path: /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:05:12,860 - INFO - Starting theme generation for image: $HOME/Downloads/bunnies-road.png
+2025-05-25 03:05:12,860 - INFO - Full image path: $HOME/Downloads/bunnies-road.png
 2025-05-25 03:05:12,860 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 03:05:12,861 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:05:12,861 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Downloads/bunnies-road.png
 2025-05-25 03:05:12,861 - INFO - Return code: 1
 2025-05-25 03:05:12,861 - ERROR - Stderr: Error: 
    0: [91mTOML parse error at line 5, column 8
    0:   |
-   0: 5 | scss = "/home/tinker/.local/state/theme_engine/scss/_material.scss"
+   0: 5 | scss = "$HOME/.local/state/theme_engine/scss/_material.scss"
    0:   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   0: invalid type: string "/home/tinker/.local/state/theme_engine/scss/_material.scss", expected struct Template
+   0: invalid type: string "$HOME/.local/state/theme_engine/scss/_material.scss", expected struct Template
    0: [0m
 
 [96mSuggestion[0m: Error reading config file, check https://github.com/InioX/Matugen#configuration for help
@@ -93,72 +93,72 @@ Backtrace omitted. Run with RUST_BACKTRACE=1 environment variable to display it.
 Run with RUST_BACKTRACE=full to include source snippets.
 
 2025-05-25 03:05:12,861 - ERROR - Matugen failed with return code 1
-2025-05-25 03:06:21,359 - INFO - Starting theme generation for image: /home/tinker/Downloads/bunnies-road.png
-2025-05-25 03:06:21,359 - INFO - Full image path: /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:06:21,359 - INFO - Starting theme generation for image: $HOME/Downloads/bunnies-road.png
+2025-05-25 03:06:21,359 - INFO - Full image path: $HOME/Downloads/bunnies-road.png
 2025-05-25 03:06:21,359 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 03:06:21,381 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:06:21,381 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Downloads/bunnies-road.png
 2025-05-25 03:06:21,381 - INFO - Return code: 0
-2025-05-25 03:06:21,381 - INFO - CSS file 'waybar-colors2.css' generated successfully: /home/tinker/.config/material-you/waybar-colors2.css
-2025-05-25 03:06:21,381 - INFO - CSS file 'colors.css' generated successfully: /home/tinker/.config/gtk-3.0/colors.css
-2025-05-25 03:06:21,381 - INFO - CSS file 'colors1.css' generated successfully: /home/tinker/.config/gtk-4.0/colors1.css
-2025-05-25 03:06:21,381 - INFO - JSON file 'colors.json' generated successfully: /home/tinker/.config/material-you/colors.json
-2025-05-25 03:06:30,746 - INFO - Starting theme generation for image: /home/tinker/Downloads/bunnies-road.png
-2025-05-25 03:06:30,746 - INFO - Full image path: /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:06:21,381 - INFO - CSS file 'waybar-colors2.css' generated successfully: $HOME/.config/material-you/waybar-colors2.css
+2025-05-25 03:06:21,381 - INFO - CSS file 'colors.css' generated successfully: $HOME/.config/gtk-3.0/colors.css
+2025-05-25 03:06:21,381 - INFO - CSS file 'colors1.css' generated successfully: $HOME/.config/gtk-4.0/colors1.css
+2025-05-25 03:06:21,381 - INFO - JSON file 'colors.json' generated successfully: $HOME/.config/material-you/colors.json
+2025-05-25 03:06:30,746 - INFO - Starting theme generation for image: $HOME/Downloads/bunnies-road.png
+2025-05-25 03:06:30,746 - INFO - Full image path: $HOME/Downloads/bunnies-road.png
 2025-05-25 03:06:30,746 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 03:06:30,767 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Downloads/bunnies-road.png
+2025-05-25 03:06:30,767 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Downloads/bunnies-road.png
 2025-05-25 03:06:30,767 - INFO - Return code: 0
-2025-05-25 03:06:30,767 - INFO - CSS file 'waybar-colors2.css' generated successfully: /home/tinker/.config/material-you/waybar-colors2.css
-2025-05-25 03:06:30,768 - INFO - CSS file 'colors.css' generated successfully: /home/tinker/.config/gtk-3.0/colors.css
-2025-05-25 03:06:30,768 - INFO - CSS file 'colors1.css' generated successfully: /home/tinker/.config/gtk-4.0/colors1.css
-2025-05-25 03:06:30,768 - INFO - JSON file 'colors.json' generated successfully: /home/tinker/.config/material-you/colors.json
-2025-05-25 03:06:30,768 - INFO - SCSS file 'colors.scss' generated successfully: /home/tinker/.config/material-you/colors.scss
-2025-05-25 03:06:42,675 - INFO - Starting theme generation for image: /home/tinker/Nextcloud/Wallpapers/GreenLush_wallpapers/GreenLush11.png
-2025-05-25 03:06:42,675 - INFO - Full image path: /home/tinker/Nextcloud/Wallpapers/GreenLush_wallpapers/GreenLush11.png
+2025-05-25 03:06:30,767 - INFO - CSS file 'waybar-colors2.css' generated successfully: $HOME/.config/material-you/waybar-colors2.css
+2025-05-25 03:06:30,768 - INFO - CSS file 'colors.css' generated successfully: $HOME/.config/gtk-3.0/colors.css
+2025-05-25 03:06:30,768 - INFO - CSS file 'colors1.css' generated successfully: $HOME/.config/gtk-4.0/colors1.css
+2025-05-25 03:06:30,768 - INFO - JSON file 'colors.json' generated successfully: $HOME/.config/material-you/colors.json
+2025-05-25 03:06:30,768 - INFO - SCSS file 'colors.scss' generated successfully: $HOME/.config/material-you/colors.scss
+2025-05-25 03:06:42,675 - INFO - Starting theme generation for image: $HOME/Nextcloud/Wallpapers/GreenLush_wallpapers/GreenLush11.png
+2025-05-25 03:06:42,675 - INFO - Full image path: $HOME/Nextcloud/Wallpapers/GreenLush_wallpapers/GreenLush11.png
 2025-05-25 03:06:42,676 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 03:06:42,867 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Nextcloud/Wallpapers/GreenLush_wallpapers/GreenLush11.png
+2025-05-25 03:06:42,867 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Nextcloud/Wallpapers/GreenLush_wallpapers/GreenLush11.png
 2025-05-25 03:06:42,867 - INFO - Return code: 0
-2025-05-25 03:06:42,867 - INFO - CSS file 'waybar-colors2.css' generated successfully: /home/tinker/.config/material-you/waybar-colors2.css
-2025-05-25 03:06:42,868 - INFO - CSS file 'colors.css' generated successfully: /home/tinker/.config/gtk-3.0/colors.css
-2025-05-25 03:06:42,868 - INFO - CSS file 'colors1.css' generated successfully: /home/tinker/.config/gtk-4.0/colors1.css
-2025-05-25 03:06:42,868 - INFO - JSON file 'colors.json' generated successfully: /home/tinker/.config/material-you/colors.json
-2025-05-25 03:06:42,868 - INFO - SCSS file 'colors.scss' generated successfully: /home/tinker/.config/material-you/colors.scss
-2025-05-25 03:07:58,668 - INFO - Starting theme generation for image: /home/tinker/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
-2025-05-25 03:07:58,668 - INFO - Full image path: /home/tinker/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
+2025-05-25 03:06:42,867 - INFO - CSS file 'waybar-colors2.css' generated successfully: $HOME/.config/material-you/waybar-colors2.css
+2025-05-25 03:06:42,868 - INFO - CSS file 'colors.css' generated successfully: $HOME/.config/gtk-3.0/colors.css
+2025-05-25 03:06:42,868 - INFO - CSS file 'colors1.css' generated successfully: $HOME/.config/gtk-4.0/colors1.css
+2025-05-25 03:06:42,868 - INFO - JSON file 'colors.json' generated successfully: $HOME/.config/material-you/colors.json
+2025-05-25 03:06:42,868 - INFO - SCSS file 'colors.scss' generated successfully: $HOME/.config/material-you/colors.scss
+2025-05-25 03:07:58,668 - INFO - Starting theme generation for image: $HOME/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
+2025-05-25 03:07:58,668 - INFO - Full image path: $HOME/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
 2025-05-25 03:07:58,669 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 03:07:58,787 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
+2025-05-25 03:07:58,787 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
 2025-05-25 03:07:58,787 - INFO - Return code: 0
-2025-05-25 03:07:58,787 - INFO - CSS file 'waybar-colors2.css' generated successfully: /home/tinker/.config/material-you/waybar-colors2.css
-2025-05-25 03:07:58,787 - INFO - CSS file 'colors.css' generated successfully: /home/tinker/.config/gtk-3.0/colors.css
-2025-05-25 03:07:58,787 - INFO - CSS file 'colors1.css' generated successfully: /home/tinker/.config/gtk-4.0/colors1.css
-2025-05-25 03:07:58,787 - INFO - JSON file 'colors.json' generated successfully: /home/tinker/.config/material-you/colors.json
-2025-05-25 03:07:58,787 - INFO - SCSS file 'colors.scss' generated successfully: /home/tinker/.config/material-you/colors.scss
+2025-05-25 03:07:58,787 - INFO - CSS file 'waybar-colors2.css' generated successfully: $HOME/.config/material-you/waybar-colors2.css
+2025-05-25 03:07:58,787 - INFO - CSS file 'colors.css' generated successfully: $HOME/.config/gtk-3.0/colors.css
+2025-05-25 03:07:58,787 - INFO - CSS file 'colors1.css' generated successfully: $HOME/.config/gtk-4.0/colors1.css
+2025-05-25 03:07:58,787 - INFO - JSON file 'colors.json' generated successfully: $HOME/.config/material-you/colors.json
+2025-05-25 03:07:58,787 - INFO - SCSS file 'colors.scss' generated successfully: $HOME/.config/material-you/colors.scss
 2025-05-25 03:08:49,699 - INFO - Starting theme generation for image: /mnt/games/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
 2025-05-25 03:08:49,700 - INFO - Full image path: /mnt/games/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
 2025-05-25 03:08:49,700 - INFO - Using matugen at: /usr/bin/matugen
 2025-05-25 03:08:49,801 - INFO - Command executed: /usr/bin/matugen --json rgba image /mnt/games/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
 2025-05-25 03:08:49,801 - INFO - Return code: 0
-2025-05-25 03:08:49,801 - INFO - CSS file 'waybar-colors2.css' generated successfully: /home/tinker/.config/material-you/waybar-colors2.css
-2025-05-25 03:08:49,801 - INFO - CSS file 'colors.css' generated successfully: /home/tinker/.config/gtk-3.0/colors.css
-2025-05-25 03:08:49,801 - INFO - CSS file 'colors1.css' generated successfully: /home/tinker/.config/gtk-4.0/colors1.css
-2025-05-25 03:08:49,801 - INFO - JSON file 'colors.json' generated successfully: /home/tinker/.config/material-you/colors.json
-2025-05-25 03:08:49,801 - INFO - SCSS file 'colors.scss' generated successfully: /home/tinker/.config/material-you/colors.scss
-2025-05-25 03:09:53,432 - INFO - Starting theme generation for image: /home/tinker/Nextcloud/Wallpapers/CatppuccinMocha_wallpapers/CatpuccinMocha_00049.png
-2025-05-25 03:09:53,432 - INFO - Full image path: /home/tinker/Nextcloud/Wallpapers/CatppuccinMocha_wallpapers/CatpuccinMocha_00049.png
+2025-05-25 03:08:49,801 - INFO - CSS file 'waybar-colors2.css' generated successfully: $HOME/.config/material-you/waybar-colors2.css
+2025-05-25 03:08:49,801 - INFO - CSS file 'colors.css' generated successfully: $HOME/.config/gtk-3.0/colors.css
+2025-05-25 03:08:49,801 - INFO - CSS file 'colors1.css' generated successfully: $HOME/.config/gtk-4.0/colors1.css
+2025-05-25 03:08:49,801 - INFO - JSON file 'colors.json' generated successfully: $HOME/.config/material-you/colors.json
+2025-05-25 03:08:49,801 - INFO - SCSS file 'colors.scss' generated successfully: $HOME/.config/material-you/colors.scss
+2025-05-25 03:09:53,432 - INFO - Starting theme generation for image: $HOME/Nextcloud/Wallpapers/CatppuccinMocha_wallpapers/CatpuccinMocha_00049.png
+2025-05-25 03:09:53,432 - INFO - Full image path: $HOME/Nextcloud/Wallpapers/CatppuccinMocha_wallpapers/CatpuccinMocha_00049.png
 2025-05-25 03:09:53,433 - INFO - Using matugen at: /usr/bin/matugen
-2025-05-25 03:09:53,598 - INFO - Command executed: /usr/bin/matugen --json rgba image /home/tinker/Nextcloud/Wallpapers/CatppuccinMocha_wallpapers/CatpuccinMocha_00049.png
+2025-05-25 03:09:53,598 - INFO - Command executed: /usr/bin/matugen --json rgba image $HOME/Nextcloud/Wallpapers/CatppuccinMocha_wallpapers/CatpuccinMocha_00049.png
 2025-05-25 03:09:53,598 - INFO - Return code: 0
-2025-05-25 03:09:53,599 - INFO - CSS file 'waybar-colors2.css' generated successfully: /home/tinker/.config/material-you/waybar-colors2.css
-2025-05-25 03:09:53,599 - INFO - CSS file 'colors.css' generated successfully: /home/tinker/.config/gtk-3.0/colors.css
-2025-05-25 03:09:53,599 - INFO - CSS file 'colors1.css' generated successfully: /home/tinker/.config/gtk-4.0/colors1.css
-2025-05-25 03:09:53,599 - INFO - JSON file 'colors.json' generated successfully: /home/tinker/.config/material-you/colors.json
-2025-05-25 03:09:53,599 - INFO - SCSS file 'colors.scss' generated successfully: /home/tinker/.config/material-you/colors.scss
+2025-05-25 03:09:53,599 - INFO - CSS file 'waybar-colors2.css' generated successfully: $HOME/.config/material-you/waybar-colors2.css
+2025-05-25 03:09:53,599 - INFO - CSS file 'colors.css' generated successfully: $HOME/.config/gtk-3.0/colors.css
+2025-05-25 03:09:53,599 - INFO - CSS file 'colors1.css' generated successfully: $HOME/.config/gtk-4.0/colors1.css
+2025-05-25 03:09:53,599 - INFO - JSON file 'colors.json' generated successfully: $HOME/.config/material-you/colors.json
+2025-05-25 03:09:53,599 - INFO - SCSS file 'colors.scss' generated successfully: $HOME/.config/material-you/colors.scss
 2025-05-25 03:11:19,499 - INFO - Starting theme generation for image: /mnt/games/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
 2025-05-25 03:11:19,499 - INFO - Full image path: /mnt/games/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
 2025-05-25 03:11:19,499 - INFO - Using matugen at: /usr/bin/matugen
 2025-05-25 03:11:19,605 - INFO - Command executed: /usr/bin/matugen --json rgba image /mnt/games/Nextcloud/Wallpapers/Everforest_wallpapers/everforest_00057.jpg
 2025-05-25 03:11:19,605 - INFO - Return code: 0
-2025-05-25 03:11:19,605 - INFO - CSS file 'waybar-colors2.css' generated successfully: /home/tinker/.config/material-you/waybar-colors2.css
-2025-05-25 03:11:19,605 - INFO - CSS file 'colors.css' generated successfully: /home/tinker/.config/gtk-3.0/colors.css
-2025-05-25 03:11:19,605 - INFO - CSS file 'colors1.css' generated successfully: /home/tinker/.config/gtk-4.0/colors1.css
-2025-05-25 03:11:19,605 - INFO - JSON file 'colors.json' generated successfully: /home/tinker/.config/material-you/colors.json
-2025-05-25 03:11:19,605 - INFO - SCSS file 'colors.scss' generated successfully: /home/tinker/.config/material-you/colors.scss
+2025-05-25 03:11:19,605 - INFO - CSS file 'waybar-colors2.css' generated successfully: $HOME/.config/material-you/waybar-colors2.css
+2025-05-25 03:11:19,605 - INFO - CSS file 'colors.css' generated successfully: $HOME/.config/gtk-3.0/colors.css
+2025-05-25 03:11:19,605 - INFO - CSS file 'colors1.css' generated successfully: $HOME/.config/gtk-4.0/colors1.css
+2025-05-25 03:11:19,605 - INFO - JSON file 'colors.json' generated successfully: $HOME/.config/material-you/colors.json
+2025-05-25 03:11:19,605 - INFO - SCSS file 'colors.scss' generated successfully: $HOME/.config/material-you/colors.scss

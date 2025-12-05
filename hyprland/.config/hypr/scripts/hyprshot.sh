@@ -10,15 +10,15 @@
 
 
 sm() {
-  hyprshot -m output -m active -o ~/Nextcloud/Hyprshot/ -- /home/tinker/.local/bin/personal/xbackbone_uploader.sh
+  hyprshot -m output -m active -o ~/Nextcloud/Hyprshot/ -- $HOME/.local/bin/personal/xbackbone_uploader.sh
 }
 
 sw() {
-  hyprshot -m window -o ~/Nextcloud/Hyprshot/ -- /home/tinker/.local/bin/personal/xbackbone_uploader.sh
+  hyprshot -m window -o ~/Nextcloud/Hyprshot/ -- $HOME/.local/bin/personal/xbackbone_uploader.sh
 }
 
 sa() {
-  hyprshot -m region -o ~/Nextcloud/Hyprshot/ -- /home/tinker/.local/bin/personal/xbackbone_uploader.sh
+  hyprshot -m region -o ~/Nextcloud/Hyprshot/ -- $HOME/.local/bin/personal/xbackbone_uploader.sh
 }
 
 
