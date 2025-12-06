@@ -6,10 +6,8 @@
 }
 
 window {
-    font-family: Hack Nerd Font Mono;
     font-size: 30px;
-    color:  @background;
-    background-color: alpha(@on_primary,0.1);
+    background-color: transparent;
 } 
 
 button {
@@ -21,16 +19,13 @@ button {
     transition: all 0.3s ease-in;
     box-shadow: 0 0 10px 2px transparent;
     border-radius: 36px;
-    margin: 10px;
+    border-color: transparent;
+    margin: 2px;
 }
 
-button:focus {
-    box-shadow: none;
-    background-size : 20%;
-}
 
 button:hover {
-    background-size: 35%;
+    background-size: 45%;
     box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
     background-color: @on_primary_container;
     color: transparent;

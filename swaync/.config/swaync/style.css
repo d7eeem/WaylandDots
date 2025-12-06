@@ -11,14 +11,14 @@
  */
 
 /* Colors */
-@define-color background            #101418;
-@define-color background-alt        #101418;
+@define-color background            #101417;
+@define-color background-alt        #101417;
 @define-color background-alt-darker #181c20;
-@define-color accent-normal         #99ccf9; 
-@define-color accent-error          #001d31; 
-@define-color bordercolor           #b8c8da;
-@define-color fontcolor             #99ccf9;
-@define-color fontaltcolor          #e0e2e8;
+@define-color accent-normal         #96cdf8; 
+@define-color accent-error          #001e30; 
+@define-color bordercolor           #b7c9d9;
+@define-color fontcolor             #96cdf8;
+@define-color fontaltcolor          #e0e3e8;
 
 
 
