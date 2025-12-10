@@ -387,7 +387,7 @@ rofi_wallpaper_picker() {
       -p " 󰸉  Select Wallpaper " \
       -format 'i' \
       -no-custom \
-      -eh 2 \
+      -eh 1 \
       -kb-custom-1 "Alt+Left" \
       -kb-custom-2 "Alt+Right" 2>/dev/null)
   

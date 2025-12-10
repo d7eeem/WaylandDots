@@ -1,26 +1,14 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # _     _ _____
 #(_) __| |___  |_  ___   _ ____
 #| |/ _| |  / /\ \/ / | | |_  /
 #| | (_| | / /  >  <| |_| |/ /
-#|_|\__,_|/_/  /_/\_\__, /___|
+#|_|\__,_|/_/  /_/\_\\__, /___|
 # Created by: d7eeem aka id7xyz
 # https://github.com/d7eeem
 
-# swww kill
-#
-# imgloc="$HOME/unraid/archive/wallpaper-sort/Me/"
-#
-#
-# ls "$imgloc" | shuf -n 1 | while read file; do 
-# swww init && swww img "$imgloc/$file"
-# done
-
-
-
-if [[ $# -lt 1 ]] || [[ ! -d $1   ]]; then
-	echo "Usage:
-	$0 <dir containing images>"
+if [[ $# -lt 1 ]] || [[ ! -d "$1" ]]; then
+	echo "Usage: $0 <dir containing images>"
 	exit 1
 fi
 
@@ -30,21 +18,18 @@ export SWWW_TRANSITION_STEP=2
 
 # This controls (in seconds) when to switch to the next image
 INTERVAL=30
-#INTERVAL=150
+
+# Supported image formats
+FORMATS="jpg|jpeg|png|gif|bmp|webp"
 
 while true; do
-	find "$1" \
+	find "$1" -type f -regextype posix-extended -iregex ".*\.($FORMATS)$" \
 		| while read -r img; do
 			echo "$((RANDOM % 1000)):$img"
 		done \
 		| sort -n | cut -d':' -f2- \
 		| while read -r img; do
-			swww img --transition-type random  "$img"
-			sleep $INTERVAL
+			swww img --transition-type random "$img"
+			sleep "$INTERVAL"
 		done
 done
-
-
-
-#swww img --transition-type wipe --transition-angle 30 "$img"
-

@@ -7,5 +7,7 @@
 # Created by: d7eeem aka id7xyz
 # https://github.com/d7eeem
 
-
-kitty --title scratchpad && sleep 0.1 && hyprctl dispatch resizeactive exact 950 600 && hyprctl dispatch centerwindow
+kitty --title scratchpad &
+sleep 0.3
+hyprctl dispatch resizeactive exact 950 600
+hyprctl dispatch centerwindow
