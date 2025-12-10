@@ -1,0 +1,145 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 16px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba({{ background }}, 0.8);
+    color: #{{ foreground }};
+}
+
+tooltip {
+    background-color: #{{ background }};
+    border-radius: 10px;
+    border: 2px solid #{{ accent }};
+}
+
+#workspaces button {
+    padding: 5px;
+    color: #{{ foreground }};
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+    color: #{{ accent }};
+}
+
+#workspaces button.focused {
+    color: #{{ accent }};
+    background-color: #{{ background_lighter }};
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: #{{ urgent }};
+    background-color: #{{ background }};
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background-color: #{{ background_lighter }};
+    color: #{{ accent }};
+    border-radius: 10px;
+}
+
+#custom-power,
+#custom-weather,
+#custom-launcher,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#workspaces,
+#tray,
+#backlight {
+    background-color: #{{ background }};
+    padding: 0px 10px;
+    margin: 3px 0px;
+    margin-top: 10px;
+    border: 1px solid #{{ border }};
+}
+
+#tray {
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#workspaces {
+    background-color: #{{ background }};
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-right: 0px;
+    padding-left: 5px;
+}
+
+#custom-power {
+    color: #{{ color1 }};
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#custom-launcher {
+    color: #{{ color2 }};
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+#custom-weather {
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#window {
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#clock {
+    color: #{{ color3 }};
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#network {
+    color: #{{ color4 }};
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#pulseaudio {
+    color: #{{ color5 }};
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#battery {
+    color: #{{ color6 }};
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#battery.charging, #battery.plugged {
+    color: #{{ color7 }};
+}
+
+#battery.critical:not(.charging) {
+    color: #{{ urgent }};
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#backlight {
+    color: #{{ color8 }};
+    border-radius: 10px;
+    margin-right: 10px;
+} 
