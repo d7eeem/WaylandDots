@@ -11,8 +11,8 @@ configuration {
 }
 
 window {
-    width: 2000px;
-    height: 450px;
+    width: 1250px;
+    height: 750px;
     background-color: var(surface-container);
     border: 2px;
     border-color: var(outline);
@@ -26,25 +26,32 @@ mainbox {
 }
 
 inputbar {
-    background-color: var(surface-container-high);
-    border-radius: 7px;
-    padding: 16px;
-    children: [prompt, entry];
-    border: 1px;
-    border-color: var(outline-variant);
+  enabled: true;
+  spacing: 10px;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: @on-primary;
+  text-color: @primary;
+  children: [ "textbox-prompt-colon", "entry"];
 }
 
-prompt {
-    text-color: var(primary);
-    background-color: transparent;
-    margin: 0 10px 0 0;
+#entry {
+  spacing: 0;
+  text-color: @normal-foreground;
+  background-color: @surface;
+  border-radius: 7px;
+  spacing: 4px;
+  padding: 4px;
 }
 
-entry {
-    text-color: var(on-surface);
-    background-color: transparent;
-    placeholder: "Search...";
-    placeholder-color: var(on-surface-variant);
+textbox-prompt-colon {
+  enabled: true;
+  expand: false;
+  padding: 5px;
+  border-radius: 7px;
+  str: " 󰸉 ";
+  background-color: @background;
+  text-color: @primary;
 }
 
 message {
@@ -60,12 +67,12 @@ textbox {
 }
 
 listview {
-    columns: 7;
-    lines: 2;
+    columns: 5;
+    lines: 4;
     flow: horizontal;
     cycle: true;
     scrollbar: false;
-    spacing: 15px;
+    spacing: 5px;
     background-color: transparent;
 }
 

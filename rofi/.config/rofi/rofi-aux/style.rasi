@@ -1,0 +1,63 @@
+@import "../../rofi/launchers/themes/matugen.rasi"
+
+* {
+    font:            "0xProto Nerd Font Propo 11";
+    background-color: transparent;
+    text-color:       @foreground;
+    margin:           0px;
+    padding:          0px;
+    spacing:          0px;
+}
+
+window {
+    background-color:   @background;
+    border:             2px solid;
+    border-color:       @active-background;
+    border-radius:      12px;
+    width:              320px;
+    height:             150px;
+    location:           center;
+    anchor:             center;
+    padding:            15px;
+}
+
+mainbox {
+    children:   [ dummy, listview, dummy ];
+    spacing:    1px;
+}
+
+
+
+listview {
+    background-color:   transparent;
+    margin:             0px;
+    columns:            1;
+    lines:              12;
+    fixed-height:       true;
+    spacing:            8px;
+    scrollbar:          false;
+}
+
+element {
+    padding:            10px 15px;
+    spacing:            10px;
+    border-radius:      8px;
+    horizontal-align:   0;
+}
+
+element-icon {
+    size:               1.4em;
+    vertical-align:     0.5;
+}
+
+element-text {
+    text-color:         inherit;
+    vertical-align:     0.5;
+    horizontal-align:   0;
+    font:               inherit;
+}
+
+element selected {
+    background-color:   @active-background;
+    text-color:         @active-foreground;
+}

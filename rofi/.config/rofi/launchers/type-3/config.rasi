@@ -22,7 +22,7 @@ window {
   y-offset: 0px;
   enabled: true;
   border: 2px solid;
-  border-color: @secondary-container;
+  border-color: @primary-fixed-dim;
   border-radius: 7px;
   cursor: "default";
   background-color: @on-primary-fixed;
