@@ -11,14 +11,14 @@
  */
 
 /* Colors */
-@define-color background            #101417;
-@define-color background-alt        #101417;
-@define-color background-alt-darker #181c20;
-@define-color accent-normal         #96cdf8; 
-@define-color accent-error          #001e30; 
-@define-color bordercolor           #b7c9d9;
-@define-color fontcolor             #96cdf8;
-@define-color fontaltcolor          #e0e3e8;
+@define-color background            #19120d;
+@define-color background-alt        #19120d;
+@define-color background-alt-darker #221a15;
+@define-color accent-normal         #ffb786; 
+@define-color accent-error          #311300; 
+@define-color bordercolor           #e5bfa8;
+@define-color fontcolor             #ffb786;
+@define-color fontaltcolor          #f0dfd7;
 
 
 
@@ -36,7 +36,7 @@
 .notification {
     background: @background;
     color: @fontcolor;
-    border: 3px solid @bordercolor;
+    border: 2px solid @bordercolor;
     border-radius: 10px;
     padding:10px;
 }
@@ -46,7 +46,7 @@
 }
 
 .summary {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   border-radius: 7px;
   background: transparent;
@@ -93,7 +93,7 @@
     color: @fontcolor;
     border: 3px solid @bordercolor;
     padding: 10px;
-    border-radius: 7px;
+    border-radius: 24px;
 }
 
 /* Notifications expanded-group */

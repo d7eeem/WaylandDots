@@ -6,8 +6,9 @@ cfk $HOME/.config/kitty/kitty.conf
 cfn $HOME/.config/fontconfig/fonts.conf
 cfa	$HOME/.config/fish/aliasesrc.fish
 cft	$HOME/.config/tmux/tmux.conf
-cfw $HOME/.config/waybar/config.ctl
+cfw $HOME/.config/hypr/hyprlock.conf
 cfk $HOME/.config/kitty/kitty.conf
 cfg $HOME/.config/ghostty/config
 cfp	$HOME/.config/fish/config.fish
 cff $HOME/.config/fish/config.fish
+cfm $HOME/.config/matugen/config.toml
