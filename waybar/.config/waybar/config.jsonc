@@ -12,15 +12,12 @@
   "modules-left": [
     "custom/drop",
     "hyprland/workspaces",
-    "custom/nettraf"
+    "hyprland/window"
   ],
   "modules-center": [
-    "hyprland/window",
-    "custom/recorder",
-    "privacy"
+    "clock"
   ],
   "modules-right": [
-    "clock",
     "custom/audio_idle_inhibitor",
     "idle_inhibitor",
     "group/hardware",
@@ -29,6 +26,8 @@
     "network",
     "tray",
     "custom/power",
-    "custom/notification"
-  ]
+    "custom/notification",
+    "custom/recorder",
+    "privacy",
+  ],
 }

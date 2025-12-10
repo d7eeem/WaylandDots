@@ -7,7 +7,16 @@
     ]
   },
   "hyprland/window": {
-    "format": "{initialClass}",
+    "format": "{title}",
+    "rewrite": {
+      "title<.*youtube.*>": "\uf16a",
+      "(.*) — Zen Browser": " $1",
+      "(.*) — Mozilla Firefox": " $1",
+      "Steam": " Steam 󰓓 ",
+      "Discord": "Discord  ",
+      "KiTTY": "KITTY 󰄛"
+    },
+    "max-length": 24,
     "on-click-middle": "hyprctl dispatch killactive"
   },
   "hyprland/window#win2": {

@@ -1,19 +1,29 @@
 {
   "network": {
+    "format-disconnected": "󰖪 0% ",
     "format-ethernet": "󰈀",
-    "format-wifi": "{icon}",
-    "format-disconnected": "󰤭 ",
-    "format-icons": [
-      "󰤯 ",
-      "󰤟 ",
-      "󰤢 ",
-      "󰤥 ",
-      "󰤨 "
-    ],
-    "tooltip-format-wifi": "{essid}",
-    "tooltip-format-ethernet": "IP: {ipaddr}\n{ifname}",
-    "on-click": "kitty -e nmtui",
-    "on-click-right": "nm-connection-editor",
-    "nospacing": 1
+    "format-linked": "{󰈀)",
+    "format-wifi": "  {signalStrength}%",
+    "tooltip-format": "Connected to {essid} {ifname} via {gwaddr}",
+    "on-click": "kitty --title KittyNmtui sh -c  'sleep 0.1; nmtui'"
   }
 }
+// {
+//   "network": {
+//     "format-ethernet": "󰈀",
+//     "format-wifi": "{icon}",
+//     "format-disconnected": "󰤭 ",
+//     "format-icons": [
+//       "󰤯 ",
+//       "󰤟 ",
+//       "󰤢 ",
+//       "󰤥 ",
+//       "󰤨 "
+//     ],
+//     "tooltip-format-wifi": "{essid}",
+//     "tooltip-format-ethernet": "IP: {ipaddr}\n{ifname}",
+//     "on-click": "kitty -e nmtui",
+//     "on-click-right": "nm-connection-editor",
+//     "nospacing": 1
+//   }
+// }

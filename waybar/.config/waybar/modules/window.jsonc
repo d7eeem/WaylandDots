@@ -1,17 +1,16 @@
 {
   "hyprland/window": {
-    "format": "{}",
+    "format": "{title}",
     "rotate": 0,
     "separate-outputs": true,
     "rewrite": {
       "title<.*youtube.*>": "\uf16a",
-      "(.*)Steam": " Steam \udb81\udcd3 ",
-      "(.*)Discord": "Discord  ",
-      "(.*)KiTTY": "KITTY 󰄛",
-      "(.*)org.gnome.Nautilus": "Nautilus",
-      "(.*)org.telegram.desktop": "Telegram",
-      "(.*)cafe.avery.Delfin": "Delfin"
+      "(.*) — Zen Browser": "Zen Browser - $1",
+      "(.*) — Mozilla Firefox": " $1",
+      "Steam": " Steam 󰓓 ",
+      "Discord": "Discord  ",
+      "KiTTY": "KITTY 󰄛"
     },
-    "max-length": 12
+    "max-length": 36
   }
 }
