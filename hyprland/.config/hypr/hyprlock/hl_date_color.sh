@@ -1,21 +1,20 @@
 #!/bin/env bash
-
-
 # Absolute path to your color config
-COLOR_FILE="$HOME/.cache/wal/colors-hyprland.conf"
+COLOR_FILE="$HOME/.config/hypr/hyprlock/matugen-hyprlock.conf"
 
-# Extract color7 and color4 from the Hyprland-style config
 get_color() {
-    grep "\$$1" "$COLOR_FILE" | sed -nE 's/.*rgb\(([0-9a-fA-F]+)\).*/#\1/p'
+    local result=$(grep "^\$$1 = rgba(" "$COLOR_FILE" | head -n 1 | sed -nE 's/.*rgba\(([0-9a-fA-F]{6}).*/\1/p')
+    if [[ -n "$result" ]]; then
+        echo "#$result"
+    fi
 }
 
-color7=$(get_color color7)
-color4=$(get_color color4)
+color7=$(get_color primary_fixed)
+color4=$(get_color primary_fixed_dim)
 
 # Fallbacks if parsing fails
-color7=${color7:-"#ffffff"}
-color4=${color4:-"#aaaaaa"}
+color7=${color7:-"#b2cfa8"}
+color4=${color4:-"#ebc06c"}
 
 # Output Hyprlock-compatible formatted text
 echo "<span color='${color7}'>$(date '+%A, ')</span><span color='${color4}'>$(date '+%d %B')</span>"
-
