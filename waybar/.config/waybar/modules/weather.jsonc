@@ -1,0 +1,10 @@
+{
+  "custom/weather": {
+    "exec": "~/.config/waybar/scripts/weather.sh --lat 26.0796628 --lon 43.957692 --city 'unayzah'",
+    "interval": 600,
+    "return-type": "json",
+    "on-click": "~/.config/waybar/scripts/weather.sh --lat 26.0796628 --lon 43.957692 --city 'unayzah'",
+    "tooltip": true,
+    "format": "{}",
+  },
+}
