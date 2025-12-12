@@ -8,7 +8,6 @@ set -e
 # Configuration
 REPO="Eden-CI/PR"
 INSTALL_DIR="$HOME/Applications"
-OLD_VERSIONS_DIR="$HOME/Applications/old"
 APP_NAME="Eden-Linux"
 CURRENT_VERSION_FILE="$HOME/.config/eden-linux-version"
 
@@ -42,21 +41,42 @@ get_latest_release() {
     print_info "Fetching latest release information..." >&2
     
     # Get all releases and find the one with the highest build number
-    # The tag format is: BUILD_NUMBER-COMMIT_HASH (e.g., 3162-07389c4a04)
-    local tag=$(curl -s "https://api.github.com/repos/$REPO/releases?per_page=100" | \
-        grep -Po '"tag_name": "\K[^"]*' | \
-        sort -t'-' -k1 -nr | \
-        head -n1)
+    local releases=$(curl -s "https://api.github.com/repos/$REPO/releases?per_page=10")
     
-    if [ -z "$tag" ]; then
+    # Extract all tags and find the highest build number
+    local tags=$(echo "$releases" | grep -Po '"tag_name": "\K[^"]*')
+    local highest_tag=$(echo "$tags" | sort -nr | head -n1)
+    
+    if [ -z "$highest_tag" ]; then
         print_error "Failed to fetch latest release tag" >&2
         exit 1
     fi
     
-    print_info "Latest release: $tag" >&2
+    # Get the specific release data for this tag
+    local release_data=$(echo "$releases" | grep -A 200 "\"tag_name\": \"$highest_tag\"" | head -n 200)
     
-    # Only return the tag to stdout
-    echo "$tag"
+    # Extract commit hash from body - try multiple patterns
+    local commit=$(echo "$release_data" | grep -oP 'Commit: `\K[a-f0-9]{10}' | head -n1)
+    
+    # If that didn't work, try extracting from the download URL in the body
+    if [ -z "$commit" ]; then
+        commit=$(echo "$release_data" | grep -oP "download/${highest_tag}-\K[a-f0-9]{10}" | head -n1)
+    fi
+    
+    if [ -z "$commit" ]; then
+        print_error "Failed to extract commit hash from release" >&2
+        print_error "Debug: Searching for commit in release body..." >&2
+        echo "$release_data" | grep -i commit >&2
+        exit 1
+    fi
+    
+    # Combine tag and commit
+    local full_tag="${highest_tag}-${commit}"
+    
+    print_info "Latest release: $full_tag" >&2
+    
+    # Return the full tag to stdout
+    echo "$full_tag"
 }
 
 # Function to extract commit hash from tag
@@ -112,17 +132,10 @@ download_and_install() {
     # Create install directory if it doesn't exist
     mkdir -p "$INSTALL_DIR"
     
-    # Create old versions directory if it doesn't exist
-    mkdir -p "$OLD_VERSIONS_DIR"
-    
-    # Backup old version if exists
+    # Remove old version if exists
     if [ -f "$final_file" ]; then
-        local old_version=$(get_current_version)
-        local backup_file="$OLD_VERSIONS_DIR/$APP_NAME-$old_version.AppImage"
-        
-        print_info "Moving old version to $OLD_VERSIONS_DIR..."
-        mv "$final_file" "$backup_file"
-        print_success "Old version saved as: $backup_file"
+        print_info "Removing old version..."
+        rm -f "$final_file"
     fi
     
     # Move to final location
@@ -187,9 +200,6 @@ main() {
         print_info "Add this line to your ~/.bashrc or ~/.zshrc:"
         echo "    export PATH=\"\$PATH:$INSTALL_DIR\""
     fi
-    
-    echo ""
-    print_info "Old versions are stored in: $OLD_VERSIONS_DIR"
 }
 
 # Run main function

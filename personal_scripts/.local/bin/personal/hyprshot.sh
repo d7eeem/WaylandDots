@@ -17,7 +17,7 @@ fi
 # Configuration
 SAVE_DIR="$HOME/Nextcloud/Hyprshot"
 TEMP_DIR="/tmp/screencast"
-XBACKBONE_URL="https://xback.aloqaili.xyz/upload"
+XBACKBONE_URL="${XXBACKBONE_URL}"
 XBACKBONE_TOKEN="${XBACK_BONE}"
 
 # Create directories if they don't exist

@@ -152,6 +152,16 @@ generate_wallpaper_variants() {
       -extent 500x500 \
       "$CACHE_DIR/wall.sqre" 2>/dev/null
   } &
+
+  {
+    magick "${source_image}[0]" \
+      -strip \
+      -distort SRT '1.8 0' \
+      -thumbnail 1250x1250^ \
+      -gravity center \
+      -extent 1250x1250 \
+      "$CACHE_DIR/wall-rofi.sqre" 2>/dev/null
+  } &
   
   # Blurred variant
   {
