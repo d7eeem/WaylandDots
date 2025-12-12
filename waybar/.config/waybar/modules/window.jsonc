@@ -5,12 +5,14 @@
     "separate-outputs": true,
     "rewrite": {
       "title<.*youtube.*>": "\uf16a",
-      "(.*) — Zen Browser": "Zen Browser - $1",
-      "(.*) — Mozilla Firefox": " $1",
-      "Steam": " Steam 󰓓 ",
-      "Discord": "Discord  ",
-      "KiTTY": "KITTY 󰄛"
+      "(.*) — zen browser": "zen browser - $1",
+      "(.*) — mozilla firefox": " $1",
+      "steam": " steam 󰓓 ",
+      "discord": "discord  ",
+      "kitty": "kitty 󰄛",
+      "class<com\\.mitchellh\\.ghostty>": "ghostty - $1",
+      "title<(.*)> class<com\\.mitchellh\\.ghostty>": "ghostty - $1",
     },
-    "max-length": 36
-  }
+    "max-length": 36,
+  },
 }

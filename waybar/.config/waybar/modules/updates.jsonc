@@ -1,6 +1,6 @@
 {
   "custom/updates": {
-    "exec": "$HOME/.local/bin/statusbar/systemupdate.fish",
+    "exec": "$HOME/.local/bin/statusbar/systemupdate.sh",
     "return-type": "json",
     "format": "{}",
     "rotate": 0,

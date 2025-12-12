@@ -9,7 +9,7 @@
 }
 
 window#waybar {
-  background-color: @color0;
+  background-color: @background;
   color: @color7;
   border-radius: 7px;
   border: 1px solid @color1; 
@@ -18,7 +18,7 @@ window#waybar {
 /* ==================== Tooltip ==================== */
 
 tooltip {
-  background-color: @background;
+  background-color: @color0;
   color: @color7;
   border-radius: 7px;
   border: 1px solid @color1;
@@ -59,14 +59,12 @@ tooltip {
 
 #cpu,
 #tray,
-#clock,
 #upower,
 #window,
 #network,
 #hardware,
 #language,
 #bluetooth,
-#clock-date,
 #pulseaudio,
 #temperature,
 #custom-drop,
@@ -81,10 +79,21 @@ tooltip {
 #custom-recorder,
 #power-profiles-daemon,
 #custom-audio_idle_inhibitor {
-  background-color: @background;
   color: @color7;
   padding: 2px 10px;
   margin: 2px 0;
+  border-radius: 7px;
+  font-weight: bold;
+  transition: background-color 0.2s, color 0.2s;
+}
+#custom-weather {
+  padding: 2px 2px;
+  margin: 2px;
+}
+#clock,
+#clock-date {
+  color: @color7;
+  margin: 2px;
   border-radius: 7px;
   font-weight: bold;
   transition: background-color 0.2s, color 0.2s;
@@ -95,10 +104,6 @@ window#waybar.empty #window {
 }
 
 /* ==================== Module-Specific Overrides ==================== */
-
-#hardware * {
-  margin: 0 4px;
-}
 
 #custom-drop {
   font-size: 15px;
@@ -116,13 +121,11 @@ window#waybar.empty #window {
 }
 
 #pulseaudio.muted {
-  background-color: @color6;
-  color: @color0;
+  color: @color7;
   font-size: 15px;
 }
 
 #custom-power {
-  background-color: @background;
   color: @color7;
   font-size: 14px;
   margin: 2px 4px 2px 0;
@@ -132,7 +135,6 @@ window#waybar.empty #window {
 }
 
 #custom-notification {
-  background-color: @background;
   color: @color7;
   font-size: 14px;
   min-width: 20px;
@@ -144,7 +146,7 @@ window#waybar.empty #window {
 #privacy-item.screenshare,
 #custom-recorder.recording {
   background-color: @privacy;
-  color: white;
+  color: @color7;
   padding: 2px 12px;
   border-radius: 7px;
   margin: 2px;
@@ -166,7 +168,6 @@ window#waybar.empty #window {
 
 #bluetooth:hover,
 #cpu:hover,
-#custom-audio_idle_inhibitor:hover,
 #custom-cpuinfo:hover,
 #custom-drop:hover,
 #custom-gpuinfo:hover,
@@ -177,8 +178,6 @@ window#waybar.empty #window {
 #idle_inhibitor:hover,
 #language:hover,
 #network:hover,
-#clock:hover,
-#clock-date:hover,
 #power-profiles-daemon:hover,
 #pulseaudio:hover {
   background-color: @color13;
@@ -197,4 +196,8 @@ menuitem {
   color: @color7;
   margin: 2px;
   padding: 0 5px;
+}
+menuitem:hover {
+  background-color: @color15;
+  color: @color0;
 }

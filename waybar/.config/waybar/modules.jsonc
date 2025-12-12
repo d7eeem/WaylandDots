@@ -1,12 +1,10 @@
 {
   "include": [
     "$HOME/.config/waybar/modules/audio_idle_inhibitor.jsonc",
-    "$HOME/.config/waybar/modules/hardware_group.jsonc",
     "$HOME/.config/waybar/modules/network_group.jsonc",
     "$HOME/.config/waybar/modules/clock.jsonc",
     "$HOME/.config/waybar/modules/mpris.jsonc",
     "$HOME/.config/waybar/modules/corner.jsonc",
-    // "$HOME/.config/waybar/modules/win.jsonc",
     "$HOME/.config/waybar/modules/taskbar.jsonc",
     "$HOME/.config/waybar/modules/language.jsonc",
     "$HOME/.config/waybar/modules/bluetooth.jsonc",
@@ -32,6 +30,7 @@
     "$HOME/.config/waybar/modules/updates.jsonc",
     "$HOME/.config/waybar/modules/upower.jsonc",
     "$HOME/.config/waybar/modules/window.jsonc",
-    "$HOME/.config/waybar/modules/workspaces.jsonc"
+    "$HOME/.config/waybar/modules/workspaces.jsonc",
+    "$HOME/.config/waybar/modules/weather.jsonc"
   ]
 }

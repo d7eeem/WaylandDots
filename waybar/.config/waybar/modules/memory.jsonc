@@ -1,6 +1,7 @@
 {
   "custom/memory": {
     "exec": "$HOME/.local/bin/statusbar/raminfo.fish",
+    // "exec": "$HOME/.local/bin/statusbar/raminfo.fish",
     "return-type": "json",
     "tooltip": true,
     "interval": 1,
