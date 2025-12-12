@@ -17,7 +17,7 @@ export QT_STYLE_OVERRIDE=kvantum
 # ----------------------------
 # GTK
 # ----------------------------
-export GTK_THEME=WhiteSur-Dark
+export GTK_THEME,Tahoe-Dark
 export GDK_SCALE=1
 export GDK_BACKEND=wayland
 

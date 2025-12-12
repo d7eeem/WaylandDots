@@ -28,3 +28,6 @@ set -Ux SUDO_ASKPASS /usr/local/bin/askpass-helper.sh
 ## Locale Settings
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
+
+## TERM
+set -gx TERM ghostty
