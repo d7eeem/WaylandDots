@@ -1,4 +1,3 @@
-@theme "/dev/null"
 @import "../themes/matugen.rasi"
 
 configuration {
@@ -18,6 +17,7 @@ window {
   anchor: center;
   fullscreen: false;
   width: 750px;
+  height: 400px;
   x-offset: 0px;
   y-offset: 0px;
   enabled: true;
@@ -39,7 +39,8 @@ mainbox {
 imagebox {
   padding: 20px;
   background-color: transparent;
-  background-image: url("~/.cache/wallpaper/wall.sqre");
+  background-image: url("~/.cache/wallpaper/wall-rofi.sqre", height);
+  background-image-position: center;
   orientation: vertical;
   border-radius: 7px;
   children: [ "inputbar", "dummy", "mode-switcher"];
@@ -110,7 +111,7 @@ button selected {
 listview {
   enabled: true;
   columns: 1;
-  lines: 8;
+  lines: 6;
   cycle: true;
   dynamic: true;
   scrollbar: false;
@@ -118,7 +119,6 @@ listview {
   reverse: false;
   fixed-height: true;
   fixed-columns: true;
-
   spacing: 10px;
   background-color: transparent;
   text-color: @on-surface;

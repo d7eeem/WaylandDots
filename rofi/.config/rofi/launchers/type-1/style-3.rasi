@@ -22,7 +22,7 @@ configuration {
 
 /*****----- Main Window -----*****/
 window {
-  height: 450px;
+  height: 410px;
   width: 800px;
   transparency: "real";
   fullscreen: false;
@@ -47,7 +47,7 @@ mainbox {
 imagebox {
   padding: 20px;
   background-color: transparent;
-  background-image: url("~/.cache/wallpaper/wall.sqre", both);
+  background-image: url("~/.cache/wallpaper/wall-rofi.sqre", both);
   background-image-position: center;
   orientation: vertical;
   border-radius: 7px;

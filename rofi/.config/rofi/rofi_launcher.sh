@@ -1,7 +1,6 @@
 #!/bin/env bash
-dir="$HOME/WaylandDots/rofi/.config/rofi/launchers/type-3"
-theme='config'
-#theme='style-1'
+dir="$HOME/WaylandDots/rofi/.config/rofi/launchers/type-1"
+theme='style-4'
 
 ## Run
 rofi \
