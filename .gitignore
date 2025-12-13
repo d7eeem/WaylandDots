@@ -18,6 +18,7 @@ fish/.config/fish/starship.toml
 # Hyprland
 hyprland/.config/hypr/themes/hyprland-colors.conf
 hyprland/.config/hypr/hyprlock/matugen-hyprlock.conf
+hyprland/.config/hypr/hyprlock/matugen-hyprlock.conf
 
 # Waybar
 waybar/.config/waybar/colors.css
