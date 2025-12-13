@@ -158,5 +158,13 @@ function gallery-dl-reddit-oauth
     return $exit_code
 end
 
+
+# ~/.config/fish/config.fish
+if test -f $HOME/.config/fish/starship.toml
+    set -x STARSHIP_CONFIG $HOME/.config/fish/starship.toml
+else
+    set -x STARSHIP_CONFIG $HOME/.config/fish/starship.base.toml
+end
+
 ## Initialize Starship prompt
 starship init fish | source
