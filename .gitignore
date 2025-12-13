@@ -6,3 +6,35 @@ gallery-dl/.config/gallery-dl/downloaded.sqlite3
 personal_scripts/.local/bin/yt-dlp
 gallery-dl/.config/gallery-dl/config.json
 gallery-dl/.config/gallery-dl/.env
+
+
+# Hyprland
+.config/hypr/themes/hyprland-colors.conf
+.config/hypr/hyprlock/matugen-hyprlock.conf
+
+# Waybar
+.config/waybar/colors.css
+
+# Rofi
+.config/rofi/**/matugen*.rasi
+
+# Kitty
+.config/kitty/matugen.conf
+
+# wlogout
+.config/wlogout/colors.css
+
+# swaync
+.config/swaync/style.css
+
+# ignis
+.config/ignis/colors.scss
+
+# Ghostty
+.config/ghostty/themes/matugen/
+
+# Starship (generated colors only)
+.config/fish/starship.toml
+
+# Obsidian
+Nextcloud/Obsidian/**/matugen*.css
