@@ -11,14 +11,14 @@
  */
 
 /* Colors */
-@define-color background            #16130b;
-@define-color background-alt        #16130b;
-@define-color background-alt-darker #1e1b13;
-@define-color accent-normal         #e1c46d; 
-@define-color accent-error          #231b00; 
-@define-color bordercolor           #d4c5a1;
-@define-color fontcolor             #e1c46d;
-@define-color fontaltcolor          #eae2d4;
+@define-color background            #171217;
+@define-color background-alt        #171217;
+@define-color background-alt-darker #1f1a1f;
+@define-color accent-normal         #e9b5ef; 
+@define-color accent-error          #300a39; 
+@define-color bordercolor           #d6c0d6;
+@define-color fontcolor             #e9b5ef;
+@define-color fontaltcolor          #eae0e7;
 
 
 

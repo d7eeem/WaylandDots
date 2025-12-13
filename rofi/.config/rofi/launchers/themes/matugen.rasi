@@ -2,34 +2,34 @@
   /* Material Design 3 Color Palette from Matugen */
   
   /* Primary colors */
-  primary: #e1c46d;
-  primary-fixed: #ffe086;
-  primary-fixed-dim: #e1c46d;
-  on-primary: #3c2f00;
-  on-primary-fixed: #231b00;
-  on-primary-fixed-variant: #574500;
-  primary-container: #574500;
-  on-primary-container: #ffe086;
+  primary: #e9b5ef;
+  primary-fixed: #fdd6ff;
+  primary-fixed-dim: #e9b5ef;
+  on-primary: #472150;
+  on-primary-fixed: #300a39;
+  on-primary-fixed-variant: #603768;
+  primary-container: #603768;
+  on-primary-container: #fdd6ff;
   
   /* Secondary colors */
-  secondary: #d4c5a1;
-  secondary-fixed: #f1e1bb;
-  secondary-fixed-dim: #d4c5a1;
-  on-secondary: #383016;
-  on-secondary-fixed: #221b04;
-  on-secondary-fixed-variant: #50462a;
-  secondary-container: #50462a;
-  on-secondary-container: #f1e1bb;
+  secondary: #d6c0d6;
+  secondary-fixed: #f3dbf2;
+  secondary-fixed-dim: #d6c0d6;
+  on-secondary: #3b2b3c;
+  on-secondary-fixed: #241727;
+  on-secondary-fixed-variant: #524153;
+  secondary-container: #524153;
+  on-secondary-container: #f3dbf2;
   
   /* Tertiary colors */
-  tertiary: #accfaf;
-  tertiary-fixed: #c8ecca;
-  tertiary-fixed-dim: #accfaf;
-  on-tertiary: #183720;
-  on-tertiary-fixed: #02210c;
-  on-tertiary-fixed-variant: #2f4e35;
-  tertiary-container: #2f4e35;
-  on-tertiary-container: #c8ecca;
+  tertiary: #f5b7b0;
+  tertiary-fixed: #ffdad5;
+  tertiary-fixed-dim: #f5b7b0;
+  on-tertiary: #4c2521;
+  on-tertiary-fixed: #33110e;
+  on-tertiary-fixed-variant: #673b36;
+  tertiary-container: #673b36;
+  on-tertiary-container: #ffdad5;
   
   /* Error colors */
   error: #ffb4ab;
@@ -38,23 +38,23 @@
   on-error-container: #ffdad6;
   
   /* Surface colors */
-  surface: #16130b;
-  on-surface: #eae2d4;
-  on-surface-variant: #cec6b4;
-  outline: #979080;
-  outline-variant: #4c4639;
+  surface: #171217;
+  on-surface: #eae0e7;
+  on-surface-variant: #cfc3cd;
+  outline: #988d97;
+  outline-variant: #4d444c;
   shadow: #000000;
   scrim: #000000;
-  inverse-surface: #eae2d4;
-  inverse-on-surface: #343027;
-  inverse-primary: #725c0c;
-  surface-dim: #16130b;
-  surface-bright: #3d392f;
-  surface-container-lowest: #110e07;
-  surface-container-low: #1e1b13;
-  surface-container: #231f17;
-  surface-container-high: #2d2a21;
-  surface-container-highest: #38342b;
+  inverse-surface: #eae0e7;
+  inverse-on-surface: #342f34;
+  inverse-primary: #7a4f81;
+  surface-dim: #171217;
+  surface-bright: #3d373d;
+  surface-container-lowest: #110d11;
+  surface-container-low: #1f1a1f;
+  surface-container: #231e23;
+  surface-container-high: #2e282e;
+  surface-container-highest: #393338;
 
   /* Mapped Rofi color variables */
   background: @surface;

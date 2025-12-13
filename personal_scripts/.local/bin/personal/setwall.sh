@@ -1,7 +1,7 @@
 #!/bin/env bash
 # _     _ _____
 #(_) __| |___  |_  ___   _ ____
-#| |/ _| |  / /\ \/ / | | |_  /
+#| |/ _| |  / /\ \/ / | | |_ /
 #| | (_| | / /  >  <| |_| |/ /
 #|_|\__,_|/_/  /_/\_\__, /___|
 # Created by: d7eeem aka id7xyz
@@ -267,7 +267,14 @@ set_gnome_wallpaper() {
   
   echo "GNOME wallpaper set: $imagepath" >&2
   
-  generate_material_colors "$imagepath"
+  # Optional: Generate material colors with timeout to prevent hanging
+  # Run in background with timeout to avoid blocking wallpaper change
+  if command -v matugen >/dev/null 2>&1; then
+    (
+      timeout 3 bash -c "matugen image '$imagepath' 2>/dev/null" || \
+        echo "Warning: Material color generation timed out" >&2
+    ) &
+  fi
   
   return 0
 }
@@ -413,38 +420,64 @@ rofi_wallpaper_picker() {
 # ============================================================================
 
 open_gui_file_picker() {
-  local start_dir="${1:-.}"
+  local start_dir="${1:-}"
+  local selected_file=""
+  
+  # Determine starting directory if not provided
+  if [[ -z "$start_dir" ]]; then
+    if [[ -d "$HOME/Nextcloud/wallpaper" ]]; then
+      start_dir="$HOME/Nextcloud/wallpaper"
+    elif [[ -d "$HOME/Pictures" ]]; then
+      start_dir="$HOME/Pictures"
+    else
+      start_dir="$HOME"
+    fi
+  fi
   
   cd "$start_dir" 2>/dev/null || cd "$HOME"
   
-  if command -v yad >/dev/null 2>&1; then
-    yad --file \
+  if command -v zenity >/dev/null 2>&1; then
+    echo "Using zenity file picker..." >&2
+    echo "Starting in directory: $(pwd)" >&2
+    selected_file=$(zenity --file-selection \
       --title="Select Wallpaper" \
-      --file-filter="Images|*.jpg *.jpeg *.png *.gif *.bmp *.webp" \
-      --file-filter="Videos|*.mp4 *.mov *.webm" \
-      --file-filter="All files|*" \
-      --width=1200 \
-      --height=800 \
-      --add-preview \
-      --large-preview \
-      --center \
-      --buttons-layout=end \
-      --button="Select:0" \
-      --button="Cancel:1" 2>/dev/null
-      
-  elif command -v zenity >/dev/null 2>&1; then
-    zenity --file-selection \
-      --title="Select Wallpaper" \
+      --filename="$(pwd)/" \
       --file-filter="Images (jpg,png,gif,webp) | *.jpg *.jpeg *.png *.gif *.bmp *.webp" \
       --file-filter="Videos (mp4,mov,webm) | *.mp4 *.mov *.webm" \
-      --file-filter="All files | *" 2>/dev/null
+      --file-filter="All files | *" 2>/dev/null)
+    
+    local exit_code=$?
+    if [[ $exit_code -eq 0 && -n "$selected_file" ]]; then
+      echo "$selected_file"
+      return 0
+    elif [[ $exit_code -eq 1 ]]; then
+      echo "Dialog cancelled by user" >&2
+      return 1
+    else
+      echo "Dialog error (exit code: $exit_code)" >&2
+      return 1
+    fi
       
   elif command -v kdialog >/dev/null 2>&1; then
-    kdialog --getopenfilename . \
-      "*.jpg *.jpeg *.png *.gif *.bmp *.webp *.mp4 *.mov *.webm|Media Files" 2>/dev/null
+    echo "Using kdialog file picker..." >&2
+    echo "Starting in directory: $(pwd)" >&2
+    selected_file=$(kdialog --getopenfilename "$(pwd)" \
+      "*.jpg *.jpeg *.png *.gif *.bmp *.webp *.mp4 *.mov *.webm|Media Files" 2>/dev/null)
+    
+    local exit_code=$?
+    if [[ $exit_code -eq 0 && -n "$selected_file" ]]; then
+      echo "$selected_file"
+      return 0
+    else
+      echo "Dialog cancelled or error (exit code: $exit_code)" >&2
+      return 1
+    fi
       
   else
-    echo "Error: No file picker available (install yad, zenity, or kdialog)" >&2
+    echo "Error: No file picker available (install zenity or kdialog)" >&2
+    echo "Available GUI tools:" >&2
+    echo "  - zenity: sudo apt install zenity (should be default on GNOME)" >&2
+    echo "  - kdialog: sudo apt install kdialog" >&2
     return 1
   fi
 }
@@ -484,15 +517,42 @@ main() {
   # No argument - open picker
   local selected_file=""
   
-  # Determine picker method
-  if [[ "$use_rofi_flag" == true ]] || command -v rofi >/dev/null 2>&1; then
-    # Prefer rofi
+  # Determine picker method based on desktop environment
+  # Rofi only works on wlroots-based compositors (Hyprland, Sway, etc.)
+  # GNOME and KDE need GUI file pickers
+  
+  if [[ "$use_rofi_flag" == true ]]; then
+    # User explicitly requested rofi
+    if is_gnome || is_kde; then
+      echo "Warning: Rofi doesn't work on ${XDG_CURRENT_DESKTOP}" >&2
+      echo "Rofi requires wlroots-based compositors (Hyprland, Sway, etc.)" >&2
+      echo "Falling back to GUI file picker..." >&2
+      
+      local wallpaper_dir
+      wallpaper_dir=$(resolve_wallpaper_directory) || exit 1
+      selected_file=$(open_gui_file_picker "$wallpaper_dir") || {
+        echo "No wallpaper selected" >&2
+        exit 1
+      }
+    elif command -v rofi >/dev/null 2>&1; then
+      selected_file=$(rofi_wallpaper_picker) || {
+        echo "No wallpaper selected" >&2
+        exit 1
+      }
+    else
+      echo "Error: rofi not installed" >&2
+      exit 1
+    fi
+    
+  elif is_hyprland && command -v rofi >/dev/null 2>&1; then
+    # On Hyprland with rofi available, use rofi
     selected_file=$(rofi_wallpaper_picker) || {
       echo "No wallpaper selected" >&2
       exit 1
     }
+    
   else
-    # Fallback to GUI file picker
+    # Use GUI file picker for GNOME, KDE, or when rofi unavailable
     local wallpaper_dir
     wallpaper_dir=$(resolve_wallpaper_directory) || exit 1
     

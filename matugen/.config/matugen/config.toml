@@ -1,5 +1,8 @@
 [config]
 version_check = false
+reload_apps = false
+reload_apps_list = []
+set_wallpaper = false
 
 [config.wallpaper]
 command = "swww"
