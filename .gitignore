@@ -6,35 +6,39 @@ gallery-dl/.config/gallery-dl/downloaded.sqlite3
 personal_scripts/.local/bin/yt-dlp
 gallery-dl/.config/gallery-dl/config.json
 gallery-dl/.config/gallery-dl/.env
+extcloud/Obsidian/**/matugen*.css
 
+# =========================
+# Matugen generated files
+# =========================
+
+# Starship
+fish/.config/fish/starship.toml
 
 # Hyprland
-.config/hypr/themes/hyprland-colors.conf
-.config/hypr/hyprlock/matugen-hyprlock.conf
+hyprland/.config/hypr/themes/hyprland-colors.conf
+hyprland/.config/hypr/hyprlock/matugen-hyprlock.conf
 
 # Waybar
-.config/waybar/colors.css
+waybar/.config/waybar/colors.css
 
 # Rofi
-.config/rofi/**/matugen*.rasi
+rofi/.config/rofi/**/matugen*.rasi
 
 # Kitty
-.config/kitty/matugen.conf
+kitty/.config/kitty/matugen.conf
 
 # wlogout
-.config/wlogout/colors.css
+wlogout/.config/wlogout/colors.css
 
 # swaync
-.config/swaync/style.css
+swaync/.config/swaync/style.css
 
 # ignis
-.config/ignis/colors.scss
+ignis/.config/ignis/colors.scss
 
 # Ghostty
-.config/ghostty/themes/matugen/
-
-# Starship (generated colors only)
-.config/fish/starship.toml
+ghostty/.config/ghostty/themes/matugen/
 
 # Obsidian
-Nextcloud/Obsidian/**/matugen*.css
+obsidian/**/matugen*.css
