@@ -44,3 +44,4 @@ ghostty/.config/ghostty/themes/matugen/
 # Obsidian
 obsidian/**/matugen*.css
 rofi/.config/rofi/images/background.png
+foot/.config/foot/foot_theme_matugen.ini

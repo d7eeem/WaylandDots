@@ -63,6 +63,10 @@ post_hook = 'pywalfox update'
 input_path = './templates/obsidian.css'
 output_path = '~/Nextcloud/Obsidian/MyVault/.obsidian/snippets/obsidian-minimal-matugen-colors.css'
 
+[templates.foot]
+input_path = './templates/foot.ini'
+output_path = '~/.config/foot/foot_theme_matugen.ini'
+post_hook = 'killall -SIGUSR1 foot'
 #
 # [templates.qt5ct]
 # input_path = './templates/qtct-colors.conf'
