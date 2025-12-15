@@ -7,6 +7,6 @@
     "restart-interval": 5,
     "tooltip": true,
     "max-length": 1000,
-    "on-click": "kitty -e btop"
+    "on-click": "~/.local/bin/personal/btop-popup.sh"
   }
 }
