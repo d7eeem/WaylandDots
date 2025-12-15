@@ -1,4 +1,5 @@
 ## File Operations & Navigation
+alias cd='z'
 alias rsync='rsync -avhriPO'
 alias ls='eza -al --color=always --group-directories-first --icons'
 alias la='eza -a --color=always --group-directories-first --icons'

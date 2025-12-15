@@ -167,4 +167,5 @@ else
 end
 
 ## Initialize Starship prompt
+zoxide init fish | source
 starship init fish | source

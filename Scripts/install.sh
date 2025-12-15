@@ -1,296 +1,241 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2154
-#--------------------------------#
-# import variables and functions #
-#--------------------------------#
-scrDir="$(dirname "$(realpath "$0")")"
-# shellcheck disable=SC1091
-if ! source "${scrDir}/global_fn.sh"; then
-    echo "Error: unable to source global_fn.sh..."
-    exit 1
-fi
+#|---/ /+----------------------------------+---/ /|#
+#|--/ /-| Main Package Installation Script |--/ /-|#
+#|-/ /--+----------------------------------+-/ /--|#
 
+set -e
 
-#------------------#
-# evaluate options #
-#------------------#
-flg_Install=0
-flg_Service=0
-flg_DryRun=0
-flg_reboot=0
-flg_flat=0
-while getopts idfstmh: RunStep; do
-    case $RunStep in
-    i) flg_Install=1 ;;
-    d)
-        flg_Install=1
-        export use_default="--noconfirm"
-        ;;
-    f) flg_flat=1 ;;
-    s) flg_Service=1 ;;
-    h)
-        # shellcheck disable=SC2034
-        export flg_Shell=0
-        print_log -r "[shell] " -b "Reevaluate :: " "shell options"
-        ;;
-    t)
-        flg_DryRun=1
-        flg_Install=1
-        ;;
-    m) flg_ThemeInstall=0 ;;
-    *)
-        cat <<EOF
-Usage: $0 [options]
-            i : [i]nstall hyprland without configs
-            d : install hyprland [d]efaults without configs --noconfirm
-            r : [r]estore config files
-            s : enable system [s]ervices
-            n : ignore/[n]o [n]vidia actions
-            h : re-evaluate S[h]ell
-            m : no the[m]e reinstallations
-            t : [t]est run without executing (-irst to dry run all)
-EOF
-        exit 1
-        ;;
-    esac
-done
+scrDir=$(dirname "$(realpath "$0")")
+baseDir=$(dirname "${scrDir}")
 
-# Only export that are used outside this script
-HYDE_LOG="$(date +'%y%m%d_%Hh%Mm%Ss')"
-export flg_DryRun flg_Nvidia flg_Shell flg_Install flg_ThemeInstall HYDE_LOG
-
-if [ "${flg_DryRun}" -eq 1 ]; then
-    print_log -n "[test-run] " -b "enabled :: " "Testing without executing"
-elif [ $OPTIND -eq 1 ]; then
-    flg_Install=1
-    flg_Restore=1
-    flg_Service=1
-    flg_flat=1
-fi
-
-
-#---------------------#
-# install chaotic-aur #
-#---------------------#
-    cat <<"EOF"
-
-┬┌┐┌┌─┐┌┬┐┌─┐┬  ┬  ┬┌┐┌┌─┐  ┌─┐┬ ┬┌─┐┌─┐┌┬┐┬┌─┐ ┌─┐┬ ┬┬─┐
-││││└─┐ │ ├─┤│  │  │││││ ┬  │  ├─┤├─┤│ │ │ ││───├─┤│ │├┬┘
-┴┘└┘└─┘ ┴ ┴ ┴┴─┘┴─┘┴┘└┘└─┘  └─┘┴ ┴┴ ┴└─┘ ┴ ┴└─┘ ┴ ┴└─┘┴└─
-
-
-
-EOF
-
-
-if grep -q '\[chaotic-aur\]' /etc/pacman.conf; then
-    print_log -sec "CHAOTIC-AUR" -stat "skipped" "Chaotic AUR entry found in pacman.conf..."
+# Source global functions
+if [ -f "${scrDir}/global_fn.sh" ]; then
+    source "${scrDir}/global_fn.sh"
+    log_section="INSTALL"
 else
-    prompt_timer 120 "Would you like to install Chaotic AUR? [y/n] | q to quit "
-    is_chaotic_aur=false
-
-    case "${PROMPT_INPUT}" in
-    y | Y)
-        is_chaotic_aur=true
-        ;;
-    n | N)
-        is_chaotic_aur=false
-        ;;
-    q | Q)
-        print_log -sec "Chaotic AUR" -crit "Quit" "Exiting..."
-        exit 1
-        ;;
-    *)
-        is_chaotic_aur=true
-        ;;
-    esac
-    if [ "${is_chaotic_aur}" == true ]; then
-        sudo pacman-key --init
-        sudo "${scrDir}/chaotic_aur.sh" --install
-    fi
+    echo "Warning: global_fn.sh not found, some features may not work"
 fi
 
+# ----------------------------
+# Configuration
+# ----------------------------
+PKG_CORE_LIST="${scrDir}/cu_pkg_core.lst"
+FLATPAK_LIST="${scrDir}/custom_flat.lst"
+AUR_HELPER="${1:-yay}"
 
-#------------#
-# installing #
-#------------#
-if [ ${flg_Install} -eq 1 ]; then
-    cat <<"EOF"
-
- _         _       _ _ _
-|_|___ ___| |_ ___| | |_|___ ___
-| |   |_ -|  _| .'| | | |   | . |
-|_|_|_|___|_| |__,|_|_|_|_|_|_  |
-                            |___|
-
-EOF
-
-    #----------------------#
-    # prepare package list #
-    #----------------------#
-    shift $((OPTIND - 1))
-    custom_pkg=$1
-    cp "${scrDir}/pkg_core.lst" "${scrDir}/install_pkg.lst"
-    trap 'mv "${scrDir}/install_pkg.lst" "${cacheDir}/logs/${HYDE_LOG}/install_pkg.lst"' EXIT
-
-    if [ -f "${custom_pkg}" ] && [ -n "${custom_pkg}" ]; then
-        cat "${custom_pkg}" >>"${scrDir}/install_pkg.lst"
-    fi
-    echo -e "\n#user packages" >>"${scrDir}/install_pkg.lst" # Add a marker for user packages
-    #----------------#
-    # get user prefs #
-    #----------------#
+# ----------------------------
+# Helper Functions
+# ----------------------------
+print_header() {
     echo ""
-    if ! chk_list "aurhlpr" "${aurList[@]}"; then
-        print_log -c "\nAUR Helpers :: "
-        aurList+=("yay-bin" "paru-bin") # Add this here instead of in global_fn.sh
-        for i in "${!aurList[@]}"; do
-            print_log -sec "$((i + 1))" " ${aurList[$i]} "
-        done
+    echo "╔════════════════════════════════════════════╗"
+    echo "║    Package Installation - Hyde/Wayland    ║"
+    echo "╚════════════════════════════════════════════╝"
+    echo ""
+}
 
-        prompt_timer 120 "Enter option number [default: yay-bin] | q to quit "
+# ----------------------------
+# Installation Steps
+# ----------------------------
 
-        case "${PROMPT_INPUT}" in
-        1) export getAur="yay" ;;
-        2) export getAur="paru" ;;
-        3) export getAur="yay-bin" ;;
-        4) export getAur="paru-bin" ;;
-        q)
-            print_log -sec "AUR" -crit "Quit" "Exiting..."
-            exit 1
-            ;;
-        *)
-            print_log -sec "AUR" -warn "Defaulting to yay-bin"
-            print_log -sec "AUR" -stat "default" "yay-bin"
-            export getAur="yay-bin"
-            ;;
-        esac
-        if [[ -z "$getAur" ]]; then
-            print_log -sec "AUR" -crit "No AUR helper found..." "Log file at ${cacheDir}/logs/${HYDE_LOG}"
-            exit 1
-        fi
-    fi
-
-    if ! chk_list "myShell" "${shlList[@]}"; then
-        print_log -c "Shell :: "
-        for i in "${!shlList[@]}"; do
-            print_log -sec "$((i + 1))" " ${shlList[$i]} "
-        done
-        prompt_timer 120 "Enter option number [default: zsh] | q to quit "
-
-        case "${PROMPT_INPUT}" in
-        1) export myShell="zsh" ;;
-        2) export myShell="fish" ;;
-        q)
-            print_log -sec "shell" -crit "Quit" "Exiting..."
-            exit 1
-            ;;
-        *)
-            print_log -sec "shell" -warn "Defaulting to zsh"
-            export myShell="zsh"
-            ;;
-        esac
-        print_log -sec "shell" -stat "Added as shell" "${myShell}"
-        echo "${myShell}" >>"${scrDir}/install_pkg.lst"
-
-        if [[ -z "$myShell" ]]; then
-            print_log -sec "shell" -crit "No shell found..." "Log file at ${cacheDir}/logs/${HYDE_LOG}"
-            exit 1
+# Step 1: Install AUR Helper
+install_aur_helper() {
+    if [ -f "${scrDir}/install_aur.sh" ]; then
+        print_log -sec "AUR Helper" "Checking for AUR helper..."
+        
+        if chk_list "aurhlpr" "${aurList[@]}"; then
+            print_log -g "✓" " AUR helper detected: ${aurhlpr}"
         else
-            print_log -sec "shell" -stat "detected :: " "${myShell}"
-        fi
-    fi
-
-    if ! grep -q "^#user packages" "${scrDir}/install_pkg.lst"; then
-        print_log -sec "pkg" -crit "No user packages found..." "Log file at ${cacheDir}/logs/${HYDE_LOG}/install.sh"
-        exit 1
-    fi
-
-    #--------------------------------#
-    # install packages from the list #
-    #--------------------------------#
-    [ ${flg_DryRun} -eq 1 ] || "${scrDir}/install_pkg.sh" "${scrDir}/install_pkg.lst"
-fi
-
-if [[ ${flg_flat} -eq 1 ]]; then
-  "${scrDir}"/install_fpk.sh
-fi
-
-
-#------------------------#
-# enable system services #
-#------------------------#
-if [ ${flg_Service} -eq 1 ]; then
-    cat <<"EOF"
-
-                 _
- ___ ___ ___ _ _|_|___ ___ ___
-|_ -| -_|  _| | | |  _| -_|_ -|
-|___|___|_|  \_/|_|___|___|___|
-
-EOF
-
-
-    while read -r serviceChk; do
-
-        # Handle .timer units separately
-        if [[ "$serviceChk" == *.timer ]]; then
-            if systemctl list-units --all -t timer --full --no-legend "${serviceChk}" | sed 's/^\s*//g' | cut -f1 -d' ' | grep -Fxq "${serviceChk}"; then
-                print_log -y "[skip] " -b "active " "Timer ${serviceChk}"
+            print_log -y "Installing AUR helper: ${AUR_HELPER}"
+            bash "${scrDir}/install_aur.sh" "${AUR_HELPER}"
+            
+            if chk_list "aurhlpr" "${aurList[@]}"; then
+                print_log -g "✓" " AUR helper installed: ${aurhlpr}"
             else
-                print_log -y "enable" "Timer ${serviceChk}"
-                if [ "$flg_DryRun" -ne 1 ]; then
-                    sudo systemctl enable "${serviceChk}"
-                fi
-            fi
-        else
-            # Default: assume it's a service
-            if [[ $(systemctl list-units --all -t service --full --no-legend "${serviceChk}.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "${serviceChk}.service" ]]; then
-                print_log -y "[skip] " -b "active " "Service ${serviceChk}"
-            else
-                print_log -y "start" "Service ${serviceChk}"
-                if [ "$flg_DryRun" -ne 1 ]; then
-                    sudo systemctl enable --now "${serviceChk}.service"
-                fi
+                print_log -err "Failed to install AUR helper"
+                return 1
             fi
         fi
-
-    done <"${scrDir}/system_ctl.lst"
-fi
-
-if [ $flg_Install -eq 1 ]; then
-    print_log -stat "\nInstallation" "completed"
-fi
-
-
-if [ ${flg_reboot} -eq 1 ]; then
-    cat <<"EOF"
-    
-     
- _     _____ _____  _____ 
-| |   |  _  |  __ \/  ___|
-| |   | | | | |  \/\ `--. 
-| |   | | | | | __  `--. \
-| |___\ \_/ / |_\ \/\__/ /
-\_____/\___/ \____/\____/ 
-                          
-                          
-EOF
-
-print_log -stat "Log" "View logs at ${cacheDir}/logs/${HYDE_LOG}"
-if [ $flg_Install -eq 1 ] ||
-    [ $flg_Restore -eq 1 ] ||
-    [ $flg_Service -eq 1 ]; then
-    print_log -stat "It is not recommended to use newly installed or upgraded HyDE without rebooting the system. Do you want to reboot the system? (y/N)"
-    read -r answer
-
-    if [[ "$answer" == [Yy] ]]; then
-        echo "Rebooting system"
-        systemctl reboot
     else
-        echo "The system will not reboot"
+        print_log -warn "install_aur.sh not found, skipping AUR helper installation"
     fi
-fi
-else
-    print_log -sec "LOGS" -stat "skipped" "Consider REBOOTING"
+}
+
+# Step 2: Install Core Packages
+install_core_packages() {
+    if [ ! -f "${PKG_CORE_LIST}" ]; then
+        print_log -warn "Core package list not found: ${PKG_CORE_LIST}"
+        return 0
+    fi
+    
+    if [ -f "${scrDir}/install_pkg.sh" ]; then
+        print_log -sec "Core Packages" "Installing packages from cu_pkg_core.lst..."
+        bash "${scrDir}/install_pkg.sh" "${PKG_CORE_LIST}"
+        
+        if [ $? -eq 0 ]; then
+            print_log -g "✓" " Core packages installed"
+        else
+            print_log -err "Some core packages failed to install"
+            return 1
+        fi
+    else
+        print_log -warn "install_pkg.sh not found, skipping package installation"
+    fi
+}
+
+# Step 3: Install Flatpaks
+install_flatpaks() {
+    if [ ! -f "${FLATPAK_LIST}" ]; then
+        print_log -warn "Flatpak list not found: ${FLATPAK_LIST}"
+        return 0
+    fi
+    
+    if [ -f "${scrDir}/install_fpk.sh" ]; then
+        print_log -sec "Flatpak" "Installing flatpak and applications..."
+        bash "${scrDir}/install_fpk.sh"
+        
+        if [ $? -eq 0 ]; then
+            print_log -g "✓" " Flatpak applications installed"
+        else
+            print_log -warn "Some flatpaks may have failed to install"
+        fi
+    else
+        print_log -warn "install_fpk.sh not found, skipping flatpak installation"
+    fi
+}
+
+# ----------------------------
+# Additional Package Lists (Optional)
+# ----------------------------
+install_additional_lists() {
+    # Check for other package lists and install them
+    for list_file in "${scrDir}"/*.lst; do
+        # Skip core and flatpak lists (already processed)
+        [ "$(basename "$list_file")" = "cu_pkg_core.lst" ] && continue
+        [ "$(basename "$list_file")" = "custom_flat.lst" ] && continue
+        
+        if [ -f "$list_file" ]; then
+            local list_name=$(basename "$list_file" .lst)
+            print_log -sec "Additional" "Found package list: ${list_name}"
+            
+            # Ask user if they want to install this list
+            if command -v gum >/dev/null 2>&1; then
+                if gum confirm "Install packages from ${list_name}.lst?"; then
+                    bash "${scrDir}/install_pkg.sh" "$list_file"
+                fi
+            else
+                read -p "Install packages from ${list_name}.lst? (y/N): " -n 1 -r
+                echo
+                if [[ $REPLY =~ ^[Yy]$ ]]; then
+                    bash "${scrDir}/install_pkg.sh" "$list_file"
+                fi
+            fi
+        fi
+    done
+}
+
+# ----------------------------
+# Post-Installation
+# ----------------------------
+post_install_cleanup() {
+    print_log -sec "Cleanup" "Running post-installation tasks..."
+    
+    # Clean pacman cache
+    if command -v paccache >/dev/null 2>&1; then
+        print_log "Cleaning pacman cache..."
+        sudo paccache -rk 2
+    fi
+    
+    # Clean AUR helper cache if available
+    if chk_list "aurhlpr" "${aurList[@]}"; then
+        print_log "Cleaning ${aurhlpr} cache..."
+        ${aurhlpr} -Sc --noconfirm 2>/dev/null || true
+    fi
+    
+    # Update font cache
+    if command -v fc-cache >/dev/null 2>&1; then
+        print_log "Updating font cache..."
+        fc-cache -fv >/dev/null 2>&1 || true
+    fi
+    
+    # Update desktop database
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        print_log "Updating desktop database..."
+        update-desktop-database ~/.local/share/applications/ 2>/dev/null || true
+    fi
+    
+    print_log -g "✓" " Post-installation cleanup complete"
+}
+
+# ----------------------------
+# Summary
+# ----------------------------
+print_summary() {
+    echo ""
+    echo "╔════════════════════════════════════════════╗"
+    echo "║          Installation Complete!            ║"
+    echo "╚════════════════════════════════════════════╝"
+    echo ""
+    print_log -g "Summary:"
+    
+    # Count installed packages
+    local total_pkgs=$(pacman -Qq | wc -l)
+    print_log "  • Total system packages: ${total_pkgs}"
+    
+    if command -v flatpak >/dev/null 2>&1; then
+        local total_flatpaks=$(flatpak list --app 2>/dev/null | wc -l)
+        print_log "  • Total flatpak apps: ${total_flatpaks}"
+    fi
+    
+    if chk_list "aurhlpr" "${aurList[@]}"; then
+        print_log "  • AUR helper: ${aurhlpr}"
+    fi
+    
+    echo ""
+    print_log -y "Next steps:"
+    print_log "  1. Deploy dotfiles with stow"
+    print_log "  2. Restart your session"
+    print_log "  3. Configure your environment"
+    echo ""
+}
+
+# ----------------------------
+# Main Execution
+# ----------------------------
+main() {
+    print_header
+    
+    # Step 1: AUR Helper
+    install_aur_helper || {
+        print_log -err "Failed to install AUR helper. Continue anyway? (y/N)"
+        read -n 1 -r
+        echo
+        [[ ! $REPLY =~ ^[Yy]$ ]] && exit 1
+    }
+    
+    # Step 2: Core Packages
+    install_core_packages || {
+        print_log -warn "Some core packages failed. Continuing..."
+    }
+    
+    # Step 3: Flatpaks
+    install_flatpaks || {
+        print_log -warn "Some flatpaks failed. Continuing..."
+    }
+    
+    # Step 4: Additional Lists (optional)
+    install_additional_lists
+    
+    # Step 5: Cleanup
+    post_install_cleanup
+    
+    # Step 6: Summary
+    print_summary
+    
+    print_log -g "✓" " All done!"
+}
+
+# Run with error handling
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+    main "$@"
 fi

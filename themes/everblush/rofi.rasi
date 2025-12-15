@@ -1,0 +1,28 @@
+* {
+	bg:				#181f21;
+	fg:				#dadada;
+	accent:			#22292b;
+  active:      	#3b4244;
+	rad:			12px;
+
+	background-color: @bg;
+	text-color:	@fg;
+}
+* {
+  bg: #0A1114;
+  fg: #dadada;
+  al: #404749;
+  border-radius: 0.2em;
+  background-color: @bg;
+  text-color: @fg;
+}
+* {
+    bg: #181f21;
+    primary:	#8ccf7e;
+    secondbg: #1a2224;
+    alt: #1a2224;
+    rad: 12px;
+
+    background-color: @bg;
+    text-color:	@primary;
+}
