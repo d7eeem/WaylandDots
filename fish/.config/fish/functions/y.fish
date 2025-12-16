@@ -1,8 +1,11 @@
+
 function y
-set tmp (mktemp -t "yazi-cwd.XXXXXX")
-yazi $argv --cwd-file="$tmp"
-if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-builtin cd -- "$cwd"
+  set tmp (mktemp -t yazi-cwd.XXXXXX)
+  yazi $argv --cwd-file="$tmp"
+  if read -z cwd < "$tmp"; and test -n "$cwd"; and test "$cwd" != "$PWD"
+    builtin cd -- "$cwd"
+    type -q zoxide; and zoxide add "$PWD"
+  end
+  rm -f -- "$tmp"
 end
-rm -f -- "$tmp"
-end
+

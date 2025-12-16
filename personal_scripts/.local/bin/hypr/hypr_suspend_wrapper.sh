@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/env bash
 # _     _ _____
 #(_) __| |___  |_  ___   _ ____
 #| |/ _| |  / /\ \/ / | | |_  /
@@ -8,5 +8,5 @@
 # https://gitlab.com/d7eeem
 
 
+pidof steam || systemctl suspend && hyprlock || loginctl suspend
 
-yt-dlp --playlist-items 0 -O playlist:channel_url https://www.youtube.com/@$1 | wl-copy

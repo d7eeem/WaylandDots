@@ -11,6 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPTS_DIR="${SCRIPT_DIR}/Scripts"
 PKG_LIST="${SCRIPTS_DIR}/cu_pkg_core.lst"
 FPK_LIST="${SCRIPTS_DIR}/custom_flat.lst"
+UFW_LIST="${SCRIPTS_DIR}/custom_ufw.lst"
 
 # ----------------------------
 # UI helpers (GUM)
@@ -81,17 +82,22 @@ add_package() {
         info "$pkg is already installed on your system"
         exit 0
       fi
+    elif [ "$list_type" = "ufw" ]; then
+      if command -v ufw &>/dev/null && sudo ufw status 2>/dev/null | grep -q "${pkg%%/*}"; then
+        info "UFW rule for $pkg already exists"
+        exit 0
+      fi
     fi
     
     # Ask if they want to install it anyway
     if command -v gum >/dev/null 2>&1; then
-      if gum confirm "$pkg is in the list but may not be installed. Install it now?"; then
+      if gum confirm "$pkg is in the list but may not be applied. Apply it now?"; then
         return 0
       else
         exit 0
       fi
     else
-      read -p "$pkg is in the list but may not be installed. Install it now? (y/N): " -n 1 -r
+      read -p "$pkg is in the list but may not be applied. Apply it now? (y/N): " -n 1 -r
       echo
       if [[ $REPLY =~ ^[Yy]$ ]]; then
         return 0
@@ -101,7 +107,7 @@ add_package() {
     fi
   fi
   
-  # Verify package exists before adding (for packages only, not flatpaks)
+  # Verify package exists before adding (for packages only, not flatpaks or ufw)
   if [ "$list_type" = "package" ]; then
     info "Verifying package name: $pkg"
     
@@ -184,27 +190,54 @@ add_package() {
         fi
       fi
     fi
+  elif [ "$list_type" = "ufw" ]; then
+    info "Validating UFW rule format: $pkg"
+    
+    # Basic validation of port/protocol format
+    if ! [[ "$pkg" =~ ^[0-9]+(:[0-9]+)?(/[a-z]+)?$ ]]; then
+      warn "Rule format may be invalid. Expected format: PORT[/PROTOCOL] or START:END[/PROTOCOL]"
+      warn "Examples: 22, 22/tcp, 8000:8100/udp"
+      
+      if command -v gum >/dev/null 2>&1; then
+        if ! gum confirm "Continue anyway?"; then
+          info "Cancelled. Rule not added."
+          exit 0
+        fi
+      else
+        read -p "Continue anyway? (y/N): " -n 1 -r
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+          info "Cancelled. Rule not added."
+          exit 0
+        fi
+      fi
+    else
+      success "UFW rule format valid"
+    fi
   fi
   
   # Add package to list
   echo "$pkg" >> "$list_file"
   success "Added $pkg to $list_type list ($list_file)"
   
-  # Ask if user wants to install now
+  # Ask if user wants to install/apply now
+  local action_text="Install"
+  [ "$list_type" = "ufw" ] && action_text="Apply"
+  
   if command -v gum >/dev/null 2>&1; then
-    if gum confirm "Install $pkg now?"; then
+    if gum confirm "$action_text $pkg now?"; then
       return 0
     else
-      info "Skipping installation. Run the installer later to install."
+      info "Skipping. Run the installer later to $action_text."
       exit 0
     fi
   else
-    read -p "Install $pkg now? (y/N): " -n 1 -r
+    read -p "$action_text $pkg now? (y/N): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
       return 0
     else
-      info "Skipping installation. Run the installer later to install."
+      info "Skipping. Run the installer later to $action_text."
       exit 0
     fi
   fi
@@ -325,6 +358,146 @@ install_single_flatpak() {
   success "Flatpak $pkg installed and configured"
 }
 
+apply_single_ufw_rule() {
+  local rule="$1"
+  
+  step "Applying UFW rule: $rule"
+  
+  # Check if UFW is installed
+  if ! command -v ufw >/dev/null 2>&1; then
+    info "UFW not found, installing..."
+    sudo pacman -S --noconfirm ufw || error "Failed to install UFW"
+    success "UFW installed"
+  fi
+  
+  # Enable UFW if not enabled
+  if ! sudo ufw status 2>/dev/null | grep -q "Status: active"; then
+    info "Enabling UFW..."
+    if command -v gum >/dev/null 2>&1; then
+      if gum confirm "UFW is not enabled. Enable it now?"; then
+        sudo ufw --force enable || error "Failed to enable UFW"
+        success "UFW enabled"
+      else
+        warn "UFW not enabled, rule will be added but not active"
+      fi
+    else
+      read -p "UFW is not enabled. Enable it now? (y/N): " -n 1 -r
+      echo
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+        sudo ufw --force enable || error "Failed to enable UFW"
+        success "UFW enabled"
+      else
+        warn "UFW not enabled, rule will be added but not active"
+      fi
+    fi
+  fi
+  
+  # Apply the rule
+  info "Adding UFW rule: $rule"
+  sudo ufw allow "$rule" 2>/dev/null || {
+    warn "Failed to add rule or rule already exists: $rule"
+  }
+  
+  success "UFW rule applied: $rule"
+}
+
+configure_ufw() {
+  step "Configuring UFW firewall"
+  
+  if [ ! -f "$UFW_LIST" ]; then
+    warn "UFW rules list not found: $UFW_LIST"
+    return
+  fi
+  
+  # Check if UFW is installed
+  if ! command -v ufw >/dev/null 2>&1; then
+    info "UFW not found, installing..."
+    sudo pacman -S --noconfirm ufw || {
+      error "Failed to install UFW"
+      return
+    }
+    success "UFW installed"
+  fi
+  
+  # Ask to enable UFW if not already enabled
+  if ! sudo ufw status 2>/dev/null | grep -q "Status: active"; then
+    info "UFW is not currently enabled"
+    if command -v gum >/dev/null 2>&1; then
+      if gum confirm "Enable UFW firewall now?"; then
+        sudo ufw --force enable || error "Failed to enable UFW"
+        success "UFW enabled"
+      else
+        warn "Skipping UFW configuration (firewall not enabled)"
+        return
+      fi
+    else
+      read -p "Enable UFW firewall now? (y/N): " -n 1 -r
+      echo
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+        sudo ufw --force enable || error "Failed to enable UFW"
+        success "UFW enabled"
+      else
+        warn "Skipping UFW configuration (firewall not enabled)"
+        return
+      fi
+    fi
+  fi
+  
+  # Apply rules from list
+  # Read all rules into an array first to avoid stdin issues
+  local rules=()
+  while IFS= read -r rule || [ -n "$rule" ]; do
+    # Skip empty lines and comments
+    [[ -z "$rule" || "$rule" =~ ^[[:space:]]*# ]] && continue
+    
+    # Extract port/protocol (remove inline comments)
+    rule=$(echo "$rule" | sed 's/#.*//' | xargs)
+    [ -z "$rule" ] && continue
+    
+    rules+=("$rule")
+  done < "$UFW_LIST"
+  
+  # Now process the rules
+  local count=0
+  local skipped=0
+  
+  for rule in "${rules[@]}"; do
+    info "Allowing: $rule"
+    
+    # Capture UFW output to detect if rule already exists
+    local ufw_output
+    ufw_output=$(sudo ufw allow "$rule" 2>&1)
+    local ufw_exit=$?
+    
+    if [ $ufw_exit -eq 0 ]; then
+      # Check if the output indicates the rule already existed
+      if echo "$ufw_output" | grep -q "Skipping adding existing rule"; then
+        info "Rule already exists: $rule"
+        skipped=$((skipped + 1))
+      else
+        success "Rule added: $rule"
+        count=$((count + 1))
+      fi
+    else
+      warn "Failed to add rule: $rule"
+    fi
+  done
+  
+  if [ $count -gt 0 ] || [ $skipped -gt 0 ]; then
+    if [ $count -gt 0 ]; then
+      success "Applied $count new UFW rule(s)"
+    fi
+    if [ $skipped -gt 0 ]; then
+      info "$skipped rule(s) already existed"
+    fi
+    echo ""
+    info "Current UFW status:"
+    sudo ufw status numbered
+  else
+    warn "No rules found in $UFW_LIST"
+  fi
+}
+
 # ----------------------------
 # Checks
 # ----------------------------
@@ -406,13 +579,31 @@ parse_args() {
         fi
         exit 0
         ;;
+      --add-ufw)
+        if [ -z "$2" ]; then
+          error "--add-ufw requires a port/protocol (e.g., 22/tcp, 8000:9000/udp)"
+        fi
+        add_package "$2" "$UFW_LIST" "ufw"
+        if [ $? -eq 0 ]; then
+          apply_single_ufw_rule "$2"
+        fi
+        exit 0
+        ;;
+      --configure-ufw)
+        configure_ufw
+        exit 0
+        ;;
       -h|--help)
         echo "Usage: $0 [OPTIONS]"
         echo ""
         echo "Options:"
-        echo "  --add-pkg NAME    Add package to cu_pkg_core.lst and optionally install"
-        echo "  --add-fpk NAME    Add flatpak to custom_flat.lst and optionally install"
-        echo "  -h, --help        Show this help message"
+        echo "  --add-pkg NAME       Add package to cu_pkg_core.lst and optionally install"
+        echo "  --add-fpk NAME       Add flatpak to custom_flat.lst and optionally install"
+        echo "  --add-ufw RULE       Add UFW rule to custom_ufw.lst and optionally apply"
+        echo "                       Format: PORT[/PROTOCOL] or START:END[/PROTOCOL]"
+        echo "                       Examples: 22, 22/tcp, 8000:8100/udp"
+        echo "  --configure-ufw      Configure UFW using custom_ufw.lst"
+        echo "  -h, --help           Show this help message"
         echo ""
         echo "Interactive mode will run if no options are provided."
         exit 0
@@ -444,6 +635,7 @@ main() {
     "Stow dotfiles only" \
     "Stow specific packages" \
     "Unstow packages" \
+    "Configure UFW firewall" \
     "List packages")
   
   case "$ACTION" in
@@ -465,6 +657,9 @@ main() {
       pkgs=$(choose_packages)
       deploy_dotfiles -D $pkgs
       ;;
+    "Configure UFW firewall")
+      configure_ufw
+      ;;
     "List packages")
       step "Available packages"
       list_packages | gum style --foreground 212
@@ -478,6 +673,7 @@ Next steps:
   • Review ~/.config
   • Restart your session
   • Check Scripts/install.sh output
+  • Review firewall rules: sudo ufw status
 "
 }
 

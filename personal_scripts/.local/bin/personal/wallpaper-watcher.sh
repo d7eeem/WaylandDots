@@ -5,36 +5,53 @@
 #| | (_| | / /  >  <| |_| |/ /
 #|_|\__,_|/_/  /_/\_\__, /___|
 # Created by: d7eeem aka id7xyz
-# https://gitlab.com/d7eeem
+# https://github.com/d7eeem
 
 set -e
 
-  #$HOME/.local/bin/personal/wal-on-wallpaper.sh
-  # Initial wallpaper
-  #
-  #
-
-  #
-  # Get current GNOME wallpaper
-  #
-   
-  # Initial wallpaper
 WALLPAPER="$HOME/.config/background"
 LAST_HASH=""
+SLEEP_INTERVAL=2
 
-while true; do
+echo "[*] Starting wallpaper monitor for: $WALLPAPER"
+
+# Wait for wallpaper file to exist initially
 while [[ ! -f "$WALLPAPER" ]]; do
     echo "[!] Waiting for wallpaper file to exist: $WALLPAPER"
-    sleep 2
+    sleep "$SLEEP_INTERVAL"
 done
 
-    CURRENT_HASH=$(sha256sum "$WALLPAPER" | awk '{print $1}')
+echo "[+] Wallpaper file found, monitoring for changes..."
 
+# Main monitoring loop
+while true; do
+    # Check if file still exists (might be deleted/recreated)
+    if [[ ! -f "$WALLPAPER" ]]; then
+        echo "[!] Wallpaper file disappeared, waiting for it to return..."
+        while [[ ! -f "$WALLPAPER" ]]; do
+            sleep "$SLEEP_INTERVAL"
+        done
+        echo "[+] Wallpaper file restored"
+        # Reset hash to force update
+        LAST_HASH=""
+    fi
+    
+    # Calculate current hash
+    CURRENT_HASH=$(sha256sum "$WALLPAPER" | awk '{print $1}')
+    
+    # Check if wallpaper content changed
     if [[ "$CURRENT_HASH" != "$LAST_HASH" ]]; then
         echo "[+] Wallpaper content changed: $WALLPAPER"
-	wal -c && wal -i "$WALLPAPER"
-        LAST_HASH="$CURRENT_HASH"
+        echo "[*] Applying pywal color scheme..."
+        
+        # Clear cache and generate new colors
+        if wal -c && wal -i "$WALLPAPER"; then
+            echo "[✓] Pywal applied successfully"
+            LAST_HASH="$CURRENT_HASH"
+        else
+            echo "[✗] Failed to apply pywal, will retry on next change"
+        fi
     fi
-
-    sleep 2
+    
+    sleep "$SLEEP_INTERVAL"
 done

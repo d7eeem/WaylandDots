@@ -1,15 +1,18 @@
-#!/bin/env bash
-#
+#!/usr/bin/env bash
+set -euo pipefail
 
+WORKDIR="$(mktemp -d)"
+trap 'rm -rf "$WORKDIR"' EXIT
 
+cd "$WORKDIR"
 
-cd /tmp
+# Ensure base-devel is installed
+sudo pacman -S --needed --noconfirm base-devel git
 
-sudo pacman -S --needed base-devel 
-
+# Clone paru AUR repo
 git clone https://aur.archlinux.org/paru.git
-
-
 cd paru
 
-makepkg -si
+# Build and install
+makepkg -si --noconfirm
+
