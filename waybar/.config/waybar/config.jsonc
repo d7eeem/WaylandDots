@@ -20,6 +20,7 @@
     "custom/audio_idle_inhibitor"
   ],
   "modules-right": [
+    "group/stats",
     "custom/updates",
     "custom/memory",
     "custom/cpuinfo",

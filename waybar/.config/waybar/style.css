@@ -201,3 +201,35 @@ menuitem:hover {
   background-color: @color15;
   color: @color0;
 }
+/* ==================== Stats Group ==================== */
+#custom-stats-toggle {
+  color: @color7;
+  padding: 2px 5px;
+  margin: 1px;
+  padding-top: 4px;
+  border-radius: 7px;
+  font-weight: bold;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 15px;
+  min-width: 20px;
+}
+
+#custom-stats-toggle:hover {
+  background-color: @color13;
+  color: @color0;
+}
+
+.stats-child {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 7px;
+  margin: 0 2px;
+}
+
+#custom-uptime {
+  color: @color7;
+  padding: 2px 10px;
+  margin: 2px 0;
+  border-radius: 7px;
+  font-weight: bold;
+  transition: background-color 0.2s, color 0.2s;
+}

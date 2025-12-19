@@ -1,0 +1,32 @@
+{
+  "group/stats": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "stats-child",
+      "transition-left-to-right": false,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "custom/stats-toggle",
+      "custom/nettraf",
+      "custom/uptime"
+    ]
+  },
+  "custom/stats-toggle": {
+    "format": "🢐",
+    "tooltip": false
+  },
+  "custom/nettraf": {
+    "exec": "$HOME/.local/bin/statusbar/sb-nettraf.sh",
+    "restart-interval": 1,
+    "format": "  {}",
+    "tooltip": false
+  },
+  "custom/uptime": {
+    "exec": "uptime -p | sed 's/up //'",
+    "interval": 60,
+    "format": "  {}",
+    "tooltip": false
+  }
+}
