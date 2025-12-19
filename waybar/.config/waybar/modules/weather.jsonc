@@ -4,6 +4,6 @@
     "interval": 600,
     "return-type": "json",
     "tooltip": true,
-    "format": "{}"
-  }
+    "format": "{}",
+  },
 }
