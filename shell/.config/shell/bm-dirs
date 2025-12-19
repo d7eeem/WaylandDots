@@ -4,7 +4,7 @@ Cff ${XDG_CONFIG_HOME:-$HOME/.config}/fish
 cfz $HOME/.config/yazi
 cy  ${XDG_CONFIG_HOME:-$HOME/.config}/yazi
 d   ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
-d   ${XDG_DOWNLOADS_DIR:-$HOME/Downloads/}
+D   ${XDG_DOWNLOADS_DIR:-$HOME/Downloads}
 do  $HOME/WaylandDots/
 dt  ${XDG_DATA_HOME:-$HOME/.local/share}
 h   $HOME/
