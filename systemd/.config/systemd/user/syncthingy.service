@@ -1,0 +1,11 @@
+[Unit]
+Description=SyncThingy
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/flatpak run com.github.zocker_160.SyncThingy
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
