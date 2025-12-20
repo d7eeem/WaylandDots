@@ -8,7 +8,7 @@ configuration {
     drun-prompt:         " ";
 
     drun { 
-        lines: 15;
+        lines: 20;
         columns: 1;
     }
 }
