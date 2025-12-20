@@ -13,7 +13,4 @@
 
 find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.webp" \) \
   ! -iname "*.gif" ! -iname "*.png" \
-  -print0 | parallel --bar -0 '
-    newfile="{.}.png"
-    magick "{}" "$newfile" && rm "{}"
-'
+  -print0 | parallel -0 --bar 'magick {} {.}.png && rm {}'

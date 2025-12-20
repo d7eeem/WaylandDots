@@ -4,12 +4,8 @@
 #| |/ _| |  / /\ \/ / | | |_  /
 #| | (_| | / /  >  <| |_| |/ /
 #|_|\__,_|/_/  /_/\_\__, /___|
-# Created by: d7eeem aka id7xyz
-# https://gitlab.com/d7eeem
+#
 
-#!/bin/bash
-
-# Load environment variables
 if [ -f ~/.env ]; then
   export $(grep -v '^#' ~/.env | xargs)
 fi
@@ -20,6 +16,9 @@ TEMP_DIR="/tmp/screencast"
 XBACKBONE_URL="${XXBACKBONE_URL}"
 XBACKBONE_TOKEN="${XBACK_BONE}"
 
+# Annotation tool preference (satty or swappy)
+ANNOTATION_TOOL="satty"  # Change to "swappy" if you prefer swappy
+
 # Create directories if they don't exist
 mkdir -p "$SAVE_DIR"
 mkdir -p "$TEMP_DIR"
@@ -29,8 +28,8 @@ check_deps() {
     ERRORS=0
     MISSING_DEPS=()
     
-    local REQUIRED_CMDS="jq curl wl-copy notify-send hyprshot"
-    local VIDEO_CMDS="wf-recorder slurp"
+    local REQUIRED_CMDS="jq curl wl-copy notify-send hyprshot grim slurp"
+    local VIDEO_CMDS="wf-recorder"
     
     for cmd in $REQUIRED_CMDS; do
         if ! command -v "$cmd" &> /dev/null; then
@@ -38,6 +37,12 @@ check_deps() {
             ERRORS=1
         fi
     done
+    
+    # Check annotation tool
+    if ! command -v "$ANNOTATION_TOOL" &> /dev/null; then
+        MISSING_DEPS+=("$ANNOTATION_TOOL")
+        ERRORS=1
+    fi
     
     # Only check video deps if doing video operations
     if [[ "$1" == "vm" ]] || [[ "$1" == "vr" ]] || [[ "$1" == "rofi" ]]; then
@@ -93,14 +98,100 @@ upload() {
     fi
 }
 
-# Screenshot functions (compatible with your existing keybinds)
+# Open file in annotation tool and handle save/upload
+annotate_and_upload() {
+    local TEMP_FILE="$1"
+    local FINAL_FILE="$SAVE_DIR/screenshot_$(date +%Y%m%d_%H%M%S).png"
+    
+    if [ "$ANNOTATION_TOOL" = "satty" ]; then
+        # Satty configuration
+        satty --filename "$TEMP_FILE" \
+              --output-filename "$FINAL_FILE" \
+              --early-exit \
+              --copy-command "wl-copy" \
+              --initial-tool brush
+        
+        # Check if user saved the file
+        if [ -f "$FINAL_FILE" ]; then
+            # Ask user if they want to upload
+            UPLOAD_CHOICE=$(notify-send -A "Upload" -A "Save Only" "Screenshot Saved" "Upload to XBackbone or save locally?")
+            
+            if [ "$UPLOAD_CHOICE" = "0" ]; then
+                upload "$FINAL_FILE"
+            else
+                notify-send "Screenshot Saved" "File saved to: $FINAL_FILE"
+            fi
+        fi
+    else
+        # Swappy configuration
+        swappy -f "$TEMP_FILE" -o "$FINAL_FILE"
+        
+        # Check if user saved the file
+        if [ -f "$FINAL_FILE" ]; then
+            # Ask user if they want to upload
+            UPLOAD_CHOICE=$(notify-send -A "Upload" -A "Save Only" "Screenshot Saved" "Upload to XBackbone or save locally?")
+            
+            if [ "$UPLOAD_CHOICE" = "0" ]; then
+                upload "$FINAL_FILE"
+            else
+                notify-send "Screenshot Saved" "File saved to: $FINAL_FILE"
+            fi
+        fi
+    fi
+    
+    # Clean up temp file
+    rm -f "$TEMP_FILE"
+}
+
+# Screenshot functions with annotation
 sm() {
     # Screenshot Monitor
+    local TEMP_FILE="$TEMP_DIR/temp_screenshot_$(date +%Y%m%d_%H%M%S).png"
+    hyprshot -m output -m active -o "$TEMP_DIR" --filename "$(basename "$TEMP_FILE")"
+    
+    sleep 0.2
+    
+    if [ -f "$TEMP_FILE" ]; then
+        annotate_and_upload "$TEMP_FILE"
+    else
+        notify-send "Screenshot Error" "Failed to capture screenshot"
+    fi
+}
+
+sw() {
+    # Screenshot Window
+    local TEMP_FILE="$TEMP_DIR/temp_screenshot_$(date +%Y%m%d_%H%M%S).png"
+    hyprshot -m window -o "$TEMP_DIR" --filename "$(basename "$TEMP_FILE")"
+    
+    sleep 0.2
+    
+    if [ -f "$TEMP_FILE" ]; then
+        annotate_and_upload "$TEMP_FILE"
+    else
+        notify-send "Screenshot Error" "Failed to capture screenshot"
+    fi
+}
+
+sa() {
+    # Screenshot Area/Region
+    local TEMP_FILE="$TEMP_DIR/temp_screenshot_$(date +%Y%m%d_%H%M%S).png"
+    hyprshot -m region -o "$TEMP_DIR" --filename "$(basename "$TEMP_FILE")"
+    
+    sleep 0.2
+    
+    if [ -f "$TEMP_FILE" ]; then
+        annotate_and_upload "$TEMP_FILE"
+    else
+        notify-send "Screenshot Error" "Failed to capture screenshot"
+    fi
+}
+
+# Quick screenshot functions (no annotation, direct upload)
+sm_quick() {
     local FILENAME="screenshot_$(date +%Y%m%d_%H%M%S).png"
     hyprshot -m output -m active -o "$SAVE_DIR" --filename "$FILENAME"
     local FILE="$SAVE_DIR/$FILENAME"
     
-    # Wait a moment for file to be written
     sleep 0.2
     
     if [ -f "$FILE" ]; then
@@ -110,8 +201,7 @@ sm() {
     fi
 }
 
-sw() {
-    # Screenshot Window
+sw_quick() {
     local FILENAME="screenshot_$(date +%Y%m%d_%H%M%S).png"
     hyprshot -m window -o "$SAVE_DIR" --filename "$FILENAME"
     local FILE="$SAVE_DIR/$FILENAME"
@@ -125,8 +215,7 @@ sw() {
     fi
 }
 
-sa() {
-    # Screenshot Area/Region
+sa_quick() {
     local FILENAME="screenshot_$(date +%Y%m%d_%H%M%S).png"
     hyprshot -m region -o "$SAVE_DIR" --filename "$FILENAME"
     local FILE="$SAVE_DIR/$FILENAME"
@@ -144,7 +233,7 @@ sa() {
 vm() {
     # Video Monitor
     local FILE="$TEMP_DIR/screencast_$(date +%Y%m%d_%H%M%S).mp4"
-    notify-send "Recording Started" "Recording full monitor. Press Super+Shift+R to stop."
+    notify-send "Recording Started" "Recording full monitor. Press Super+Ctrl+R to stop."
     wf-recorder -f "$FILE" &
     RECORDER_PID=$!
     echo $RECORDER_PID > "$TEMP_DIR/recorder.pid"
@@ -167,7 +256,7 @@ vr() {
         exit 0
     fi
     
-    notify-send "Recording Started" "Recording selected region. Press Super+Shift+R to stop."
+    notify-send "Recording Started" "Recording selected region. Press Super+Ctrl+R to stop."
     wf-recorder -g "$GEOMETRY" -f "$FILE" &
     RECORDER_PID=$!
     echo $RECORDER_PID > "$TEMP_DIR/recorder.pid"
@@ -197,9 +286,12 @@ rofi_menu() {
     ROFI_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/clipboard"
     
     # Create menu options
-    OPTIONS="󰹑  Screenshot - Monitor
-󰖨  Screenshot - Window
-󰩭  Screenshot - Region
+    OPTIONS="󰹑  Screenshot - Monitor (Annotate)
+󰖨  Screenshot - Window (Annotate)
+󰩭  Screenshot - Region (Annotate)
+󰄀  Quick Screenshot - Monitor
+󰖯  Quick Screenshot - Window
+  Quick Screenshot - Region
 󰐌  Screencast - Monitor
 󰕧  Screencast - Region
 󰓛  Stop Recording"
@@ -210,26 +302,35 @@ rofi_menu() {
             -p "  Capture" \
             -theme "$ROFI_CONFIG/style_1.rasi" \
             -theme-str 'configuration { display-drun: "  "; drun-prompt: "  "; }' \
-            -theme-str 'listview { lines: 6; }' \
-            -theme-str 'window { width: 425px; height: 400px; }')
+            -theme-str 'listview { lines: 9; }' \
+            -theme-str 'window { width: 500px; height: 550px; }')
     else
         CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -i \
             -p "  Capture" \
-            -theme-str 'window { width: 425px; height: 400px; border-radius: 12px; padding: 15px; }' \
-            -theme-str 'listview { lines: 6; spacing: 8px; }' \
+            -theme-str 'window { width: 500px; height: 550px; border-radius: 12px; padding: 15px; }' \
+            -theme-str 'listview { lines: 9; spacing: 8px; }' \
             -theme-str 'element { padding: 10px 15px; border-radius: 8px; }' \
             -theme-str 'inputbar { padding: 10px 15px; border-radius: 8px; margin-bottom: 12px; }')
     fi
     
     case "$CHOICE" in
-        *"Screenshot - Monitor"*)
+        *"Monitor (Annotate)"*)
             sm
             ;;
-        *"Screenshot - Window"*)
+        *"Window (Annotate)"*)
             sw
             ;;
-        *"Screenshot - Region"*)
+        *"Region (Annotate)"*)
             sa
+            ;;
+        *"Quick Screenshot - Monitor"*)
+            sm_quick
+            ;;
+        *"Quick Screenshot - Window"*)
+            sw_quick
+            ;;
+        *"Quick Screenshot - Region"*)
+            sa_quick
             ;;
         *"Screencast - Monitor"*)
             vm
@@ -260,6 +361,15 @@ case "$MODE" in
         ;;
     sa)
         sa
+        ;;
+    sm_quick)
+        sm_quick
+        ;;
+    sw_quick)
+        sw_quick
+        ;;
+    sa_quick)
+        sa_quick
         ;;
     vm)
         vm
