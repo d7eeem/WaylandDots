@@ -4,7 +4,7 @@
 
 * {
   font-family: "0xProto Nerd Font Propo";
-  font-size: 12px;
+  font-size: 10px;
   min-height: 0;
 }
 
@@ -12,7 +12,7 @@ window#waybar {
   background-color: @background;
   color: @color7;
   border-radius: 7px;
-  border: 1px solid @color1; 
+  border: 1px solid @color1;
 }
 
 /* ==================== Tooltip ==================== */
@@ -26,11 +26,11 @@ tooltip {
 
 #workspaces button {
   color: @color7;
-  padding: 2px 4px;
-  margin: 2px;
+  padding: 0px 0px;
+  margin: 0px;
   border-radius: 7px;
-  font-size: 20px;
-  min-width: 30px;
+  font-size: 18px;
+  min-width: 28px;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
 }
@@ -76,27 +76,32 @@ tooltip {
 #custom-updates,
 #custom-weather,
 #idle_inhibitor,
-#custom-recorder,
 #power-profiles-daemon,
 #custom-audio_idle_inhibitor {
   color: @color7;
-  padding: 2px 10px;
-  margin: 2px 0;
+  padding: 0px 8px;
+  margin: 0px 0;
   border-radius: 7px;
   font-weight: bold;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
+
 #custom-weather {
-  padding: 2px 2px;
-  margin: 2px;
+  padding: 0px 0px;
+  margin: 0px;
 }
+
 #clock,
 #clock-date {
   color: @color7;
-  margin: 2px;
+  margin: 0px;
   border-radius: 7px;
   font-weight: bold;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 window#waybar.empty #window {
@@ -106,53 +111,94 @@ window#waybar.empty #window {
 /* ==================== Module-Specific Overrides ==================== */
 
 #custom-drop {
-  font-size: 15px;
-  min-width: 15px;
-  margin-left: 4px;
+  font-size: 13px;
+  min-width: 13px;
+  margin-left: 2px;
 }
 
 #bluetooth {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 #network {
-  font-size: 18px;
+  font-size: 16px;
   color: @color11;
 }
 
 #pulseaudio.muted {
   color: @color7;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 #custom-power {
   color: @color7;
-  font-size: 14px;
-  margin: 2px 4px 2px 0;
-  padding: 2px 10px;
+  font-size: 12px;
+  margin: 0px 2px 0px 0;
+  padding: 0px 8px;
   border-radius: 7px;
   font-weight: bold;
 }
 
 #custom-notification {
   color: @color7;
-  font-size: 14px;
-  min-width: 20px;
-  padding: 2px;
-  margin: 2px 2px 2px 0;
+  font-size: 12px;
+  min-width: 18px;
+  padding: 0px;
+  margin: 0px 0px 0px 0;
   border-radius: 7px;
 }
 
-#privacy-item.screenshare,
-#custom-recorder.recording {
-  background-color: @privacy;
-  color: @color7;
-  padding: 2px 12px;
-  border-radius: 7px;
+/* ==================== Privacy Module =================== */
+
+/* Make custom-screen-record look like privacy-item */
+#custom-screen-record.recording {
+  background-color: #30d158;
+  animation: blink_green 1.5s steps(24) infinite alternate;
+  border-radius: 50px;
   margin: 2px;
-  border: 1px solid @color7;
+  min-width: 5px;
+  min-height: 5px;
 }
 
+/* Privacy module styling */
+#privacy-item image {
+  opacity: 0;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#privacy-item label {
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#privacy-item {
+  border-radius: 75px;
+  margin: 0px;
+  padding: 6px;
+  min-width: 8px;
+  min-height: 8px;
+}
+
+#privacy-item.screenshare {
+  background-color: red;
+  animation: blink_red 1.5s steps(24) infinite alternate;
+}
+
+@keyframes blink_red {
+  to {
+    background-color: white;
+  }
+}
+
+@keyframes blink_green {
+  to {
+    background-color: white;
+  }
+}
 /* ==================== Module States ==================== */
 
 #bluetooth.connected {
@@ -194,24 +240,28 @@ menu {
 
 menuitem {
   color: @color7;
-  margin: 2px;
-  padding: 0 5px;
+  margin: 0px;
+  padding: 0 3px;
 }
+
 menuitem:hover {
   background-color: @color15;
   color: @color0;
 }
+
 /* ==================== Stats Group ==================== */
 #custom-stats-toggle {
   color: @color7;
-  padding: 2px 5px;
-  margin: 1px;
-  padding-top: 4px;
+  padding: 0px 0px;
+  margin: 0px;
+  padding-top: 3px;
   border-radius: 7px;
   font-weight: bold;
-  transition: background-color 0.2s, color 0.2s;
-  font-size: 15px;
-  min-width: 20px;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+  font-size: 13px;
+  min-width: 18px;
 }
 
 #custom-stats-toggle:hover {
@@ -220,16 +270,17 @@ menuitem:hover {
 }
 
 .stats-child {
-  background-color: rgba(255, 255, 255, 0.03);
   border-radius: 7px;
-  margin: 0 2px;
+  margin: 0 0px;
 }
 
 #custom-uptime {
   color: @color7;
-  padding: 2px 10px;
-  margin: 2px 0;
+  padding: 0px 8px;
+  margin: 0px 0;
   border-radius: 7px;
   font-weight: bold;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }

@@ -2,11 +2,11 @@
   "layer": "top",
   "position": "top",
   "exclusive": true,
-  "height": 36,
+  "height": 28,
   "spacing": 5,
   "margin-top": 5,
-  "margin-right": 15,
-  "margin-left": 15,
+  "margin-right": 10,
+  "margin-left": 10,
   "include": "~/.config/waybar/modules.jsonc",
   "reload_style_on_change": true,
   "modules-left": [
@@ -33,7 +33,7 @@
     "tray",
     "custom/power",
     "custom/notification",
-    "custom/recorder",
+    "custom/screen-record",
     "privacy",
   ],
 }
