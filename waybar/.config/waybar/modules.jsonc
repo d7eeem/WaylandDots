@@ -26,7 +26,6 @@
     "$HOME/.config/waybar/modules/power.jsonc",
     "$HOME/.config/waybar/modules/privacy.jsonc",
     "$HOME/.config/waybar/modules/pulseaudio.jsonc",
-    "$HOME/.config/waybar/modules/recorder.jsonc",
     "$HOME/.config/waybar/modules/tray.jsonc",
     "$HOME/.config/waybar/modules/updates.jsonc",
     "$HOME/.config/waybar/modules/upower.jsonc",

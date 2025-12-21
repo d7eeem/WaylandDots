@@ -1,43 +1,51 @@
 {
+  "group/privacy-controls": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/screen-record",
+      "privacy"
+    ],
+  },
   "custom/screen-record": {
     "exec": "~/.local/bin/personal/screencapstatus.sh",
     "return-type": "json",
-    "interval": 2,
+    "interval": 1,
     "format": "{}",
     "tooltip": true,
     "on-click": "pkill -x wf-recorder",
   },
   "privacy": {
     "icon-spacing": 0,
+    "interval": 1,
     "icon-size": 0,
     "transition-duration": 250,
     "modules": [
       {
         "type": "screenshare",
         "tooltip": true,
-        "tooltip-icon-size": 20
-      }
+        "tooltip-icon-size": 20,
+      },
     ],
     "ignore-monitor": true,
     "ignore": [
       {
         "type": "audio-in",
-        "name": "cava"
+        "name": "cava",
       },
       {
         "type": "screenshare",
-        "name": "obs"
+        "name": "obs",
       },
       {
         "type": "audio-out",
         "tooltip": true,
-        "tooltip-icon-size": 20
+        "tooltip-icon-size": 20,
       },
       {
         "type": "audio-in",
         "tooltip": true,
-        "tooltip-icon-size": 20
-      }
-    ]
-  }
+        "tooltip-icon-size": 20,
+      },
+    ],
+  },
 }

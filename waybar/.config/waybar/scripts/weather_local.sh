@@ -2,10 +2,10 @@
 
 # Check for required commands
 for cmd in curl jq bc date; do
-    if ! command -v $cmd &> /dev/null; then
-        echo "{\"text\":\"N/A\",\"tooltip\":\"Missing required command: $cmd\"}"
-        exit 1
-    fi
+  if ! command -v $cmd &>/dev/null; then
+    echo "{\"text\":\"N/A\",\"tooltip\":\"Missing required command: $cmd\"}"
+    exit 1
+  fi
 done
 
 # ---------------- CONFIGURATION
@@ -64,9 +64,9 @@ fi
 # ---------------- WEATHER ICONS
 get_weather_icon() {
   local code=$1
-  local time_str=$2  # Optional: ISO format time string (YYYY-MM-DDTHH:MM:SS)
+  local time_str=$2 # Optional: ISO format time string (YYYY-MM-DDTHH:MM:SS)
   local is_night=0
-  
+
   # Determine if it's nighttime (18:00 to 06:00)
   if [[ -n "$time_str" ]]; then
     local hour="${time_str##*T}"
@@ -83,7 +83,7 @@ get_weather_icon() {
       is_night=1
     fi
   fi
-  
+
   # Return night icons for clear/partly cloudy conditions
   if [[ $is_night -eq 1 ]]; then
     case $code in
@@ -192,7 +192,7 @@ curl_exit=$?
 
 if [[ $curl_exit -eq 0 ]] && [[ -n "$data" ]] && [[ "$data" != *"error"* ]]; then
   # Successfully fetched from cache proxy, save to local cache as backup
-  echo "$data" > "$CACHE_FILE"
+  echo "$data" >"$CACHE_FILE"
   if [[ -n "$DEBUG" ]]; then
     echo "✓ Successfully fetched from cache proxy" >&2
   fi
@@ -202,18 +202,18 @@ else
     echo "  URL: $URL" >&2
     echo "  Response: ${data:0:200}" >&2
   fi
-  
+
   # Cache proxy failed, try local cache
   if [[ -f "$CACHE_FILE" ]]; then
     cache_age=$(($(date +%s) - $(stat -c %Y "$CACHE_FILE" 2>/dev/null || stat -f %m "$CACHE_FILE" 2>/dev/null || echo 0)))
-    
+
     # Use local cache even if stale (better than no data)
     data=$(cat "$CACHE_FILE")
-    
+
     if [[ -z "$data" ]]; then
       fail "Cache proxy unavailable and no local cache"
     fi
-    
+
     # Indicate we're using stale cache
     if [[ -n "$DEBUG" ]]; then
       echo "⚠ Using local cache (age: ${cache_age}s, proxy unavailable)" >&2
@@ -288,7 +288,7 @@ humidity="${humidity_arr[$current_index]}"
 windspeed="${wind_arr[$current_index]}"
 
 temp_color=$(temp_to_color "$current_temp")
-text="$icon <span foreground='$temp_color'>${current_temp}°C</span>  |"
+text="$icon <span foreground='$temp_color'>${current_temp}°C</span> |"
 
 # ---------------- TOOLTIP BUILDING
 tooltip=""
@@ -314,7 +314,7 @@ precip_total=0
 
 for i in "${!times[@]}"; do
   time_date="${times[$i]%%T*}"
-  
+
   if [[ "$time_date" == "$current_date" ]] && [[ "${times[$i]}" > "$current_datetime" ]]; then
     prob="${rain_arr[$i]}"
     precip="${precip_arr[$i]}"
@@ -412,16 +412,16 @@ done
 
 # Debug output
 if [[ -n "$DEBUG" ]]; then
-    echo "========== WEATHER DEBUG ==========" >&2
-    echo "Cache Proxy: $CACHE_PROXY_URL" >&2
-    echo "Request URL: $URL" >&2
-    echo "Location: $LOCATION_NAME" >&2
-    if [[ -n "$LAT" ]] && [[ -n "$LON" ]]; then
-      echo "Custom coords: LAT=$LAT, LON=$LON" >&2
-    else
-      echo "Using proxy default location" >&2
-    fi
-    echo "===================================" >&2
+  echo "========== WEATHER DEBUG ==========" >&2
+  echo "Cache Proxy: $CACHE_PROXY_URL" >&2
+  echo "Request URL: $URL" >&2
+  echo "Location: $LOCATION_NAME" >&2
+  if [[ -n "$LAT" ]] && [[ -n "$LON" ]]; then
+    echo "Custom coords: LAT=$LAT, LON=$LON" >&2
+  else
+    echo "Using proxy default location" >&2
+  fi
+  echo "===================================" >&2
 fi
 
 # ---------------- OUTPUT

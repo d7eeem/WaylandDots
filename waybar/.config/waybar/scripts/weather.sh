@@ -272,7 +272,7 @@ humidity="${humidity_arr[$current_index]}"
 windspeed="${wind_arr[$current_index]}"
 
 temp_color=$(temp_to_color "$current_temp")
-text="$icon <span foreground='$temp_color'>${current_temp}°C</span>  |"
+text="$icon <span foreground='$temp_color'>${current_temp}°C</span>"
 
 # ---------------- TOOLTIP BUILDING
 tooltip=""

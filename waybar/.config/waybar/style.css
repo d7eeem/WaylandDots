@@ -99,6 +99,7 @@ tooltip {
   margin: 0px;
   border-radius: 7px;
   font-weight: bold;
+  font-size: 11px;
   transition:
     background-color 0.2s,
     color 0.2s;
@@ -155,6 +156,7 @@ window#waybar.empty #window {
   background-image: radial-gradient(circle, #66ff00 30%, transparent 10%);
   border-radius: 50px;
   margin: 2px;
+  animation: pulse 1s infinite;
 }
 
 /* Privacy module styling */
@@ -179,19 +181,18 @@ window#waybar.empty #window {
 
 #privacy-item.screenshare {
   background-image: radial-gradient(circle, #ff0038 30%, transparent 10%);
+  animation: pulse 1s infinite;
 }
 
-/* @keyframes blink_red { */
-/*   to { */
-/*     background-color: white; */
-/*   } */
-/* } */
-/**/
-/* @keyframes blink_green { */
-/*   to { */
-/*     background-color: green; */
-/*   } */
-/* } */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 
 /* ==================== Module States ==================== */
 

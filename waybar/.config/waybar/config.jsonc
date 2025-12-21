@@ -5,22 +5,23 @@
   "height": 28,
   "spacing": 5,
   "margin-top": 5,
-  "margin-right": 10,
-  "margin-left": 10,
+  "margin-right": 6,
+  "margin-left": 6,
   "include": "~/.config/waybar/modules.jsonc",
   "reload_style_on_change": true,
   "modules-left": [
     "custom/drop",
-    "hyprland/window",
+    "hyprland/workspaces",
+    "hyprland/window"
   ],
   "modules-center": [
-    "hyprland/workspaces"
+    "custom/weather",
+    "clock",
+
   ],
   "modules-right": [
     "custom/audio_idle_inhibitor",
     "group/stats",
-    "custom/weather",
-    "clock",
     "custom/updates",
     "custom/memory",
     "custom/cpuinfo",
@@ -31,8 +32,7 @@
     "hyprland/language",
     "network",
     "tray",
-    "custom/screen-record",
-    "privacy",
-    "group/system-controls"
+    "group/privacy-controls",
+    "group/system-controls",
   ],
 }
