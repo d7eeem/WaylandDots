@@ -6,14 +6,8 @@
 #|_|\__,_|/_/  /_/\_\__, /___|
 
 # Check if wf-recorder is running
-wf_recorder_active=false
-if pgrep -x wf-recorder >/dev/null; then
-  wf_recorder_active=true
-fi
-
-
-if pgrep -x wf-recorder >/dev/null; then
-  echo '{"text": "   ", "tooltip": "Screen recording (wf-recorder)", "class": "recording"}'
+if pgrep -x wf-recorder >/dev/null || pgrep -f "^gpu-screen-recorder.*-o" >/dev/null; then
+  echo '{"text": "   ", "tooltip": "Stop recording", "class": "recording"}'
 else
   echo '{"text": "", "tooltip": "", "class": "idle"}'
 fi
