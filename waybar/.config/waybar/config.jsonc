@@ -11,16 +11,16 @@
   "reload_style_on_change": true,
   "modules-left": [
     "custom/drop",
-    "hyprland/workspaces",
-    "hyprland/window"
+    "hyprland/window",
   ],
   "modules-center": [
-    "custom/weather",
-    "clock",
-    "custom/audio_idle_inhibitor"
+    "hyprland/workspaces"
   ],
   "modules-right": [
+    "custom/audio_idle_inhibitor",
     "group/stats",
+    "custom/weather",
+    "clock",
     "custom/updates",
     "custom/memory",
     "custom/cpuinfo",
@@ -31,9 +31,8 @@
     "hyprland/language",
     "network",
     "tray",
-    "custom/power",
-    "custom/notification",
     "custom/screen-record",
     "privacy",
+    "group/system-controls"
   ],
 }

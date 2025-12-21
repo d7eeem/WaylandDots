@@ -79,8 +79,8 @@ tooltip {
 #power-profiles-daemon,
 #custom-audio_idle_inhibitor {
   color: @color7;
-  padding: 0px 8px;
-  margin: 0px 0;
+  padding: 0px 6px;
+  margin: 0px;
   border-radius: 7px;
   font-weight: bold;
   transition:
@@ -152,12 +152,9 @@ window#waybar.empty #window {
 
 /* Make custom-screen-record look like privacy-item */
 #custom-screen-record.recording {
-  background-color: #30d158;
-  animation: blink_green 1.5s steps(24) infinite alternate;
+  background-image: radial-gradient(circle, #66ff00 30%, transparent 10%);
   border-radius: 50px;
   margin: 2px;
-  min-width: 5px;
-  min-height: 5px;
 }
 
 /* Privacy module styling */
@@ -176,29 +173,26 @@ window#waybar.empty #window {
 }
 
 #privacy-item {
-  border-radius: 75px;
-  margin: 0px;
-  padding: 6px;
-  min-width: 8px;
-  min-height: 8px;
+  border-radius: 50px;
+  margin-right: 2px;
 }
 
 #privacy-item.screenshare {
-  background-color: red;
-  animation: blink_red 1.5s steps(24) infinite alternate;
+  background-image: radial-gradient(circle, #ff0038 30%, transparent 10%);
 }
 
-@keyframes blink_red {
-  to {
-    background-color: white;
-  }
-}
+/* @keyframes blink_red { */
+/*   to { */
+/*     background-color: white; */
+/*   } */
+/* } */
+/**/
+/* @keyframes blink_green { */
+/*   to { */
+/*     background-color: green; */
+/*   } */
+/* } */
 
-@keyframes blink_green {
-  to {
-    background-color: white;
-  }
-}
 /* ==================== Module States ==================== */
 
 #bluetooth.connected {
@@ -284,3 +278,56 @@ menuitem:hover {
     background-color 0.2s,
     color 0.2s;
 }
+
+/* ==================== System Controls Group ==================== */
+#group-system-controls {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* #custom-notification { */
+/*   color: @color7; */
+/*   padding: 0px 8px; */
+/*   margin: 0px 0; */
+/*   border-radius: 7px; */
+/*   font-weight: bold; */
+/*   transition: */
+/*     background-color 0.2s, */
+/*     color 0.2s; */
+/*   font-size: 16px; */
+/*   min-width: 24px; */
+/* } */
+/**/
+/* #custom-notification:hover { */
+/*   background-color: @color11; */
+/*   color: @color0; */
+/* } */
+/**/
+/* #custom-notification.notification { */
+/*   background-color: @color3; */
+/*   color: @color0; */
+/* } */
+/**/
+/* #custom-notification.dnd-notification, */
+/* #custom-notification.dnd-inhibited-notification { */
+/*   background-color: @color1; */
+/*   color: @color0; */
+/* } */
+/**/
+/* #custom-power { */
+/*   color: @color7; */
+/*   padding: 0px 8px; */
+/*   margin: 0px 0; */
+/*   border-radius: 7px; */
+/*   font-weight: bold; */
+/*   transition: */
+/*     background-color 0.2s, */
+/*     color 0.2s; */
+/*   font-size: 16px; */
+/*   min-width: 24px; */
+/* } */
+/**/
+/* #custom-power:hover { */
+/*   background-color: @color9; */
+/*   color: @color0; */
+/* } */

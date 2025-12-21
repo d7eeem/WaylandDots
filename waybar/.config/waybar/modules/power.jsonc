@@ -1,4 +1,11 @@
 {
+  "group/system-controls": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/notification",
+      "custom/power"
+    ]
+  },
   "custom/power": {
     "format": "",
     "tooltip": false,
@@ -13,5 +20,26 @@
     },
     "on-click": "uwsm app -- wlogout",
     "on-click-middle": "uwsm app -- ~/.config/rofi/powermenu/powermenu.sh"
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": " {icon} ",
+    "format-icons": {
+      "notification": "",
+      "none": "",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰂠",
+      "inhibited-notification": "󱏧",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-middle": "swaync-client -d -sw",
+    "on-click-right": "swaync-client -cp",
+    "escape": true
   }
 }

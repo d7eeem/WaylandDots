@@ -1,6 +1,9 @@
 ## File Operations & Navigation
 alias cd='z'
 alias rsync='rsync -avhriPO'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
 alias ls='eza -al --color=always --group-directories-first --icons'
 alias la='eza -a --color=always --group-directories-first --icons'
 alias ll='eza -l --color=always --group-directories-first --icons'
@@ -25,12 +28,16 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
+alias find='fd'
+alias du='dust'
 
 ## System Info & Monitoring
 alias hw='hwinfo --short'
 alias dft="df -h -t ext4 -t btrfs -t fuse.mergerfs -h"
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias top='btop'
+alias ps='ps aux'
 
 ## Package Management (CachyOS/Arch)
 alias update='sudo pacman -Syu'
@@ -66,6 +73,26 @@ alias gf="git fetch"
 alias clone="git clone"
 alias gg="git clone"
 
+## Docker & Containers
+alias d='docker'
+alias dc='docker compose'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias di='docker images'
+alias dex='docker exec -it'
+alias dlog='docker logs -f'
+alias dstop='docker stop'
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dprune='docker system prune -af'
+alias dnet='docker network ls'
+alias dvol='docker volume ls'
+alias dcp='docker compose up -d'
+alias dcd='docker compose down'
+alias dcl='docker compose logs -f'
+alias dcr='docker compose restart'
+alias dcu='docker compose up'
+
 ## Editors & Viewers
 alias editor="nvim"
 alias vim="nvim"
@@ -84,3 +111,4 @@ alias t="tmux"
 
 ## Utility
 alias ca="clear"
+alias c="clear"
