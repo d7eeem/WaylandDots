@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "top",
   "exclusive": true,
-  "height": 28,
+  "height": 26,
   "spacing": 5,
   "margin-top": 5,
   "margin-right": 6,
@@ -16,23 +16,22 @@
   ],
   "modules-center": [
     "custom/weather",
-    "clock",
-
+    "clock"
   ],
   "modules-right": [
-    "custom/audio_idle_inhibitor",
     "group/stats",
+    "custom/audio_idle_inhibitor",
+    "custom/idle-inhibitor",
+    "group/privacy-controls",
     "custom/updates",
     "custom/memory",
     "custom/cpuinfo",
     "cpu",
     "custom/gpuinfo",
-    "idle_inhibitor",
     "pulseaudio",
     "hyprland/language",
     "network",
     "tray",
-    "group/privacy-controls",
     "group/system-controls",
   ],
 }

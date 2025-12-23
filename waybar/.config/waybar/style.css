@@ -11,24 +11,55 @@
 window#waybar {
   background-color: @background;
   color: @color7;
-  border-radius: 7px;
+  border-radius: 3px;
   border: 1px solid @color1;
 }
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+/* .modules-left { */
+/*   padding-right: 3px; */
+/*   padding-left: 0px; */
+/*   border: 1px solid @color1; */
+/*   border-right: none; */
+/*   border-radius: 3px; */
+/*   border-top-right-radius: 0; */
+/*   border-bottom-right-radius: 0; */
+/* } */
+/**/
+/* .modules-right { */
+/*   padding-right: 3px; */
+/* } */
+/**/
+/* .modules-center { */
+/*   padding: 2px 6px 2px 6px; */
+/*   background-color: @background; */
+/*   border: 1px solid @color1; */
+/*   border-radius: 3px; */
+/* } */
+/**/
+/* .modules-right { */
+/*   background-color: @background; */
+/*   border: 1px solid @color1; */
+/*   border-radius: 3px; */
+/* } */
 
 /* ==================== Tooltip ==================== */
 
 tooltip {
   background-color: @color0;
   color: @color7;
-  border-radius: 7px;
+  border-radius: 3px;
   border: 1px solid @color1;
 }
 
 #workspaces button {
   color: @color7;
   padding: 0px 0px;
-  margin: 0px;
-  border-radius: 7px;
+  margin: 1px;
+  border-radius: 3px;
   font-size: 18px;
   min-width: 28px;
   font-weight: bold;
@@ -51,7 +82,7 @@ tooltip {
 }
 
 #workspaces button.urgent {
-  background-color: @color1;
+  background-color: red;
   color: @color0;
 }
 
@@ -81,7 +112,7 @@ tooltip {
   color: @color7;
   padding: 0px 6px;
   margin: 0px;
-  border-radius: 7px;
+  border-radius: 3px;
   font-weight: bold;
   transition:
     background-color 0.2s,
@@ -97,16 +128,12 @@ tooltip {
 #clock-date {
   color: @color7;
   margin: 0px;
-  border-radius: 7px;
+  border-radius: 3px;
   font-weight: bold;
   font-size: 11px;
   transition:
     background-color 0.2s,
     color 0.2s;
-}
-
-window#waybar.empty #window {
-  background-color: transparent;
 }
 
 /* ==================== Module-Specific Overrides ==================== */
@@ -136,7 +163,7 @@ window#waybar.empty #window {
   font-size: 12px;
   margin: 0px 2px 0px 0;
   padding: 0px 8px;
-  border-radius: 7px;
+  border-radius: 3px;
   font-weight: bold;
 }
 
@@ -146,7 +173,7 @@ window#waybar.empty #window {
   min-width: 18px;
   padding: 0px;
   margin: 0px 0px 0px 0;
-  border-radius: 7px;
+  border-radius: 3px;
 }
 
 /* ==================== Privacy Module =================== */
@@ -230,7 +257,7 @@ window#waybar.empty #window {
 menu {
   background-color: @color0;
   color: @color15;
-  border-radius: 7px;
+  border-radius: 3px;
 }
 
 menuitem {
@@ -250,7 +277,7 @@ menuitem:hover {
   padding: 0px 0px;
   margin: 0px;
   padding-top: 3px;
-  border-radius: 7px;
+  border-radius: 3px;
   font-weight: bold;
   transition:
     background-color 0.2s,
@@ -265,7 +292,7 @@ menuitem:hover {
 }
 
 .stats-child {
-  border-radius: 7px;
+  border-radius: 3px;
   margin: 0 0px;
 }
 
@@ -273,11 +300,36 @@ menuitem:hover {
   color: @color7;
   padding: 0px 8px;
   margin: 0px 0;
-  border-radius: 7px;
+  border-radius: 3px;
   font-weight: bold;
   transition:
     background-color 0.2s,
     color 0.2s;
+}
+
+#custom-idle-inhibitor {
+  color: @color7;
+  padding: 6px 6px;
+  font-size: 11px;
+  margin: 0px;
+  border-radius: 3px;
+  font-weight: bold;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+#custom-idle-inhibitor.active {
+  color: #f38ba8;
+}
+
+#custom-idle-inhibitor.inactive {
+  color: @color1;
+}
+
+#custom-idle-inhibitor:hover {
+  background-color: @color13;
+  color: @color0;
 }
 
 /* ==================== System Controls Group ==================== */
@@ -285,50 +337,3 @@ menuitem:hover {
   padding: 0px;
   margin: 0px;
 }
-
-/* #custom-notification { */
-/*   color: @color7; */
-/*   padding: 0px 8px; */
-/*   margin: 0px 0; */
-/*   border-radius: 7px; */
-/*   font-weight: bold; */
-/*   transition: */
-/*     background-color 0.2s, */
-/*     color 0.2s; */
-/*   font-size: 16px; */
-/*   min-width: 24px; */
-/* } */
-/**/
-/* #custom-notification:hover { */
-/*   background-color: @color11; */
-/*   color: @color0; */
-/* } */
-/**/
-/* #custom-notification.notification { */
-/*   background-color: @color3; */
-/*   color: @color0; */
-/* } */
-/**/
-/* #custom-notification.dnd-notification, */
-/* #custom-notification.dnd-inhibited-notification { */
-/*   background-color: @color1; */
-/*   color: @color0; */
-/* } */
-/**/
-/* #custom-power { */
-/*   color: @color7; */
-/*   padding: 0px 8px; */
-/*   margin: 0px 0; */
-/*   border-radius: 7px; */
-/*   font-weight: bold; */
-/*   transition: */
-/*     background-color 0.2s, */
-/*     color 0.2s; */
-/*   font-size: 16px; */
-/*   min-width: 24px; */
-/* } */
-/**/
-/* #custom-power:hover { */
-/*   background-color: @color9; */
-/*   color: @color0; */
-/* } */

@@ -7,6 +7,7 @@
 # Created by: d7eeem aka id7xyz
 # https://github.com/d7eeem
 
-kitty --title calculator -e bc -q && 
+# kitty --title calculator -e bc -q && 
+ghostty -e calculator -e bc -q && 
   hyprctl dispatch resizeactive exact 950 600 && 
   hyprctl dispatch centerwindow

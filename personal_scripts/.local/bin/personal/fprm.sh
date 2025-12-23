@@ -6,5 +6,6 @@
 #|_|\__,_|/_/  /_/\_\__, /___|
 #                    |___/
 
-
-flatpak --user list --app --columns=application | fzf | xargs -r flatpak uninstall y
+flatpak --user list --app --columns=application |
+  fzf |
+  xargs -r flatpak uninstall --user -y
